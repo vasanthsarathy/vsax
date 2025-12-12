@@ -4,10 +4,12 @@ VSAX provides composable symbolic representations using hypervectors, algebraic 
 for binding and bundling, and encoding strategies for symbolic and structured data.
 
 Example:
-    >>> from vsax.core import VSAModel
+    >>> from vsax import create_fhrr_model, VSAMemory
     >>> from vsax.representations import ComplexHypervector
     >>> from vsax.ops import FHRROperations
     >>> from vsax.sampling import sample_complex_random
+    >>>
+    >>> # Create an FHRR model
     >>> model = VSAModel(
     ...     dim=512,
     ...     rep_cls=ComplexHypervector,
@@ -16,14 +18,37 @@ Example:
     ... )
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from vsax.core.base import AbstractHypervector, AbstractOpSet
 from vsax.core.model import VSAModel
 
+# New in 0.2.0: Representations
+from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
+
+# New in 0.2.0: Operations
+from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
+
+# New in 0.2.0: Sampling
+from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
+
 __all__ = [
+    # Core
     "AbstractHypervector",
     "AbstractOpSet",
     "VSAModel",
+    # Representations
+    "ComplexHypervector",
+    "RealHypervector",
+    "BinaryHypervector",
+    # Operations
+    "FHRROperations",
+    "MAPOperations",
+    "BinaryOperations",
+    # Sampling
+    "sample_random",
+    "sample_complex_random",
+    "sample_binary_random",
+    # Version
     "__version__",
 ]
