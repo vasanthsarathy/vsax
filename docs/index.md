@@ -11,11 +11,13 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 💯 **Type-Safe**: Full type annotations with mypy support
-- ✅ **Well-Tested**: 175 tests with 96% coverage
+- ✅ **Well-Tested**: 319 tests with 95% coverage
+- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity
+- ⚡ **Batch Operations**: GPU-accelerated vmap operations
 
 ## Installation
 
-### From PyPI (Coming Soon)
+### From PyPI (Recommended)
 
 ```bash
 pip install vsax
@@ -38,17 +40,20 @@ pip install -e ".[dev]"
 
 ## Quick Example
 
-### Simple API (v0.3.0+)
+### Simple API (v0.5.0)
 
 ```python
-from vsax import create_fhrr_model, VSAMemory
+from vsax import create_fhrr_model, VSAMemory, DictEncoder
+from vsax.similarity import cosine_similarity
+from vsax.utils import vmap_bind
+import jax.numpy as jnp
 
 # Create model with factory function
 model = create_fhrr_model(dim=512)
 
 # Create memory for symbols
 memory = VSAMemory(model)
-memory.add_many(["dog", "cat", "animal"])
+memory.add_many(["dog", "cat", "animal", "run", "jump"])
 
 # Access and manipulate symbols
 dog = memory["dog"]
@@ -59,6 +64,19 @@ dog_is_animal = model.opset.bind(dog.vec, animal.vec)
 
 # Bundle multiple concepts (sum and normalize)
 pets = model.opset.bundle(memory["dog"].vec, memory["cat"].vec)
+
+# NEW: Similarity search
+similarity = cosine_similarity(memory["dog"], memory["cat"])
+print(f"Dog-Cat similarity: {similarity:.3f}")
+
+# NEW: Batch operations (GPU-accelerated)
+nouns = jnp.stack([memory["dog"].vec, memory["cat"].vec])
+verbs = jnp.stack([memory["run"].vec, memory["jump"].vec])
+actions = vmap_bind(model.opset, nouns, verbs)  # Parallel binding!
+
+# NEW: Encoders
+encoder = DictEncoder(model, memory)
+sentence = encoder.encode({"subject": "dog", "action": "run"})
 ```
 
 ### MAP Model (Real Hypervectors)
@@ -95,11 +113,11 @@ model = VSAModel(
 
 ## Development Status
 
-**Current**: Iteration 2 Complete ✅
+**Current**: Iteration 5 Complete ✅
 
 ### Completed
 
-**Iteration 1** (v0.1.0): Foundation & Infrastructure
+**Iteration 1** (v0.1.0): Foundation & Infrastructure ✅
 - ✅ Core abstract classes (AbstractHypervector, AbstractOpSet)
 - ✅ VSAModel dataclass
 - ✅ Package structure
@@ -107,24 +125,38 @@ model = VSAModel(
 - ✅ CI/CD pipeline (GitHub Actions)
 - ✅ Documentation site (MkDocs)
 
-**Iteration 2** (v0.2.0): Core Algebras
+**Iteration 2** (v0.2.0): Core Algebras ✅
 - ✅ All 3 representations (Complex, Real, Binary)
 - ✅ All 3 operation sets (FHRR, MAP, Binary)
 - ✅ Sampling utilities
 - ✅ 175 comprehensive tests with 96% coverage
 - ✅ Full integration tests
 
+**Iteration 3** (v0.3.0): Models & Memory ✅
+- ✅ VSAMemory for symbol storage
+- ✅ Factory functions for easy model creation
+- ✅ Integration utilities
+- ✅ 230 tests with 89% coverage
+
+**Iteration 4** (v0.4.0): First Usable Release ✅
+- ✅ 5 Core Encoders (Scalar, Sequence, Set, Dict, Graph)
+- ✅ AbstractEncoder base class
+- ✅ Complete working examples for all 3 models
+- ✅ Custom encoder examples
+- ✅ 280+ tests with 92%+ coverage
+
+**Iteration 5** (v0.5.0): Similarity Metrics & Utilities ✅
+- ✅ Cosine, dot, and Hamming similarity functions
+- ✅ Batch operations with JAX vmap (vmap_bind, vmap_bundle, vmap_similarity)
+- ✅ Visualization utilities (pretty_repr, format_similarity_results)
+- ✅ GPU-accelerated similarity search
+- ✅ 319 tests with 95%+ coverage
+
 ### Coming Next
 
-**Iteration 3** (v0.3.0): Models & Memory
-- VSAMemory for symbol storage
-- Factory functions for easy model creation
-- Integration utilities
-
-**Iteration 4** (v0.4.0): First Usable Release
-- ScalarEncoder and DictEncoder
-- Complete working examples
-- Tutorial notebooks
+**Iteration 6** (v0.6.0): I/O & Persistence
+- Save/load functionality for basis vectors (JSON format)
+- Persistence examples and documentation
 
 ## Documentation
 
@@ -149,9 +181,9 @@ If you use VSAX in your research, please cite:
 ```bibtex
 @software{vsax2025,
   title = {VSAX: Vector Symbolic Algebra for JAX},
-  author = {VSAX Contributors},
+  author = {Sarathy, Vasanth},
   year = {2025},
-  version = {0.2.0},
-  url = {https://github.com/yourusername/vsax}
+  version = {0.5.0},
+  url = {https://github.com/vasanthsarathy/vsax}
 }
 ```

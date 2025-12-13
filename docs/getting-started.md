@@ -4,7 +4,7 @@
 
 VSAX requires Python 3.9 or later.
 
-### From PyPI (Coming Soon)
+### From PyPI (Recommended)
 
 ```bash
 pip install vsax
@@ -82,16 +82,37 @@ pytest
 
 ## Basic Usage
 
-*Coming in Iteration 2+*
+VSAX supports three VSA models:
 
-The library will support three VSA models:
-
-1. **FHRR** - Fourier Holographic Reduced Representation
-2. **MAP** - Multiply-Add-Permute
+1. **FHRR** - Fourier Holographic Reduced Representation (complex hypervectors)
+2. **MAP** - Multiply-Add-Permute (real hypervectors)
 3. **Binary VSA** - Binary hypervectors with XOR binding
+
+### Quick Start
+
+```python
+from vsax import create_fhrr_model, VSAMemory, DictEncoder
+from vsax.similarity import cosine_similarity
+
+# Create model with factory function
+model = create_fhrr_model(dim=512)
+
+# Create memory for symbols
+memory = VSAMemory(model)
+memory.add_many(["dog", "cat", "run", "jump"])
+
+# Encode structured data
+encoder = DictEncoder(model, memory)
+sentence = encoder.encode({"subject": "dog", "action": "run"})
+
+# Similarity search
+similarity = cosine_similarity(memory["dog"], memory["cat"])
+print(f"Similarity: {similarity:.3f}")
+```
 
 ## Next Steps
 
 - Explore the [API Reference](api/index.md)
-- Check out example notebooks (coming in Iteration 4)
-- Read the [design specification](https://github.com/yourusername/vsax/blob/main/docs/design-spec.md)
+- Check out [example notebooks](../examples/)
+- Read the [design specification](design-spec.md)
+- See the [User Guide](guide/models.md) for detailed tutorials

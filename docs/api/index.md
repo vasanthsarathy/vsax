@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API documentation for VSAX v0.2.0.
+Complete API documentation for VSAX v0.5.0.
 
 ## Core Components
 
@@ -23,10 +23,31 @@ Complete API documentation for VSAX v0.2.0.
 
 - **[Sampling Functions](sampling.md)** - Random vector generation
 
+## Memory & Utilities
+
+- **[VSAMemory](core/memory.md)** - Symbol table and basis management
+- **[Factory Functions](core/factory.md)** - Easy model creation
+
+## Encoders
+
+- **[ScalarEncoder](encoders/scalar.md)** - Encode numeric values
+- **[SequenceEncoder](encoders/sequence.md)** - Encode ordered sequences
+- **[SetEncoder](encoders/set.md)** - Encode unordered collections
+- **[DictEncoder](encoders/dict.md)** - Encode key-value pairs
+- **[GraphEncoder](encoders/graph.md)** - Encode graph structures
+- **[AbstractEncoder](encoders/base.md)** - Base class for custom encoders
+
+## Similarity
+
+- **[Similarity Functions](similarity/index.md)** - Cosine, dot, Hamming similarity
+
+## Utilities
+
+- **[Batch Operations](utils/index.md)** - vmap_bind, vmap_bundle, vmap_similarity
+- **[Visualization](utils/index.md)** - pretty_repr, format_similarity_results
+
 ## Coming Soon
 
-- **Encoders** (Iteration 4) - ScalarEncoder, DictEncoder
-- **Similarity** (Iteration 5) - Cosine, dot, Hamming similarity
 - **I/O** (Iteration 6) - Save and load basis vectors
 
 ## Quick Links

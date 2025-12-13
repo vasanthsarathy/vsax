@@ -223,7 +223,7 @@ Currently in **Iteration 5: Similarity Metrics & Utilities** ✅
 
 ### Coming Next
 
-**Iteration 6** (v0.5.x): I/O & Persistence
+**Iteration 6** (v0.6.0): I/O & Persistence
 - Save/load functionality for basis vectors (JSON format)
 - Persistence examples and documentation
 

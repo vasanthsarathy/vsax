@@ -364,8 +364,9 @@ docs/guide/encoders/
 
 ---
 
-## Iteration 5: Similarity Metrics & Utilities (2 days)
-**Version:** (no release, bundle with Iteration 6)
+## Iteration 5: Similarity Metrics & Utilities (2 days) ✅ COMPLETE
+**Version:** 0.5.0
+**PyPI:** Yes - "Similarity and Utilities"
 **Goal:** Query and compare hypervectors
 
 ### Files to Create
@@ -400,16 +401,18 @@ tests/similarity/
 - `vmap_bundle(opset, X)`
 
 ### Completion Criteria
-- [ ] All 3 similarity metrics working
-- [ ] Batch ops support JAX vmap
-- [ ] Accepts both arrays and hypervectors
-- [ ] ≥80% coverage
+- ✅ All 3 similarity metrics working
+- ✅ Batch ops support JAX vmap (vmap_bind, vmap_bundle, vmap_similarity)
+- ✅ Accepts both arrays and hypervectors
+- ✅ 95%+ coverage (319 tests)
+- ✅ Visualization utilities (pretty_repr, format_similarity_results)
+- ✅ Complete examples and documentation
 
 ---
 
 ## Iteration 6: I/O & Persistence (2 days)
-**Version:** 0.5.0
-**PyPI:** Yes - "Similarity and Persistence"
+**Version:** 0.6.0
+**PyPI:** Yes - "I/O and Persistence"
 **Goal:** Save and load basis vectors
 
 ### Files to Create

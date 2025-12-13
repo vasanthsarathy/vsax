@@ -7,7 +7,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.0] - 2025-XX-XX
+## [0.5.0] - 2025-01-XX
+
+### Added
+- **Similarity metrics:**
+  - `cosine_similarity()` - Cosine similarity for all vector types
+  - `dot_similarity()` - Unnormalized dot product similarity
+  - `hamming_similarity()` - Hamming similarity for binary vectors
+- **Batch operations with JAX vmap:**
+  - `vmap_bind()` - GPU-accelerated batch binding
+  - `vmap_bundle()` - GPU-accelerated batch bundling
+  - `vmap_similarity()` - Efficient similarity search across batches
+- **Visualization utilities:**
+  - `pretty_repr()` - Pretty-print hypervectors
+  - `format_similarity_results()` - Format similarity search results
+- Comprehensive examples: similarity_search.py, batch_operations.py
+- User guides for similarity metrics and batch operations
+- Pre-commit check scripts (check.sh, check.ps1)
+- 319 tests with 95%+ coverage
+
+### Changed
+- Updated package version from 0.4.2 to 0.5.0
+- Enhanced documentation with similarity and batch operation guides
+- Added ruff ignore rules for scientific notation (uppercase X, Y)
+
+## [0.4.0] - 2025-01-XX
+
+### Added
+- **5 Core Encoders:**
+  - `ScalarEncoder` - Numeric values with power encoding
+  - `SequenceEncoder` - Ordered sequences (lists, tuples)
+  - `SetEncoder` - Unordered collections (sets)
+  - `DictEncoder` - Key-value pairs (dictionaries)
+  - `GraphEncoder` - Graph structures (edge lists)
+- `AbstractEncoder` - Base class for custom encoders
+- Complete integration examples for all 3 VSA models
+- Custom encoder examples (DateEncoder, ColorEncoder)
+- 280+ tests with 92%+ coverage
+
+### Changed
+- Updated package version from 0.3.0 to 0.4.0
+- Enhanced documentation with encoder guides and examples
+
+## [0.3.0] - 2025-01-XX
+
+### Added
+- `VSAMemory` - Dictionary-style symbol management and basis storage
+- Factory functions:
+  - `create_fhrr_model()` - One-line FHRR model creation
+  - `create_map_model()` - One-line MAP model creation
+  - `create_binary_model()` - One-line Binary model creation
+- Utility functions:
+  - `coerce_to_array()` - Convert hypervectors to arrays
+  - `coerce_many()` - Batch conversion
+- 230 tests with 89% coverage
+- Comprehensive user guides for models and memory
+
+### Changed
+- Updated package version from 0.2.0 to 0.3.0
+- Simplified API with factory functions
+
+## [0.2.0] - 2025-01-XX
 
 ### Added
 - **All three VSA representations:**
@@ -44,6 +104,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tooling (ruff, mypy, pytest-cov)
 - GitHub workflows for CI and publishing
 
-[Unreleased]: https://github.com/yourusername/vsax/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/yourusername/vsax/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/yourusername/vsax/releases/tag/v0.1.0
+[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/vasanthsarathy/vsax/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/vasanthsarathy/vsax/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/vasanthsarathy/vsax/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/vasanthsarathy/vsax/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/vasanthsarathy/vsax/releases/tag/v0.1.0

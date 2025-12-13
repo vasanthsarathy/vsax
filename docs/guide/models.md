@@ -85,18 +85,21 @@ model.dim = 1024  # FrozenInstanceError!
 
 **Type Safety:** The model ensures all components work together correctly.
 
-## Next: VSAMemory (Coming in Iteration 3)
+## Next: VSAMemory
 
-In the next iteration, you'll be able to use `VSAMemory` to manage named basis vectors:
+Use `VSAMemory` to manage named basis vectors:
 
 ```python
-# Coming soon!
+from vsax import VSAMemory
+
 memory = VSAMemory(model)
 memory.add("dog")
 memory.add("cat")
 
 dog = memory["dog"]  # Access by name
 ```
+
+See the [VSAMemory guide](memory.md) for more details.
 
 ## Next Steps
 
