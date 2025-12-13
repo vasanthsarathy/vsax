@@ -25,7 +25,14 @@ from vsax.core.base import AbstractHypervector, AbstractOpSet
 from vsax.core.factory import create_binary_model, create_fhrr_model, create_map_model
 from vsax.core.memory import VSAMemory
 from vsax.core.model import VSAModel
-from vsax.encoders import AbstractEncoder, ScalarEncoder
+from vsax.encoders import (
+    AbstractEncoder,
+    DictEncoder,
+    GraphEncoder,
+    ScalarEncoder,
+    SequenceEncoder,
+    SetEncoder,
+)
 from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
 from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
 from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
@@ -42,7 +49,11 @@ __all__ = [
     "create_map_model",
     # Encoders
     "AbstractEncoder",
+    "DictEncoder",
+    "GraphEncoder",
     "ScalarEncoder",
+    "SequenceEncoder",
+    "SetEncoder",
     # Representations
     "BinaryHypervector",
     "ComplexHypervector",
