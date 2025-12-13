@@ -12,31 +12,31 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/api/representations/real/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/api/encoders/">
       
       
-        <link rel="prev" href="../complex/">
+        <link rel="prev" href="../core/factory/">
       
       
-        <link rel="next" href="../binary/">
+        <link rel="next" href="scalar/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>RealHypervector - VSAX Documentation</title>
+        <title>Overview - VSAX Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#realhypervector" class="md-skip">
+        <a href="#encoders-api" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+    <a href="../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RealHypervector
+              Overview
             
           </span>
         </div>
@@ -229,7 +229,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -248,7 +248,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../getting-started/" class="md-tabs__link">
+      <a href="../../getting-started/" class="md-tabs__link">
         
   
   
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../guide/models/" class="md-tabs__link">
+        <a href="../../guide/models/" class="md-tabs__link">
           
   
   
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../examples/fhrr/" class="md-tabs__link">
+        <a href="../../examples/fhrr/" class="md-tabs__link">
           
   
   
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -329,7 +329,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../design-spec/" class="md-tabs__link">
+      <a href="../../design-spec/" class="md-tabs__link">
         
   
   
@@ -364,7 +364,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+    <a href="../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -394,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -421,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/models/" class="md-nav__link">
+      <a href="../../guide/models/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/factory/" class="md-nav__link">
+      <a href="../../guide/factory/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/memory/" class="md-nav__link">
+      <a href="../../guide/memory/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/encoders/" class="md-nav__link">
+      <a href="../../guide/encoders/" class="md-nav__link">
         
   
   
@@ -614,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/representations/" class="md-nav__link">
+      <a href="../../guide/representations/" class="md-nav__link">
         
   
   
@@ -642,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/operations/" class="md-nav__link">
+      <a href="../../guide/operations/" class="md-nav__link">
         
   
   
@@ -670,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guide/sampling/" class="md-nav__link">
+      <a href="../../guide/sampling/" class="md-nav__link">
         
   
   
@@ -759,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/fhrr/" class="md-nav__link">
+      <a href="../../examples/fhrr/" class="md-nav__link">
         
   
   
@@ -787,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/map/" class="md-nav__link">
+      <a href="../../examples/map/" class="md-nav__link">
         
   
   
@@ -815,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/binary/" class="md-nav__link">
+      <a href="../../examples/binary/" class="md-nav__link">
         
   
   
@@ -907,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -992,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/base/" class="md-nav__link">
+      <a href="../core/base/" class="md-nav__link">
         
   
   
@@ -1020,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/model/" class="md-nav__link">
+      <a href="../core/model/" class="md-nav__link">
         
   
   
@@ -1048,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/memory/" class="md-nav__link">
+      <a href="../core/memory/" class="md-nav__link">
         
   
   
@@ -1076,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/factory/" class="md-nav__link">
+      <a href="../core/factory/" class="md-nav__link">
         
   
   
@@ -1084,239 +1084,6 @@
     
   
     Factory Functions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Encoders
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Encoders
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../encoders/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../encoders/scalar/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ScalarEncoder
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../encoders/sequence/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SequenceEncoder
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../encoders/set/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SetEncoder
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../encoders/dict/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DictEncoder
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../encoders/graph/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GraphEncoder
   
 
     
@@ -1363,17 +1130,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Representations
+    Encoders
   
 
     
@@ -1384,44 +1151,16 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Representations
+    Encoders
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../complex/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ComplexHypervector
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1446,7 +1185,7 @@
   <span class="md-ellipsis">
     
   
-    RealHypervector
+    Overview
   
 
     
@@ -1464,7 +1203,7 @@
   <span class="md-ellipsis">
     
   
-    RealHypervector
+    Overview
   
 
     
@@ -1490,19 +1229,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector" class="md-nav__link">
+  <a href="#base-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RealHypervector
+        Base Classes
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="RealHypervector">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.encoders.AbstractEncoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AbstractEncoder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AbstractEncoder">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector-functions" class="md-nav__link">
+  <a href="#vsax.encoders.AbstractEncoder-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Functions
@@ -1514,7 +1264,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector.__init__" class="md-nav__link">
+  <a href="#vsax.encoders.AbstractEncoder.__init__" class="md-nav__link">
     <span class="md-ellipsis">
       
         __init__
@@ -1525,10 +1275,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector.normalize" class="md-nav__link">
+  <a href="#vsax.encoders.AbstractEncoder.encode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        normalize
+        encode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.encoders.AbstractEncoder.fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fit
       
     </span>
   </a>
@@ -1542,6 +1303,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Encoders
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1561,7 +1333,268 @@
   
   
     <li class="md-nav__item">
-      <a href="../binary/" class="md-nav__link">
+      <a href="scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScalarEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SequenceEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SetEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DictEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Representations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../representations/complex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComplexHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../representations/real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RealHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../representations/binary/" class="md-nav__link">
         
   
   
@@ -1654,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ops/fhrr/" class="md-nav__link">
+      <a href="../ops/fhrr/" class="md-nav__link">
         
   
   
@@ -1682,7 +1715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ops/map/" class="md-nav__link">
+      <a href="../ops/map/" class="md-nav__link">
         
   
   
@@ -1710,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ops/binary/" class="md-nav__link">
+      <a href="../ops/binary/" class="md-nav__link">
         
   
   
@@ -1746,7 +1779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sampling/" class="md-nav__link">
+      <a href="../sampling/" class="md-nav__link">
         
   
   
@@ -1781,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../design-spec/" class="md-nav__link">
+      <a href="../../design-spec/" class="md-nav__link">
         
   
   
@@ -1828,19 +1861,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector" class="md-nav__link">
+  <a href="#base-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RealHypervector
+        Base Classes
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="RealHypervector">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.encoders.AbstractEncoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AbstractEncoder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AbstractEncoder">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector-functions" class="md-nav__link">
+  <a href="#vsax.encoders.AbstractEncoder-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Functions
@@ -1852,7 +1896,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector.__init__" class="md-nav__link">
+  <a href="#vsax.encoders.AbstractEncoder.__init__" class="md-nav__link">
     <span class="md-ellipsis">
       
         __init__
@@ -1863,10 +1907,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.RealHypervector.normalize" class="md-nav__link">
+  <a href="#vsax.encoders.AbstractEncoder.encode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        normalize
+        encode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.encoders.AbstractEncoder.fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fit
       
     </span>
   </a>
@@ -1880,6 +1935,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Encoders
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1903,82 +1969,60 @@
   
 
 
-<h1 id="realhypervector">RealHypervector<a class="headerlink" href="#realhypervector" title="Permanent link">&para;</a></h1>
-<p>Continuous real-valued hypervector for MAP operations.</p>
+<h1 id="encoders-api">Encoders API<a class="headerlink" href="#encoders-api" title="Permanent link">&para;</a></h1>
+<p>VSAX encoders convert structured data into hypervector representations.</p>
+<h2 id="base-classes">Base Classes<a class="headerlink" href="#base-classes" title="Permanent link">&para;</a></h2>
 
 
 <div class="doc doc-object doc-class">
 
 
 
-<h2 id="vsax.representations.RealHypervector" class="doc doc-heading">
-            <code>vsax.representations.RealHypervector</code>
+<h2 id="vsax.encoders.AbstractEncoder" class="doc doc-heading">
+            <code>vsax.encoders.AbstractEncoder</code>
 
 
-<a href="#vsax.representations.RealHypervector" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#vsax.encoders.AbstractEncoder" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a></code></p>
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
 
 
-        <p>Continuous real-valued hypervector for MAP operations.</p>
-<p>RealHypervector uses real numbers to represent hypervectors. This is
-commonly used with Multiply-Add-Permute (MAP) operations where element-wise
-multiplication and averaging are the primary operations.</p>
-<p>The normalization operation performs L2 normalization, scaling the vector
-to unit length.</p>
+        <p>Abstract base class for encoding structured data into hypervectors.</p>
+<p>All encoders must implement the <code>encode()</code> method. Encoders can optionally
+implement <code>fit()</code> for learned encodings and <code>decode()</code> for reconstruction.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
+<p><span class="doc-section-title">Attributes:</span></p>
     <table>
       <thead>
         <tr>
           <th>Name</th>
           <th>Type</th>
           <th>Description</th>
-          <th>Default</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
+            <td><code><span title="vsax.encoders.AbstractEncoder.model">model</span></code></td>
             <td>
-                <code>vec</code>
-            </td>
-            <td>
-                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Real-valued JAX array representing the hypervector.</p>
+                <p>The VSAModel instance defining the VSA algebra.</p>
               </div>
             </td>
-            <td>
-                <em>required</em>
-            </td>
           </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
           <tr class="doc-section-item">
+            <td><code><span title="vsax.encoders.AbstractEncoder.memory">memory</span></code></td>
             <td>
-                  <code><span title="TypeError">TypeError</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If vec is complex-valued.</p>
+                <p>The VSAMemory instance for accessing basis hypervectors.</p>
               </div>
             </td>
           </tr>
@@ -1991,11 +2035,12 @@ to unit length.</p>
   <blockquote>
 <blockquote>
 <blockquote>
-<p>import jax.numpy as jnp
-vec = jnp.array([1.0, 2.0, 3.0])
-hv = RealHypervector(vec)
-normalized = hv.normalize()
-assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
+<p>class MyEncoder(AbstractEncoder):
+...     def encode(self, data):
+...         # Custom encoding logic
+...         return self.memory["basis"]
+encoder = MyEncoder(model, memory)
+hv = encoder.encode(some_data)</p>
 </blockquote>
 </blockquote>
 </blockquote>
@@ -2008,13 +2053,8 @@ assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>vsax/representations/real_hv.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+                <summary>Source code in <code>vsax/encoders/base.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
@@ -2065,63 +2105,72 @@ assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
 <span class="normal"><a href="#__codelineno-0-61">61</a></span>
 <span class="normal"><a href="#__codelineno-0-62">62</a></span>
 <span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">RealHypervector</span><span class="p">(</span><span class="n">AbstractHypervector</span><span class="p">):</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Continuous real-valued hypervector for MAP operations.</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="sd">    RealHypervector uses real numbers to represent hypervectors. This is</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="sd">    commonly used with Multiply-Add-Permute (MAP) operations where element-wise</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="sd">    multiplication and averaging are the primary operations.</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">    The normalization operation performs L2 normalization, scaling the vector</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    to unit length.</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">        vec: Real-valued JAX array representing the hypervector.</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">        TypeError: If vec is complex-valued.</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        &gt;&gt;&gt; hv = RealHypervector(vec)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        &gt;&gt;&gt; normalized = hv.normalize()</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span>
+<span class="normal"><a href="#__codelineno-0-71">71</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">AbstractEncoder</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract base class for encoding structured data into hypervectors.</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    All encoders must implement the `encode()` method. Encoders can optionally</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    implement `fit()` for learned encodings and `decode()` for reconstruction.</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    Attributes:</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">        model: The VSAModel instance defining the VSA algebra.</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">        memory: The VSAMemory instance for accessing basis hypervectors.</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        &gt;&gt;&gt; class MyEncoder(AbstractEncoder):</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        ...     def encode(self, data):</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        ...         # Custom encoding logic</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        ...         return self.memory[&quot;basis&quot;]</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        &gt;&gt;&gt; encoder = MyEncoder(model, memory)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; hv = encoder.encode(some_data)</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-31" name="__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize real hypervector.</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">VSAModel</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="n">VSAMemory</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the encoder.</span>
 <a id="__codelineno-0-34" name="__codelineno-0-34"></a>
 <a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">            vec: Real-valued JAX array.</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">            TypeError: If vec is complex-valued.</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="k">if</span> <span class="n">jnp</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>                <span class="sa">f</span><span class="s2">&quot;RealHypervector requires real array, got complex dtype </span><span class="si">{</span><span class="n">vec</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>            <span class="p">)</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RealHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;L2 normalization to unit length.</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">            model: The VSAModel instance.</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">            memory: The VSAMemory instance with basis symbols.</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractHypervector</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Encode data into a hypervector.</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">            *args: Positional arguments (encoder-specific).</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">            **kwargs: Keyword arguments (encoder-specific).</span>
 <a id="__codelineno-0-49" name="__codelineno-0-49"></a>
 <a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">            New RealHypervector with L2 norm equal to 1.0.</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">            The encoded hypervector.</span>
 <a id="__codelineno-0-52" name="__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">            &gt;&gt;&gt; vec = jnp.array([3.0, 4.0])</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">            &gt;&gt;&gt; hv = RealHypervector(vec)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">            &gt;&gt;&gt; normalized = hv.normalize()</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">            &gt;&gt;&gt; assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">            &gt;&gt;&gt; assert jnp.allclose(normalized.vec, jnp.array([0.6, 0.8]))</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="n">norm</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">)</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>        <span class="c1"># Add small epsilon to avoid division by zero</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="n">normalized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="k">return</span> <span class="n">RealHypervector</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">            NotImplementedError: This is an abstract method.</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">        Note:</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">            Different encoders may have different signatures. See specific</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">            encoder documentation for details.</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="k">pass</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Optionally fit encoder parameters to data.</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        This method is optional and can be used for learned encodings.</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">        By default, it does nothing.</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">            data: The training data.</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -2136,20 +2185,20 @@ assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
 
 
 
-<h3 id="vsax.representations.RealHypervector-functions">Functions<a href="#vsax.representations.RealHypervector-functions" class="headerlink" title="Permanent link">&para;</a></h3>
+<h3 id="vsax.encoders.AbstractEncoder-functions">Functions<a href="#vsax.encoders.AbstractEncoder-functions" class="headerlink" title="Permanent link">&para;</a></h3>
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.representations.RealHypervector.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code>
+<h4 id="vsax.encoders.AbstractEncoder.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span></code>
 
-<a href="#vsax.representations.RealHypervector.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.encoders.AbstractEncoder.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Initialize real hypervector.</p>
+        <p>Initialize the encoder.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -2165,18 +2214,152 @@ assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>vec</code>
+                <code>model</code>
             </td>
             <td>
-                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+                  <code><a class="autorefs autorefs-internal" title="vsax.core.model.VSAModel
+
+
+  
+      dataclass
+  " href="../core/model/#vsax.core.model.VSAModel">VSAModel</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Real-valued JAX array.</p>
+                <p>The VSAModel instance.</p>
               </div>
             </td>
             <td>
                 <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>memory</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="vsax.core.memory.VSAMemory" href="../core/memory/#vsax.core.memory.VSAMemory">VSAMemory</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The VSAMemory instance with basis symbols.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>vsax/encoders/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">VSAModel</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="n">VSAMemory</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the encoder.</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        model: The VSAModel instance.</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        memory: The VSAMemory instance with basis symbols.</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="vsax.encoders.AbstractEncoder.encode" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">encode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#vsax.encoders.AbstractEncoder.encode" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Encode data into a hypervector.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>*args</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Positional arguments (encoder-specific).</p>
+              </div>
+            </td>
+            <td>
+                  <code>()</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Keyword arguments (encoder-specific).</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The encoded hypervector.</p>
+              </div>
             </td>
           </tr>
       </tbody>
@@ -2194,11 +2377,11 @@ assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="TypeError">TypeError</span></code>
+                  <code><span title="NotImplementedError">NotImplementedError</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If vec is complex-valued.</p>
+                <p>This is an abstract method.</p>
               </div>
             </td>
           </tr>
@@ -2206,97 +2389,20 @@ assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</p>
     </table>
 
 
-            <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/representations/real_hv.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize real hypervector.</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        vec: Real-valued JAX array.</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">        TypeError: If vec is complex-valued.</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>    <span class="k">if</span> <span class="n">jnp</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="sa">f</span><span class="s2">&quot;RealHypervector requires real array, got complex dtype </span><span class="si">{</span><span class="n">vec</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="p">)</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="vsax.representations.RealHypervector.normalize" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">normalize</span><span class="p">()</span></code>
-
-<a href="#vsax.representations.RealHypervector.normalize" class="headerlink" title="Permanent link">&para;</a></h4>
-
-
-    <div class="doc doc-contents ">
-
-        <p>L2 normalization to unit length.</p>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="vsax.representations.RealHypervector (vsax.representations.real_hv.RealHypervector)" href="#vsax.representations.RealHypervector">RealHypervector</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>New RealHypervector with L2 norm equal to 1.0.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-vec = jnp.array([3.0, 4.0])
-hv = RealHypervector(vec)
-normalized = hv.normalize()
-assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)
-assert jnp.allclose(normalized.vec, jnp.array([0.6, 0.8]))</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<details class="note" open>
+  <summary>Note</summary>
+  <p>Different encoders may have different signatures. See specific
+encoder documentation for details.</p>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/representations/real_hv.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-47">47</a></span>
+              <summary>Source code in <code>vsax/encoders/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
 <span class="normal"><a href="#__codelineno-0-48">48</a></span>
 <span class="normal"><a href="#__codelineno-0-49">49</a></span>
 <span class="normal"><a href="#__codelineno-0-50">50</a></span>
@@ -2309,28 +2415,99 @@ assert jnp.allclose(normalized.vec, jnp.array([0.6, 0.8]))</p>
 <span class="normal"><a href="#__codelineno-0-57">57</a></span>
 <span class="normal"><a href="#__codelineno-0-58">58</a></span>
 <span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span>
-<span class="normal"><a href="#__codelineno-0-61">61</a></span>
-<span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RealHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;L2 normalization to unit length.</span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="nd">@abstractmethod</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractHypervector</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encode data into a hypervector.</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">        *args: Positional arguments (encoder-specific).</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        **kwargs: Keyword arguments (encoder-specific).</span>
 <a id="__codelineno-0-49" name="__codelineno-0-49"></a>
 <a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        New RealHypervector with L2 norm equal to 1.0.</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        The encoded hypervector.</span>
 <a id="__codelineno-0-52" name="__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([3.0, 4.0])</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">        &gt;&gt;&gt; hv = RealHypervector(vec)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        &gt;&gt;&gt; normalized = hv.normalize()</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        &gt;&gt;&gt; assert jnp.allclose(jnp.linalg.norm(normalized.vec), 1.0)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        &gt;&gt;&gt; assert jnp.allclose(normalized.vec, jnp.array([0.6, 0.8]))</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="n">norm</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">)</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>    <span class="c1"># Add small epsilon to avoid division by zero</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="n">normalized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>    <span class="k">return</span> <span class="n">RealHypervector</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        NotImplementedError: This is an abstract method.</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    Note:</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        Different encoders may have different signatures. See specific</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        encoder documentation for details.</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="vsax.encoders.AbstractEncoder.fit" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
+
+<a href="#vsax.encoders.AbstractEncoder.fit" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Optionally fit encoder parameters to data.</p>
+<p>This method is optional and can be used for learned encodings.
+By default, it does nothing.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>data</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The training data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>vsax/encoders/base.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-62">62</a></span>
+<span class="normal"><a href="#__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span>
+<span class="normal"><a href="#__codelineno-0-71">71</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Optionally fit encoder parameters to data.</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">    This method is optional and can be used for learned encodings.</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    By default, it does nothing.</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        data: The training data.</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2343,7 +2520,14 @@ assert jnp.allclose(normalized.vec, jnp.array([0.6, 0.8]))</p>
 
     </div>
 
-</div>
+</div><h2 id="core-encoders">Core Encoders<a class="headerlink" href="#core-encoders" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="scalar/">ScalarEncoder</a> - Numeric values</li>
+<li><a href="sequence/">SequenceEncoder</a> - Ordered sequences</li>
+<li><a href="set/">SetEncoder</a> - Unordered collections</li>
+<li><a href="dict/">DictEncoder</a> - Key-value pairs</li>
+<li><a href="graph/">GraphEncoder</a> - Graph structures</li>
+</ul>
 
 
 
@@ -2393,10 +2577,10 @@ assert jnp.allclose(normalized.vec, jnp.array([0.6, 0.8]))</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
