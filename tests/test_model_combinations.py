@@ -274,5 +274,6 @@ class TestModelComparison:
             sampler=sample_complex_random,
         )
 
-        with pytest.raises(Exception):  # dataclass frozen raises FrozenInstanceError or AttributeError
+        # dataclass frozen raises FrozenInstanceError or AttributeError
+        with pytest.raises(Exception):
             model.dim = 1024

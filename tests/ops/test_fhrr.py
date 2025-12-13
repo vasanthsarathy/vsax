@@ -35,7 +35,8 @@ class TestFHRROperations:
         """Test that binding unit-magnitude vectors approximately preserves magnitude."""
         key = jax.random.PRNGKey(42)
         phases_a = jax.random.uniform(key, shape=(128,), minval=0, maxval=2 * jnp.pi)
-        phases_b = jax.random.uniform(jax.random.PRNGKey(43), shape=(128,), minval=0, maxval=2 * jnp.pi)
+        key2 = jax.random.PRNGKey(43)
+        phases_b = jax.random.uniform(key2, shape=(128,), minval=0, maxval=2 * jnp.pi)
 
         a = jnp.exp(1j * phases_a)
         b = jnp.exp(1j * phases_b)

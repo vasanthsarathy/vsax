@@ -22,14 +22,8 @@ __version__ = "0.2.0"
 
 from vsax.core.base import AbstractHypervector, AbstractOpSet
 from vsax.core.model import VSAModel
-
-# New in 0.2.0: Representations
-from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
-
-# New in 0.2.0: Operations
 from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
-
-# New in 0.2.0: Sampling
+from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
 from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
 
 __all__ = [

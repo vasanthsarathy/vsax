@@ -18,7 +18,6 @@ class TestBinaryOperations:
     @pytest.fixture
     def bipolar_vectors(self):
         """Create sample bipolar vectors for testing."""
-        key = jax.random.PRNGKey(42)
         dim = 512
         vectors = []
         for i in range(3):

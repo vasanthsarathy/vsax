@@ -2,7 +2,6 @@
 
 import jax
 import jax.numpy as jnp
-import pytest
 
 from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
 

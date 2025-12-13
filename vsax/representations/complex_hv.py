@@ -1,7 +1,5 @@
 """Complex-valued hypervector representation for FHRR."""
 
-from typing import cast
-
 import jax.numpy as jnp
 
 from vsax.core.base import AbstractHypervector
