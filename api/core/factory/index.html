@@ -12,31 +12,31 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/api/sampling/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/api/core/factory/">
       
       
-        <link rel="prev" href="../ops/binary/">
+        <link rel="prev" href="../memory/">
       
       
-        <link rel="next" href="../../design-spec/">
+        <link rel="next" href="../../representations/complex/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Sampling - VSAX Documentation</title>
+        <title>Factory Functions - VSAX Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sampling-functions" class="md-skip">
+        <a href="#factory-functions" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+    <a href="../../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sampling
+              Factory Functions
             
           </span>
         </div>
@@ -229,7 +229,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -248,7 +248,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../getting-started/" class="md-tabs__link">
+      <a href="../../../getting-started/" class="md-tabs__link">
         
   
   
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../guide/models/" class="md-tabs__link">
+        <a href="../../../guide/models/" class="md-tabs__link">
           
   
   
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../examples/fhrr/" class="md-tabs__link">
+        <a href="../../../examples/fhrr/" class="md-tabs__link">
           
   
   
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -329,7 +329,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../design-spec/" class="md-tabs__link">
+      <a href="../../../design-spec/" class="md-tabs__link">
         
   
   
@@ -364,7 +364,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+    <a href="../../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -394,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -421,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guide/models/" class="md-nav__link">
+      <a href="../../../guide/models/" class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guide/factory/" class="md-nav__link">
+      <a href="../../../guide/factory/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guide/memory/" class="md-nav__link">
+      <a href="../../../guide/memory/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guide/representations/" class="md-nav__link">
+      <a href="../../../guide/representations/" class="md-nav__link">
         
   
   
@@ -614,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guide/operations/" class="md-nav__link">
+      <a href="../../../guide/operations/" class="md-nav__link">
         
   
   
@@ -642,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guide/sampling/" class="md-nav__link">
+      <a href="../../../guide/sampling/" class="md-nav__link">
         
   
   
@@ -731,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/fhrr/" class="md-nav__link">
+      <a href="../../../examples/fhrr/" class="md-nav__link">
         
   
   
@@ -759,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/map/" class="md-nav__link">
+      <a href="../../../examples/map/" class="md-nav__link">
         
   
   
@@ -787,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/binary/" class="md-nav__link">
+      <a href="../../../examples/binary/" class="md-nav__link">
         
   
   
@@ -879,7 +879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -904,8 +904,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -919,13 +921,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
@@ -946,7 +946,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -964,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../core/base/" class="md-nav__link">
+      <a href="../base/" class="md-nav__link">
         
   
   
@@ -992,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../core/model/" class="md-nav__link">
+      <a href="../model/" class="md-nav__link">
         
   
   
@@ -1020,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../core/memory/" class="md-nav__link">
+      <a href="../memory/" class="md-nav__link">
         
   
   
@@ -1045,10 +1045,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../core/factory/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1064,6 +1091,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create_fhrr_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_fhrr_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.core.factory.create_fhrr_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_fhrr_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_map_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_map_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.core.factory.create_map_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_map_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_binary_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_binary_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.core.factory.create_binary_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_binary_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1141,7 +1254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../representations/complex/" class="md-nav__link">
+      <a href="../../representations/complex/" class="md-nav__link">
         
   
   
@@ -1169,7 +1282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../representations/real/" class="md-nav__link">
+      <a href="../../representations/real/" class="md-nav__link">
         
   
   
@@ -1197,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../representations/binary/" class="md-nav__link">
+      <a href="../../representations/binary/" class="md-nav__link">
         
   
   
@@ -1290,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ops/fhrr/" class="md-nav__link">
+      <a href="../../ops/fhrr/" class="md-nav__link">
         
   
   
@@ -1318,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ops/map/" class="md-nav__link">
+      <a href="../../ops/map/" class="md-nav__link">
         
   
   
@@ -1346,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ops/binary/" class="md-nav__link">
+      <a href="../../ops/binary/" class="md-nav__link">
         
   
   
@@ -1379,37 +1492,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Sampling
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../sampling/" class="md-nav__link">
         
   
   
@@ -1425,137 +1511,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sample_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_random
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_random
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample_complex_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_complex_random
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_complex_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_complex_random
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="sample_complex_random">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_complex_random--all-magnitudes-should-be-10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        All magnitudes should be 1.0
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample_binary_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_binary_random
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_binary_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_binary_random
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="sample_binary_random">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_binary_random--bipolar-sampling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bipolar sampling
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_binary_random--binary-sampling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Binary sampling
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1575,7 +1530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../design-spec/" class="md-nav__link">
+      <a href="../../../design-spec/" class="md-nav__link">
         
   
   
@@ -1622,10 +1577,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sample_random" class="md-nav__link">
+  <a href="#create_fhrr_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sample_random
+        create_fhrr_model
       
     </span>
   </a>
@@ -1633,10 +1588,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_random" class="md-nav__link">
+  <a href="#vsax.core.factory.create_fhrr_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sample_random
+        create_fhrr_model
       
     </span>
   </a>
@@ -1644,10 +1599,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample_complex_random" class="md-nav__link">
+  <a href="#create_map_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sample_complex_random
+        create_map_model
       
     </span>
   </a>
@@ -1655,38 +1610,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_complex_random" class="md-nav__link">
+  <a href="#vsax.core.factory.create_map_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sample_complex_random
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="sample_complex_random">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_complex_random--all-magnitudes-should-be-10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        All magnitudes should be 1.0
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample_binary_random" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sample_binary_random
+        create_map_model
       
     </span>
   </a>
@@ -1694,41 +1621,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_binary_random" class="md-nav__link">
+  <a href="#create_binary_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sample_binary_random
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="sample_binary_random">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_binary_random--bipolar-sampling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bipolar sampling
+        create_binary_model
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#vsax.sampling.sample_binary_random--binary-sampling" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#vsax.core.factory.create_binary_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Binary sampling
+        create_binary_model
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1752,25 +1662,27 @@
   
 
 
-<h1 id="sampling-functions">Sampling Functions<a class="headerlink" href="#sampling-functions" title="Permanent link">&para;</a></h1>
-<p>Functions for generating random basis hypervectors.</p>
-<h2 id="sample_random">sample_random<a class="headerlink" href="#sample_random" title="Permanent link">&para;</a></h2>
+<h1 id="factory-functions">Factory Functions<a class="headerlink" href="#factory-functions" title="Permanent link">&para;</a></h1>
+<p>Convenient factory functions for creating VSA models with sensible defaults.</p>
+<p>These functions provide a simple, one-line way to create fully configured VSA models for each of the three supported algebras: FHRR, MAP, and Binary.</p>
+<h2 id="create_fhrr_model">create_fhrr_model<a class="headerlink" href="#create_fhrr_model" title="Permanent link">&para;</a></h2>
 
 
 <div class="doc doc-object doc-function">
 
 
-<h2 id="vsax.sampling.sample_random" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">sampling</span><span class="o">.</span><span class="n">sample_random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<h2 id="vsax.core.factory.create_fhrr_model" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#vsax.sampling.sample_random" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#vsax.core.factory.create_fhrr_model" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents first">
 
-        <p>Sample n random real-valued vectors from normal distribution.</p>
-<p>Generates random vectors with elements drawn from a standard normal
-distribution N(0, 1). These are suitable for use with MAP operations.</p>
+        <p>Create a FHRR model (Complex hypervectors with FFT-based operations).</p>
+<p>FHRR (Fourier Holographic Reduced Representation) uses complex-valued
+hypervectors with circular convolution for binding. It provides exact
+unbinding via complex conjugation.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -1793,27 +1705,11 @@ distribution N(0, 1). These are suitable for use with MAP operations.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Dimensionality of each vector.</p>
+                <p>Dimensionality of hypervectors. Default: 512.</p>
               </div>
             </td>
             <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>n</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of vectors to sample.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
+                  <code>512</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -1821,11 +1717,12 @@ distribution N(0, 1). These are suitable for use with MAP operations.</p>
                 <code>key</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="jax.random.PRNGKey">PRNGKey</span>]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="jax.Array">Array</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX random key. If None, uses PRNGKey(0).</p>
+                <p>Optional JAX PRNG key for reproducible sampling. Not used in
+model creation but can be passed to VSAMemory.</p>
               </div>
             </td>
             <td>
@@ -1847,11 +1744,16 @@ distribution N(0, 1). These are suitable for use with MAP operations.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+                  <code><a class="autorefs autorefs-internal" title="vsax.core.model.VSAModel
+
+
+  
+      dataclass
+  " href="../model/#vsax.core.model.VSAModel">VSAModel</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX array of shape (n, dim) containing sampled vectors.</p>
+                <p>VSAModel configured for FHRR operations.</p>
               </div>
             </td>
           </tr>
@@ -1864,23 +1766,18 @@ distribution N(0, 1). These are suitable for use with MAP operations.</p>
   <blockquote>
 <blockquote>
 <blockquote>
-<p>import jax
-key = jax.random.PRNGKey(42)
-vectors = sample_random(512, 10, key)
-assert vectors.shape == (10, 512)
-assert not jnp.iscomplexobj(vectors)</p>
+<p>from vsax import create_fhrr_model, VSAMemory
+model = create_fhrr_model(dim=512)
+memory = VSAMemory(model)
+memory.add("symbol")</p>
 </blockquote>
 </blockquote>
 </blockquote>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/sampling/random.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+              <summary>Source code in <code>vsax/core/factory.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
@@ -1902,55 +1799,59 @@ assert not jnp.iscomplexobj(vectors)</p>
 <span class="normal"><a href="#__codelineno-0-32">32</a></span>
 <span class="normal"><a href="#__codelineno-0-33">33</a></span>
 <span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">sample_random</span><span class="p">(</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sample n random real-valued vectors from normal distribution.</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">    Generates random vectors with elements drawn from a standard normal</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">    distribution N(0, 1). These are suitable for use with MAP operations.</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">        dim: Dimensionality of each vector.</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">        n: Number of vectors to sample.</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">        key: JAX random key. If None, uses PRNGKey(0).</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">        JAX array of shape (n, dim) containing sampled vectors.</span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jax</span><span class="o">.</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSAModel</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a FHRR model (Complex hypervectors with FFT-based operations).</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    FHRR (Fourier Holographic Reduced Representation) uses complex-valued</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    hypervectors with circular convolution for binding. It provides exact</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">    unbinding via complex conjugation.</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">        dim: Dimensionality of hypervectors. Default: 512.</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">        key: Optional JAX PRNG key for reproducible sampling. Not used in</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">            model creation but can be passed to VSAMemory.</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        &gt;&gt;&gt; import jax</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        &gt;&gt;&gt; key = jax.random.PRNGKey(42)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        &gt;&gt;&gt; vectors = sample_random(512, 10, key)</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; assert vectors.shape == (10, 512)</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        &gt;&gt;&gt; assert not jnp.iscomplexobj(vectors)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>        <span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        VSAModel configured for FHRR operations.</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; from vsax import create_fhrr_model, VSAMemory</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        &gt;&gt;&gt; model = create_fhrr_model(dim=512)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">        &gt;&gt;&gt; memory = VSAMemory(model)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">        &gt;&gt;&gt; memory.add(&quot;symbol&quot;)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>    <span class="k">return</span> <span class="n">VSAModel</span><span class="p">(</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>        <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>        <span class="n">rep_cls</span><span class="o">=</span><span class="n">ComplexHypervector</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>        <span class="n">opset</span><span class="o">=</span><span class="n">FHRROperations</span><span class="p">(),</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>        <span class="n">sampler</span><span class="o">=</span><span class="n">sample_complex_random</span><span class="p">,</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
 
-</div><h2 id="sample_complex_random">sample_complex_random<a class="headerlink" href="#sample_complex_random" title="Permanent link">&para;</a></h2>
+</div><h2 id="create_map_model">create_map_model<a class="headerlink" href="#create_map_model" title="Permanent link">&para;</a></h2>
 
 
 <div class="doc doc-object doc-function">
 
 
-<h2 id="vsax.sampling.sample_complex_random" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">sampling</span><span class="o">.</span><span class="n">sample_complex_random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<h2 id="vsax.core.factory.create_map_model" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_map_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#vsax.sampling.sample_complex_random" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#vsax.core.factory.create_map_model" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents first">
 
-        <p>Sample n random complex-valued vectors with random phases.</p>
-<p>Generates unit-magnitude complex vectors with uniformly random phases
-in [0, 2π). These are suitable for use with FHRR operations.</p>
-<p>The vectors have the form: exp(i * θ) where θ ~ Uniform(0, 2π).</p>
+        <p>Create a MAP model (Real hypervectors with element-wise operations).</p>
+<p>MAP (Multiply-Add-Permute) uses real-valued hypervectors with
+element-wise multiplication for binding and averaging for bundling.
+It provides approximate unbinding.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -1973,27 +1874,11 @@ in [0, 2π). These are suitable for use with FHRR operations.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Dimensionality of each vector.</p>
+                <p>Dimensionality of hypervectors. Default: 512.</p>
               </div>
             </td>
             <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>n</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of vectors to sample.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
+                  <code>512</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -2001,11 +1886,12 @@ in [0, 2π). These are suitable for use with FHRR operations.</p>
                 <code>key</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="jax.random.PRNGKey">PRNGKey</span>]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="jax.Array">Array</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX random key. If None, uses PRNGKey(0).</p>
+                <p>Optional JAX PRNG key for reproducible sampling. Not used in
+model creation but can be passed to VSAMemory.</p>
               </div>
             </td>
             <td>
@@ -2027,11 +1913,16 @@ in [0, 2π). These are suitable for use with FHRR operations.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+                  <code><a class="autorefs autorefs-internal" title="vsax.core.model.VSAModel
+
+
+  
+      dataclass
+  " href="../model/#vsax.core.model.VSAModel">VSAModel</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX array of shape (n, dim) containing complex unit-magnitude vectors.</p>
+                <p>VSAModel configured for MAP operations.</p>
               </div>
             </td>
           </tr>
@@ -2044,25 +1935,18 @@ in [0, 2π). These are suitable for use with FHRR operations.</p>
   <blockquote>
 <blockquote>
 <blockquote>
-<p>import jax
-key = jax.random.PRNGKey(42)
-vectors = sample_complex_random(512, 10, key)
-assert vectors.shape == (10, 512)
-assert jnp.iscomplexobj(vectors)</p>
-<h3 id="vsax.sampling.sample_complex_random--all-magnitudes-should-be-10">All magnitudes should be 1.0<a class="headerlink" href="#vsax.sampling.sample_complex_random--all-magnitudes-should-be-10" title="Permanent link">&para;</a></h3>
-<p>assert jnp.allclose(jnp.abs(vectors), 1.0)</p>
+<p>from vsax import create_map_model, VSAMemory
+model = create_map_model(dim=1024)
+memory = VSAMemory(model)
+memory.add_many(["red", "green", "blue"])</p>
 </blockquote>
 </blockquote>
 </blockquote>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/sampling/random.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+              <summary>Source code in <code>vsax/core/factory.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-42">42</a></span>
 <span class="normal"><a href="#__codelineno-0-43">43</a></span>
 <span class="normal"><a href="#__codelineno-0-44">44</a></span>
 <span class="normal"><a href="#__codelineno-0-45">45</a></span>
@@ -2088,68 +1972,57 @@ assert jnp.iscomplexobj(vectors)</p>
 <span class="normal"><a href="#__codelineno-0-65">65</a></span>
 <span class="normal"><a href="#__codelineno-0-66">66</a></span>
 <span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span>
-<span class="normal"><a href="#__codelineno-0-72">72</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="k">def</span><span class="w"> </span><span class="nf">sample_complex_random</span><span class="p">(</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sample n random complex-valued vectors with random phases.</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">    Generates unit-magnitude complex vectors with uniformly random phases</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    in [0, 2π). These are suitable for use with FHRR operations.</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">    The vectors have the form: exp(i * θ) where θ ~ Uniform(0, 2π).</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        dim: Dimensionality of each vector.</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        n: Number of vectors to sample.</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        key: JAX random key. If None, uses PRNGKey(0).</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        JAX array of shape (n, dim) containing complex unit-magnitude vectors.</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        &gt;&gt;&gt; import jax</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        &gt;&gt;&gt; key = jax.random.PRNGKey(42)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        &gt;&gt;&gt; vectors = sample_complex_random(512, 10, key)</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        &gt;&gt;&gt; assert vectors.shape == (10, 512)</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        &gt;&gt;&gt; assert jnp.iscomplexobj(vectors)</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        &gt;&gt;&gt; # All magnitudes should be 1.0</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        &gt;&gt;&gt; assert jnp.allclose(jnp.abs(vectors), 1.0)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="c1"># Sample random phases uniformly in [0, 2π)</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="n">phases</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    <span class="c1"># Convert to complex unit vectors</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">phases</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_map_model</span><span class="p">(</span><span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jax</span><span class="o">.</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSAModel</span><span class="p">:</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a MAP model (Real hypervectors with element-wise operations).</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    MAP (Multiply-Add-Permute) uses real-valued hypervectors with</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">    element-wise multiplication for binding and averaging for bundling.</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    It provides approximate unbinding.</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        dim: Dimensionality of hypervectors. Default: 512.</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        key: Optional JAX PRNG key for reproducible sampling. Not used in</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">            model creation but can be passed to VSAMemory.</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        VSAModel configured for MAP operations.</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        &gt;&gt;&gt; from vsax import create_map_model, VSAMemory</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        &gt;&gt;&gt; model = create_map_model(dim=1024)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        &gt;&gt;&gt; memory = VSAMemory(model)</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        &gt;&gt;&gt; memory.add_many([&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;])</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="k">return</span> <span class="n">VSAModel</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">rep_cls</span><span class="o">=</span><span class="n">RealHypervector</span><span class="p">,</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">opset</span><span class="o">=</span><span class="n">MAPOperations</span><span class="p">(),</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="n">sampler</span><span class="o">=</span><span class="n">sample_random</span><span class="p">,</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
 
-</div><h2 id="sample_binary_random">sample_binary_random<a class="headerlink" href="#sample_binary_random" title="Permanent link">&para;</a></h2>
+</div><h2 id="create_binary_model">create_binary_model<a class="headerlink" href="#create_binary_model" title="Permanent link">&para;</a></h2>
 
 
 <div class="doc doc-object doc-function">
 
 
-<h2 id="vsax.sampling.sample_binary_random" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">sampling</span><span class="o">.</span><span class="n">sample_binary_random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+<h2 id="vsax.core.factory.create_binary_model" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create_binary_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#vsax.sampling.sample_binary_random" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#vsax.core.factory.create_binary_model" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents first">
 
-        <p>Sample n random binary vectors.</p>
-<p>Generates random binary vectors with values uniformly sampled from:
-- Bipolar mode: {-1, +1}
-- Binary mode: {0, 1}</p>
-<p>These are suitable for use with Binary VSA operations.</p>
+        <p>Create a Binary model (Binary hypervectors with XOR/majority operations).</p>
+<p>Binary VSA uses discrete {-1, +1} (bipolar) or {0, 1} (binary) hypervectors
+with XOR for binding and majority voting for bundling. It provides exact
+unbinding (self-inverse property).</p>
+<p>Note: Binary models typically require higher dimensionality (10000+) for
+good performance due to discrete representation.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -2172,43 +2045,12 @@ assert jnp.iscomplexobj(vectors)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Dimensionality of each vector.</p>
+                <p>Dimensionality of hypervectors. Default: 10000 (higher than
+continuous models due to discrete representation).</p>
               </div>
             </td>
             <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>n</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of vectors to sample.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>key</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="jax.random.PRNGKey">PRNGKey</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>JAX random key. If None, uses PRNGKey(0).</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
+                  <code>10000</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -2220,11 +2062,29 @@ assert jnp.iscomplexobj(vectors)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, sample from {-1, +1}. If False, sample from {0, 1}.</p>
+                <p>If True, use {-1, +1} representation. If False, use {0, 1}.
+Default: True (bipolar is more common).</p>
               </div>
             </td>
             <td>
                   <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>key</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="jax.Array">Array</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional JAX PRNG key for reproducible sampling. Not used in
+model creation but can be passed to VSAMemory.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -2242,11 +2102,16 @@ assert jnp.iscomplexobj(vectors)</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+                  <code><a class="autorefs autorefs-internal" title="vsax.core.model.VSAModel
+
+
+  
+      dataclass
+  " href="../model/#vsax.core.model.VSAModel">VSAModel</a></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX array of shape (n, dim) containing binary values.</p>
+                <p>VSAModel configured for Binary operations.</p>
               </div>
             </td>
           </tr>
@@ -2259,23 +2124,22 @@ assert jnp.iscomplexobj(vectors)</p>
   <blockquote>
 <blockquote>
 <blockquote>
-<p>import jax
-key = jax.random.PRNGKey(42)</p>
-<h3 id="vsax.sampling.sample_binary_random--bipolar-sampling">Bipolar sampling<a class="headerlink" href="#vsax.sampling.sample_binary_random--bipolar-sampling" title="Permanent link">&para;</a></h3>
-<p>bipolar_vecs = sample_binary_random(512, 10, key, bipolar=True)
-assert bipolar_vecs.shape == (10, 512)
-assert jnp.all(jnp.isin(bipolar_vecs, jnp.array([-1, 1])))</p>
-<h3 id="vsax.sampling.sample_binary_random--binary-sampling">Binary sampling<a class="headerlink" href="#vsax.sampling.sample_binary_random--binary-sampling" title="Permanent link">&para;</a></h3>
-<p>binary_vecs = sample_binary_random(512, 10, key, bipolar=False)
-assert jnp.all(jnp.isin(binary_vecs, jnp.array([0, 1])))</p>
+<p>from vsax import create_binary_model, VSAMemory
+model = create_binary_model(dim=10000, bipolar=True)
+memory = VSAMemory(model)
+memory.add("concept")</p>
 </blockquote>
 </blockquote>
 </blockquote>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/sampling/random.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
+              <summary>Source code in <code>vsax/core/factory.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
 <span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
 <span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
 <span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
@@ -2311,53 +2175,47 @@ assert jnp.all(jnp.isin(binary_vecs, jnp.array([0, 1])))</p>
 <span class="normal"><a href="#__codelineno-0-108">108</a></span>
 <span class="normal"><a href="#__codelineno-0-109">109</a></span>
 <span class="normal"><a href="#__codelineno-0-110">110</a></span>
-<span class="normal"><a href="#__codelineno-0-111">111</a></span>
-<span class="normal"><a href="#__codelineno-0-112">112</a></span>
-<span class="normal"><a href="#__codelineno-0-113">113</a></span>
-<span class="normal"><a href="#__codelineno-0-114">114</a></span>
-<span class="normal"><a href="#__codelineno-0-115">115</a></span>
-<span class="normal"><a href="#__codelineno-0-116">116</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="k">def</span><span class="w"> </span><span class="nf">sample_binary_random</span><span class="p">(</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sample n random binary vectors.</span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_binary_model</span><span class="p">(</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">bipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jax</span><span class="o">.</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VSAModel</span><span class="p">:</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a Binary model (Binary hypervectors with XOR/majority operations).</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">    Binary VSA uses discrete {-1, +1} (bipolar) or {0, 1} (binary) hypervectors</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">    with XOR for binding and majority voting for bundling. It provides exact</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">    unbinding (self-inverse property).</span>
 <a id="__codelineno-0-79" name="__codelineno-0-79"></a>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">    Generates random binary vectors with values uniformly sampled from:</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">    - Bipolar mode: {-1, +1}</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="sd">    - Binary mode: {0, 1}</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">    These are suitable for use with Binary VSA operations.</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">        dim: Dimensionality of each vector.</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">        n: Number of vectors to sample.</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">        key: JAX random key. If None, uses PRNGKey(0).</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="sd">        bipolar: If True, sample from {-1, +1}. If False, sample from {0, 1}.</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="sd">        JAX array of shape (n, dim) containing binary values.</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">        &gt;&gt;&gt; import jax</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        &gt;&gt;&gt; key = jax.random.PRNGKey(42)</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">        &gt;&gt;&gt;</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">        &gt;&gt;&gt; # Bipolar sampling</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">        &gt;&gt;&gt; bipolar_vecs = sample_binary_random(512, 10, key, bipolar=True)</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="sd">        &gt;&gt;&gt; assert bipolar_vecs.shape == (10, 512)</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">        &gt;&gt;&gt; assert jnp.all(jnp.isin(bipolar_vecs, jnp.array([-1, 1])))</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">        &gt;&gt;&gt;</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">        &gt;&gt;&gt; # Binary sampling</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">        &gt;&gt;&gt; binary_vecs = sample_binary_random(512, 10, key, bipolar=False)</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="sd">        &gt;&gt;&gt; assert jnp.all(jnp.isin(binary_vecs, jnp.array([0, 1])))</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a>    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        <span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a>    <span class="k">if</span> <span class="n">bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="c1"># Sample from {-1, +1}</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
-<a id="__codelineno-0-114" name="__codelineno-0-114"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a>        <span class="c1"># Sample from {0, 1}</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">))</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">    Note: Binary models typically require higher dimensionality (10000+) for</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">    good performance due to discrete representation.</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">        dim: Dimensionality of hypervectors. Default: 10000 (higher than</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">            continuous models due to discrete representation).</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">        bipolar: If True, use {-1, +1} representation. If False, use {0, 1}.</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">            Default: True (bipolar is more common).</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">        key: Optional JAX PRNG key for reproducible sampling. Not used in</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">            model creation but can be passed to VSAMemory.</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">        VSAModel configured for Binary operations.</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="sd">        &gt;&gt;&gt; from vsax import create_binary_model, VSAMemory</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">        &gt;&gt;&gt; model = create_binary_model(dim=10000, bipolar=True)</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        &gt;&gt;&gt; memory = VSAMemory(model)</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">        &gt;&gt;&gt; memory.add(&quot;concept&quot;)</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="c1"># Create a wrapper sampler that passes bipolar parameter</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">binary_sampler</span><span class="p">(</span><span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">jax</span><span class="o">.</span><span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jax</span><span class="o">.</span><span class="n">Array</span><span class="p">:</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper sampler that includes bipolar parameter.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="k">return</span> <span class="n">sample_binary_random</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="n">bipolar</span><span class="p">)</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="k">return</span> <span class="n">VSAModel</span><span class="p">(</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a>        <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>        <span class="n">rep_cls</span><span class="o">=</span><span class="n">BinaryHypervector</span><span class="p">,</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        <span class="n">opset</span><span class="o">=</span><span class="n">BinaryOperations</span><span class="p">(),</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="n">sampler</span><span class="o">=</span><span class="n">binary_sampler</span><span class="p">,</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2412,10 +2270,10 @@ assert jnp.all(jnp.isin(binary_vecs, jnp.array([0, 1])))</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
