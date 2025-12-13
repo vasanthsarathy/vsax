@@ -48,6 +48,27 @@ Thank you for your interest in contributing to VSAX! This document provides guid
 
 ## Development Workflow
 
+### Quick Start (Recommended)
+
+**Before every commit**, run the pre-commit check script to catch issues locally:
+
+```bash
+# Windows
+.\check.ps1
+
+# Unix/macOS
+./check.sh
+```
+
+This runs the same checks as CI/CD:
+- ✅ Ruff linting
+- ✅ Mypy type checking
+- ✅ Pytest with coverage
+
+If all checks pass, you're safe to commit and push!
+
+### Detailed Workflow
+
 1. Create a feature branch:
    ```bash
    git checkout -b feature/your-feature-name
@@ -55,30 +76,58 @@ Thank you for your interest in contributing to VSAX! This document provides guid
 
 2. Make your changes, following the coding standards below
 
-3. Run tests:
+3. **Run pre-commit checks** (catches CI/CD issues locally):
    ```bash
-   pytest
+   # Windows
+   .\check.ps1
+
+   # Unix/macOS
+   ./check.sh
    ```
 
-4. Run type checking:
+4. If checks pass, commit your changes:
    ```bash
-   mypy vsax
-   # Or if you encounter JAX-related errors:
-   mypy vsax --no-site-packages
-   ```
-
-5. Run linting:
-   ```bash
-   ruff check vsax tests
-   ruff format vsax tests
-   ```
-
-6. Commit your changes using conventional commits:
-   ```bash
+   git add -A
    git commit -m "feat: add new feature"
    ```
 
-7. Push to your fork and create a pull request
+5. Push to your fork and create a pull request:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+### Manual Checks (if not using check script)
+
+If you prefer to run checks individually:
+
+```bash
+# Linting
+ruff check vsax tests
+ruff format vsax tests
+
+# Type checking
+mypy vsax --no-site-packages
+
+# Tests with coverage
+pytest --cov=vsax --cov-report=term-missing
+```
+
+### Optional: Automatic Pre-Commit Hook
+
+To automatically run checks before every commit:
+
+```bash
+# Create pre-commit hook
+cat > .git/hooks/pre-commit << 'EOF'
+#!/bin/bash
+./check.sh
+EOF
+
+# Make it executable
+chmod +x .git/hooks/pre-commit
+```
+
+Now checks run automatically on `git commit`!
 
 ## Coding Standards
 
