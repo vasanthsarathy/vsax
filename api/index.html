@@ -1067,6 +1067,50 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#memory-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory &amp; Utilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Similarity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#coming-soon" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1994,6 +2038,50 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#memory-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory &amp; Utilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Similarity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#coming-soon" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2036,7 +2124,7 @@
 
 
 <h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
-<p>Complete API documentation for VSAX v0.2.0.</p>
+<p>Complete API documentation for VSAX v0.5.0.</p>
 <h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="core/base/">Base Classes</a></strong> - Abstract interfaces (AbstractHypervector, AbstractOpSet)</li>
@@ -2058,10 +2146,31 @@
 <ul>
 <li><strong><a href="sampling/">Sampling Functions</a></strong> - Random vector generation</li>
 </ul>
+<h2 id="memory-utilities">Memory &amp; Utilities<a class="headerlink" href="#memory-utilities" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="core/memory/">VSAMemory</a></strong> - Symbol table and basis management</li>
+<li><strong><a href="core/factory/">Factory Functions</a></strong> - Easy model creation</li>
+</ul>
+<h2 id="encoders">Encoders<a class="headerlink" href="#encoders" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="encoders/scalar/">ScalarEncoder</a></strong> - Encode numeric values</li>
+<li><strong><a href="encoders/sequence/">SequenceEncoder</a></strong> - Encode ordered sequences</li>
+<li><strong><a href="encoders/set/">SetEncoder</a></strong> - Encode unordered collections</li>
+<li><strong><a href="encoders/dict/">DictEncoder</a></strong> - Encode key-value pairs</li>
+<li><strong><a href="encoders/graph/">GraphEncoder</a></strong> - Encode graph structures</li>
+<li><strong><a href="encoders/base.md">AbstractEncoder</a></strong> - Base class for custom encoders</li>
+</ul>
+<h2 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="similarity/">Similarity Functions</a></strong> - Cosine, dot, Hamming similarity</li>
+</ul>
+<h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="utils/">Batch Operations</a></strong> - vmap_bind, vmap_bundle, vmap_similarity</li>
+<li><strong><a href="utils/">Visualization</a></strong> - pretty_repr, format_similarity_results</li>
+</ul>
 <h2 id="coming-soon">Coming Soon<a class="headerlink" href="#coming-soon" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Encoders</strong> (Iteration 4) - ScalarEncoder, DictEncoder</li>
-<li><strong>Similarity</strong> (Iteration 5) - Cosine, dot, Hamming similarity</li>
 <li><strong>I/O</strong> (Iteration 6) - Save and load basis vectors</li>
 </ul>
 <h2 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h2>

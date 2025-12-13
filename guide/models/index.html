@@ -648,10 +648,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-vsamemory-coming-in-iteration-3" class="md-nav__link">
+  <a href="#next-vsamemory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next: VSAMemory (Coming in Iteration 3)
+        Next: VSAMemory
       
     </span>
   </a>
@@ -2060,10 +2060,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-vsamemory-coming-in-iteration-3" class="md-nav__link">
+  <a href="#next-vsamemory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next: VSAMemory (Coming in Iteration 3)
+        Next: VSAMemory
       
     </span>
   </a>
@@ -2165,15 +2165,17 @@
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">1024</span>  <span class="c1"># FrozenInstanceError!</span>
 </code></pre></div>
 <p><strong>Type Safety:</strong> The model ensures all components work together correctly.</p>
-<h2 id="next-vsamemory-coming-in-iteration-3">Next: VSAMemory (Coming in Iteration 3)<a class="headerlink" href="#next-vsamemory-coming-in-iteration-3" title="Permanent link">&para;</a></h2>
-<p>In the next iteration, you'll be able to use <code>VSAMemory</code> to manage named basis vectors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Coming soon!</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">dog</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span>  <span class="c1"># Access by name</span>
+<h2 id="next-vsamemory">Next: VSAMemory<a class="headerlink" href="#next-vsamemory" title="Permanent link">&para;</a></h2>
+<p>Use <code>VSAMemory</code> to manage named basis vectors:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">VSAMemory</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">dog</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span>  <span class="c1"># Access by name</span>
 </code></pre></div>
+<p>See the <a href="../memory/">VSAMemory guide</a> for more details.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li>See <a href="../../examples/fhrr/">Examples</a> for complete model usage</li>
