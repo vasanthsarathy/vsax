@@ -51,6 +51,8 @@ nav:
     - Factory Functions: guide/factory.md
     - VSAMemory: guide/memory.md
     - Encoders: guide/encoders.md
+    - Similarity Metrics: guide/similarity.md
+    - Batch Operations: guide/batch_operations.md
     - Representations: guide/representations.md
     - Operations: guide/operations.md
     - Sampling: guide/sampling.md
@@ -81,6 +83,8 @@ nav:
       - MAPOperations: api/ops/map.md
       - BinaryOperations: api/ops/binary.md
     - Sampling: api/sampling.md
+    - Similarity: api/similarity/index.md
+    - Utilities: api/utils/index.md
   - Design Spec: design-spec.md
 
 markdown_extensions:

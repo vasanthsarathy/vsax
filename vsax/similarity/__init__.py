@@ -1,6 +1,11 @@
 """Similarity metrics for hypervectors."""
 
-# Placeholder for iteration 5
-# Will contain: cosine_similarity, dot_similarity, hamming_similarity
+from vsax.similarity.cosine import cosine_similarity
+from vsax.similarity.dot import dot_similarity
+from vsax.similarity.hamming import hamming_similarity
 
-__all__ = []
+__all__ = [
+    "cosine_similarity",
+    "dot_similarity",
+    "hamming_similarity",
+]

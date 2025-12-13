@@ -36,6 +36,14 @@ from vsax.encoders import (
 from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
 from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
 from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
+from vsax.similarity import cosine_similarity, dot_similarity, hamming_similarity
+from vsax.utils import (
+    format_similarity_results,
+    pretty_repr,
+    vmap_bind,
+    vmap_bundle,
+    vmap_similarity,
+)
 
 __all__ = [
     # Core
@@ -66,6 +74,16 @@ __all__ = [
     "sample_binary_random",
     "sample_complex_random",
     "sample_random",
+    # Similarity
+    "cosine_similarity",
+    "dot_similarity",
+    "hamming_similarity",
+    # Utilities
+    "format_similarity_results",
+    "pretty_repr",
+    "vmap_bind",
+    "vmap_bundle",
+    "vmap_similarity",
     # Version
     "__version__",
 ]
