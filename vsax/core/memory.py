@@ -1,9 +1,9 @@
 """VSAMemory: Symbol table for storing and managing named hypervectors."""
 
-from typing import Dict, Iterable, List, Optional
+from collections.abc import Iterable
+from typing import Optional
 
 import jax
-import jax.numpy as jnp
 
 from vsax.core.base import AbstractHypervector
 from vsax.core.model import VSAModel
@@ -41,7 +41,7 @@ class VSAMemory:
             key: Optional JAX PRNG key for reproducible sampling.
         """
         self._model = model
-        self._symbols: Dict[str, AbstractHypervector] = {}
+        self._symbols: dict[str, AbstractHypervector] = {}
         self._key = key if key is not None else jax.random.PRNGKey(0)
         self._counter = 0
 
@@ -84,7 +84,7 @@ class VSAMemory:
         self._counter += 1
         return hv
 
-    def add_many(self, names: Iterable[str]) -> List[AbstractHypervector]:
+    def add_many(self, names: Iterable[str]) -> list[AbstractHypervector]:
         """Add multiple symbols to memory.
 
         Args:
@@ -155,7 +155,7 @@ class VSAMemory:
         """
         return name in self._symbols
 
-    def keys(self) -> List[str]:
+    def keys(self) -> list[str]:
         """Get all symbol names in memory.
 
         Returns:
