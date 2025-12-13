@@ -38,31 +38,27 @@ pip install -e ".[dev]"
 
 ## Quick Example
 
-### FHRR Model (Complex Hypervectors)
+### Simple API (v0.3.0+)
 
 ```python
-import jax
-from vsax import VSAModel, ComplexHypervector, FHRROperations, sample_complex_random
+from vsax import create_fhrr_model, VSAMemory
 
-# Create an FHRR model
-model = VSAModel(
-    dim=512,
-    rep_cls=ComplexHypervector,
-    opset=FHRROperations(),
-    sampler=sample_complex_random
-)
+# Create model with factory function
+model = create_fhrr_model(dim=512)
 
-# Sample and create hypervectors
-key = jax.random.PRNGKey(42)
-vectors = model.sampler(dim=model.dim, n=2, key=key)
-a = model.rep_cls(vectors[0]).normalize()
-b = model.rep_cls(vectors[1]).normalize()
+# Create memory for symbols
+memory = VSAMemory(model)
+memory.add_many(["dog", "cat", "animal"])
 
-# Bind two vectors (circular convolution via FFT)
-bound = model.opset.bind(a.vec, b.vec)
+# Access and manipulate symbols
+dog = memory["dog"]
+animal = memory["animal"]
 
-# Bundle multiple vectors (sum and normalize)
-bundled = model.opset.bundle(a.vec, b.vec)
+# Bind two concepts (circular convolution)
+dog_is_animal = model.opset.bind(dog.vec, animal.vec)
+
+# Bundle multiple concepts (sum and normalize)
+pets = model.opset.bundle(memory["dog"].vec, memory["cat"].vec)
 ```
 
 ### MAP Model (Real Hypervectors)

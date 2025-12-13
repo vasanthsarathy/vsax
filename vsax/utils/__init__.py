@@ -1,6 +1,10 @@
 """Utility functions."""
 
-# Placeholder for iterations 3 and 5
-# Will contain: coerce_to_array, vmap_bind, vmap_bundle, pretty_repr
+from vsax.utils.coerce import coerce_to_array
+from vsax.utils.validation import validate_positive_int, validate_string
 
-__all__ = []
+__all__ = [
+    "coerce_to_array",
+    "validate_positive_int",
+    "validate_string",
+]

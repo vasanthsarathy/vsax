@@ -5,22 +5,25 @@ for binding and bundling, and encoding strategies for symbolic and structured da
 
 Example:
     >>> from vsax import create_fhrr_model, VSAMemory
-    >>> from vsax.representations import ComplexHypervector
-    >>> from vsax.ops import FHRROperations
-    >>> from vsax.sampling import sample_complex_random
     >>>
-    >>> # Create an FHRR model
-    >>> model = VSAModel(
-    ...     dim=512,
-    ...     rep_cls=ComplexHypervector,
-    ...     opset=FHRROperations(),
-    ...     sampler=sample_complex_random
-    ... )
+    >>> # Create an FHRR model with factory function
+    >>> model = create_fhrr_model(dim=512)
+    >>>
+    >>> # Create memory for symbol management
+    >>> memory = VSAMemory(model)
+    >>> memory.add_many(["dog", "cat", "animal"])
+    >>>
+    >>> # Access and manipulate symbols
+    >>> dog = memory["dog"]
+    >>> animal = memory["animal"]
+    >>> dog_is_animal = model.opset.bind(dog.vec, animal.vec)
 """
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 from vsax.core.base import AbstractHypervector, AbstractOpSet
+from vsax.core.factory import create_binary_model, create_fhrr_model, create_map_model
+from vsax.core.memory import VSAMemory
 from vsax.core.model import VSAModel
 from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
 from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
@@ -30,19 +33,24 @@ __all__ = [
     # Core
     "AbstractHypervector",
     "AbstractOpSet",
+    "VSAMemory",
     "VSAModel",
+    # Factory Functions
+    "create_binary_model",
+    "create_fhrr_model",
+    "create_map_model",
     # Representations
+    "BinaryHypervector",
     "ComplexHypervector",
     "RealHypervector",
-    "BinaryHypervector",
     # Operations
+    "BinaryOperations",
     "FHRROperations",
     "MAPOperations",
-    "BinaryOperations",
     # Sampling
-    "sample_random",
-    "sample_complex_random",
     "sample_binary_random",
+    "sample_complex_random",
+    "sample_random",
     # Version
     "__version__",
 ]
