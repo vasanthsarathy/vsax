@@ -1,34 +1,36 @@
 # API Reference
 
-## Core Module
+Complete API documentation for VSAX v0.2.0.
 
-::: vsax.core.base
-    options:
-      members:
-        - AbstractHypervector
-        - AbstractOpSet
+## Core Components
 
-::: vsax.core.model
-    options:
-      members:
-        - VSAModel
+- **[Base Classes](core/base.md)** - Abstract interfaces (AbstractHypervector, AbstractOpSet)
+- **[VSAModel](core/model.md)** - Immutable model container
 
 ## Representations
 
-*Coming in Iteration 2*
+- **[ComplexHypervector](representations/complex.md)** - Complex-valued phase-based representation
+- **[RealHypervector](representations/real.md)** - Real-valued continuous representation
+- **[BinaryHypervector](representations/binary.md)** - Binary/bipolar discrete representation
 
 ## Operations
 
-*Coming in Iteration 2*
+- **[FHRROperations](ops/fhrr.md)** - FFT-based circular convolution
+- **[MAPOperations](ops/map.md)** - Element-wise multiply and mean
+- **[BinaryOperations](ops/binary.md)** - XOR and majority voting
 
-## Encoders
+## Sampling
 
-*Coming in Iteration 4*
+- **[Sampling Functions](sampling.md)** - Random vector generation
 
-## Similarity
+## Coming Soon
 
-*Coming in Iteration 5*
+- **Encoders** (Iteration 4) - ScalarEncoder, DictEncoder
+- **Similarity** (Iteration 5) - Cosine, dot, Hamming similarity
+- **I/O** (Iteration 6) - Save and load basis vectors
 
-## I/O
+## Quick Links
 
-*Coming in Iteration 6*
+- [Getting Started](../getting-started.md)
+- [User Guide](../guide/representations.md)
+- [Examples](../examples/fhrr.md)

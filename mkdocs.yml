@@ -46,8 +46,30 @@ plugins:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - User Guide:
+    - Representations: guide/representations.md
+    - Operations: guide/operations.md
+    - Sampling: guide/sampling.md
+    - Models: guide/models.md
+  - Examples:
+    - FHRR Model: examples/fhrr.md
+    - MAP Model: examples/map.md
+    - Binary Model: examples/binary.md
   - API Reference:
-    - api/index.md
+    - Overview: api/index.md
+    - Core:
+      - Base Classes: api/core/base.md
+      - VSAModel: api/core/model.md
+    - Representations:
+      - ComplexHypervector: api/representations/complex.md
+      - RealHypervector: api/representations/real.md
+      - BinaryHypervector: api/representations/binary.md
+    - Operations:
+      - FHRROperations: api/ops/fhrr.md
+      - MAPOperations: api/ops/map.md
+      - BinaryOperations: api/ops/binary.md
+    - Sampling: api/sampling.md
+  - Design Spec: design-spec.md
 
 markdown_extensions:
   - admonition

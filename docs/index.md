@@ -4,46 +4,158 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 
 ## Features
 
-- **Three VSA Models**: FHRR, MAP, and Binary implementations
-- **GPU-Accelerated**: Built on JAX for high-performance computation
-- **Modular Architecture**: Clean separation between representations and operations
-- **Type-Safe**: Full type annotations with mypy support
-- **Well-Tested**: Comprehensive test suite with high coverage
+- 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
+- ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
+- 🧩 **Modular Architecture**: Clean separation between representations and operations
+- 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
+- ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
+- 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
+- 💯 **Type-Safe**: Full type annotations with mypy support
+- ✅ **Well-Tested**: 175 tests with 96% coverage
 
 ## Installation
+
+### From PyPI (Coming Soon)
 
 ```bash
 pip install vsax
 ```
 
-For development:
+### From Source
 
 ```bash
 git clone https://github.com/yourusername/vsax.git
 cd vsax
+
+# Using uv (recommended)
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e ".[dev]"
+
+# Or using pip
 pip install -e ".[dev]"
 ```
 
 ## Quick Example
 
-```python
-from vsax import VSAModel, AbstractHypervector, AbstractOpSet
+### FHRR Model (Complex Hypervectors)
 
-# More examples coming in iteration 2+
+```python
+import jax
+from vsax import VSAModel, ComplexHypervector, FHRROperations, sample_complex_random
+
+# Create an FHRR model
+model = VSAModel(
+    dim=512,
+    rep_cls=ComplexHypervector,
+    opset=FHRROperations(),
+    sampler=sample_complex_random
+)
+
+# Sample and create hypervectors
+key = jax.random.PRNGKey(42)
+vectors = model.sampler(dim=model.dim, n=2, key=key)
+a = model.rep_cls(vectors[0]).normalize()
+b = model.rep_cls(vectors[1]).normalize()
+
+# Bind two vectors (circular convolution via FFT)
+bound = model.opset.bind(a.vec, b.vec)
+
+# Bundle multiple vectors (sum and normalize)
+bundled = model.opset.bundle(a.vec, b.vec)
+```
+
+### MAP Model (Real Hypervectors)
+
+```python
+from vsax import RealHypervector, MAPOperations, sample_random
+
+model = VSAModel(
+    dim=512,
+    rep_cls=RealHypervector,
+    opset=MAPOperations(),
+    sampler=sample_random
+)
+
+# Element-wise multiplication for binding
+# Element-wise mean for bundling
+```
+
+### Binary Model (Bipolar Hypervectors)
+
+```python
+from vsax import BinaryHypervector, BinaryOperations, sample_binary_random
+
+model = VSAModel(
+    dim=512,
+    rep_cls=BinaryHypervector,
+    opset=BinaryOperations(),
+    sampler=sample_binary_random
+)
+
+# XOR binding (exact unbinding)
+# Majority voting for bundling
 ```
 
 ## Development Status
 
-Currently in **Iteration 1**: Foundation & Infrastructure
+**Current**: Iteration 2 Complete ✅
 
+### Completed
+
+**Iteration 1** (v0.1.0): Foundation & Infrastructure
 - ✅ Core abstract classes (AbstractHypervector, AbstractOpSet)
 - ✅ VSAModel dataclass
 - ✅ Package structure
-- ✅ Testing infrastructure
-- ✅ CI/CD pipeline
+- ✅ Testing infrastructure (pytest, coverage)
+- ✅ CI/CD pipeline (GitHub Actions)
+- ✅ Documentation site (MkDocs)
 
-**Coming Next (Iteration 2)**: All three VSA models (FHRR, MAP, Binary) with representations and operations.
+**Iteration 2** (v0.2.0): Core Algebras
+- ✅ All 3 representations (Complex, Real, Binary)
+- ✅ All 3 operation sets (FHRR, MAP, Binary)
+- ✅ Sampling utilities
+- ✅ 175 comprehensive tests with 96% coverage
+- ✅ Full integration tests
+
+### Coming Next
+
+**Iteration 3** (v0.3.0): Models & Memory
+- VSAMemory for symbol storage
+- Factory functions for easy model creation
+- Integration utilities
+
+**Iteration 4** (v0.4.0): First Usable Release
+- ScalarEncoder and DictEncoder
+- Complete working examples
+- Tutorial notebooks
+
+## Documentation
+
+- [Getting Started](getting-started.md) - Installation and first steps
+- [User Guide](guide/representations.md) - Detailed guides for all components
+- [Examples](examples/fhrr.md) - Working examples for all three models
+- [API Reference](api/index.md) - Complete API documentation
+- [Design Specification](design-spec.md) - Technical design details
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](https://github.com/yourusername/vsax/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## License
 
 VSAX is released under the MIT License. See [LICENSE](https://github.com/yourusername/vsax/blob/main/LICENSE) for details.
+
+## Citation
+
+If you use VSAX in your research, please cite:
+
+```bibtex
+@software{vsax2025,
+  title = {VSAX: Vector Symbolic Algebra for JAX},
+  author = {VSAX Contributors},
+  year = {2025},
+  version = {0.2.0},
+  url = {https://github.com/yourusername/vsax}
+}
+```
