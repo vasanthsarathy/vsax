@@ -11,17 +11,18 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 ## Features
 
 - 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
-- 🏭 **Factory Functions**: One-line model creation with sensible defaults ✅ **NEW in v0.3.0**
-- 💾 **VSAMemory**: Dictionary-style symbol management ✅ **NEW in v0.3.0**
+- 🏭 **Factory Functions**: One-line model creation with sensible defaults ✅
+- 💾 **VSAMemory**: Dictionary-style symbol management ✅
+- 📊 **5 Core Encoders**: Scalar, Sequence, Set, Dict, and Graph encoders ✅ **NEW in v0.4.0**
+- 🎨 **Custom Encoders**: Easy-to-extend AbstractEncoder base class ✅ **NEW in v0.4.0**
 - ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
-- 📊 **Encoders**: Scalar and dictionary encoders for structured data *(coming in v0.4.0)*
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity *(coming in v0.5.0)*
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
-- ✅ **89% Test Coverage**: 230 tests ensuring reliability
+- ✅ **80%+ Test Coverage**: 280+ tests ensuring reliability
 
 ## Installation
 
@@ -89,12 +90,12 @@ pip install -e ".[dev,docs]"
 
 ## Quick Start
 
-**New in v0.3.0:** Easy-to-use factory functions and VSAMemory for symbol management!
+**New in v0.4.0:** 5 core encoders for structured data!
 
 ### Simple Example
 
 ```python
-from vsax import create_fhrr_model, VSAMemory
+from vsax import create_fhrr_model, VSAMemory, DictEncoder
 
 # Create model with factory function (one line!)
 model = create_fhrr_model(dim=512)
@@ -103,18 +104,17 @@ model = create_fhrr_model(dim=512)
 memory = VSAMemory(model)
 
 # Add symbols - automatically samples and stores hypervectors
-memory.add_many(["dog", "cat", "animal", "pet"])
+memory.add_many(["subject", "action", "dog", "run", "cat", "jump"])
 
 # Dictionary-style access
 dog = memory["dog"]
-animal = memory["animal"]
 
-# Check if symbol exists
-if "dog" in memory:
-    print(f"Memory contains {len(memory)} symbols")
+# Encode structured data with DictEncoder
+encoder = DictEncoder(model, memory)
+sentence = encoder.encode({"subject": "dog", "action": "run"})
 
 # Bind concepts (circular convolution)
-dog_is_animal = model.opset.bind(dog.vec, animal.vec)
+dog_is_animal = model.opset.bind(dog.vec, memory["animal"].vec)
 
 # Bundle concepts (sum and normalize)
 pets = model.opset.bundle(memory["dog"].vec, memory["cat"].vec)
@@ -162,7 +162,7 @@ See [docs/design-spec.md](docs/design-spec.md) for complete technical specificat
 
 ## Development Status
 
-Currently in **Iteration 3: VSAMemory + Factory Functions** ✅
+Currently in **Iteration 4: Encoders + Examples** ✅ **FIRST USABLE RELEASE!**
 
 ### Completed
 
@@ -189,12 +189,23 @@ Currently in **Iteration 3: VSAMemory + Factory Functions** ✅
 - ✅ 230 tests with 89% coverage
 - ✅ Comprehensive documentation guides
 
+**Iteration 4** (v0.4.0): Encoders + Examples ✅ **FIRST USABLE RELEASE!**
+- ✅ ScalarEncoder - Numeric values with power encoding
+- ✅ SequenceEncoder - Ordered sequences (lists, tuples)
+- ✅ SetEncoder - Unordered collections (sets)
+- ✅ DictEncoder - Key-value pairs (dictionaries)
+- ✅ GraphEncoder - Graph structures (edge lists)
+- ✅ AbstractEncoder - Base class for custom encoders
+- ✅ Complete integration examples for all 3 models
+- ✅ Custom encoder examples (DateEncoder, ColorEncoder)
+- ✅ 280+ tests with 80%+ coverage
+
 ### Coming Next
 
-**Iteration 4** (v0.4.0): First Usable Release 🎯
-- ScalarEncoder for numeric values
-- DictEncoder for structured data
-- Complete working examples for all three models
+**Iteration 5** (v0.5.0): Similarity Metrics & I/O
+- Cosine, dot, and Hamming similarity functions
+- Save/load functionality for basis vectors
+- Batch operations with JAX vmap
 
 See [todo.md](todo.md) for the complete development roadmap.
 

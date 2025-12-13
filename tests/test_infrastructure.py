@@ -22,7 +22,7 @@ def test_package_imports() -> None:
     import vsax
     from vsax.core import AbstractHypervector, AbstractOpSet, VSAModel
 
-    assert vsax.__version__ == "0.3.0"
+    assert vsax.__version__ == "0.4.0"
     assert AbstractHypervector is not None
     assert AbstractOpSet is not None
     assert VSAModel is not None
