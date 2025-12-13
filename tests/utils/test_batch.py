@@ -4,7 +4,6 @@ import jax.numpy as jnp
 import pytest
 
 from vsax import VSAMemory, create_binary_model, create_fhrr_model, create_map_model
-from vsax.similarity import cosine_similarity
 from vsax.utils import vmap_bind, vmap_bundle, vmap_similarity
 
 
@@ -252,7 +251,7 @@ def test_vmap_similarity_finds_best_match() -> None:
     # Create a "similar" vector by binding target with a weak noise
     target = memory["target"].vec
     # Use the "similar" symbol to represent something close
-    similar = memory["similar"].vec
+    memory["similar"].vec
 
     candidates = jnp.stack(
         [memory["similar"].vec, memory["different1"].vec, memory["different2"].vec]
