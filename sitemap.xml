@@ -85,6 +85,14 @@
          <lastmod>2025-12-13</lastmod>
     </url>
     <url>
+         <loc>https://vsax.readthedocs.io/api/similarity/</loc>
+         <lastmod>2025-12-13</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/api/utils/</loc>
+         <lastmod>2025-12-13</lastmod>
+    </url>
+    <url>
          <loc>https://vsax.readthedocs.io/examples/binary/</loc>
          <lastmod>2025-12-13</lastmod>
     </url>
@@ -94,6 +102,10 @@
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/examples/map/</loc>
+         <lastmod>2025-12-13</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/guide/batch_operations/</loc>
          <lastmod>2025-12-13</lastmod>
     </url>
     <url>
@@ -122,6 +134,10 @@
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/sampling/</loc>
+         <lastmod>2025-12-13</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/guide/similarity/</loc>
          <lastmod>2025-12-13</lastmod>
     </url>
 </urlset>

@@ -12,13 +12,13 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/guide/models/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/api/similarity/">
       
       
-        <link rel="prev" href="../../getting-started/">
+        <link rel="prev" href="../sampling/">
       
       
-        <link rel="next" href="../factory/">
+        <link rel="next" href="../utils/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Models - VSAX Documentation</title>
+        <title>Similarity - VSAX Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vsa-models" class="md-skip">
+        <a href="#similarity-metrics-api" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Models
+              Similarity
             
           </span>
         </div>
@@ -265,13 +265,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../guide/models/" class="md-tabs__link">
           
   
   
@@ -307,11 +305,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../api/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -445,31 +445,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -487,7 +484,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -502,37 +499,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../guide/models/" class="md-nav__link">
         
   
   
@@ -548,131 +518,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vsamodel-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VSAModel Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Models
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating Models">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fhrr-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FHRR Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#map-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MAP Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#binary-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Binary Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using Models
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Properties
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-vsamemory-coming-in-iteration-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next: VSAMemory (Coming in Iteration 3)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -685,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../factory/" class="md-nav__link">
+      <a href="../../guide/factory/" class="md-nav__link">
         
   
   
@@ -713,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../memory/" class="md-nav__link">
+      <a href="../../guide/memory/" class="md-nav__link">
         
   
   
@@ -741,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../encoders/" class="md-nav__link">
+      <a href="../../guide/encoders/" class="md-nav__link">
         
   
   
@@ -769,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../similarity/" class="md-nav__link">
+      <a href="../../guide/similarity/" class="md-nav__link">
         
   
   
@@ -797,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../batch_operations/" class="md-nav__link">
+      <a href="../../guide/batch_operations/" class="md-nav__link">
         
   
   
@@ -825,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../representations/" class="md-nav__link">
+      <a href="../../guide/representations/" class="md-nav__link">
         
   
   
@@ -853,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../operations/" class="md-nav__link">
+      <a href="../../guide/operations/" class="md-nav__link">
         
   
   
@@ -881,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sampling/" class="md-nav__link">
+      <a href="../../guide/sampling/" class="md-nav__link">
         
   
   
@@ -1058,28 +903,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -1097,7 +945,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1115,7 +963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1149,10 +997,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1161,7 +1012,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
             
   
   
@@ -1197,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/core/base/" class="md-nav__link">
+      <a href="../core/base/" class="md-nav__link">
         
   
   
@@ -1225,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/core/model/" class="md-nav__link">
+      <a href="../core/model/" class="md-nav__link">
         
   
   
@@ -1253,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/core/memory/" class="md-nav__link">
+      <a href="../core/memory/" class="md-nav__link">
         
   
   
@@ -1281,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/core/factory/" class="md-nav__link">
+      <a href="../core/factory/" class="md-nav__link">
         
   
   
@@ -1323,10 +1174,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1335,7 +1189,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
             
   
   
@@ -1371,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/encoders/" class="md-nav__link">
+      <a href="../encoders/" class="md-nav__link">
         
   
   
@@ -1399,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/encoders/scalar/" class="md-nav__link">
+      <a href="../encoders/scalar/" class="md-nav__link">
         
   
   
@@ -1427,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/encoders/sequence/" class="md-nav__link">
+      <a href="../encoders/sequence/" class="md-nav__link">
         
   
   
@@ -1455,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/encoders/set/" class="md-nav__link">
+      <a href="../encoders/set/" class="md-nav__link">
         
   
   
@@ -1483,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/encoders/dict/" class="md-nav__link">
+      <a href="../encoders/dict/" class="md-nav__link">
         
   
   
@@ -1511,7 +1365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/encoders/graph/" class="md-nav__link">
+      <a href="../encoders/graph/" class="md-nav__link">
         
   
   
@@ -1553,10 +1407,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1565,7 +1422,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
             
   
   
@@ -1601,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/representations/complex/" class="md-nav__link">
+      <a href="../representations/complex/" class="md-nav__link">
         
   
   
@@ -1629,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/representations/real/" class="md-nav__link">
+      <a href="../representations/real/" class="md-nav__link">
         
   
   
@@ -1657,7 +1514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/representations/binary/" class="md-nav__link">
+      <a href="../representations/binary/" class="md-nav__link">
         
   
   
@@ -1699,10 +1556,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1711,7 +1571,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
             
   
   
@@ -1747,7 +1607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/ops/fhrr/" class="md-nav__link">
+      <a href="../ops/fhrr/" class="md-nav__link">
         
   
   
@@ -1775,7 +1635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/ops/map/" class="md-nav__link">
+      <a href="../ops/map/" class="md-nav__link">
         
   
   
@@ -1803,7 +1663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/ops/binary/" class="md-nav__link">
+      <a href="../ops/binary/" class="md-nav__link">
         
   
   
@@ -1839,7 +1699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/sampling/" class="md-nav__link">
+      <a href="../sampling/" class="md-nav__link">
         
   
   
@@ -1864,10 +1724,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../api/similarity/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1883,6 +1770,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.similarity.cosine_similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cosine_similarity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.similarity.dot_similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dot_similarity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.similarity.hamming_similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hamming_similarity
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1895,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/utils/" class="md-nav__link">
+      <a href="../utils/" class="md-nav__link">
         
   
   
@@ -1977,10 +1928,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vsamodel-structure" class="md-nav__link">
+  <a href="#functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VSAModel Structure
+        Functions
       
     </span>
   </a>
@@ -1988,60 +1939,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-models" class="md-nav__link">
+  <a href="#vsax.similarity.cosine_similarity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating Models
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating Models">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fhrr-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FHRR Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#map-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MAP Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#binary-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Binary Model
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using Models
+        cosine_similarity
       
     </span>
   </a>
@@ -2049,10 +1950,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-properties" class="md-nav__link">
+  <a href="#vsax.similarity.dot_similarity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model Properties
+        dot_similarity
       
     </span>
   </a>
@@ -2060,21 +1961,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-vsamemory-coming-in-iteration-3" class="md-nav__link">
+  <a href="#vsax.similarity.hamming_similarity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next: VSAMemory (Coming in Iteration 3)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
+        hamming_similarity
       
     </span>
   </a>
@@ -2101,84 +1991,423 @@
   
 
 
-<h1 id="vsa-models">VSA Models<a class="headerlink" href="#vsa-models" title="Permanent link">&para;</a></h1>
-<p>The <code>VSAModel</code> is an immutable container that defines a complete VSA algebra by combining a representation type, operation set, and sampler.</p>
-<h2 id="vsamodel-structure">VSAModel Structure<a class="headerlink" href="#vsamodel-structure" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">VSAModel</span><span class="p">:</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span>                          <span class="c1"># Dimensionality</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">rep_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">AbstractHypervector</span><span class="p">]</span>  <span class="c1"># Representation class</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">opset</span><span class="p">:</span> <span class="n">AbstractOpSet</span>              <span class="c1"># Operation set</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">sampler</span><span class="p">:</span> <span class="n">Callable</span>                 <span class="c1"># Sampling function</span>
-</code></pre></div>
-<h2 id="creating-models">Creating Models<a class="headerlink" href="#creating-models" title="Permanent link">&para;</a></h2>
-<h3 id="fhrr-model">FHRR Model<a class="headerlink" href="#fhrr-model" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">VSAModel</span><span class="p">,</span> <span class="n">ComplexHypervector</span><span class="p">,</span> <span class="n">FHRROperations</span><span class="p">,</span> <span class="n">sample_complex_random</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">fhrr_model</span> <span class="o">=</span> <span class="n">VSAModel</span><span class="p">(</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">rep_cls</span><span class="o">=</span><span class="n">ComplexHypervector</span><span class="p">,</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">opset</span><span class="o">=</span><span class="n">FHRROperations</span><span class="p">(),</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">sampler</span><span class="o">=</span><span class="n">sample_complex_random</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
-</code></pre></div>
-<h3 id="map-model">MAP Model<a class="headerlink" href="#map-model" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">RealHypervector</span><span class="p">,</span> <span class="n">MAPOperations</span><span class="p">,</span> <span class="n">sample_random</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">map_model</span> <span class="o">=</span> <span class="n">VSAModel</span><span class="p">(</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">rep_cls</span><span class="o">=</span><span class="n">RealHypervector</span><span class="p">,</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">opset</span><span class="o">=</span><span class="n">MAPOperations</span><span class="p">(),</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">sampler</span><span class="o">=</span><span class="n">sample_random</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
-</code></pre></div>
-<h3 id="binary-model">Binary Model<a class="headerlink" href="#binary-model" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryHypervector</span><span class="p">,</span> <span class="n">BinaryOperations</span><span class="p">,</span> <span class="n">sample_binary_random</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">binary_model</span> <span class="o">=</span> <span class="n">VSAModel</span><span class="p">(</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">rep_cls</span><span class="o">=</span><span class="n">BinaryHypervector</span><span class="p">,</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">opset</span><span class="o">=</span><span class="n">BinaryOperations</span><span class="p">(),</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">sampler</span><span class="o">=</span><span class="n">sample_binary_random</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">)</span>
-</code></pre></div>
-<h2 id="using-models">Using Models<a class="headerlink" href="#using-models" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Sample basis vectors</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">vectors</span> <span class="o">=</span> <span class="n">fhrr_model</span><span class="o">.</span><span class="n">sampler</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">fhrr_model</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Create hypervectors using model&#39;s representation</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">a</span> <span class="o">=</span> <span class="n">fhrr_model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">b</span> <span class="o">=</span> <span class="n">fhrr_model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">vectors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Perform operations using model&#39;s opset</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">bound</span> <span class="o">=</span> <span class="n">fhrr_model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">bundled</span> <span class="o">=</span> <span class="n">fhrr_model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="model-properties">Model Properties<a class="headerlink" href="#model-properties" title="Permanent link">&para;</a></h2>
-<p><strong>Immutability:</strong> Models are frozen dataclasses - cannot be modified after creation.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">VSAModel</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># This will raise an error</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">model</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">1024</span>  <span class="c1"># FrozenInstanceError!</span>
-</code></pre></div>
-<p><strong>Type Safety:</strong> The model ensures all components work together correctly.</p>
-<h2 id="next-vsamemory-coming-in-iteration-3">Next: VSAMemory (Coming in Iteration 3)<a class="headerlink" href="#next-vsamemory-coming-in-iteration-3" title="Permanent link">&para;</a></h2>
-<p>In the next iteration, you'll be able to use <code>VSAMemory</code> to manage named basis vectors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Coming soon!</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">dog</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span>  <span class="c1"># Access by name</span>
-</code></pre></div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<ul>
-<li>See <a href="../../examples/fhrr/">Examples</a> for complete model usage</li>
-<li>Check <a href="../../api/core/model/">API Reference</a> for detailed documentation</li>
-</ul>
+<h1 id="similarity-metrics-api">Similarity Metrics API<a class="headerlink" href="#similarity-metrics-api" title="Permanent link">&para;</a></h1>
+<p>Similarity metrics for comparing hypervectors.</p>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="vsax.similarity.cosine_similarity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">similarity</span><span class="o">.</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>
+
+<a href="#vsax.similarity.cosine_similarity" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Compute cosine similarity between two hypervectors.</p>
+<p>Cosine similarity measures the cosine of the angle between two vectors,
+ranging from -1 (opposite) to 1 (identical direction). For complex vectors,
+uses the real part of the complex dot product.</p>
+<p>Works with all hypervector types:
+- Complex hypervectors (FHRR): Uses conjugate dot product
+- Real hypervectors (MAP): Standard cosine similarity
+- Binary hypervectors: Normalized dot product</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a>, <span title="jax.numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>First hypervector (AbstractHypervector or jnp.ndarray).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>b</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a>, <span title="jax.numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Second hypervector (AbstractHypervector or jnp.ndarray).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Cosine similarity as a float in range [-1, 1].</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If vectors have different shapes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>from vsax import create_fhrr_model, VSAMemory
+from vsax.similarity import cosine_similarity
+model = create_fhrr_model(dim=512)
+memory = VSAMemory(model)
+memory.add_many(["dog", "cat", "animal"])
+similarity = cosine_similarity(memory["dog"], memory["cat"])
+print(f"Similarity: {similarity:.3f}")</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="vsax.similarity.dot_similarity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">similarity</span><span class="o">.</span><span class="n">dot_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>
+
+<a href="#vsax.similarity.dot_similarity" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Compute dot product similarity between two hypervectors.</p>
+<p>The dot product provides an unnormalized similarity measure. Higher values
+indicate more similarity. For complex vectors, uses the real part of the
+complex dot product (conjugate dot product).</p>
+<p>Works with all hypervector types:
+- Complex hypervectors (FHRR): Real part of a* · b
+- Real hypervectors (MAP): Standard dot product a · b
+- Binary hypervectors: Dot product (count of matching bits)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a>, <span title="jax.numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>First hypervector (AbstractHypervector or jnp.ndarray).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>b</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a>, <span title="jax.numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Second hypervector (AbstractHypervector or jnp.ndarray).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dot product similarity as a float.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If vectors have different shapes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>from vsax import create_map_model, VSAMemory
+from vsax.similarity import dot_similarity
+model = create_map_model(dim=512)
+memory = VSAMemory(model)
+memory.add_many(["apple", "orange", "fruit"])
+similarity = dot_similarity(memory["apple"], memory["orange"])
+print(f"Dot product: {similarity:.3f}")</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="vsax.similarity.hamming_similarity" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vsax</span><span class="o">.</span><span class="n">similarity</span><span class="o">.</span><span class="n">hamming_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>
+
+<a href="#vsax.similarity.hamming_similarity" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Compute Hamming similarity between two binary hypervectors.</p>
+<p>Hamming similarity measures the proportion of matching bits between two
+binary vectors. It ranges from 0 (completely different) to 1 (identical).</p>
+<p>Primarily designed for binary hypervectors but works with any vector type
+by comparing element equality. For best results, use with bipolar {-1, +1}
+or binary {0, 1} vectors.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a>, <span title="jax.numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>First hypervector (AbstractHypervector or jnp.ndarray).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>b</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="vsax.core.base.AbstractHypervector" href="../core/base/#vsax.core.base.AbstractHypervector">AbstractHypervector</a>, <span title="jax.numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Second hypervector (AbstractHypervector or jnp.ndarray).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hamming similarity as a float in range [0, 1].</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>1.0 means all bits match, 0.0 means no bits match.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If vectors have different shapes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>from vsax import create_binary_model, VSAMemory
+from vsax.similarity import hamming_similarity
+model = create_binary_model(dim=10000, bipolar=True)
+memory = VSAMemory(model)
+memory.add_many(["cat", "dog", "bird"])
+similarity = hamming_similarity(memory["cat"], memory["dog"])
+print(f"Hamming similarity: {similarity:.3f}")</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+    </div>
+
+</div>
 
 
 
