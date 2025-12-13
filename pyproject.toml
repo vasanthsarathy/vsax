@@ -25,6 +25,7 @@ classifiers = [
 dependencies = [
     "jax>=0.4.20",
     "jaxlib>=0.4.20",
+    "marimo>=0.17.6",
     "numpy>=1.24.0",
 ]
 

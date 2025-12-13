@@ -8,13 +8,17 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 
 ## Features
 
-- 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations *(coming in iteration 2)*
+- 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
 - ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
+- 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
+- ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
+- 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 📊 **Encoders**: Scalar and dictionary encoders for structured data *(coming in iteration 4)*
 - 💾 **Persistent Storage**: Save and load basis vectors *(coming in iteration 6)*
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity *(coming in iteration 5)*
 - 📚 **Comprehensive Documentation**: Full API docs and examples
+- ✅ **96% Test Coverage**: 175 tests ensuring reliability
 
 ## Installation
 
@@ -76,18 +80,96 @@ pip install -e ".[dev,docs]"
 
 ## Quick Start
 
-```python
-from vsax import VSAModel, AbstractHypervector, AbstractOpSet
+### FHRR Model (Complex Hypervectors)
 
-# More examples coming in iteration 2+
-# See docs/design-spec.md for complete technical specification
+```python
+import jax
+from vsax import VSAModel, ComplexHypervector, FHRROperations, sample_complex_random
+
+# Create an FHRR model
+model = VSAModel(
+    dim=512,
+    rep_cls=ComplexHypervector,
+    opset=FHRROperations(),
+    sampler=sample_complex_random
+)
+
+# Sample and create hypervectors
+key = jax.random.PRNGKey(42)
+vectors = model.sampler(dim=model.dim, n=2, key=key)
+a = model.rep_cls(vectors[0]).normalize()
+b = model.rep_cls(vectors[1]).normalize()
+
+# Bind two vectors
+bound = model.opset.bind(a.vec, b.vec)
+print(f"Bound vector shape: {bound.shape}")
+
+# Bundle multiple vectors
+bundled = model.opset.bundle(a.vec, b.vec)
+print(f"Bundled vector: unit magnitude = {jax.numpy.allclose(jax.numpy.abs(bundled), 1.0)}")
 ```
+
+### MAP Model (Real Hypervectors)
+
+```python
+from vsax import RealHypervector, MAPOperations, sample_random
+
+# Create a MAP model
+model = VSAModel(
+    dim=512,
+    rep_cls=RealHypervector,
+    opset=MAPOperations(),
+    sampler=sample_random
+)
+
+# Use the model
+key = jax.random.PRNGKey(42)
+vectors = model.sampler(dim=model.dim, n=2, key=key)
+a = model.rep_cls(vectors[0]).normalize()
+b = model.rep_cls(vectors[1]).normalize()
+
+# Element-wise multiplication for binding
+bound = model.opset.bind(a.vec, b.vec)
+
+# Mean for bundling
+bundled = model.opset.bundle(a.vec, b.vec)
+```
+
+### Binary Model (Bipolar Hypervectors)
+
+```python
+from vsax import BinaryHypervector, BinaryOperations, sample_binary_random
+
+# Create a Binary model
+model = VSAModel(
+    dim=512,
+    rep_cls=BinaryHypervector,
+    opset=BinaryOperations(),
+    sampler=sample_binary_random
+)
+
+# Sample bipolar vectors
+key = jax.random.PRNGKey(42)
+vectors = model.sampler(dim=model.dim, n=2, key=key, bipolar=True)
+a = model.rep_cls(vectors[0], bipolar=True)
+b = model.rep_cls(vectors[1], bipolar=True)
+
+# XOR binding
+bound = model.opset.bind(a.vec, b.vec)
+
+# Majority voting
+bundled = model.opset.bundle(a.vec, b.vec)
+```
+
+See [docs/design-spec.md](docs/design-spec.md) for complete technical specification.
 
 ## Development Status
 
-Currently in **Iteration 1: Foundation & Infrastructure** ✅
+Currently in **Iteration 2: Core Algebras** ✅
 
 ### Completed
+
+**Iteration 1** (v0.1.0): Foundation & Infrastructure ✅
 - ✅ Core abstract classes (AbstractHypervector, AbstractOpSet)
 - ✅ VSAModel dataclass
 - ✅ Package structure
@@ -96,12 +178,14 @@ Currently in **Iteration 1: Foundation & Infrastructure** ✅
 - ✅ Documentation site (MkDocs)
 - ✅ Development tooling (ruff, mypy)
 
-### Coming Next
+**Iteration 2** (v0.2.0): All 3 Representations + All 3 OpSets ✅
+- ✅ ComplexHypervector, RealHypervector, BinaryHypervector
+- ✅ FHRROperations, MAPOperations, BinaryOperations
+- ✅ Sampling utilities (sample_random, sample_complex_random, sample_binary_random)
+- ✅ 175 comprehensive tests with 96% coverage
+- ✅ Full integration tests for all model combinations
 
-**Iteration 2** (v0.2.0): All 3 Representations + All 3 OpSets
-- ComplexHypervector, RealHypervector, BinaryHypervector
-- FHRROperations, MAPOperations, BinaryOperations
-- Sampling utilities
+### Coming Next
 
 **Iteration 3** (v0.3.0): VSAModel + VSAMemory
 - Symbol table and memory management
