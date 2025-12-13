@@ -13,16 +13,17 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
 - 🏭 **Factory Functions**: One-line model creation with sensible defaults ✅
 - 💾 **VSAMemory**: Dictionary-style symbol management ✅
-- 📊 **5 Core Encoders**: Scalar, Sequence, Set, Dict, and Graph encoders ✅ **NEW in v0.4.0**
-- 🎨 **Custom Encoders**: Easy-to-extend AbstractEncoder base class ✅ **NEW in v0.4.0**
-- ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
+- 📊 **5 Core Encoders**: Scalar, Sequence, Set, Dict, and Graph encoders ✅
+- 🎨 **Custom Encoders**: Easy-to-extend AbstractEncoder base class ✅
+- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity ✅ **NEW in v0.5.0**
+- ⚡ **Batch Operations**: GPU-accelerated vmap operations for parallel processing ✅ **NEW in v0.5.0**
+- 🚀 **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
-- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity *(coming in v0.5.0)*
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
-- ✅ **80%+ Test Coverage**: 280+ tests ensuring reliability
+- ✅ **95%+ Test Coverage**: 319 tests ensuring reliability
 
 ## Installation
 
@@ -90,12 +91,14 @@ pip install -e ".[dev,docs]"
 
 ## Quick Start
 
-**New in v0.4.0:** 5 core encoders for structured data!
+**New in v0.5.0:** Similarity metrics and batch operations!
 
 ### Simple Example
 
 ```python
 from vsax import create_fhrr_model, VSAMemory, DictEncoder
+from vsax.similarity import cosine_similarity
+from vsax.utils import vmap_bind
 
 # Create model with factory function (one line!)
 model = create_fhrr_model(dim=512)
@@ -118,6 +121,16 @@ dog_is_animal = model.opset.bind(dog.vec, memory["animal"].vec)
 
 # Bundle concepts (sum and normalize)
 pets = model.opset.bundle(memory["dog"].vec, memory["cat"].vec)
+
+# NEW: Similarity search
+similarity = cosine_similarity(memory["dog"], memory["cat"])
+print(f"Dog-Cat similarity: {similarity:.3f}")
+
+# NEW: Batch operations (GPU-accelerated)
+import jax.numpy as jnp
+nouns = jnp.stack([memory["dog"].vec, memory["cat"].vec])
+verbs = jnp.stack([memory["run"].vec, memory["jump"].vec])
+actions = vmap_bind(model.opset, nouns, verbs)  # Parallel binding!
 ```
 
 ### All Three Models
@@ -162,7 +175,7 @@ See [docs/design-spec.md](docs/design-spec.md) for complete technical specificat
 
 ## Development Status
 
-Currently in **Iteration 4: Encoders + Examples** ✅ **FIRST USABLE RELEASE!**
+Currently in **Iteration 5: Similarity Metrics & Utilities** ✅
 
 ### Completed
 
@@ -198,14 +211,21 @@ Currently in **Iteration 4: Encoders + Examples** ✅ **FIRST USABLE RELEASE!**
 - ✅ AbstractEncoder - Base class for custom encoders
 - ✅ Complete integration examples for all 3 models
 - ✅ Custom encoder examples (DateEncoder, ColorEncoder)
-- ✅ 280+ tests with 80%+ coverage
+- ✅ 280+ tests with 92%+ coverage
+
+**Iteration 5** (v0.5.0): Similarity Metrics & Utilities ✅
+- ✅ Cosine, dot, and Hamming similarity functions
+- ✅ Batch operations with JAX vmap (vmap_bind, vmap_bundle, vmap_similarity)
+- ✅ Visualization utilities (pretty_repr, format_similarity_results)
+- ✅ GPU-accelerated similarity search
+- ✅ Comprehensive examples (similarity_search.py, batch_operations.py)
+- ✅ 319 tests with 95%+ coverage
 
 ### Coming Next
 
-**Iteration 5** (v0.5.0): Similarity Metrics & I/O
-- Cosine, dot, and Hamming similarity functions
-- Save/load functionality for basis vectors
-- Batch operations with JAX vmap
+**Iteration 6** (v0.5.x): I/O & Persistence
+- Save/load functionality for basis vectors (JSON format)
+- Persistence examples and documentation
 
 See [todo.md](todo.md) for the complete development roadmap.
 
@@ -262,7 +282,7 @@ If you use VSAX in your research, please cite:
   author = {Sarathy, Vasanth},
   year = {2025},
   url = {https://github.com/vasanthsarathy/vsax},
-  version = {0.2.0}
+  version = {0.4.2}
 }
 ```
 
