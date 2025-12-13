@@ -40,17 +40,22 @@ class AbstractEncoder(ABC):
         self.memory = memory
 
     @abstractmethod
-    def encode(self, data: Any) -> AbstractHypervector:
+    def encode(self, *args: Any, **kwargs: Any) -> AbstractHypervector:
         """Encode data into a hypervector.
 
         Args:
-            data: The data to encode (type depends on encoder).
+            *args: Positional arguments (encoder-specific).
+            **kwargs: Keyword arguments (encoder-specific).
 
         Returns:
             The encoded hypervector.
 
         Raises:
             NotImplementedError: This is an abstract method.
+
+        Note:
+            Different encoders may have different signatures. See specific
+            encoder documentation for details.
         """
         pass
 
