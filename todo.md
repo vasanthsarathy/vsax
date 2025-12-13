@@ -203,7 +203,7 @@ tests/
 ## Iteration 4: Encoders + Working Examples (3-4 days) 🎯 FIRST USABLE
 **Version:** 0.4.0
 **PyPI:** Yes - "First Usable Release"
-**Goal:** Users can encode structured data and run examples
+**Goal:** Users can encode structured data types (scalars, sequences, sets, dicts, graphs) + custom encoders
 
 ### Files to Create
 ```
@@ -211,45 +211,156 @@ vsax/encoders/
 ├── __init__.py
 ├── base.py                       # AbstractEncoder
 ├── scalar.py                     # ScalarEncoder (power encoding)
-└── dict.py                       # DictEncoder (role-filler binding)
+├── sequence.py                   # SequenceEncoder (lists, tuples)
+├── set.py                        # SetEncoder (unordered collections)
+├── dict.py                       # DictEncoder (role-filler binding)
+└── graph.py                      # GraphEncoder (nodes + edges)
 
 examples/
 ├── basic_binding.py              # Simple bind operation
 ├── scalar_encoding.py            # Encode temperature=23.5
-├── dict_encoding.py              # Encode {"subject": "dog", ...}
-├── fhrr_example.py
-├── map_example.py
-└── binary_example.py
+├── sequence_encoding.py          # Encode ["red", "green", "blue"]
+├── set_encoding.py               # Encode {"dog", "cat", "bird"}
+├── dict_encoding.py              # Encode {"subject": "dog", "action": "run"}
+├── graph_encoding.py             # Encode graph structures
+├── custom_encoder.py             # Example custom encoder
+├── fhrr_example.py               # Complete FHRR workflow
+├── map_example.py                # Complete MAP workflow
+└── binary_example.py             # Complete Binary workflow
 
 tests/encoders/
-├── test_scalar_encoder.py
-└── test_dict_encoder.py
+├── test_scalar.py
+├── test_sequence.py
+├── test_set.py
+├── test_dict.py
+├── test_graph.py
+└── test_custom.py
 
-docs/examples/
-├── basic-usage.md
-├── scalar-encoding.md
-└── dict-encoding.md
+docs/guide/encoders/
+├── overview.md                   # Encoders overview
+├── scalar.md
+├── sequence.md
+├── set.md
+├── dict.md
+├── graph.md
+└── custom.md                     # How to write custom encoders
 ```
 
 ### Key Implementations
 
+**AbstractEncoder (base class):**
+- `__init__(model, memory)` - accepts VSAModel and VSAMemory
+- `encode(data)` - abstract method for encoding
+- Optional: `fit(data)` for learned encodings
+- Optional: `decode(hv, candidates)` for decoding
+
 **ScalarEncoder:**
-- `encode(name: str, value: float)` → power basis vector
-- Complex: multiply phases by value
-- Real/Binary: iterated binding
+- Encode numeric values (int, float)
+- Power encoding: `basis ** value` (for complex)
+- Iterated binding for real/binary
+- Example: `encode("temperature", 23.5)`
+
+**SequenceEncoder:**
+- Encode ordered sequences (list, tuple)
+- Positional binding: `bundle(bind(pos0, item0), bind(pos1, item1), ...)`
+- Preserves order information
+- Example: `encode(["red", "green", "blue"])`
+
+**SetEncoder:**
+- Encode unordered collections (set)
+- Simple bundling (no position info)
+- Order-invariant
+- Example: `encode({"dog", "cat", "bird"})`
 
 **DictEncoder:**
-- `encode(mapping: Dict[str, str])` → bundle(bind(role, filler), ...)
-- Validates all symbols exist in memory
+- Encode key-value mappings (dict)
+- Role-filler binding: `bundle(bind(key1, val1), bind(key2, val2), ...)`
+- Example: `encode({"subject": "dog", "action": "run"})`
 
-**Examples:** All 6 examples from design spec working
+**GraphEncoder:**
+- Encode graph structures
+- Nodes as bundled hypervectors
+- Edges as `bind(source, bind(relation, target))`
+- Supports directed/undirected graphs
+- Example: Encode social networks, knowledge graphs
+
+**Custom Encoder Support:**
+- Users can subclass AbstractEncoder
+- Template and examples provided
+- Documented best practices
+
+### Implementation Plan
+
+#### Phase 1: Base Infrastructure ✅
+- [ ] Create `vsax/encoders/__init__.py`
+- [ ] Implement `AbstractEncoder` base class
+- [ ] Write tests for abstract interface
+- [ ] Update main `__init__.py` exports
+
+#### Phase 2: ScalarEncoder ✅
+- [ ] Implement ScalarEncoder
+- [ ] Support all 3 models (FHRR, MAP, Binary)
+- [ ] Write comprehensive tests
+- [ ] Create example + documentation
+
+#### Phase 3: SequenceEncoder ✅
+- [ ] Implement SequenceEncoder
+- [ ] Support lists and tuples
+- [ ] Positional binding strategy
+- [ ] Tests + example + docs
+
+#### Phase 4: SetEncoder ✅
+- [ ] Implement SetEncoder
+- [ ] Verify order-invariance
+- [ ] Tests + example + docs
+
+#### Phase 5: DictEncoder ✅
+- [ ] Implement DictEncoder
+- [ ] Role-filler binding
+- [ ] Tests + example + docs
+
+#### Phase 6: GraphEncoder ✅
+- [ ] Implement GraphEncoder
+- [ ] Support directed/undirected
+- [ ] Tests + example + docs
+
+#### Phase 7: Custom Encoder Support ✅
+- [ ] Create custom encoder template
+- [ ] Write guide + examples
+- [ ] Document best practices
+
+#### Phase 8: Integration Examples ✅
+- [ ] basic_binding.py
+- [ ] fhrr_example.py
+- [ ] map_example.py
+- [ ] binary_example.py
+
+#### Phase 9: Documentation ✅
+- [ ] Update main documentation
+- [ ] API reference for all encoders
+- [ ] Update mkdocs navigation
+
+#### Phase 10: Release ✅
+- [ ] ≥80% test coverage
+- [ ] Update CHANGELOG.md
+- [ ] Publish v0.4.0 to PyPI
+
+### Design Decisions to Finalize
+
+1. **Scalar encoding range**: What range? Normalized 0-1? User-specified?
+2. **Sequence length**: Fixed or dynamic max length?
+3. **Graph format**: NetworkX, edge lists, or both?
+4. **Decoding**: Implement decode() or defer to similarity search?
+5. **Batch encoding**: Include in v0.4.0 or defer?
 
 ### Completion Criteria
+- [ ] All 5 core encoders implemented (Scalar, Sequence, Set, Dict, Graph)
+- [ ] Custom encoder support with examples
 - [ ] Encoders work with all 3 models
-- [ ] All design spec examples executable
-- [ ] Users can install and run meaningful tasks
+- [ ] Integration examples for each model
 - [ ] ≥80% coverage
-- [ ] **FIRST USABLE MILESTONE**
+- [ ] Full documentation
+- [ ] **FIRST USABLE MILESTONE** 🚀
 
 ---
 
