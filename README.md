@@ -11,16 +11,17 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 ## Features
 
 - 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
+- 🏭 **Factory Functions**: One-line model creation with sensible defaults ✅ **NEW in v0.3.0**
+- 💾 **VSAMemory**: Dictionary-style symbol management ✅ **NEW in v0.3.0**
 - ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
-- 📊 **Encoders**: Scalar and dictionary encoders for structured data *(coming in iteration 4)*
-- 💾 **Persistent Storage**: Save and load basis vectors *(coming in iteration 6)*
-- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity *(coming in iteration 5)*
-- 📚 **Comprehensive Documentation**: Full API docs and examples
-- ✅ **96% Test Coverage**: 175 tests ensuring reliability
+- 📊 **Encoders**: Scalar and dictionary encoders for structured data *(coming in v0.4.0)*
+- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity *(coming in v0.5.0)*
+- 📚 **Comprehensive Documentation**: Full API docs and examples ✅
+- ✅ **89% Test Coverage**: 230 tests ensuring reliability
 
 ## Installation
 
@@ -88,92 +89,80 @@ pip install -e ".[dev,docs]"
 
 ## Quick Start
 
-### FHRR Model (Complex Hypervectors)
+**New in v0.3.0:** Easy-to-use factory functions and VSAMemory for symbol management!
+
+### Simple Example
 
 ```python
-import jax
+from vsax import create_fhrr_model, VSAMemory
+
+# Create model with factory function (one line!)
+model = create_fhrr_model(dim=512)
+
+# Create memory for symbol management
+memory = VSAMemory(model)
+
+# Add symbols - automatically samples and stores hypervectors
+memory.add_many(["dog", "cat", "animal", "pet"])
+
+# Dictionary-style access
+dog = memory["dog"]
+animal = memory["animal"]
+
+# Check if symbol exists
+if "dog" in memory:
+    print(f"Memory contains {len(memory)} symbols")
+
+# Bind concepts (circular convolution)
+dog_is_animal = model.opset.bind(dog.vec, animal.vec)
+
+# Bundle concepts (sum and normalize)
+pets = model.opset.bundle(memory["dog"].vec, memory["cat"].vec)
+```
+
+### All Three Models
+
+VSAX supports three VSA models, all with the same simple API:
+
+```python
+from vsax import create_fhrr_model, create_map_model, create_binary_model, VSAMemory
+
+# FHRR: Complex hypervectors, exact unbinding
+fhrr = create_fhrr_model(dim=512)
+
+# MAP: Real hypervectors, approximate unbinding
+map_model = create_map_model(dim=512)
+
+# Binary: Discrete hypervectors, exact unbinding
+binary = create_binary_model(dim=10000, bipolar=True)
+
+# Same interface for all models!
+for model in [fhrr, map_model, binary]:
+    memory = VSAMemory(model)
+    memory.add("concept")
+    vec = memory["concept"]
+```
+
+### Advanced: Manual Model Creation
+
+You can still create models manually if you need custom configuration:
+
+```python
 from vsax import VSAModel, ComplexHypervector, FHRROperations, sample_complex_random
 
-# Create an FHRR model
 model = VSAModel(
     dim=512,
     rep_cls=ComplexHypervector,
     opset=FHRROperations(),
     sampler=sample_complex_random
 )
-
-# Sample and create hypervectors
-key = jax.random.PRNGKey(42)
-vectors = model.sampler(dim=model.dim, n=2, key=key)
-a = model.rep_cls(vectors[0]).normalize()
-b = model.rep_cls(vectors[1]).normalize()
-
-# Bind two vectors
-bound = model.opset.bind(a.vec, b.vec)
-print(f"Bound vector shape: {bound.shape}")
-
-# Bundle multiple vectors
-bundled = model.opset.bundle(a.vec, b.vec)
-print(f"Bundled vector: unit magnitude = {jax.numpy.allclose(jax.numpy.abs(bundled), 1.0)}")
-```
-
-### MAP Model (Real Hypervectors)
-
-```python
-from vsax import RealHypervector, MAPOperations, sample_random
-
-# Create a MAP model
-model = VSAModel(
-    dim=512,
-    rep_cls=RealHypervector,
-    opset=MAPOperations(),
-    sampler=sample_random
-)
-
-# Use the model
-key = jax.random.PRNGKey(42)
-vectors = model.sampler(dim=model.dim, n=2, key=key)
-a = model.rep_cls(vectors[0]).normalize()
-b = model.rep_cls(vectors[1]).normalize()
-
-# Element-wise multiplication for binding
-bound = model.opset.bind(a.vec, b.vec)
-
-# Mean for bundling
-bundled = model.opset.bundle(a.vec, b.vec)
-```
-
-### Binary Model (Bipolar Hypervectors)
-
-```python
-from vsax import BinaryHypervector, BinaryOperations, sample_binary_random
-
-# Create a Binary model
-model = VSAModel(
-    dim=512,
-    rep_cls=BinaryHypervector,
-    opset=BinaryOperations(),
-    sampler=sample_binary_random
-)
-
-# Sample bipolar vectors
-key = jax.random.PRNGKey(42)
-vectors = model.sampler(dim=model.dim, n=2, key=key, bipolar=True)
-a = model.rep_cls(vectors[0], bipolar=True)
-b = model.rep_cls(vectors[1], bipolar=True)
-
-# XOR binding
-bound = model.opset.bind(a.vec, b.vec)
-
-# Majority voting
-bundled = model.opset.bundle(a.vec, b.vec)
 ```
 
 See [docs/design-spec.md](docs/design-spec.md) for complete technical specification.
 
 ## Development Status
 
-Currently in **Iteration 2: Core Algebras** ✅
+Currently in **Iteration 3: VSAMemory + Factory Functions** ✅
 
 ### Completed
 
@@ -193,15 +182,19 @@ Currently in **Iteration 2: Core Algebras** ✅
 - ✅ 175 comprehensive tests with 96% coverage
 - ✅ Full integration tests for all model combinations
 
+**Iteration 3** (v0.3.0): VSAMemory + Factory Functions ✅
+- ✅ VSAMemory class - dictionary-style symbol management
+- ✅ Factory functions (create_fhrr_model, create_map_model, create_binary_model)
+- ✅ Utility functions (coerce_to_array, validation helpers)
+- ✅ 230 tests with 89% coverage
+- ✅ Comprehensive documentation guides
+
 ### Coming Next
 
-**Iteration 3** (v0.3.0): VSAModel + VSAMemory
-- Symbol table and memory management
-- Factory functions for easy model creation
-
-**Iteration 4** (v0.4.0): First Usable Release
-- ScalarEncoder and DictEncoder
-- Working examples for all three models
+**Iteration 4** (v0.4.0): First Usable Release 🎯
+- ScalarEncoder for numeric values
+- DictEncoder for structured data
+- Complete working examples for all three models
 
 See [todo.md](todo.md) for the complete development roadmap.
 
