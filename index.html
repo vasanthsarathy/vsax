@@ -898,6 +898,34 @@
   
   
     <li class="md-nav__item">
+      <a href="guide/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="guide/representations/" class="md-nav__link">
         
   
@@ -1968,6 +1996,34 @@
   
   
     <li class="md-nav__item">
+      <a href="api/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="api/utils/" class="md-nav__link">
         
   
@@ -2263,9 +2319,10 @@
 <li>⚙️ <strong>Full Operation Sets</strong>: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅</li>
 <li>🎲 <strong>Random Sampling</strong>: Sampling utilities for all representation types ✅</li>
 <li>💯 <strong>Type-Safe</strong>: Full type annotations with mypy support</li>
-<li>✅ <strong>Well-Tested</strong>: 319 tests with 95% coverage</li>
+<li>✅ <strong>Well-Tested</strong>: 339 tests with 96% coverage</li>
 <li>🔍 <strong>Similarity Metrics</strong>: Cosine, dot, and Hamming similarity</li>
 <li>⚡ <strong>Batch Operations</strong>: GPU-accelerated vmap operations</li>
+<li>💾 <strong>I/O &amp; Persistence</strong>: Save/load basis vectors to JSON</li>
 </ul>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <h3 id="from-pypi-recommended">From PyPI (Recommended)<a class="headerlink" href="#from-pypi-recommended" title="Permanent link">&para;</a></h3>
@@ -2347,7 +2404,7 @@
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Majority voting for bundling</span>
 </code></pre></div>
 <h2 id="development-status">Development Status<a class="headerlink" href="#development-status" title="Permanent link">&para;</a></h2>
-<p><strong>Current</strong>: Iteration 5 Complete ✅</p>
+<p><strong>Current</strong>: Iteration 6 Complete ✅</p>
 <h3 id="completed">Completed<a class="headerlink" href="#completed" title="Permanent link">&para;</a></h3>
 <p><strong>Iteration 1</strong> (v0.1.0): Foundation &amp; Infrastructure ✅
 - ✅ Core abstract classes (AbstractHypervector, AbstractOpSet)
@@ -2379,10 +2436,17 @@
 - ✅ Visualization utilities (pretty_repr, format_similarity_results)
 - ✅ GPU-accelerated similarity search
 - ✅ 319 tests with 95%+ coverage</p>
+<p><strong>Iteration 6</strong> (v0.6.0): I/O &amp; Persistence ✅
+- ✅ save_basis() and load_basis() functions
+- ✅ JSON serialization for all 3 models
+- ✅ Round-trip vector preservation
+- ✅ Dimension and type validation
+- ✅ 339 tests with 96% coverage</p>
 <h3 id="coming-next">Coming Next<a class="headerlink" href="#coming-next" title="Permanent link">&para;</a></h3>
-<p><strong>Iteration 6</strong> (v0.6.0): I/O &amp; Persistence
-- Save/load functionality for basis vectors (JSON format)
-- Persistence examples and documentation</p>
+<p><strong>Iteration 7</strong> (v1.0.0): Full Documentation &amp; Production Release
+- Complete API documentation
+- Tutorial notebooks
+- Production-ready v1.0.0 release</p>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="getting-started/">Getting Started</a> - Installation and first steps</li>
@@ -2401,7 +2465,7 @@
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{VSAX: Vector Symbolic Algebra for JAX}</span><span class="p">,</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Sarathy, Vasanth}</span><span class="p">,</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2025}</span><span class="p">,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{0.5.0}</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{0.6.0}</span><span class="p">,</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{https://github.com/vasanthsarathy/vsax}</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
 </code></pre></div>
