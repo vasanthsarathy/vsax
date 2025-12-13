@@ -1,8 +1,8 @@
 """Tests for ScalarEncoder."""
 
+import jax.numpy as jnp
 import pytest
 
-import jax.numpy as jnp
 from vsax import VSAMemory, create_binary_model, create_fhrr_model, create_map_model
 from vsax.encoders import ScalarEncoder
 

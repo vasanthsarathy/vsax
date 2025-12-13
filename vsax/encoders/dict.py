@@ -1,10 +1,7 @@
 """DictEncoder for encoding dictionaries into hypervectors using role-filler binding."""
 
-from typing import Dict
 
 from vsax.core.base import AbstractHypervector
-from vsax.core.memory import VSAMemory
-from vsax.core.model import VSAModel
 from vsax.encoders.base import AbstractEncoder
 
 
@@ -30,7 +27,7 @@ class DictEncoder(AbstractEncoder):
         >>> sentence_hv = encoder.encode({"subject": "dog", "action": "run"})
     """
 
-    def encode(self, mapping: Dict[str, str]) -> AbstractHypervector:
+    def encode(self, mapping: dict[str, str]) -> AbstractHypervector:
         """Encode a dictionary of key-value pairs.
 
         Args:

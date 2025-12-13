@@ -1,10 +1,8 @@
 """SetEncoder for encoding unordered sets into hypervectors."""
 
-from typing import Set, Union
+from typing import Union
 
 from vsax.core.base import AbstractHypervector
-from vsax.core.memory import VSAMemory
-from vsax.core.model import VSAModel
 from vsax.encoders.base import AbstractEncoder
 
 
@@ -28,7 +26,7 @@ class SetEncoder(AbstractEncoder):
         >>> animals_set_hv = encoder.encode({"dog", "cat", "bird"})
     """
 
-    def encode(self, elements: Union[Set[str], list[str]]) -> AbstractHypervector:
+    def encode(self, elements: Union[set[str], list[str]]) -> AbstractHypervector:
         """Encode an unordered set of symbols.
 
         Args:

@@ -1,8 +1,8 @@
 """Tests for DictEncoder."""
 
+import jax.numpy as jnp
 import pytest
 
-import jax.numpy as jnp
 from vsax import VSAMemory, create_fhrr_model
 from vsax.encoders import DictEncoder
 

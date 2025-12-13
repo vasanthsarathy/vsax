@@ -1,10 +1,8 @@
 """SequenceEncoder for encoding ordered sequences (lists, tuples) into hypervectors."""
 
-from typing import Sequence, Union
+from collections.abc import Sequence
 
 from vsax.core.base import AbstractHypervector
-from vsax.core.memory import VSAMemory
-from vsax.core.model import VSAModel
 from vsax.encoders.base import AbstractEncoder
 
 
