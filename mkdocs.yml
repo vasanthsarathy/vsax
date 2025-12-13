@@ -50,6 +50,7 @@ nav:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md
     - VSAMemory: guide/memory.md
+    - Encoders: guide/encoders.md
     - Representations: guide/representations.md
     - Operations: guide/operations.md
     - Sampling: guide/sampling.md
@@ -64,6 +65,13 @@ nav:
       - VSAModel: api/core/model.md
       - VSAMemory: api/core/memory.md
       - Factory Functions: api/core/factory.md
+    - Encoders:
+      - Overview: api/encoders/index.md
+      - ScalarEncoder: api/encoders/scalar.md
+      - SequenceEncoder: api/encoders/sequence.md
+      - SetEncoder: api/encoders/set.md
+      - DictEncoder: api/encoders/dict.md
+      - GraphEncoder: api/encoders/graph.md
     - Representations:
       - ComplexHypervector: api/representations/complex.md
       - RealHypervector: api/representations/real.md
