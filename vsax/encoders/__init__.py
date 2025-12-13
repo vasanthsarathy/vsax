@@ -1,6 +1,9 @@
 """Encoders for structured data."""
 
-# Placeholder for iteration 4
-# Will contain: AbstractEncoder, ScalarEncoder, DictEncoder
+from vsax.encoders.base import AbstractEncoder
+from vsax.encoders.scalar import ScalarEncoder
 
-__all__ = []
+__all__ = [
+    "AbstractEncoder",
+    "ScalarEncoder",
+]
