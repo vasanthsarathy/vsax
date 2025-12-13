@@ -74,7 +74,7 @@ class VSAMemory:
         self._key, subkey = jax.random.split(self._key)
 
         # Sample a new vector
-        vec = self._model.sampler(dim=self._model.dim, n=1, key=subkey)[0]
+        vec = self._model.sampler(self._model.dim, 1, subkey)[0]
 
         # Wrap in representation
         hv = self._model.rep_cls(vec)
