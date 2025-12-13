@@ -1,7 +1,9 @@
 # VSAX: Vector Symbolic Algebra for JAX
 
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![PyPI version](https://img.shields.io/pypi/v/vsax.svg)](https://pypi.org/project/vsax/)
+[![Python Version](https://img.shields.io/pypi/pyversions/vsax.svg)](https://pypi.org/project/vsax/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Documentation](https://img.shields.io/badge/docs-github%20pages-blue)](https://vasanthsarathy.github.io/vsax/)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
 VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Architectures (VSAs). It provides composable symbolic representations using hypervectors, algebraic operations for binding and bundling, and encoding strategies for symbolic and structured data.
@@ -22,10 +24,16 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 
 ## Installation
 
-### From PyPI (Coming Soon)
+### From PyPI (Recommended)
 
 ```bash
 pip install vsax
+```
+
+Or with uv:
+
+```bash
+uv pip install vsax
 ```
 
 ### From Source
@@ -45,7 +53,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 Then install VSAX:
 
 ```bash
-git clone https://github.com/yourusername/vsax.git
+git clone https://github.com/vasanthsarathy/vsax.git
 cd vsax
 
 # Create virtual environment and install package
@@ -57,7 +65,7 @@ uv pip install -e .
 #### Using pip
 
 ```bash
-git clone https://github.com/yourusername/vsax.git
+git clone https://github.com/vasanthsarathy/vsax.git
 cd vsax
 pip install -e .
 ```
@@ -199,9 +207,10 @@ See [todo.md](todo.md) for the complete development roadmap.
 
 ## Documentation
 
+- [Full Documentation](https://vasanthsarathy.github.io/vsax/)
 - [Getting Started](docs/getting-started.md)
 - [Design Specification](docs/design-spec.md)
-- [API Reference](https://vsax.readthedocs.io) *(coming soon)*
+- [API Reference](https://vasanthsarathy.github.io/vsax/api/)
 - [Contributing](CONTRIBUTING.md)
 
 ## Contributing
@@ -246,9 +255,10 @@ If you use VSAX in your research, please cite:
 ```bibtex
 @software{vsax2025,
   title = {VSAX: Vector Symbolic Algebra for JAX},
-  author = {Your Name},
+  author = {Sarathy, Vasanth},
   year = {2025},
-  url = {https://github.com/yourusername/vsax}
+  url = {https://github.com/vasanthsarathy/vsax},
+  version = {0.2.0}
 }
 ```
 

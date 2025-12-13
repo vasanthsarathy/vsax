@@ -141,3 +141,6 @@ Thumbs.db
 basis.json
 *.json
 !tests/io/fixtures/*.json
+
+# PyPI credentials
+.pypirc
