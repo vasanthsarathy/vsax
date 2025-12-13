@@ -3,8 +3,8 @@ site_description: JAX-native Vector Symbolic Algebra library
 site_author: VSAX Contributors
 site_url: https://vsax.readthedocs.io
 
-repo_name: yourusername/vsax
-repo_url: https://github.com/yourusername/vsax
+repo_name: vasanthsarathy/vsax
+repo_url: https://github.com/vasanthsarathy/vsax
 
 theme:
   name: material
@@ -47,10 +47,12 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - User Guide:
+    - Models: guide/models.md
+    - Factory Functions: guide/factory.md
+    - VSAMemory: guide/memory.md
     - Representations: guide/representations.md
     - Operations: guide/operations.md
     - Sampling: guide/sampling.md
-    - Models: guide/models.md
   - Examples:
     - FHRR Model: examples/fhrr.md
     - MAP Model: examples/map.md
@@ -60,6 +62,8 @@ nav:
     - Core:
       - Base Classes: api/core/base.md
       - VSAModel: api/core/model.md
+      - VSAMemory: api/core/memory.md
+      - Factory Functions: api/core/factory.md
     - Representations:
       - ComplexHypervector: api/representations/complex.md
       - RealHypervector: api/representations/real.md
