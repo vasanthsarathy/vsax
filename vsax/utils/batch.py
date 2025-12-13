@@ -119,7 +119,7 @@ def vmap_bundle(
 
 
 def vmap_similarity(
-    similarity_fn,
+    similarity_fn: None,
     query: Union[jnp.ndarray, list[jnp.ndarray]],
     candidates: Union[jnp.ndarray, list[jnp.ndarray]],
 ) -> jnp.ndarray:
@@ -170,7 +170,7 @@ def vmap_similarity(
         candidates = jnp.stack([coerce_to_array(c) for c in candidates])
 
     # Define inner similarity that works on arrays
-    def _array_sim(vec_a, vec_b):
+    def _array_sim(vec_a: jnp.ndarray, vec_b: jnp.ndarray) -> jnp.ndarray:
         # Validate shapes
         if vec_a.shape != vec_b.shape:
             raise ValueError("Shape mismatch in similarity computation")
