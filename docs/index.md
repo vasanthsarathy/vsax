@@ -11,9 +11,10 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 💯 **Type-Safe**: Full type annotations with mypy support
-- ✅ **Well-Tested**: 319 tests with 95% coverage
+- ✅ **Well-Tested**: 339 tests with 96% coverage
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity
 - ⚡ **Batch Operations**: GPU-accelerated vmap operations
+- 💾 **I/O & Persistence**: Save/load basis vectors to JSON
 
 ## Installation
 
@@ -113,7 +114,7 @@ model = VSAModel(
 
 ## Development Status
 
-**Current**: Iteration 5 Complete ✅
+**Current**: Iteration 6 Complete ✅
 
 ### Completed
 
@@ -152,11 +153,19 @@ model = VSAModel(
 - ✅ GPU-accelerated similarity search
 - ✅ 319 tests with 95%+ coverage
 
+**Iteration 6** (v0.6.0): I/O & Persistence ✅
+- ✅ save_basis() and load_basis() functions
+- ✅ JSON serialization for all 3 models
+- ✅ Round-trip vector preservation
+- ✅ Dimension and type validation
+- ✅ 339 tests with 96% coverage
+
 ### Coming Next
 
-**Iteration 6** (v0.6.0): I/O & Persistence
-- Save/load functionality for basis vectors (JSON format)
-- Persistence examples and documentation
+**Iteration 7** (v1.0.0): Full Documentation & Production Release
+- Complete API documentation
+- Tutorial notebooks
+- Production-ready v1.0.0 release
 
 ## Documentation
 
@@ -183,7 +192,7 @@ If you use VSAX in your research, please cite:
   title = {VSAX: Vector Symbolic Algebra for JAX},
   author = {Sarathy, Vasanth},
   year = {2025},
-  version = {0.5.0},
+  version = {0.6.0},
   url = {https://github.com/vasanthsarathy/vsax}
 }
 ```

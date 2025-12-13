@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API documentation for VSAX v0.5.0.
+Complete API documentation for VSAX v0.6.0.
 
 ## Core Components
 
@@ -46,9 +46,6 @@ Complete API documentation for VSAX v0.5.0.
 - **[Batch Operations](utils/index.md)** - vmap_bind, vmap_bundle, vmap_similarity
 - **[Visualization](utils/index.md)** - pretty_repr, format_similarity_results
 
-## Coming Soon
-
-- **I/O** (Iteration 6) - Save and load basis vectors
 
 ## Quick Links
 

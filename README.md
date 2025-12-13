@@ -15,15 +15,16 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 💾 **VSAMemory**: Dictionary-style symbol management ✅
 - 📊 **5 Core Encoders**: Scalar, Sequence, Set, Dict, and Graph encoders ✅
 - 🎨 **Custom Encoders**: Easy-to-extend AbstractEncoder base class ✅
-- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity ✅ **NEW in v0.5.0**
-- ⚡ **Batch Operations**: GPU-accelerated vmap operations for parallel processing ✅ **NEW in v0.5.0**
+- 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity ✅
+- ⚡ **Batch Operations**: GPU-accelerated vmap operations for parallel processing ✅
+- 💾 **I/O & Persistence**: Save/load basis vectors to JSON ✅ **NEW in v0.6.0**
 - 🚀 **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
-- ✅ **95%+ Test Coverage**: 319 tests ensuring reliability
+- ✅ **96% Test Coverage**: 339 tests ensuring reliability
 
 ## Installation
 
@@ -91,12 +92,12 @@ pip install -e ".[dev,docs]"
 
 ## Quick Start
 
-**New in v0.5.0:** Similarity metrics and batch operations!
+**New in v0.6.0:** Save and load basis vectors!
 
 ### Simple Example
 
 ```python
-from vsax import create_fhrr_model, VSAMemory, DictEncoder
+from vsax import create_fhrr_model, VSAMemory, DictEncoder, save_basis, load_basis
 from vsax.similarity import cosine_similarity
 from vsax.utils import vmap_bind
 
@@ -131,6 +132,11 @@ import jax.numpy as jnp
 nouns = jnp.stack([memory["dog"].vec, memory["cat"].vec])
 verbs = jnp.stack([memory["run"].vec, memory["jump"].vec])
 actions = vmap_bind(model.opset, nouns, verbs)  # Parallel binding!
+
+# NEW: Save and load basis vectors
+save_basis(memory, "my_basis.json")  # Persist to JSON
+memory_new = VSAMemory(model)
+load_basis(memory_new, "my_basis.json")  # Load from JSON
 ```
 
 ### All Three Models
@@ -175,7 +181,7 @@ See [docs/design-spec.md](docs/design-spec.md) for complete technical specificat
 
 ## Development Status
 
-Currently in **Iteration 5: Similarity Metrics & Utilities** ✅
+Currently in **Iteration 6: I/O & Persistence** ✅
 
 ### Completed
 
@@ -221,11 +227,20 @@ Currently in **Iteration 5: Similarity Metrics & Utilities** ✅
 - ✅ Comprehensive examples (similarity_search.py, batch_operations.py)
 - ✅ 319 tests with 95%+ coverage
 
+**Iteration 6** (v0.6.0): I/O & Persistence ✅
+- ✅ save_basis() and load_basis() functions
+- ✅ JSON serialization for all 3 models
+- ✅ Round-trip vector preservation
+- ✅ Dimension and type validation
+- ✅ Comprehensive tests (339 tests, 96% coverage)
+- ✅ Complete examples and documentation
+
 ### Coming Next
 
-**Iteration 6** (v0.6.0): I/O & Persistence
-- Save/load functionality for basis vectors (JSON format)
-- Persistence examples and documentation
+**Iteration 7** (v1.0.0): Full Documentation & Production Release
+- Complete API documentation
+- Tutorial notebooks
+- Production-ready v1.0.0 release
 
 See [todo.md](todo.md) for the complete development roadmap.
 
@@ -282,7 +297,7 @@ If you use VSAX in your research, please cite:
   author = {Sarathy, Vasanth},
   year = {2025},
   url = {https://github.com/vasanthsarathy/vsax},
-  version = {0.5.0}
+  version = {0.6.0}
 }
 ```
 

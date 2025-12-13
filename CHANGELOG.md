@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2025-01-XX
+
+### Added
+- **I/O and Persistence:**
+  - `save_basis()` - Save VSAMemory to JSON file
+  - `load_basis()` - Load VSAMemory from JSON file
+  - JSON serialization for all 3 VSA models (FHRR, MAP, Binary)
+  - Round-trip vector preservation with exact accuracy
+  - Dimension and representation type validation
+  - Human-readable JSON format
+- Comprehensive persistence example (examples/persistence.py)
+- User guide for persistence (docs/guide/persistence.md)
+- API documentation for I/O (docs/api/io/index.md)
+- 20 new tests for save/load functionality
+- 339 total tests with 96% coverage
+
+### Changed
+- Updated package version from 0.5.0 to 0.6.0
+- Enhanced documentation with persistence guides
+
 ## [0.5.0] - 2025-01-XX
 
 ### Added
@@ -104,7 +124,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tooling (ruff, mypy, pytest-cov)
 - GitHub workflows for CI and publishing
 
-[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/vasanthsarathy/vsax/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/vasanthsarathy/vsax/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/vasanthsarathy/vsax/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/vasanthsarathy/vsax/compare/v0.2.0...v0.3.0

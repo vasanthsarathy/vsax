@@ -53,6 +53,7 @@ nav:
     - Encoders: guide/encoders.md
     - Similarity Metrics: guide/similarity.md
     - Batch Operations: guide/batch_operations.md
+    - Persistence: guide/persistence.md
     - Representations: guide/representations.md
     - Operations: guide/operations.md
     - Sampling: guide/sampling.md
@@ -84,6 +85,7 @@ nav:
       - BinaryOperations: api/ops/binary.md
     - Sampling: api/sampling.md
     - Similarity: api/similarity/index.md
+    - I/O: api/io/index.md
     - Utilities: api/utils/index.md
   - Design Spec: design-spec.md
 

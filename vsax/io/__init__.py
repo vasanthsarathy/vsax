@@ -1,6 +1,6 @@
-"""I/O utilities for saving and loading basis vectors."""
+"""I/O utilities for saving and loading VSA basis vectors."""
 
-# Placeholder for iteration 6
-# Will contain: save_basis, load_basis
+from vsax.io.load import load_basis
+from vsax.io.save import save_basis
 
-__all__ = []
+__all__ = ["save_basis", "load_basis"]

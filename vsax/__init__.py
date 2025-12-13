@@ -19,7 +19,7 @@ Example:
     >>> dog_is_animal = model.opset.bind(dog.vec, animal.vec)
 """
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"
 
 from vsax.core.base import AbstractHypervector, AbstractOpSet
 from vsax.core.factory import create_binary_model, create_fhrr_model, create_map_model
@@ -33,6 +33,7 @@ from vsax.encoders import (
     SequenceEncoder,
     SetEncoder,
 )
+from vsax.io import load_basis, save_basis
 from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
 from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
 from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
@@ -78,6 +79,9 @@ __all__ = [
     "cosine_similarity",
     "dot_similarity",
     "hamming_similarity",
+    # I/O
+    "load_basis",
+    "save_basis",
     # Utilities
     "format_similarity_results",
     "pretty_repr",
