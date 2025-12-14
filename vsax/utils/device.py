@@ -5,7 +5,7 @@ checking device availability, and benchmarking operations.
 """
 
 import time
-from typing import Callable, Optional
+from typing import Any, Callable, Optional, Union
 
 import jax
 import jax.numpy as jnp
@@ -35,6 +35,7 @@ def get_device_info() -> dict[str, object]:
 def print_device_info() -> None:
     """Print detailed information about available JAX devices."""
     info = get_device_info()
+    devices: Any = info["devices"]  # Type is list of jax.Device
 
     print("=" * 60)
     print("JAX Device Information")
@@ -43,7 +44,7 @@ def print_device_info() -> None:
     print(f"Device count: {info['device_count']}")
     print(f"GPU available: {info['gpu_available']}")
     print("\nAvailable devices:")
-    for i, device in enumerate(info["devices"]):
+    for i, device in enumerate(devices):
         print(f"  [{i}] {device}")
     print("=" * 60)
 
@@ -83,7 +84,7 @@ def benchmark_operation(
     n_iterations: int = 10,
     warmup: int = 3,
     device: Optional[str] = None,
-) -> dict[str, float]:
+) -> dict[str, Union[float, str]]:
     """Benchmark an operation on a specific device.
 
     Args:
@@ -143,7 +144,7 @@ def benchmark_operation(
 def compare_devices(
     operation: Callable[[], jnp.ndarray],
     n_iterations: int = 10,
-) -> dict[str, dict[str, float]]:
+) -> dict[str, Union[dict[str, Union[float, str]], float]]:
     """Compare operation performance on CPU vs GPU.
 
     Args:
@@ -151,9 +152,9 @@ def compare_devices(
         n_iterations: Number of iterations to average over
 
     Returns:
-        Dictionary with 'cpu' and 'gpu' benchmark results
+        Dictionary with 'cpu' and 'gpu' benchmark results, and optional 'speedup' float
     """
-    results = {}
+    results: dict[str, Union[dict[str, Union[float, str]], float]] = {}
 
     # Benchmark CPU
     print("Benchmarking on CPU...")
@@ -166,7 +167,13 @@ def compare_devices(
         results["gpu"] = benchmark_operation(operation, n_iterations, device="gpu")
 
         # Calculate speedup
-        speedup = results["cpu"]["mean_time"] / results["gpu"]["mean_time"]
+        cpu_result = results["cpu"]
+        gpu_result = results["gpu"]
+        assert isinstance(cpu_result, dict) and isinstance(gpu_result, dict)
+        cpu_time = cpu_result["mean_time"]
+        gpu_time = gpu_result["mean_time"]
+        assert isinstance(cpu_time, float) and isinstance(gpu_time, float)
+        speedup = cpu_time / gpu_time
         results["speedup"] = speedup
         print(f"\n✓ GPU speedup: {speedup:.2f}x faster")
     else:
@@ -175,7 +182,9 @@ def compare_devices(
     return results
 
 
-def print_benchmark_results(results: dict[str, dict[str, float]]) -> None:
+def print_benchmark_results(
+    results: dict[str, Union[dict[str, Union[float, str]], float]]
+) -> None:
     """Pretty-print benchmark results.
 
     Args:
@@ -189,13 +198,24 @@ def print_benchmark_results(results: dict[str, dict[str, float]]) -> None:
         if device_name == "speedup":
             continue
 
+        assert isinstance(metrics, dict)
+        device_str = metrics["device"]
+        mean_time = metrics["mean_time"]
+        std_time = metrics["std_time"]
+        throughput = metrics["throughput"]
+        assert isinstance(mean_time, float)
+        assert isinstance(std_time, float)
+        assert isinstance(throughput, float)
+
         print(f"\n{device_name.upper()}:")
-        print(f"  Device: {metrics['device']}")
-        print(f"  Mean time: {metrics['mean_time']*1000:.2f} ms")
-        print(f"  Std time: {metrics['std_time']*1000:.2f} ms")
-        print(f"  Throughput: {metrics['throughput']:.2f} ops/sec")
+        print(f"  Device: {device_str}")
+        print(f"  Mean time: {mean_time*1000:.2f} ms")
+        print(f"  Std time: {std_time*1000:.2f} ms")
+        print(f"  Throughput: {throughput:.2f} ops/sec")
 
     if "speedup" in results:
-        print(f"\nSpeedup: {results['speedup']:.2f}x (GPU vs CPU)")
+        speedup = results["speedup"]
+        assert isinstance(speedup, float)
+        print(f"\nSpeedup: {speedup:.2f}x (GPU vs CPU)")
 
     print("=" * 60)
