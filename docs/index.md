@@ -195,7 +195,7 @@ If you use VSAX in your research, please cite:
   title = {VSAX: Vector Symbolic Algebra for JAX},
   author = {Sarathy, Vasanth},
   year = {2025},
-  version = {0.7.1},
+  version = {0.7.2},
   url = {https://github.com/vasanthsarathy/vsax}
 }
 ```

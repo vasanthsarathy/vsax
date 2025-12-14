@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.2] - 2025-01-16
+
+### Added
+- **GPU Device Management:**
+  - `get_device_info()` - Get information about available JAX devices
+  - `print_device_info()` - Print detailed device information
+  - `ensure_gpu()` - Check if GPU is available and warn if not
+  - `get_array_device()` - Get the device where an array is stored
+  - `benchmark_operation()` - Benchmark operations on specific devices
+  - `compare_devices()` - Compare CPU vs GPU performance
+  - `print_benchmark_results()` - Pretty-print benchmark results
+- Comprehensive GPU usage guide (docs/guide/gpu_usage.md)
+- GPU benchmarking section in MNIST tutorial
+- 10 new tests for device utilities
+- 387 total tests with 94% coverage
+
+### Changed
+- Updated package version from 0.7.1 to 0.7.2
+- Enhanced documentation with GPU device management guides
+
 ## [0.7.1] - 2025-01-15
 
 ### Fixed
@@ -152,7 +172,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tooling (ruff, mypy, pytest-cov)
 - GitHub workflows for CI and publishing
 
-[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.7.2...HEAD
+[0.7.2]: https://github.com/vasanthsarathy/vsax/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/vasanthsarathy/vsax/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/vasanthsarathy/vsax/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/vasanthsarathy/vsax/compare/v0.5.0...v0.6.0
