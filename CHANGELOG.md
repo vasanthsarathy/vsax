@@ -7,7 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.6.0] - 2025-01-XX
+## [0.7.0] - 2025-01-15
+
+### Added
+- **Resonator Networks:**
+  - `CleanupMemory` - Codebook projection for finding nearest vectors
+  - `Resonator` - Iterative factorization algorithm for VSA composites
+  - Supports all 3 VSA models (Binary, FHRR, MAP)
+  - Factorization of 2-3 factor composites
+  - Superposition initialization from Frady et al. (2020)
+  - Convergence detection and history tracking
+  - Batch processing with `factorize_batch()`
+- Comprehensive examples (examples/resonator_tree_search.py)
+- User guide for resonator networks (docs/guide/resonator.md)
+- API documentation (docs/api/resonator/index.md)
+- 38 new tests for resonator module
+- 377 total tests with 96% coverage
+
+### Changed
+- Updated package version from 0.6.0 to 0.7.0
+- Enhanced documentation with resonator network guides
+
+## [0.6.0] - 2025-01-14
 
 ### Added
 - **I/O and Persistence:**
@@ -124,7 +145,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tooling (ruff, mypy, pytest-cov)
 - GitHub workflows for CI and publishing
 
-[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/vasanthsarathy/vsax/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/vasanthsarathy/vsax/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/vasanthsarathy/vsax/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/vasanthsarathy/vsax/compare/v0.3.0...v0.4.0
