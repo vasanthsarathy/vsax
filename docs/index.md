@@ -170,6 +170,9 @@ model = VSAModel(
 ## Documentation
 
 - [Getting Started](getting-started.md) - Installation and first steps
+- [Tutorials](tutorials/index.md) - Interactive Jupyter notebooks with real datasets ✨ **NEW**
+  - [MNIST Classification](tutorials/01_mnist_classification.md) - Image classification with VSA
+  - Knowledge Graph Reasoning *(coming soon)*
 - [User Guide](guide/representations.md) - Detailed guides for all components
 - [Examples](examples/fhrr.md) - Working examples for all three models
 - [API Reference](api/index.md) - Complete API documentation

@@ -5,11 +5,11 @@ to encode various data types and perform VSA operations.
 """
 
 from vsax import (
-    create_map_model,
-    VSAMemory,
+    DictEncoder,
     ScalarEncoder,
     SequenceEncoder,
-    DictEncoder,
+    VSAMemory,
+    create_map_model,
 )
 
 
@@ -60,8 +60,8 @@ def main():
     scalar_encoder = ScalarEncoder(model, memory, min_val=0, max_val=10)
     python_version = scalar_encoder.encode("version", 3.11)
     python_popularity = scalar_encoder.encode("popularity", 9.5)
-    print(f"   Python version 3.11 encoded")
-    print(f"   Python popularity 9.5/10 encoded")
+    print("   Python version 3.11 encoded")
+    print("   Python popularity 9.5/10 encoded")
 
     # Encode ordered lists
     print("\n4. Encoding technology stacks...")
@@ -69,8 +69,8 @@ def main():
 
     seq_encoder = SequenceEncoder(model, memory)
     tech_stack = seq_encoder.encode(["React", "Django", "PostgreSQL"])
-    print(f"   Tech stack [React, Django, PostgreSQL] encoded")
-    print(f"   Order preserved in encoding")
+    print("   Tech stack [React, Django, PostgreSQL] encoded")
+    print("   Order preserved in encoding")
 
     # Demonstrate MAP-specific operations
     print("\n5. MAP Operations (element-wise)...")
@@ -79,11 +79,11 @@ def main():
 
     # Binding in MAP: element-wise multiplication
     bound = model.opset.bind(python_hv.vec, java_hv.vec)
-    print(f"   Python BIND Java (element-wise multiply)")
+    print("   Python BIND Java (element-wise multiply)")
 
     # Bundling in MAP: element-wise mean
     bundled = model.opset.bundle(python_hv.vec, java_hv.vec)
-    print(f"   Python BUNDLE Java (element-wise mean)")
+    print("   Python BUNDLE Java (element-wise mean)")
 
     print("\n" + "=" * 60)
     print("MAP Example Complete!")

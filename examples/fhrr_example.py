@@ -5,13 +5,13 @@ to encode various data types: scalars, sequences, sets, dictionaries, and graphs
 """
 
 from vsax import (
-    create_fhrr_model,
-    VSAMemory,
+    DictEncoder,
+    GraphEncoder,
     ScalarEncoder,
     SequenceEncoder,
     SetEncoder,
-    DictEncoder,
-    GraphEncoder,
+    VSAMemory,
+    create_fhrr_model,
 )
 
 
@@ -60,14 +60,14 @@ def main():
     colors_seq = seq_encoder.encode(["red", "green", "blue"])
     colors_reversed = seq_encoder.encode(["blue", "green", "red"])
     print(f"   Sequence [red, green, blue] encoded: {colors_seq.vec.shape}")
-    print(f"   Different order produces different hypervector")
+    print("   Different order produces different hypervector")
 
     # Set Encoding Example
     print("\n5. Set Encoding (unordered animals)...")
     set_encoder = SetEncoder(model, memory)
     animals_set = set_encoder.encode({"dog", "cat", "bird"})
     print(f"   Set {{dog, cat, bird}} encoded: {animals_set.vec.shape}")
-    print(f"   Order doesn't matter in sets")
+    print("   Order doesn't matter in sets")
 
     # Dictionary Encoding Example
     print("\n6. Dictionary Encoding (sentence structure)...")
@@ -93,13 +93,13 @@ def main():
         ("Bob", "knows", "Charlie"),
     ])
     print(f"   Social network encoded: {social_graph.vec.shape}")
-    print(f"   3 edges (relationships) bundled together")
+    print("   3 edges (relationships) bundled together")
 
     # Demonstrate binding and bundling
     print("\n8. Combining hypervectors...")
     # Bind two concepts together
     dog_runs = model.opset.bind(memory["dog"].vec, memory["run"].vec)
-    print(f"   'dog' BIND 'run': creates new concept")
+    print("   'dog' BIND 'run': creates new concept")
 
     # Bundle multiple concepts
     all_animals = model.opset.bundle(
@@ -107,7 +107,7 @@ def main():
         memory["cat"].vec,
         memory["bird"].vec,
     )
-    print(f"   bundle(dog, cat, bird): creates superposition")
+    print("   bundle(dog, cat, bird): creates superposition")
 
     print("\n" + "=" * 60)
     print("FHRR Example Complete!")

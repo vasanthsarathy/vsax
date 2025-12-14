@@ -12,7 +12,7 @@ Resonator networks can factorize these composites to recover the structure.
 
 import jax.numpy as jnp
 
-from vsax import create_binary_model, VSAMemory
+from vsax import VSAMemory, create_binary_model
 from vsax.resonator import CleanupMemory, Resonator
 
 

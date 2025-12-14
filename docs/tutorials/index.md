@@ -1,0 +1,88 @@
+# VSAX Tutorials
+
+Hands-on tutorials demonstrating VSAX features with real datasets and practical examples.
+
+## Available Tutorials
+
+### Tutorial 1: MNIST Digit Classification
+**Level**: Beginner
+**Topics**: Image encoding, prototype learning, similarity-based classification
+**Dataset**: MNIST digits (sklearn)
+
+Learn how to use VSA for image classification with the classic MNIST dataset. Compare different VSA models (FHRR, MAP, Binary) and achieve 95%+ accuracy using simple prototype matching.
+
+[📖 Read Tutorial](01_mnist_classification.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_01_mnist_classification.ipynb)
+
+---
+
+### Tutorial 2: Knowledge Graph Reasoning *(Coming Soon)*
+**Level**: Intermediate
+**Topics**: Graph encoding, factorization, multi-hop reasoning
+**Dataset**: Custom knowledge base
+
+Build and query a knowledge graph using VSA. Encode relational facts, perform queries, and use resonator networks to decode compositional structures.
+
+---
+
+## Tutorial Format
+
+Each tutorial is available in two formats:
+
+1. **Jupyter Notebook** (`.ipynb`) - Interactive, runnable code with visualizations
+   - Located in `examples/notebooks/`
+   - Can be run locally or in Google Colab
+   - Includes plots and interactive exploration
+
+2. **Documentation** (`.md`) - Readable reference with complete code
+   - Embedded in this documentation site
+   - Easy to copy-paste code snippets
+   - Includes all outputs and explanations
+
+## Running Tutorials
+
+### Prerequisites
+
+```bash
+# Install VSAX
+pip install vsax
+
+# Install tutorial dependencies
+pip install scikit-learn matplotlib seaborn jupyter
+```
+
+### Option 1: Run Jupyter Notebooks Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/vasanthsarathy/vsax.git
+cd vsax
+
+# Install dependencies
+pip install -e ".[dev]"
+pip install jupyter scikit-learn matplotlib seaborn
+
+# Launch Jupyter
+jupyter notebook examples/notebooks/
+```
+
+### Option 2: Read in Documentation
+
+Simply navigate to the tutorial pages in this documentation and copy the code snippets directly.
+
+## Tutorial Structure
+
+Each tutorial follows this structure:
+
+1. **Introduction** - What you'll learn and why it matters
+2. **Setup** - Imports and data loading
+3. **Step-by-step Implementation** - Detailed walkthrough with code
+4. **Evaluation** - Results and performance analysis
+5. **Comparison** - Different approaches or models
+6. **Key Takeaways** - Summary and lessons learned
+7. **Next Steps** - Extensions and related tutorials
+
+## Feedback and Contributions
+
+Found an issue or have a suggestion for a new tutorial? Please [open an issue](https://github.com/vasanthsarathy/vsax/issues) on GitHub.
+
+Want to contribute a tutorial? See our [Contributing Guide](https://github.com/vasanthsarathy/vsax/blob/main/CONTRIBUTING.md).

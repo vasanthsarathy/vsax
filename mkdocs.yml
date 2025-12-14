@@ -46,6 +46,9 @@ plugins:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Tutorials:
+    - Overview: tutorials/index.md
+    - MNIST Classification: tutorials/01_mnist_classification.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

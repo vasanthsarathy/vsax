@@ -24,7 +24,8 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
-- ✅ **96% Test Coverage**: 339 tests ensuring reliability
+- 📓 **Interactive Tutorials**: Jupyter notebooks with real datasets (MNIST, knowledge graphs) ✅ **NEW in v0.7.1**
+- ✅ **96% Test Coverage**: 377 tests ensuring reliability
 
 ## Installation
 
@@ -248,6 +249,9 @@ See [todo.md](todo.md) for the complete development roadmap.
 
 - [Full Documentation](https://vasanthsarathy.github.io/vsax/)
 - [Getting Started](docs/getting-started.md)
+- [Tutorials](docs/tutorials/index.md)
+  - [MNIST Classification](docs/tutorials/01_mnist_classification.md) - Image classification with VSA
+  - Knowledge Graph Reasoning *(coming soon)*
 - [Design Specification](docs/design-spec.md)
 - [API Reference](https://vasanthsarathy.github.io/vsax/api/)
 - [Contributing](CONTRIBUTING.md)

@@ -5,12 +5,12 @@ to encode various data types efficiently.
 """
 
 from vsax import (
-    create_binary_model,
-    VSAMemory,
-    SequenceEncoder,
-    SetEncoder,
     DictEncoder,
     GraphEncoder,
+    SequenceEncoder,
+    SetEncoder,
+    VSAMemory,
+    create_binary_model,
 )
 
 
@@ -27,7 +27,7 @@ def main():
     print(f"   Model created with dimension: {model.dim}")
     print(f"   Representation: {model.rep_cls.__name__}")
     print(f"   Operations: {model.opset.__class__.__name__}")
-    print(f"   Values: Bipolar {{-1, +1}}")
+    print("   Values: Bipolar {-1, +1}")
 
     # Example: Encoding a simple ontology
     print("\n2. Building an ontology...")
@@ -55,7 +55,7 @@ def main():
         ("oak", "is_a", "tree"),
         ("rose", "is_a", "flower"),
     ])
-    print(f"   Taxonomy graph encoded with 8 relationships")
+    print("   Taxonomy graph encoded with 8 relationships")
 
     # Encode categories
     print("\n4. Encoding categories with SetEncoder...")
@@ -65,9 +65,9 @@ def main():
     birds = set_encoder.encode({"eagle"})
     trees = set_encoder.encode({"oak"})
 
-    print(f"   Mammals set: {{dog, cat}}")
-    print(f"   Birds set: {{eagle}}")
-    print(f"   Trees set: {{oak}}")
+    print("   Mammals set: {dog, cat}")
+    print("   Birds set: {eagle}")
+    print("   Trees set: {oak}")
 
     # Encode structured data
     print("\n5. Encoding structured data with DictEncoder...")
@@ -79,7 +79,7 @@ def main():
         "name": "dog",
         "category": "mammal",
     })
-    print(f"   Dog data: {{name: dog, category: mammal}}")
+    print("   Dog data: {name: dog, category: mammal}")
 
     # Encode sequences
     print("\n6. Encoding sequences with SequenceEncoder...")
@@ -87,7 +87,7 @@ def main():
 
     seq_encoder = SequenceEncoder(model, memory)
     classification = seq_encoder.encode(["animal", "mammal", "dog"])
-    print(f"   Classification hierarchy: [animal, mammal, dog]")
+    print("   Classification hierarchy: [animal, mammal, dog]")
 
     # Demonstrate Binary-specific operations
     print("\n7. Binary Operations (XOR and Majority)...")
@@ -96,15 +96,15 @@ def main():
 
     # Binding in Binary: XOR (self-inverse)
     bound = model.opset.bind(dog_hv.vec, cat_hv.vec)
-    print(f"   dog BIND cat (XOR binding)")
+    print("   dog BIND cat (XOR binding)")
 
     # Unbinding: bind again with same vector
     unbound = model.opset.bind(bound, cat_hv.vec)
-    print(f"   (dog BIND cat) BIND cat = dog (unbinding)")
+    print("   (dog BIND cat) BIND cat = dog (unbinding)")
 
     # Bundling in Binary: majority vote
     bundled = model.opset.bundle(dog_hv.vec, cat_hv.vec, memory["eagle"].vec)
-    print(f"   bundle(dog, cat, eagle) via majority vote")
+    print("   bundle(dog, cat, eagle) via majority vote")
 
     print("\n" + "=" * 60)
     print("Binary Example Complete!")

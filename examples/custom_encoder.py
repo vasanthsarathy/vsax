@@ -5,7 +5,8 @@ We'll create a DateEncoder that encodes dates as hypervectors.
 """
 
 from datetime import date
-from vsax import create_fhrr_model, VSAMemory, AbstractEncoder, ScalarEncoder
+
+from vsax import AbstractEncoder, ScalarEncoder, VSAMemory, create_fhrr_model
 
 
 class DateEncoder(AbstractEncoder):

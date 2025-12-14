@@ -4,7 +4,7 @@ This simple example demonstrates the fundamental VSA operations:
 binding (associating concepts) and bundling (creating superpositions).
 """
 
-from vsax import create_fhrr_model, VSAMemory
+from vsax import VSAMemory, create_fhrr_model
 
 
 def main():
@@ -28,14 +28,14 @@ def main():
         memory["red"].vec,
         memory["square"].vec
     )
-    print(f"   red BIND square = red_square")
-    print(f"   Creates a hypervector representing 'red square'")
+    print("   red BIND square = red_square")
+    print("   Creates a hypervector representing 'red square'")
 
     blue_circle = model.opset.bind(
         memory["blue"].vec,
         memory["circle"].vec
     )
-    print(f"   blue BIND circle = blue_circle")
+    print("   blue BIND circle = blue_circle")
 
     # Bundling: Create superposition
     print("\n3. Bundling: Create superposition...")
@@ -43,8 +43,8 @@ def main():
         red_square,
         blue_circle
     )
-    print(f"   red_square BUNDLE blue_circle = shapes")
-    print(f"   Creates a hypervector representing BOTH shapes")
+    print("   red_square BUNDLE blue_circle = shapes")
+    print("   Creates a hypervector representing BOTH shapes")
 
     # More complex example
     print("\n4. Combining operations...")
@@ -52,16 +52,16 @@ def main():
         memory["large"].vec,
         model.opset.bind(memory["red"].vec, memory["square"].vec)
     )
-    print(f"   large BIND (red BIND square) = large_red_square")
+    print("   large BIND (red BIND square) = large_red_square")
 
     small_blue_circle = model.opset.bind(
         memory["small"].vec,
         model.opset.bind(memory["blue"].vec, memory["circle"].vec)
     )
-    print(f"   small BIND (blue BIND circle) = small_blue_circle")
+    print("   small BIND (blue BIND circle) = small_blue_circle")
 
     all_objects = model.opset.bundle(large_red_square, small_blue_circle)
-    print(f"   Bundle both objects into a single hypervector")
+    print("   Bundle both objects into a single hypervector")
 
     print("\n" + "=" * 60)
     print("Key Takeaways:")
