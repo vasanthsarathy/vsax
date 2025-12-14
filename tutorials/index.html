@@ -12,13 +12,13 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/api/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/tutorials/">
       
       
-        <link rel="prev" href="../examples/binary/">
+        <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="core/base/">
+        <link rel="next" href="01_mnist_classification/">
       
       
         
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-reference" class="md-skip">
+        <a href="#vsax-tutorials" class="md-skip">
           Skip to content
         </a>
       
@@ -265,11 +265,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../tutorials/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -325,13 +327,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../api/" class="md-tabs__link">
           
   
   
@@ -465,28 +465,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -504,7 +507,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -519,10 +522,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../tutorials/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -538,6 +568,148 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#available-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available Tutorials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Tutorials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-1-mnist-digit-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial 1: MNIST Digit Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-2-knowledge-graph-reasoning-coming-soon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial 2: Knowledge Graph Reasoning (Coming Soon)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Tutorials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Tutorials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-1-run-jupyter-notebooks-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 1: Run Jupyter Notebooks Locally
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-read-in-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 2: Read in Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-and-contributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feedback and Contributions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -550,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/01_mnist_classification/" class="md-nav__link">
+      <a href="01_mnist_classification/" class="md-nav__link">
         
   
   
@@ -1096,31 +1268,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1138,7 +1307,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1153,37 +1322,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
         
   
   
@@ -1199,147 +1341,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Components
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#representations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Representations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Operations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sampling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sampling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#memory-utilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Memory &amp; Utilities
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encoders" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Encoders
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#similarity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Similarity
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resonator-networks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resonator Networks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#io-persistence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        I/O &amp; Persistence
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Utilities
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Links
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1358,13 +1359,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1373,7 +1371,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
             
   
   
@@ -1409,7 +1407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="core/base/" class="md-nav__link">
+      <a href="../api/core/base/" class="md-nav__link">
         
   
   
@@ -1437,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="core/model/" class="md-nav__link">
+      <a href="../api/core/model/" class="md-nav__link">
         
   
   
@@ -1465,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="core/memory/" class="md-nav__link">
+      <a href="../api/core/memory/" class="md-nav__link">
         
   
   
@@ -1493,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="core/factory/" class="md-nav__link">
+      <a href="../api/core/factory/" class="md-nav__link">
         
   
   
@@ -1535,13 +1533,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1550,7 +1545,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
             
   
   
@@ -1586,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="encoders/" class="md-nav__link">
+      <a href="../api/encoders/" class="md-nav__link">
         
   
   
@@ -1614,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="encoders/scalar/" class="md-nav__link">
+      <a href="../api/encoders/scalar/" class="md-nav__link">
         
   
   
@@ -1642,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="encoders/sequence/" class="md-nav__link">
+      <a href="../api/encoders/sequence/" class="md-nav__link">
         
   
   
@@ -1670,7 +1665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="encoders/set/" class="md-nav__link">
+      <a href="../api/encoders/set/" class="md-nav__link">
         
   
   
@@ -1698,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="encoders/dict/" class="md-nav__link">
+      <a href="../api/encoders/dict/" class="md-nav__link">
         
   
   
@@ -1726,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="encoders/graph/" class="md-nav__link">
+      <a href="../api/encoders/graph/" class="md-nav__link">
         
   
   
@@ -1768,13 +1763,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1783,7 +1775,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
             
   
   
@@ -1819,7 +1811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="representations/complex/" class="md-nav__link">
+      <a href="../api/representations/complex/" class="md-nav__link">
         
   
   
@@ -1847,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="representations/real/" class="md-nav__link">
+      <a href="../api/representations/real/" class="md-nav__link">
         
   
   
@@ -1875,7 +1867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="representations/binary/" class="md-nav__link">
+      <a href="../api/representations/binary/" class="md-nav__link">
         
   
   
@@ -1917,13 +1909,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1932,7 +1921,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
             
   
   
@@ -1968,7 +1957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ops/fhrr/" class="md-nav__link">
+      <a href="../api/ops/fhrr/" class="md-nav__link">
         
   
   
@@ -1996,7 +1985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ops/map/" class="md-nav__link">
+      <a href="../api/ops/map/" class="md-nav__link">
         
   
   
@@ -2024,7 +2013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ops/binary/" class="md-nav__link">
+      <a href="../api/ops/binary/" class="md-nav__link">
         
   
   
@@ -2060,7 +2049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="resonator/" class="md-nav__link">
+      <a href="../api/resonator/" class="md-nav__link">
         
   
   
@@ -2088,7 +2077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="sampling/" class="md-nav__link">
+      <a href="../api/sampling/" class="md-nav__link">
         
   
   
@@ -2116,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="similarity/" class="md-nav__link">
+      <a href="../api/similarity/" class="md-nav__link">
         
   
   
@@ -2144,7 +2133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="io/" class="md-nav__link">
+      <a href="../api/io/" class="md-nav__link">
         
   
   
@@ -2172,7 +2161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="utils/" class="md-nav__link">
+      <a href="../api/utils/" class="md-nav__link">
         
   
   
@@ -2254,10 +2243,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#available-tutorials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core Components
+        Available Tutorials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Tutorials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-1-mnist-digit-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial 1: MNIST Digit Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-2-knowledge-graph-reasoning-coming-soon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial 2: Knowledge Graph Reasoning (Coming Soon)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial Format
       
     </span>
   </a>
@@ -2265,10 +2293,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#representations" class="md-nav__link">
+  <a href="#running-tutorials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Representations
+        Running Tutorials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Tutorials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-1-run-jupyter-notebooks-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 1: Run Jupyter Notebooks Locally
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-read-in-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 2: Read in Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutorial Structure
       
     </span>
   </a>
@@ -2276,98 +2354,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#operations" class="md-nav__link">
+  <a href="#feedback-and-contributions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sampling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sampling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#memory-utilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Memory &amp; Utilities
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encoders" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Encoders
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#similarity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Similarity
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resonator-networks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resonator Networks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#io-persistence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        I/O &amp; Persistence
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Utilities
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Links
+        Feedback and Contributions
       
     </span>
   </a>
@@ -2394,66 +2384,74 @@
   
 
 
-<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
-<p>Complete API documentation for VSAX v0.7.1.</p>
-<h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="core/base/">Base Classes</a></strong> - Abstract interfaces (AbstractHypervector, AbstractOpSet)</li>
-<li><strong><a href="core/model/">VSAModel</a></strong> - Immutable model container</li>
-</ul>
-<h2 id="representations">Representations<a class="headerlink" href="#representations" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="representations/complex/">ComplexHypervector</a></strong> - Complex-valued phase-based representation</li>
-<li><strong><a href="representations/real/">RealHypervector</a></strong> - Real-valued continuous representation</li>
-<li><strong><a href="representations/binary/">BinaryHypervector</a></strong> - Binary/bipolar discrete representation</li>
-</ul>
-<h2 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="ops/fhrr/">FHRROperations</a></strong> - FFT-based circular convolution</li>
-<li><strong><a href="ops/map/">MAPOperations</a></strong> - Element-wise multiply and mean</li>
-<li><strong><a href="ops/binary/">BinaryOperations</a></strong> - XOR and majority voting</li>
-</ul>
-<h2 id="sampling">Sampling<a class="headerlink" href="#sampling" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="sampling/">Sampling Functions</a></strong> - Random vector generation</li>
-</ul>
-<h2 id="memory-utilities">Memory &amp; Utilities<a class="headerlink" href="#memory-utilities" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="core/memory/">VSAMemory</a></strong> - Symbol table and basis management</li>
-<li><strong><a href="core/factory/">Factory Functions</a></strong> - Easy model creation</li>
-</ul>
-<h2 id="encoders">Encoders<a class="headerlink" href="#encoders" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="encoders/scalar/">ScalarEncoder</a></strong> - Encode numeric values</li>
-<li><strong><a href="encoders/sequence/">SequenceEncoder</a></strong> - Encode ordered sequences</li>
-<li><strong><a href="encoders/set/">SetEncoder</a></strong> - Encode unordered collections</li>
-<li><strong><a href="encoders/dict/">DictEncoder</a></strong> - Encode key-value pairs</li>
-<li><strong><a href="encoders/graph/">GraphEncoder</a></strong> - Encode graph structures</li>
-<li><strong><a href="encoders/base.md">AbstractEncoder</a></strong> - Base class for custom encoders</li>
-</ul>
-<h2 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="similarity/">Similarity Functions</a></strong> - Cosine, dot, Hamming similarity</li>
-</ul>
-<h2 id="resonator-networks">Resonator Networks<a class="headerlink" href="#resonator-networks" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="resonator/">CleanupMemory &amp; Resonator</a></strong> - Codebook projection and iterative factorization</li>
-</ul>
-<h2 id="io-persistence">I/O &amp; Persistence<a class="headerlink" href="#io-persistence" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="io/">Save/Load Functions</a></strong> - JSON serialization for basis vectors</li>
-</ul>
-<h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="utils/">Batch Operations</a></strong> - vmap_bind, vmap_bundle, vmap_similarity</li>
-<li><strong><a href="utils/">Visualization</a></strong> - pretty_repr, format_similarity_results</li>
-</ul>
-<h2 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../getting-started/">Getting Started</a></li>
-<li><a href="../guide/representations/">User Guide</a></li>
-<li><a href="../examples/fhrr/">Examples</a></li>
-</ul>
+<h1 id="vsax-tutorials">VSAX Tutorials<a class="headerlink" href="#vsax-tutorials" title="Permanent link">&para;</a></h1>
+<p>Hands-on tutorials demonstrating VSAX features with real datasets and practical examples.</p>
+<h2 id="available-tutorials">Available Tutorials<a class="headerlink" href="#available-tutorials" title="Permanent link">&para;</a></h2>
+<h3 id="tutorial-1-mnist-digit-classification">Tutorial 1: MNIST Digit Classification<a class="headerlink" href="#tutorial-1-mnist-digit-classification" title="Permanent link">&para;</a></h3>
+<p><strong>Level</strong>: Beginner
+<strong>Topics</strong>: Image encoding, prototype learning, similarity-based classification
+<strong>Dataset</strong>: MNIST digits (sklearn)</p>
+<p>Learn how to use VSA for image classification with the classic MNIST dataset. Compare different VSA models (FHRR, MAP, Binary) and achieve 95%+ accuracy using simple prototype matching.</p>
+<p><a href="01_mnist_classification/">📖 Read Tutorial</a> | <a href="../../examples/notebooks/tutorial_01_mnist_classification.ipynb">📓 Open Notebook</a></p>
+<hr />
+<h3 id="tutorial-2-knowledge-graph-reasoning-coming-soon">Tutorial 2: Knowledge Graph Reasoning <em>(Coming Soon)</em><a class="headerlink" href="#tutorial-2-knowledge-graph-reasoning-coming-soon" title="Permanent link">&para;</a></h3>
+<p><strong>Level</strong>: Intermediate
+<strong>Topics</strong>: Graph encoding, factorization, multi-hop reasoning
+<strong>Dataset</strong>: Custom knowledge base</p>
+<p>Build and query a knowledge graph using VSA. Encode relational facts, perform queries, and use resonator networks to decode compositional structures.</p>
+<hr />
+<h2 id="tutorial-format">Tutorial Format<a class="headerlink" href="#tutorial-format" title="Permanent link">&para;</a></h2>
+<p>Each tutorial is available in two formats:</p>
+<ol>
+<li><strong>Jupyter Notebook</strong> (<code>.ipynb</code>) - Interactive, runnable code with visualizations</li>
+<li>Located in <code>examples/notebooks/</code></li>
+<li>Can be run locally or in Google Colab</li>
+<li>
+<p>Includes plots and interactive exploration</p>
+</li>
+<li>
+<p><strong>Documentation</strong> (<code>.md</code>) - Readable reference with complete code</p>
+</li>
+<li>Embedded in this documentation site</li>
+<li>Easy to copy-paste code snippets</li>
+<li>Includes all outputs and explanations</li>
+</ol>
+<h2 id="running-tutorials">Running Tutorials<a class="headerlink" href="#running-tutorials" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install VSAX</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span>vsax
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Install tutorial dependencies</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>pip<span class="w"> </span>install<span class="w"> </span>scikit-learn<span class="w"> </span>matplotlib<span class="w"> </span>seaborn<span class="w"> </span>jupyter
+</code></pre></div>
+<h3 id="option-1-run-jupyter-notebooks-locally">Option 1: Run Jupyter Notebooks Locally<a class="headerlink" href="#option-1-run-jupyter-notebooks-locally" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Clone the repository</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vasanthsarathy/vsax.git
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span><span class="w"> </span>vsax
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Install dependencies</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyter<span class="w"> </span>scikit-learn<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Launch Jupyter</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>jupyter<span class="w"> </span>notebook<span class="w"> </span>examples/notebooks/
+</code></pre></div>
+<h3 id="option-2-read-in-documentation">Option 2: Read in Documentation<a class="headerlink" href="#option-2-read-in-documentation" title="Permanent link">&para;</a></h3>
+<p>Simply navigate to the tutorial pages in this documentation and copy the code snippets directly.</p>
+<h2 id="tutorial-structure">Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permanent link">&para;</a></h2>
+<p>Each tutorial follows this structure:</p>
+<ol>
+<li><strong>Introduction</strong> - What you'll learn and why it matters</li>
+<li><strong>Setup</strong> - Imports and data loading</li>
+<li><strong>Step-by-step Implementation</strong> - Detailed walkthrough with code</li>
+<li><strong>Evaluation</strong> - Results and performance analysis</li>
+<li><strong>Comparison</strong> - Different approaches or models</li>
+<li><strong>Key Takeaways</strong> - Summary and lessons learned</li>
+<li><strong>Next Steps</strong> - Extensions and related tutorials</li>
+</ol>
+<h2 id="feedback-and-contributions">Feedback and Contributions<a class="headerlink" href="#feedback-and-contributions" title="Permanent link">&para;</a></h2>
+<p>Found an issue or have a suggestion for a new tutorial? Please <a href="https://github.com/vasanthsarathy/vsax/issues">open an issue</a> on GitHub.</p>
+<p>Want to contribute a tutorial? See our <a href="https://github.com/vasanthsarathy/vsax/blob/main/CONTRIBUTING.md">Contributing Guide</a>.</p>
 
 
 

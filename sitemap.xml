@@ -156,4 +156,12 @@
          <loc>https://vsax.readthedocs.io/guide/similarity/</loc>
          <lastmod>2025-12-14</lastmod>
     </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/tutorials/</loc>
+         <lastmod>2025-12-14</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/tutorials/01_mnist_classification/</loc>
+         <lastmod>2025-12-14</lastmod>
+    </url>
 </urlset>
