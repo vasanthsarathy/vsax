@@ -4,7 +4,7 @@ Implements the resonator network algorithm from:
 Frady, E. P., Kleyko, D., & Sommer, F. T. (2020).
 """
 
-from typing import Optional, Union
+from typing import Optional, Union, cast
 
 import jax.numpy as jnp
 
@@ -95,7 +95,7 @@ class Resonator:
 
         # Initialize estimates
         estimates = self._initialize_estimates(initial_estimates)
-        history = [estimates.copy()] if return_history else None
+        history: list[list[Optional[str]]] = [estimates.copy()] if return_history else []
 
         # Track convergence
         stable_count = 0
@@ -148,7 +148,8 @@ class Resonator:
                     raise ValueError(
                         f"Initial estimate '{est}' not in codebook {i}"
                     )
-            return initial_estimates.copy()
+            # Cast to list[Optional[str]] for type compatibility
+            return cast(list[Optional[str]], initial_estimates.copy())
 
         # Start with None (will use superposition in first iteration)
         return [None] * self.num_factors
@@ -193,7 +194,8 @@ class Resonator:
 
         # Cleanup: project residual onto codebook for this factor
         # This is g(XX^T(...)) from the paper
-        result = self.codebooks[factor_idx].query(residual)
+        # query with return_similarity=False returns Optional[str]
+        result: Optional[str] = self.codebooks[factor_idx].query(residual)  # type: ignore[assignment]
 
         return result
 
@@ -216,11 +218,14 @@ class Resonator:
             >>> all_factors = resonator.factorize_batch(composites)
         """
         batch_size = composites.shape[0]
-        results = []
+        results: list[list[Optional[str]]] = []
 
         for i in range(batch_size):
             init = initial_estimates[i] if initial_estimates else None
-            factors = self.factorize(composites[i], initial_estimates=init)
+            # factorize returns list[Optional[str]] when return_history=False (default)
+            factors = self.factorize(composites[i], initial_estimates=init, return_history=False)
+            # Type narrowing: we know it's just the list, not the tuple
+            assert isinstance(factors, list), "Expected list without history"
             results.append(factors)
 
         return results
