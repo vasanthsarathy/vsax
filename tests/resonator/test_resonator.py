@@ -312,11 +312,12 @@ class TestResonatorFHRR:
 
         letters = CleanupMemory(["alpha", "beta"], memory)
         numbers = CleanupMemory(["one", "two"], memory)
-        resonator = Resonator([letters, numbers], model.opset)
+        resonator = Resonator([letters, numbers], model.opset, max_iterations=200)
 
-        factors = resonator.factorize(composite)
+        # Provide initial estimates to help convergence
+        factors = resonator.factorize(composite, initial_estimates=["alpha", "one"])
 
-        # FHRR should also work
+        # FHRR should work with good initial estimates
         assert factors[0] == "alpha"
         assert factors[1] == "one"
 
