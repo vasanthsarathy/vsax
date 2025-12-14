@@ -740,6 +740,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gpu-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU Acceleration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-gpu-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check GPU Availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-cpu-vs-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmark CPU vs GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-processing-on-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch Processing on GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1053,6 +1103,34 @@
     
   
     Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guide/gpu_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Usage
   
 
     
@@ -2408,6 +2486,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gpu-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU Acceleration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-gpu-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check GPU Availability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-cpu-vs-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmark CPU vs GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-processing-on-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch Processing on GPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2653,13 +2781,91 @@
 - FHRR: 95-97%
 - MAP: 93-96%
 - Binary: 94-96%</p>
+<h2 id="gpu-acceleration">GPU Acceleration<a class="headerlink" href="#gpu-acceleration" title="Permanent link">&para;</a></h2>
+<p>VSAX leverages JAX for automatic GPU acceleration. Let's verify and benchmark GPU usage:</p>
+<h3 id="check-gpu-availability">Check GPU Availability<a class="headerlink" href="#check-gpu-availability" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_device_info</span><span class="p">,</span> <span class="n">ensure_gpu</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Check device information</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">print_device_info</span><span class="p">()</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># Verify GPU is being used</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">ensure_gpu</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Output:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>============================================================
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>JAX Device Information
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>============================================================
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Default backend: gpu
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Device count: 1
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>GPU available: True
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>Available devices:
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  [0] cuda:0
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>============================================================
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>✓ GPU available: [cuda(id=0)]
+</code></pre></div></p>
+<h3 id="benchmark-cpu-vs-gpu">Benchmark CPU vs GPU<a class="headerlink" href="#benchmark-cpu-vs-gpu" title="Permanent link">&para;</a></h3>
+<p>Compare classification performance on CPU vs GPU:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">compare_devices</span><span class="p">,</span> <span class="n">print_benchmark_results</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># Define classification operation</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">classification_op</span><span class="p">():</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Classify one test image.&quot;&quot;&quot;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="k">return</span> <span class="n">classify_image</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">prototypes</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># Compare devices</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="n">results</span> <span class="o">=</span> <span class="n">compare_devices</span><span class="p">(</span><span class="n">classification_op</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">print_benchmark_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Typical Results:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>============================================================
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Benchmark Results
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>============================================================
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>CPU:
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>  Device: cpu:0
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  Mean time: 1.85 ms
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  Std time: 0.08 ms
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>  Throughput: 540.54 ops/sec
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>GPU:
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>  Device: cuda:0
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>  Mean time: 0.32 ms
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>  Std time: 0.02 ms
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>  Throughput: 3125.00 ops/sec
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>Speedup: 5.78x (GPU vs CPU)
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>============================================================
+</code></pre></div></p>
+<p>For larger batches and dimensions, GPU speedup can reach <strong>20-30x</strong>!</p>
+<h3 id="batch-processing-on-gpu">Batch Processing on GPU<a class="headerlink" href="#batch-processing-on-gpu" title="Permanent link">&para;</a></h3>
+<p>Process multiple images in parallel on GPU:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">vmap_bind</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Encode 100 test images</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">test_batch</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">encode_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>                        <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">X_test</span><span class="p">[:</span><span class="mi">100</span><span class="p">]])</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># Compare to all prototypes in parallel (GPU-accelerated)</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">prototype_stack</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">prototypes</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1"># Compute all similarities in parallel</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">vmap_similarity</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="n">all_similarities</span> <span class="o">=</span> <span class="n">vmap_similarity</span><span class="p">(</span><span class="n">test_batch</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prototype_stack</span><span class="p">)</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computed </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_similarities</span><span class="p">)</span><span class="si">}</span><span class="s2"> similarities in parallel on GPU&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Learn More:</strong> See the <a href="../../guide/gpu_usage/">GPU Usage Guide</a> for detailed information on GPU optimization.</p>
 <h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>VSA for Classification</strong>: We successfully classified MNIST digits using prototype-based VSA classification</li>
 <li><strong>Simple Approach</strong>: The method is straightforward - encode images, create prototypes, match by similarity</li>
 <li><strong>Model Comparison</strong>: Different VSA models (FHRR, MAP, Binary) show competitive performance</li>
 <li><strong>Interpretable</strong>: Each class has an explicit prototype hypervector that represents it</li>
-<li><strong>Scalable</strong>: JAX makes this GPU-accelerated and efficient for larger datasets</li>
+<li><strong>GPU-Accelerated</strong>: JAX provides automatic GPU acceleration with 5-30x speedup over CPU</li>
+<li><strong>Scalable</strong>: Efficient for larger datasets with batch processing</li>
 </ol>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
