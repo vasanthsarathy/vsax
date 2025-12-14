@@ -58,6 +58,7 @@ nav:
     - Batch Operations: guide/batch_operations.md
     - Resonator Networks: guide/resonator.md
     - Persistence: guide/persistence.md
+    - GPU Usage: guide/gpu_usage.md
     - Representations: guide/representations.md
     - Operations: guide/operations.md
     - Sampling: guide/sampling.md
