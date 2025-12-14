@@ -29,7 +29,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 **Install VSAX:**
 
 ```bash
-git clone https://github.com/yourusername/vsax.git
+git clone https://github.com/vasanthsarathy/vsax.git
 cd vsax
 
 # Create virtual environment and install
@@ -41,7 +41,7 @@ uv pip install -e .
 #### Using pip
 
 ```bash
-git clone https://github.com/yourusername/vsax.git
+git clone https://github.com/vasanthsarathy/vsax.git
 cd vsax
 
 # Create virtual environment
@@ -110,9 +110,43 @@ similarity = cosine_similarity(memory["dog"], memory["cat"])
 print(f"Similarity: {similarity:.3f}")
 ```
 
+### Advanced Features
+
+**Resonator Networks** (v0.7.0+) - Factorize composite hypervectors:
+
+```python
+from vsax import CleanupMemory, Resonator
+
+# Create codebooks
+letters = CleanupMemory(["alpha", "beta"], memory)
+numbers = CleanupMemory(["one", "two"], memory)
+
+# Create resonator
+resonator = Resonator([letters, numbers], model.opset)
+
+# Factorize composite
+composite = model.opset.bind(memory["alpha"].vec, memory["one"].vec)
+factors = resonator.factorize(composite)  # ["alpha", "one"]
+```
+
+**I/O & Persistence** (v0.6.0+) - Save and load basis vectors:
+
+```python
+from vsax import save_basis, load_basis
+
+# Save basis to JSON
+save_basis(memory, "my_basis.json")
+
+# Load basis from JSON
+new_memory = VSAMemory(model)
+load_basis(new_memory, "my_basis.json")
+```
+
 ## Next Steps
 
 - Explore the [API Reference](api/index.md)
 - Check out [example notebooks](../examples/)
 - Read the [design specification](design-spec.md)
 - See the [User Guide](guide/models.md) for detailed tutorials
+- Learn about [Resonator Networks](guide/resonator.md)
+- Understand [Persistence](guide/persistence.md)

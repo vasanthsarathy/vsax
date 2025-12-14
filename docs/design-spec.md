@@ -88,9 +88,25 @@ Located in `vsax/similarity/`
 
 ➡️ Reuse persistent symbolic spaces across sessions.
 
-### 8. Vector Utilities (Planned)
+### 8. Resonator Networks
+#### `CleanupMemory`
+- Codebook projection for nearest vector retrieval
+- Input: query vector
+- Output: closest symbol from codebook or None if below threshold
+
+#### `Resonator`
+- Iterative factorization of VSA composites
+- Decomposes `s = a ⊙ b ⊙ c` into factors from known codebooks
+- Superposition initialization (Frady et al. 2020)
+- Supports 2-3 factor composites
+- Works with all 3 VSA models
+
+➡️ Enables decoding of complex VSA data structures.
+
+### 9. Vector Utilities
 - `vsax.utils.coerce_vec()` — ensure input is `jnp.ndarray`
-- `vsax.utils.vmap_ops()` — batch version of bind/bundle
+- `vsax.utils.vmap_bind()` — batch version of bind
+- `vsax.utils.vmap_bundle()` — batch version of bundle
 - `vsax.utils.pretty_repr()` — printing shape/type of vectors
 
 ➡️ Improves usability and debugging.
@@ -183,7 +199,23 @@ Y = jnp.stack([x.vec, y.vec, z.vec])
 batch_result = vmap_bind(model.opset, X, Y)
 ```
 
-### Example 7: Access .vec automatically
+### Example 7: Resonator Networks
+```python
+from vsax import CleanupMemory, Resonator
+
+# Create codebooks
+letters = CleanupMemory(["alpha", "beta"], memory)
+numbers = CleanupMemory(["one", "two"], memory)
+
+# Create resonator
+resonator = Resonator([letters, numbers], model.opset)
+
+# Factorize composite
+composite = model.opset.bind(memory["alpha"].vec, memory["one"].vec)
+factors = resonator.factorize(composite)  # ["alpha", "one"]
+```
+
+### Example 8: Access .vec automatically
 ```python
 # Future sugar
 bind(a, b)  # Automatically unwraps .vec if needed
@@ -192,20 +224,38 @@ bind(a, b)  # Automatically unwraps .vec if needed
 ---
 
 ## Extensibility Plan
-- Add `GraphEncoder`, `SequenceEncoder`, `TreeEncoder`
+
+### Completed ✅
+- ✅ `GraphEncoder`, `SequenceEncoder`, `SetEncoder`, `DictEncoder`, `ScalarEncoder`
+- ✅ Dictionary-style access to `VSAMemory`
+- ✅ `vmap`/`jit`-friendly versions of bind/bundle
+- ✅ Save/load basis vectors (I/O)
+- ✅ Resonator networks for factorization
+- ✅ Similarity metrics (cosine, dot, Hamming)
+- ✅ Batch operations (vmap_bind, vmap_bundle, vmap_similarity)
+
+### Future Enhancements
+- Add `TreeEncoder` for hierarchical structures
 - Add `QuaternionHypervector`, `FourierHypervector`
 - Add coercion logic to auto-handle `.vec`
-- Add dictionary-style access to `VSAMemory`
 - Implement `__jax_array__` on representations for seamless ops
-- Add `vmap`/`jit`-friendly versions of bind/bundle
 - Streamlit UI for interactive symbolic exploration
 - CLI tools for inspecting memory
 - Registries for custom representations and opsets
+- Multi-factor resonator support (4+ factors)
 
 ---
 
 ## Summary
-VSAX provides a principled, modular, and efficient system for symbolic reasoning with hypervectors. It is built for researchers and developers interested in neurosymbolic AI, cognitive modeling, and high-performance semantic encoding systems.
+VSAX (v0.7.1) provides a principled, modular, and efficient system for symbolic reasoning with hypervectors. It is built for researchers and developers interested in neurosymbolic AI, cognitive modeling, and high-performance semantic encoding systems.
 
-Usability is prioritized with a clean, NumPy-style API, automatic coercion, batch operations, and JAX-native performance — enabling symbolic algebra at scale.
+**Key Features:**
+- Three complete VSA models (FHRR, MAP, Binary)
+- Five core encoders for structured data
+- Resonator networks for factorization and decoding
+- Similarity metrics and batch operations
+- I/O persistence for basis vectors
+- GPU acceleration via JAX
+
+Usability is prioritized with a clean, NumPy-style API, factory functions, batch operations, and JAX-native performance — enabling symbolic algebra at scale.
 

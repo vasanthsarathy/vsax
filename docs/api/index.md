@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API documentation for VSAX v0.6.0.
+Complete API documentation for VSAX v0.7.1.
 
 ## Core Components
 
@@ -40,6 +40,14 @@ Complete API documentation for VSAX v0.6.0.
 ## Similarity
 
 - **[Similarity Functions](similarity/index.md)** - Cosine, dot, Hamming similarity
+
+## Resonator Networks
+
+- **[CleanupMemory & Resonator](resonator/index.md)** - Codebook projection and iterative factorization
+
+## I/O & Persistence
+
+- **[Save/Load Functions](io/index.md)** - JSON serialization for basis vectors
 
 ## Utilities
 
