@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2025-01-15
+
+### Fixed
+- Fixed mypy type errors in resonator module
+- Made FHRR resonator test platform-agnostic to handle numerical precision differences across platforms
+- Added proper type annotations and type narrowing for Union return types
+
 ## [0.7.0] - 2025-01-15
 
 ### Added
@@ -145,7 +152,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tooling (ruff, mypy, pytest-cov)
 - GitHub workflows for CI and publishing
 
-[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.7.1...HEAD
+[0.7.1]: https://github.com/vasanthsarathy/vsax/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/vasanthsarathy/vsax/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/vasanthsarathy/vsax/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/vasanthsarathy/vsax/compare/v0.4.0...v0.5.0
