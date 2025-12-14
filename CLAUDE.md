@@ -15,6 +15,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Write code following the architecture and design principles below
 - Make changes as simple as possible, impacting minimal code
 - Follow type safety and code quality standards
+- **Package Management**: Use `uv add <package>` to add dependencies (NEVER `pip install`)
 
 ### Step 3: Testing
 **ALWAYS use `uv run` for all commands:**
@@ -160,7 +161,17 @@ VSAX is a GPU-accelerated, JAX-native Python library for vector symbolic archite
 
 ### Development Commands
 
-**CRITICAL: ALWAYS use `uv run` for all Python commands**
+**CRITICAL: ALWAYS use `uv` for package management and `uv run` for all Python commands**
+
+Package Management:
+```bash
+uv add <package>                 # Add a new dependency (NOT pip install!)
+uv add --dev <package>           # Add a dev dependency
+uv remove <package>              # Remove a dependency
+uv sync                          # Sync dependencies with lock file
+```
+
+**NEVER use `pip install` directly - ALWAYS use `uv add` to add dependencies**
 
 Build/install:
 ```bash
