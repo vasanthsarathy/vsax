@@ -2,6 +2,81 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Standard Development Workflow
+
+**CRITICAL: Follow these steps for EVERY feature, update, or bug fix. Do NOT skip steps.**
+
+### Step 1: Ideation and Planning
+- Discuss the feature/update with the user
+- Create a plan in todo.md or use the planning system
+- Get user approval before proceeding
+
+### Step 2: Implementation
+- Write code following the architecture and design principles below
+- Make changes as simple as possible, impacting minimal code
+- Follow type safety and code quality standards
+
+### Step 3: Testing
+**ALWAYS use `uv run` for all commands:**
+```bash
+uv run pytest                           # Run all tests
+uv run pytest --cov=vsax               # Run with coverage
+uv run pytest tests/test_specific.py   # Run specific test
+```
+
+**NEVER use `pytest` or `python -m pytest` directly - ALWAYS use `uv run`**
+
+### Step 4: Documentation Updates
+Update ALL relevant documentation:
+- [ ] Update `README.md` if public API changed
+- [ ] Update `docs/index.md` (main documentation landing page)
+- [ ] Update `CHANGELOG.md` with changes
+- [ ] Update relevant guide files in `docs/guide/`
+- [ ] Update relevant API reference files in `docs/api/`
+- [ ] Update `docs/getting-started.md` if needed
+- [ ] Update `docs/design-spec.md` if architecture changed
+- [ ] **Review ALL documentation for consistency and version numbers**
+- [ ] Build docs to verify: `uv run mkdocs build`
+
+**Version Updates:**
+- [ ] Update `vsax/__init__.py` `__version__`
+- [ ] Update `pyproject.toml` version
+- [ ] Update `tests/test_infrastructure.py` version assertion
+- [ ] Update citation version in README.md and docs/index.md
+
+### Step 5: Pre-commit Checks
+**ALWAYS use `uv run` for all commands:**
+```bash
+uv run ruff check vsax tests    # Linting
+uv run ruff format vsax tests   # Formatting
+uv run mypy vsax                # Type checking
+uv run pytest --cov=vsax        # Full test suite with coverage
+```
+
+**Fix ALL errors before proceeding. Do NOT commit if any checks fail.**
+
+### Step 6: Publishing Scripts
+- [ ] Review `publish.ps1` or publishing scripts
+- [ ] Verify version numbers are updated in scripts
+- [ ] Ensure CHANGELOG.md is current
+
+### Step 7: Commit and Push
+```bash
+git add .
+git commit -m "descriptive message
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+git push
+```
+
+**If CI/CD errors occur:**
+- User will report the errors
+- Go back to Step 2 and fix the issues
+- Run through ALL steps again (2-7)
+- Do NOT skip steps when fixing CI/CD errors
+
 ## Project Overview
 
 VSAX is a GPU-accelerated, JAX-native Python library for vector symbolic architectures (VSAs). It provides composable symbolic representations using hypervectors, algebraic operations for binding and bundling, and encoding strategies for symbolic and structured data.
@@ -84,38 +159,39 @@ VSAX is a GPU-accelerated, JAX-native Python library for vector symbolic archite
 - Tag releases with version numbers (e.g., `v0.1.0`)
 
 ### Development Commands
+
+**CRITICAL: ALWAYS use `uv run` for all Python commands**
+
 Build/install:
 ```bash
-pip install -e .              # Install in editable mode
-pip install -e ".[dev]"       # Install with dev dependencies
+uv pip install -e .              # Install in editable mode
+uv pip install -e ".[dev]"       # Install with dev dependencies
 ```
 
 Testing:
 ```bash
-pytest                        # Run all tests
-pytest tests/test_model.py    # Run specific test file
-pytest -v -s                  # Verbose output with print statements
-pytest --cov=vsax            # Run with coverage
+uv run pytest                        # Run all tests
+uv run pytest tests/test_model.py    # Run specific test file
+uv run pytest -v -s                  # Verbose output with print statements
+uv run pytest --cov=vsax             # Run with coverage
 ```
 
 Linting/formatting:
 ```bash
-ruff check .                  # Lint code
-ruff format .                 # Format code
-mypy vsax                     # Type checking
+uv run ruff check vsax tests    # Lint code
+uv run ruff format vsax tests   # Format code
+uv run mypy vsax                # Type checking
 ```
 
 Documentation:
 ```bash
-mkdocs serve                  # Serve docs locally at http://127.0.0.1:8000
-mkdocs build                  # Build static documentation site
+uv run mkdocs serve             # Serve docs locally at http://127.0.0.1:8000
+uv run mkdocs build             # Build static documentation site
 ```
 
 Publishing:
 ```bash
-python -m build              # Build distribution packages
-twine check dist/*           # Verify package
-twine upload dist/*          # Upload to PyPI
+.\publish.ps1                   # Use the publish script (handles version, build, upload)
 ```
 
 ### Testing Strategy
