@@ -53,6 +53,7 @@ nav:
     - Encoders: guide/encoders.md
     - Similarity Metrics: guide/similarity.md
     - Batch Operations: guide/batch_operations.md
+    - Resonator Networks: guide/resonator.md
     - Persistence: guide/persistence.md
     - Representations: guide/representations.md
     - Operations: guide/operations.md
@@ -83,6 +84,7 @@ nav:
       - FHRROperations: api/ops/fhrr.md
       - MAPOperations: api/ops/map.md
       - BinaryOperations: api/ops/binary.md
+    - Resonator Networks: api/resonator/index.md
     - Sampling: api/sampling.md
     - Similarity: api/similarity/index.md
     - I/O: api/io/index.md
