@@ -66,15 +66,19 @@ Compare all three VSA models (FHRR, MAP, Binary) across classification accuracy,
 
 Compare VSA with neural networks on Fashion-MNIST classification. Demonstrates VSA's advantages for edge computing: 4-10x faster training, comparable model size, and similar accuracy without gradient descent. Shows when to choose VSA over neural networks for resource-constrained environments (IoT, wearables, embedded systems).
 
+### Tutorial 7: Hierarchical Structures - Trees & Nested Composition
+**Status**: ✅ Complete
+**Level**: Advanced
+**Topics**: Recursive binding, parse trees, deep composition, resonator factorization
+**Files**:
+- `examples/notebooks/tutorial_07_hierarchical_structures.ipynb`
+- `docs/tutorials/07_hierarchical_structures.md`
+
+Encode hierarchical structures through recursive role-filler binding. Demonstrates arithmetic expression trees, nested lists, parse trees (sentence syntax), and family trees (genealogy). Shows how entire tree structures compress into single vectors and can be decoded with exact unbinding. Introduces resonator networks for robust factorization of nested structures.
+
 ---
 
 ## Planned Tutorials - Next Priority 🎯
-
-### Tutorial 7: Hierarchical Structures - Trees & Nested Composition ⭐⭐
-**Status**: 📋 Planned
-**Level**: Advanced
-**Topics**: Recursive binding, parse trees, deep composition, resonator factorization
-**Priority**: **NEXT**
 
 **Learning Goals**:
 - Encode hierarchical structures (parse trees, nested lists)

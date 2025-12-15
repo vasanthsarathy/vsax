@@ -70,6 +70,17 @@ Compare VSA with neural networks on model size, training time, inference speed, 
 
 ---
 
+### Tutorial 7: Hierarchical Structures - Trees & Nested Composition
+**Level**: Advanced
+**Topics**: Recursive binding, tree encoding, parse trees, compositional semantics, resonator networks
+**Examples**: Arithmetic expressions, nested lists, syntax trees, family trees
+
+Encode hierarchical structures through recursive role-filler binding. Learn to represent trees holistically in single vectors, decode nested structures with exact unbinding, and use resonator networks for robust factorization. Demonstrates VSA's powerful compositional capabilities for representing syntax trees, nested data, and genealogy.
+
+[📖 Read Tutorial](07_hierarchical_structures.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_07_hierarchical_structures.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

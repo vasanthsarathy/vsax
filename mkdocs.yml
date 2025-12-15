@@ -54,6 +54,7 @@ nav:
     - Word Analogies & Random Indexing: tutorials/04_word_analogies.md
     - Understanding VSA Models: tutorials/05_model_comparison.md
     - VSA for Edge Computing: tutorials/06_edge_computing.md
+    - Hierarchical Structures: tutorials/07_hierarchical_structures.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md
