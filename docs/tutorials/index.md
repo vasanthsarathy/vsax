@@ -15,12 +15,14 @@ Learn how to use VSA for image classification with the classic MNIST dataset. Co
 
 ---
 
-### Tutorial 2: Knowledge Graph Reasoning *(Coming Soon)*
+### Tutorial 2: Knowledge Graph Reasoning
 **Level**: Intermediate
 **Topics**: Graph encoding, factorization, multi-hop reasoning
-**Dataset**: Custom knowledge base
+**Dataset**: Custom animal taxonomy
 
-Build and query a knowledge graph using VSA. Encode relational facts, perform queries, and use resonator networks to decode compositional structures.
+Build and query a knowledge graph using VSA. Encode relational facts (triples), perform queries using unbinding, use resonator networks to decode compositional structures, and perform multi-hop reasoning for property inheritance.
+
+[📖 Read Tutorial](02_knowledge_graph.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_02_knowledge_graph.ipynb)
 
 ---
 

@@ -252,7 +252,7 @@ See [todo.md](todo.md) for the complete development roadmap.
 - [Getting Started](docs/getting-started.md)
 - [Tutorials](docs/tutorials/index.md)
   - [MNIST Classification](docs/tutorials/01_mnist_classification.md) - Image classification with VSA
-  - Knowledge Graph Reasoning *(coming soon)*
+  - [Knowledge Graph Reasoning](docs/tutorials/02_knowledge_graph.md) - Multi-hop reasoning with relational facts
 - [Design Specification](docs/design-spec.md)
 - [API Reference](https://vasanthsarathy.github.io/vsax/api/)
 - [Contributing](CONTRIBUTING.md)
