@@ -93,6 +93,7 @@ nav:
     - Similarity: api/similarity/index.md
     - I/O: api/io/index.md
     - Utilities: api/utils/index.md
+  - VSAX vs Other Libraries: comparison.md
   - Design Spec: design-spec.md
 
 markdown_extensions:

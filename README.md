@@ -254,6 +254,7 @@ See [todo.md](todo.md) for the complete development roadmap.
   - [MNIST Classification](docs/tutorials/01_mnist_classification.md) - Image classification with VSA
   - [Knowledge Graph Reasoning](docs/tutorials/02_knowledge_graph.md) - Multi-hop reasoning with relational facts
   - [Kanerva's "Dollar of Mexico"](docs/tutorials/03_kanerva_analogies.md) - Analogical reasoning and mapping ✨ **NEW**
+- [VSAX vs Other Libraries](docs/comparison.md) - Why VSAX? Feature comparison with torchhd, hdlib, PyBHV
 - [Design Specification](docs/design-spec.md)
 - [API Reference](https://vasanthsarathy.github.io/vsax/api/)
 - [Contributing](CONTRIBUTING.md)
