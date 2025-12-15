@@ -1,0 +1,3938 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JAX-native Vector Symbolic Algebra library">
+      
+      
+        <meta name="author" content="VSAX Contributors">
+      
+      
+        <link rel="canonical" href="https://vsax.readthedocs.io/comparison/">
+      
+      
+        <link rel="prev" href="../api/utils/">
+      
+      
+        <link rel="next" href="../design-spec/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>VSAX vs Other Libraries - VSAX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vsax-vs-other-hdcvsa-libraries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSAX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VSAX vs Other Libraries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tutorials/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../guide/models/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/fhrr/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  VSAX vs Other Libraries
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../design-spec/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Design Spec
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSAX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/01_mnist_classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MNIST Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/batch_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/gpu_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/representations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRR Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAP Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAModel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/core/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Encoders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/encoders/scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScalarEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/encoders/sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SequenceEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/encoders/set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SetEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/encoders/dict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DictEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/encoders/graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Representations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/representations/complex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComplexHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/representations/real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RealHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/representations/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/ops/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRROperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/ops/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAPOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/ops/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAX vs Other Libraries
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAX vs Other Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr-when-to-use-vsax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR - When to Use VSAX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsaxs-design-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VSAX's Design Philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSAX&#39;s Design Philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-jax-native-functional-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. JAX-Native Functional Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modular-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Modular Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simplicity-and-clarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Simplicity and Clarity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-vsa-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported VSA Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Machine Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance &amp; Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer Experience
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-library-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Library Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Library Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#torchhd-the-production-ml-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torchhd: The Production ML Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdlib-the-biomedical-specialist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hdlib: The Biomedical Specialist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pybhv-the-boolean-specialist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyBHV: The Boolean Specialist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdtorch-the-cuda-accelerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hdtorch: The CUDA Accelerator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-vsax-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Makes VSAX Unique?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Makes VSAX Unique?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-jax-first-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. JAX-First Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-clean-theoretical-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Clean Theoretical Foundation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-resonator-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Resonator Networks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tutorial-driven-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tutorial-Driven Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-research-friendly-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Research-Friendly Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-vsax-doesnt-yet-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What VSAX Doesn't (Yet) Do
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What VSAX Doesn&#39;t (Yet) Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machine-learning-classifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Machine Learning Classifiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Advanced Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-vsa-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Additional VSA Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Production Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing the Right Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-vsax-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use VSAX if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-torchhd-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use torchhd if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-hdlib-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use hdlib if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pybhv-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use PyBHV if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-hdtorch-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use hdtorch if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax-roadmap-closing-the-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VSAX Roadmap: Closing the Gaps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSAX Roadmap: Closing the Gaps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v100-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.0.0 (Future)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v110-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.1.0 (Future)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v200-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v2.0.0 (Future)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-vsax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing to VSAX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr-when-to-use-vsax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR - When to Use VSAX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsaxs-design-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VSAX's Design Philosophy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSAX&#39;s Design Philosophy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-jax-native-functional-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. JAX-Native Functional Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modular-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Modular Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simplicity-and-clarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Simplicity and Clarity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-vsa-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported VSA Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Machine Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance &amp; Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Developer Experience
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-library-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Library Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Library Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#torchhd-the-production-ml-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torchhd: The Production ML Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdlib-the-biomedical-specialist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hdlib: The Biomedical Specialist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pybhv-the-boolean-specialist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyBHV: The Boolean Specialist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdtorch-the-cuda-accelerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hdtorch: The CUDA Accelerator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-vsax-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Makes VSAX Unique?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Makes VSAX Unique?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-jax-first-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. JAX-First Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-clean-theoretical-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Clean Theoretical Foundation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-resonator-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Resonator Networks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tutorial-driven-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tutorial-Driven Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-research-friendly-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Research-Friendly Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-vsax-doesnt-yet-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What VSAX Doesn't (Yet) Do
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What VSAX Doesn&#39;t (Yet) Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machine-learning-classifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Machine Learning Classifiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Advanced Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-vsa-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Additional VSA Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Production Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing the Right Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-vsax-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use VSAX if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-torchhd-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use torchhd if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-hdlib-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use hdlib if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pybhv-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use PyBHV if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-hdtorch-if-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use hdtorch if you:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vsax-roadmap-closing-the-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VSAX Roadmap: Closing the Gaps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VSAX Roadmap: Closing the Gaps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v100-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.0.0 (Future)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v110-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v1.1.0 (Future)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v200-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v2.0.0 (Future)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-vsax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing to VSAX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="vsax-vs-other-hdcvsa-libraries">VSAX vs Other HDC/VSA Libraries<a class="headerlink" href="#vsax-vs-other-hdcvsa-libraries" title="Permanent link">&para;</a></h1>
+<p>This document explains VSAX's design philosophy and how it compares to other open-source hyperdimensional computing libraries.</p>
+<h2 id="tldr-when-to-use-vsax">TL;DR - When to Use VSAX<a class="headerlink" href="#tldr-when-to-use-vsax" title="Permanent link">&para;</a></h2>
+<p><strong>Choose VSAX if you want:</strong>
+- ✅ JAX-native functional programming with automatic GPU acceleration
+- ✅ Clean separation between representations and operations
+- ✅ Composable, modular architecture for research and prototyping
+- ✅ Strong theoretical grounding (implements canonical VSA models)
+- ✅ Type-safe, well-documented API with 94% test coverage
+- ✅ Resonator networks for factorization
+- ✅ Seamless integration with JAX ecosystem (jit, vmap, grad)</p>
+<p><strong>Choose alternatives if you need:</strong>
+- ❌ PyTorch integration → <strong>torchhd</strong>
+- ❌ Production ML classifiers with 150+ datasets → <strong>torchhd</strong>
+- ❌ Biomedical/medical informatics focus → <strong>hdlib</strong>
+- ❌ Advanced boolean operations and circuit compilation → <strong>PyBHV</strong>
+- ❌ Custom CUDA kernels → <strong>hdtorch</strong></p>
+<hr />
+<h2 id="vsaxs-design-philosophy">VSAX's Design Philosophy<a class="headerlink" href="#vsaxs-design-philosophy" title="Permanent link">&para;</a></h2>
+<p>VSAX is built on three core principles:</p>
+<h3 id="1-jax-native-functional-programming">1. <strong>JAX-Native Functional Programming</strong><a class="headerlink" href="#1-jax-native-functional-programming" title="Permanent link">&para;</a></h3>
+<p>Unlike PyTorch-based libraries (torchhd, hdtorch), VSAX is built entirely on JAX:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># JAX provides automatic differentiation, JIT compilation, and vectorization</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">jax</span><span class="w"> </span><span class="kn">import</span> <span class="n">jit</span><span class="p">,</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">grad</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># VSAX operations are pure functions</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># Functional, composable</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Automatic GPU acceleration - no explicit device management</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nd">@jit</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">fast_encoding</span><span class="p">(</span><span class="n">vectors</span><span class="p">):</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="k">return</span> <span class="n">vmap</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">)(</span><span class="n">vectors</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Why JAX?</strong>
+- <strong>Functional purity</strong>: No hidden state, easier to reason about
+- <strong>Automatic transformations</strong>: <code>jit</code>, <code>vmap</code>, <code>grad</code> work out of the box
+- <strong>Research-friendly</strong>: Designed for ML research at Google/DeepMind
+- <strong>NumPy-like API</strong>: Familiar interface, minimal learning curve</p>
+<h3 id="2-modular-architecture">2. <strong>Modular Architecture</strong><a class="headerlink" href="#2-modular-architecture" title="Permanent link">&para;</a></h3>
+<p>VSAX cleanly separates concerns:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Representations (data)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ComplexHypervector</span><span class="p">,</span> <span class="n">RealHypervector</span><span class="p">,</span> <span class="n">BinaryHypervector</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Operations (algorithms)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">FHRROperations</span><span class="p">,</span> <span class="n">MAPOperations</span><span class="p">,</span> <span class="n">BinaryOperations</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Model (composition)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">VSAModel</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">rep_cls</span><span class="p">,</span> <span class="n">opset</span><span class="p">,</span> <span class="n">sampler</span><span class="p">)</span>
+</code></pre></div>
+<p>This is different from torchhd's integrated approach where models are classes with built-in operations.</p>
+<p><strong>Benefit</strong>: Mix and match components:
+- Try different operations with the same representation
+- Swap representations without changing code
+- Easy to add new VSA models</p>
+<h3 id="3-simplicity-and-clarity">3. <strong>Simplicity and Clarity</strong><a class="headerlink" href="#3-simplicity-and-clarity" title="Permanent link">&para;</a></h3>
+<p>VSAX prioritizes <strong>understanding</strong> over <strong>features</strong>:</p>
+<ul>
+<li><strong>3 canonical VSA models</strong> (FHRR, MAP, Binary) implemented correctly</li>
+<li><strong>Clear abstractions</strong>: Every operation has a mathematical meaning</li>
+<li><strong>Comprehensive tutorials</strong>: Learn VSA concepts, not just API calls</li>
+<li><strong>Theory-first</strong>: Based on foundational papers (Plate, Gayler, Kanerva)</li>
+</ul>
+<hr />
+<h2 id="feature-comparison">Feature Comparison<a class="headerlink" href="#feature-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="supported-vsa-models">Supported VSA Models<a class="headerlink" href="#supported-vsa-models" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>FHRR</th>
+<th>MAP</th>
+<th>Binary</th>
+<th>HRR</th>
+<th>Others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VSAX</strong></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>torchhd</strong></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (BSC)</td>
+<td>✅</td>
+<td>B-SBC, CGR, MCR, VTB</td>
+</tr>
+<tr>
+<td><strong>hdlib</strong></td>
+<td>❓</td>
+<td>❓</td>
+<td>❓</td>
+<td>❓</td>
+<td>General VSA</td>
+</tr>
+<tr>
+<td><strong>PyBHV</strong></td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>Boolean only</td>
+</tr>
+<tr>
+<td><strong>hdtorch</strong></td>
+<td>❓</td>
+<td>❓</td>
+<td>✅</td>
+<td>❓</td>
+<td>Focus on CUDA ops</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VSAX focuses on quality over quantity</strong>: 3 well-implemented models vs 8+ models with varying documentation.</p>
+<h3 id="core-operations">Core Operations<a class="headerlink" href="#core-operations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>VSAX</th>
+<th>torchhd</th>
+<th>hdlib</th>
+<th>PyBHV</th>
+<th>hdtorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binding</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (XOR)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Bundling</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (Majority)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Permutation</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Similarity</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Resonator Networks</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Memory/Cleanup</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VSAX unique feature</strong>: Full implementation of resonator networks for factorization (from Frady et al. 2020).</p>
+<h3 id="encoders">Encoders<a class="headerlink" href="#encoders" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>VSAX</th>
+<th>torchhd</th>
+<th>hdlib</th>
+<th>PyBHV</th>
+<th>hdtorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scalar</td>
+<td>✅</td>
+<td>✅ (Level, Thermometer)</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Sequence</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>✅</td>
+<td>✅ (Multiset)</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Dict/Record</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Graph</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Tree</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>FSA</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VSAX strength</strong>: Clean, extensible encoder API with <code>AbstractEncoder</code> base class.</p>
+<h3 id="machine-learning">Machine Learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>VSAX</th>
+<th>torchhd</th>
+<th>hdlib</th>
+<th>PyBHV</th>
+<th>hdtorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classification</td>
+<td>❌</td>
+<td>✅ (9+ types)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (Basic)</td>
+</tr>
+<tr>
+<td>Built-in Datasets</td>
+<td>❌</td>
+<td>✅ (150+)</td>
+<td>✅ (Some)</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Online Learning</td>
+<td>❌</td>
+<td>✅ (OnlineHD)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Neural Integration</td>
+<td>❌</td>
+<td>✅ (NeuralHD)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Clustering</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Biggest VSAX gap</strong>: No built-in classifiers or ML workflows (yet).</p>
+<p><strong>torchhd is the clear winner</strong> for production ML applications.</p>
+<h3 id="performance-hardware">Performance &amp; Hardware<a class="headerlink" href="#performance-hardware" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>VSAX</th>
+<th>torchhd</th>
+<th>hdlib</th>
+<th>PyBHV</th>
+<th>hdtorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU Support</td>
+<td>✅ (JAX auto)</td>
+<td>✅ (PyTorch)</td>
+<td>❌</td>
+<td>✅ (PyTorch backend)</td>
+<td>✅ (Custom CUDA)</td>
+</tr>
+<tr>
+<td>CPU Fallback</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Batch Operations</td>
+<td>✅ (vmap)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>JIT Compilation</td>
+<td>✅ (JAX)</td>
+<td>✅ (TorchScript)</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Custom Kernels</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅ (C++)</td>
+<td>✅ (CUDA)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VSAX uses JAX's automatic GPU dispatch</strong> - no manual device management.</p>
+<h3 id="developer-experience">Developer Experience<a class="headerlink" href="#developer-experience" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>VSAX</th>
+<th>torchhd</th>
+<th>hdlib</th>
+<th>PyBHV</th>
+<th>hdtorch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type Hints</td>
+<td>✅ (Full)</td>
+<td>✅</td>
+<td>❓</td>
+<td>❌</td>
+<td>❓</td>
+</tr>
+<tr>
+<td>Test Coverage</td>
+<td>94%</td>
+<td>❓</td>
+<td>❓</td>
+<td>❓</td>
+<td>❓</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (Wiki)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Tutorials</td>
+<td>✅ (3 deep)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (Examples)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (Many)</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VSAX prioritizes code quality</strong>: Type-safe, well-tested, thoroughly documented.</p>
+<hr />
+<h2 id="detailed-library-comparison">Detailed Library Comparison<a class="headerlink" href="#detailed-library-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="torchhd-the-production-ml-library">torchhd: The Production ML Library<a class="headerlink" href="#torchhd-the-production-ml-library" title="Permanent link">&para;</a></h3>
+<p><strong>Best for</strong>: Machine learning applications, classification tasks, production deployment</p>
+<p><strong>Strengths</strong>:
+- <strong>Comprehensive</strong>: 8 VSA models, 9+ classifiers, 150+ datasets
+- <strong>Production-ready</strong>: Battle-tested with active community (346 stars)
+- <strong>PyTorch integration</strong>: Seamless with existing PyTorch workflows
+- <strong>Rich structures</strong>: Graph, Tree, FSA, HashTable implementations
+- <strong>Well-documented</strong>: Extensive tutorials and examples</p>
+<p><strong>Weaknesses</strong>:
+- <strong>Complexity</strong>: Large API surface, steeper learning curve
+- <strong>PyTorch-coupled</strong>: Hard to use without PyTorch knowledge
+- <strong>Less modular</strong>: Models are monolithic classes</p>
+<p><strong>When to choose over VSAX</strong>:
+- You need production ML classifiers
+- You're already using PyTorch
+- You want ready-made datasets
+- You need advanced structures (Tree, FSA)</p>
+<h3 id="hdlib-the-biomedical-specialist">hdlib: The Biomedical Specialist<a class="headerlink" href="#hdlib-the-biomedical-specialist" title="Permanent link">&para;</a></h3>
+<p><strong>Best for</strong>: Biomedical applications, bioinformatics, medical informatics</p>
+<p><strong>Strengths</strong>:
+- <strong>Domain focus</strong>: Proven in cancer classification, metagenomics
+- <strong>Versatile</strong>: Classification, regression, clustering, feature selection
+- <strong>Academic backing</strong>: Peer-reviewed publications
+- <strong>Easy install</strong>: PyPI and conda-forge</p>
+<p><strong>Weaknesses</strong>:
+- <strong>Less clear</strong>: VSA model support not well documented
+- <strong>No GPU</strong>: CPU-only implementation
+- <strong>Older codebase</strong>: Less active maintenance</p>
+<p><strong>When to choose over VSAX</strong>:
+- You're working in bioinformatics/medical AI
+- You need regression or clustering
+- You want proven biomedical applications</p>
+<h3 id="pybhv-the-boolean-specialist">PyBHV: The Boolean Specialist<a class="headerlink" href="#pybhv-the-boolean-specialist" title="Permanent link">&para;</a></h3>
+<p><strong>Best for</strong>: Boolean operations, symbolic reasoning, theoretical research</p>
+<p><strong>Strengths</strong>:
+- <strong>Research framework</strong>: Expression simplification, circuit compilation
+- <strong>Multiple backends</strong>: Python, C++, NumPy, PyTorch with bit-packing
+- <strong>Rich metrics</strong>: Comprehensive distance and similarity measures
+- <strong>Symbolic computing</strong>: Law-based testing and optimization
+- <strong>Memory efficient</strong>: 8x compression with bit-packing</p>
+<p><strong>Weaknesses</strong>:
+- <strong>Boolean only</strong>: No support for real or complex hypervectors
+- <strong>Narrow focus</strong>: Limited to binary VSA
+- <strong>Complex API</strong>: Many abstraction levels</p>
+<p><strong>When to choose over VSAX</strong>:
+- You only need boolean/binary hypervectors
+- You want circuit compilation or logic synthesis
+- You need bit-level optimization
+- You're doing theoretical VSA research</p>
+<h3 id="hdtorch-the-cuda-accelerator">hdtorch: The CUDA Accelerator<a class="headerlink" href="#hdtorch-the-cuda-accelerator" title="Permanent link">&para;</a></h3>
+<p><strong>Best for</strong>: Custom GPU kernels, maximum performance</p>
+<p><strong>Strengths</strong>:
+- <strong>Custom CUDA</strong>: Hand-optimized GPU kernels
+- <strong>Performance</strong>: Fastest for supported operations
+- <strong>Educational</strong>: Clear tutorials on CUDA implementation</p>
+<p><strong>Weaknesses</strong>:
+- <strong>Limited scope</strong>: Fewer features than torchhd or VSAX
+- <strong>CUDA required</strong>: No CPU fallback
+- <strong>Less mature</strong>: Smaller community</p>
+<p><strong>When to choose over VSAX</strong>:
+- You need maximum GPU performance
+- You want to learn CUDA kernel programming
+- You're willing to trade features for speed</p>
+<hr />
+<h2 id="what-makes-vsax-unique">What Makes VSAX Unique?<a class="headerlink" href="#what-makes-vsax-unique" title="Permanent link">&para;</a></h2>
+<h3 id="1-jax-first-design">1. <strong>JAX-First Design</strong><a class="headerlink" href="#1-jax-first-design" title="Permanent link">&para;</a></h3>
+<p>VSAX is the <strong>only JAX-native VSA library</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Automatic GPU acceleration</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>  <span class="c1"># Works on GPU if available</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># JIT compilation for speed</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nd">@jit</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">encode_batch</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="k">return</span> <span class="n">vmap</span><span class="p">(</span><span class="n">encoder</span><span class="o">.</span><span class="n">encode</span><span class="p">)(</span><span class="n">items</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Automatic differentiation (future: differentiable VSA)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">gradient</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</code></pre></div>
+<p><strong>Why this matters</strong>:
+- JAX is the future of ML research (used by Google, DeepMind)
+- Functional programming = easier reasoning
+- Better for research and prototyping</p>
+<h3 id="2-clean-theoretical-foundation">2. <strong>Clean Theoretical Foundation</strong><a class="headerlink" href="#2-clean-theoretical-foundation" title="Permanent link">&para;</a></h3>
+<p>VSAX implements the <strong>canonical VSA models</strong> from foundational papers:</p>
+<ul>
+<li><strong>FHRR</strong>: Plate (1995) - Complex-valued circular convolution</li>
+<li><strong>MAP</strong>: Gayler (1998) - Multiply-Add-Permute</li>
+<li><strong>Binary</strong>: Kanerva (1996) - Binary Spatter Codes</li>
+</ul>
+<p>Each implementation is <strong>mathematically correct</strong> and <strong>well-documented</strong>.</p>
+<h3 id="3-resonator-networks">3. <strong>Resonator Networks</strong><a class="headerlink" href="#3-resonator-networks" title="Permanent link">&para;</a></h3>
+<p>VSAX is the <strong>only library with full resonator support</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Factorize compositional structures</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">resonator</span> <span class="o">=</span> <span class="n">Resonator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">codebooks</span><span class="o">=</span><span class="p">[</span><span class="n">subjects</span><span class="p">,</span> <span class="n">relations</span><span class="p">,</span> <span class="n">objects</span><span class="p">])</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">factors</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite_vector</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># [&#39;dog&#39;, &#39;isA&#39;, &#39;mammal&#39;]</span>
+</code></pre></div>
+<p>Based on Frady et al. (2020), resonators enable:
+- Decoding compositional structures
+- Iterative refinement with convergence
+- Multi-factor factorization</p>
+<h3 id="4-tutorial-driven-documentation">4. <strong>Tutorial-Driven Documentation</strong><a class="headerlink" href="#4-tutorial-driven-documentation" title="Permanent link">&para;</a></h3>
+<p>VSAX teaches <strong>VSA concepts</strong>, not just API:</p>
+<ol>
+<li><strong>MNIST Classification</strong>: Learn encoding and prototypes</li>
+<li><strong>Knowledge Graphs</strong>: Understand binding and bundling</li>
+<li><strong>Kanerva's Analogies</strong>: Master mappings and transformations</li>
+</ol>
+<p>Each tutorial implements <strong>foundational papers</strong> with full code.</p>
+<h3 id="5-research-friendly-architecture">5. <strong>Research-Friendly Architecture</strong><a class="headerlink" href="#5-research-friendly-architecture" title="Permanent link">&para;</a></h3>
+<p>VSAX makes it <strong>easy to experiment</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Try different operations with same representation</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">model1</span> <span class="o">=</span> <span class="n">VSAModel</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">rep_cls</span><span class="o">=</span><span class="n">ComplexHypervector</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                  <span class="n">opset</span><span class="o">=</span><span class="n">FHRROperations</span><span class="p">(),</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sample_complex_random</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">model2</span> <span class="o">=</span> <span class="n">VSAModel</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">rep_cls</span><span class="o">=</span><span class="n">ComplexHypervector</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                  <span class="n">opset</span><span class="o">=</span><span class="n">MAPOperations</span><span class="p">(),</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sample_complex_random</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Same API, different algebra!</span>
+</code></pre></div>
+<hr />
+<h2 id="what-vsax-doesnt-yet-do">What VSAX Doesn't (Yet) Do<a class="headerlink" href="#what-vsax-doesnt-yet-do" title="Permanent link">&para;</a></h2>
+<p>We're honest about gaps:</p>
+<h3 id="machine-learning-classifiers">❌ Machine Learning Classifiers<a class="headerlink" href="#machine-learning-classifiers" title="Permanent link">&para;</a></h3>
+<p><strong>Missing</strong>:
+- No built-in classifiers (Centroid, AdaptHD, OnlineHD, etc.)
+- No datasets
+- No training loops</p>
+<p><strong>Workaround</strong>: Build your own with VSAX primitives:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Manual centroid classifier</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">prototypes</span> <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="p">:</span> <span class="n">bundle</span><span class="p">(</span><span class="n">class_examples</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">class_examples</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">prediction</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">prototypes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">prototypes</span><span class="p">[</span><span class="n">l</span><span class="p">]))</span>
+</code></pre></div></p>
+<p><strong>Future</strong>: v1.0+ will add classifiers</p>
+<h3 id="advanced-structures">❌ Advanced Structures<a class="headerlink" href="#advanced-structures" title="Permanent link">&para;</a></h3>
+<p><strong>Missing</strong>:
+- Tree encoders
+- Finite State Automata
+- HashTable structures</p>
+<p><strong>Workaround</strong>: Use GraphEncoder as building block</p>
+<p><strong>Future</strong>: May add in v1.x based on demand</p>
+<h3 id="additional-vsa-models">❌ Additional VSA Models<a class="headerlink" href="#additional-vsa-models" title="Permanent link">&para;</a></h3>
+<p><strong>Missing</strong>:
+- HRR (original Plate model without FFT)
+- BSC variants (Sparse Block Codes)
+- CGR, MCR, VTB from recent research</p>
+<p><strong>Reason</strong>: We prioritize <strong>depth</strong> (correct implementation, documentation, tests) over <strong>breadth</strong></p>
+<p><strong>Future</strong>: May add models with strong theoretical foundation</p>
+<h3 id="production-optimization">❌ Production Optimization<a class="headerlink" href="#production-optimization" title="Permanent link">&para;</a></h3>
+<p><strong>Missing</strong>:
+- Custom CUDA kernels (like hdtorch)
+- Bit-packing (like PyBHV)
+- Quantization/compression</p>
+<p><strong>Reason</strong>: JAX provides good-enough performance for research</p>
+<p><strong>Future</strong>: Optimization in later versions if needed</p>
+<hr />
+<h2 id="choosing-the-right-library">Choosing the Right Library<a class="headerlink" href="#choosing-the-right-library" title="Permanent link">&para;</a></h2>
+<h3 id="use-vsax-if-you">Use VSAX if you:<a class="headerlink" href="#use-vsax-if-you" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🎓 Want to <strong>learn VSA deeply</strong> with tutorial-driven examples</li>
+<li>🔬 Are doing <strong>research</strong> and need flexibility</li>
+<li>🧮 Prefer <strong>functional programming</strong> and JAX</li>
+<li>📐 Value <strong>theoretical correctness</strong> over feature count</li>
+<li>🧩 Need <strong>compositional operations</strong> (resonators, mappings)</li>
+<li>💻 Want <strong>type-safe, well-tested</strong> code</li>
+</ul>
+<h3 id="use-torchhd-if-you">Use torchhd if you:<a class="headerlink" href="#use-torchhd-if-you" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🏭 Need <strong>production ML</strong> with classifiers and datasets</li>
+<li>🔥 Are already using <strong>PyTorch</strong></li>
+<li>📊 Want <strong>many VSA models</strong> to experiment with</li>
+<li>🚀 Need <strong>battle-tested</strong> software (350+ stars)</li>
+<li>🎯 Are building <strong>classification systems</strong></li>
+</ul>
+<h3 id="use-hdlib-if-you">Use hdlib if you:<a class="headerlink" href="#use-hdlib-if-you" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🧬 Work in <strong>bioinformatics</strong> or <strong>medical AI</strong></li>
+<li>📈 Need <strong>regression</strong> or <strong>clustering</strong></li>
+<li>📚 Want <strong>proven biomedical applications</strong></li>
+<li>🐍 Prefer simple Python without GPU</li>
+</ul>
+<h3 id="use-pybhv-if-you">Use PyBHV if you:<a class="headerlink" href="#use-pybhv-if-you" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🔲 Only need <strong>boolean hypervectors</strong></li>
+<li>⚡ Want <strong>bit-level optimization</strong></li>
+<li>🧠 Are doing <strong>symbolic reasoning</strong> research</li>
+<li>🔧 Need <strong>circuit compilation</strong></li>
+</ul>
+<h3 id="use-hdtorch-if-you">Use hdtorch if you:<a class="headerlink" href="#use-hdtorch-if-you" title="Permanent link">&para;</a></h3>
+<ul>
+<li>⚙️ Need <strong>custom CUDA kernels</strong></li>
+<li>🏎️ Want <strong>maximum GPU performance</strong></li>
+<li>🎓 Want to <strong>learn CUDA</strong> programming</li>
+</ul>
+<hr />
+<h2 id="vsax-roadmap-closing-the-gaps">VSAX Roadmap: Closing the Gaps<a class="headerlink" href="#vsax-roadmap-closing-the-gaps" title="Permanent link">&para;</a></h2>
+<h3 id="v100-future">v1.0.0 (Future)<a class="headerlink" href="#v100-future" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Basic classifiers (Centroid, kNN)</li>
+<li>✅ Common datasets (MNIST, CIFAR-10)</li>
+<li>✅ Training utilities</li>
+</ul>
+<h3 id="v110-future">v1.1.0 (Future)<a class="headerlink" href="#v110-future" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Tree and FSA encoders</li>
+<li>✅ Additional VSA models (HRR, BSC variants)</li>
+</ul>
+<h3 id="v200-future">v2.0.0 (Future)<a class="headerlink" href="#v200-future" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Advanced classifiers (OnlineHD, AdaptHD)</li>
+<li>✅ Performance optimizations</li>
+<li>✅ Production tooling</li>
+</ul>
+<p><strong>Guiding principle</strong>: Maintain simplicity and theoretical clarity while adding practical features.</p>
+<hr />
+<h2 id="contributing-to-vsax">Contributing to VSAX<a class="headerlink" href="#contributing-to-vsax" title="Permanent link">&para;</a></h2>
+<p>We welcome contributions! Priority areas:</p>
+<ol>
+<li><strong>Classifiers</strong>: Implement standard HDC classifiers</li>
+<li><strong>Datasets</strong>: Add benchmark datasets with encoders</li>
+<li><strong>Examples</strong>: More domain applications (NLP, robotics, etc.)</li>
+<li><strong>VSA Models</strong>: Add models with theoretical grounding</li>
+<li><strong>Performance</strong>: Optimize hot paths while keeping API clean</li>
+</ol>
+<p>See <a href="https://github.com/vasanthsarathy/vsax/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<hr />
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p><strong>VSAX is a research-oriented, JAX-native VSA library</strong> that prioritizes:
+- ✨ <strong>Clarity</strong> over completeness
+- 🧮 <strong>Theory</strong> over features
+- 🔬 <strong>Research</strong> over production</p>
+<p>If you need <strong>production ML</strong> → choose <strong>torchhd</strong>
+If you need <strong>biomedical apps</strong> → choose <strong>hdlib</strong>
+If you need <strong>boolean operations</strong> → choose <strong>PyBHV</strong>
+If you need <strong>custom CUDA</strong> → choose <strong>hdtorch</strong></p>
+<p><strong>If you want to understand VSA deeply and build novel approaches</strong> → choose <strong>VSAX</strong> ✨</p>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>torchhd</strong>: https://github.com/hyperdimensional-computing/torchhd</li>
+<li><strong>hdlib</strong>: https://github.com/cumbof/hdlib</li>
+<li><strong>PyBHV</strong>: https://github.com/Adam-Vandervorst/PyBHV</li>
+<li><strong>hdtorch</strong>: https://hdtorch.readthedocs.io/en/latest/</li>
+</ul>
+<hr />
+<p><em>Last updated: 2025-01-16</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
