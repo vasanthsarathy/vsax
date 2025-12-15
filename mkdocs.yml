@@ -49,6 +49,9 @@ nav:
   - Tutorials:
     - Overview: tutorials/index.md
     - MNIST Classification: tutorials/01_mnist_classification.md
+    - Knowledge Graph Reasoning: tutorials/02_knowledge_graph.md
+    - Kanerva's Dollar of Mexico: tutorials/03_kanerva_analogies.md
+    - Word Analogies & Random Indexing: tutorials/04_word_analogies.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

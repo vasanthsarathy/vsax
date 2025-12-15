@@ -37,6 +37,17 @@ Implement the classic examples from Pentti Kanerva's foundational paper on hyper
 
 ---
 
+### Tutorial 4: Word Analogies & Random Indexing
+**Level**: Intermediate
+**Topics**: Word embeddings, semantic similarity, Random Indexing, word analogies
+**Dataset**: Custom text corpus with semantic relationships
+
+Build word embeddings using Random Indexing (Kanerva et al. 2000) and perform classic word analogies like "king - man + woman = queen". Learn how context co-occurrence shapes meaning, perform semantic similarity search, compare VSA models for NLP tasks, and understand vector composition for analogical reasoning.
+
+[📖 Read Tutorial](04_word_analogies.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_04_word_analogies.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:
