@@ -250,6 +250,7 @@ See [todo.md](todo.md) for the complete development roadmap.
 
 - [Full Documentation](https://vasanthsarathy.github.io/vsax/)
 - [Getting Started](docs/getting-started.md)
+- [Modeling Guide](docs/modeling-guide.md) - **7-step workflow** for building VSA applications
 - [Tutorials](docs/tutorials/index.md)
   - [MNIST Classification](docs/tutorials/01_mnist_classification.md) - Image classification with VSA
   - [Knowledge Graph Reasoning](docs/tutorials/02_knowledge_graph.md) - Multi-hop reasoning with relational facts
