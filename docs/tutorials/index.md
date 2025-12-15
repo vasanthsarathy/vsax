@@ -92,6 +92,17 @@ Demonstrate VSA's powerful multi-modal capabilities by fusing vision (MNIST imag
 
 ---
 
+### Tutorial 9: Neural-Symbolic Fusion with HD-Glue
+**Level**: Advanced
+**Topics**: Neuro-symbolic AI, neural network fusion, hyperdimensional inference, consensus learning, online learning
+**Dataset**: MNIST digits with multiple neural networks
+
+Implement HD-Glue - a groundbreaking technique to fuse multiple neural networks at the symbolic level using VSA. Learn to encode neural network embeddings as hypervectors, create Hyperdimensional Inference Layers (HIL), and build consensus models that outperform individual networks. Demonstrates architecture-agnostic fusion, online learning (add networks dynamically), error correction, and reusing previously trained models. Based on "Gluing Neural Networks Symbolically Through Hyperdimensional Computing" (Sutor et al., 2022).
+
+[📖 Read Tutorial](09_neural_symbolic_fusion.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_09_neural_symbolic_fusion.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

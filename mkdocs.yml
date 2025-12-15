@@ -57,6 +57,7 @@ nav:
     - VSA for Edge Computing: tutorials/06_edge_computing.md
     - Hierarchical Structures: tutorials/07_hierarchical_structures.md
     - Multi-Modal Concept Grounding: tutorials/08_multimodal_grounding.md
+    - Neural-Symbolic Fusion (HD-Glue): tutorials/09_neural_symbolic_fusion.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

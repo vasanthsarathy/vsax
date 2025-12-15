@@ -86,6 +86,16 @@ Encode hierarchical structures through recursive role-filler binding. Demonstrat
 
 Demonstrate VSA's powerful multi-modal capabilities by fusing vision (MNIST images), symbolic atoms, and arithmetic relationships into rich concept representations. Learn to encode heterogeneous data in the same space, perform cross-modal queries ("What is 1+2?" → retrieve visual prototype), and add new knowledge online without retraining. Shows how concepts can be grounded in multiple modalities simultaneously.
 
+### Tutorial 9: Neural-Symbolic Fusion with HD-Glue
+**Status**: ✅ Complete
+**Level**: Advanced
+**Topics**: Neuro-symbolic AI, neural network fusion, hyperdimensional inference, consensus learning
+**Files**:
+- `examples/notebooks/tutorial_09_neural_symbolic_fusion.ipynb`
+- `docs/tutorials/09_neural_symbolic_fusion.md`
+
+Implement HD-Glue - a technique to fuse multiple neural networks at the symbolic level using VSA (based on Sutor et al., 2022). Encode neural network embeddings as hypervectors, create Hyperdimensional Inference Layers (HIL), and build consensus models that outperform individual networks. Demonstrates architecture-agnostic fusion, online learning, error correction, and reusing previously trained models. Shows VSA's power for neuro-symbolic AI.
+
 ---
 
 ## Planned Tutorials - Next Priority 🎯

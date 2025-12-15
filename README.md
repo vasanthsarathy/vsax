@@ -259,7 +259,8 @@ See [todo.md](todo.md) for the complete development roadmap.
   - [Understanding VSA Models](docs/tutorials/05_model_comparison.md) - Compare FHRR, MAP, and Binary models
   - [VSA for Edge Computing](docs/tutorials/06_edge_computing.md) - Lightweight alternative to neural networks
   - [Hierarchical Structures](docs/tutorials/07_hierarchical_structures.md) - Trees and nested composition
-  - [Multi-Modal Concept Grounding](docs/tutorials/08_multimodal_grounding.md) - Fuse vision, language, and arithmetic ✨ **NEW**
+  - [Multi-Modal Concept Grounding](docs/tutorials/08_multimodal_grounding.md) - Fuse vision, language, and arithmetic
+  - [Neural-Symbolic Fusion (HD-Glue)](docs/tutorials/09_neural_symbolic_fusion.md) - Glue neural networks with VSA ✨ **NEW**
 - [VSAX vs Other Libraries](docs/comparison.md) - Why VSAX? Feature comparison with torchhd, hdlib, PyBHV
 - [Design Specification](docs/design-spec.md)
 - [API Reference](https://vasanthsarathy.github.io/vsax/api/)
