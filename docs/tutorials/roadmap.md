@@ -56,15 +56,25 @@ Build word embeddings using Random Indexing (Kanerva et al. 2000) and perform cl
 
 Compare all three VSA models (FHRR, MAP, Binary) across classification accuracy, noise robustness, capacity analysis, and speed benchmarks. Learn when to use each model, understand the trade-offs between accuracy, speed, and memory, and get a practical decision guide for choosing the right model for your task.
 
+### Tutorial 6: VSA for Edge Computing - Lightweight Alternative to Neural Networks
+**Status**: ✅ Complete
+**Level**: Intermediate
+**Topics**: Edge computing, VSA vs neural networks, efficiency, deployment, resource constraints
+**Files**:
+- `examples/notebooks/tutorial_06_edge_computing.ipynb`
+- `docs/tutorials/06_edge_computing.md`
+
+Compare VSA with neural networks on Fashion-MNIST classification. Demonstrates VSA's advantages for edge computing: 4-10x faster training, comparable model size, and similar accuracy without gradient descent. Shows when to choose VSA over neural networks for resource-constrained environments (IoT, wearables, embedded systems).
+
 ---
 
 ## Planned Tutorials - Next Priority 🎯
 
-### Tutorial 6: Hierarchical Structures - Trees & Nested Composition ⭐⭐
+### Tutorial 7: Hierarchical Structures - Trees & Nested Composition ⭐⭐
 **Status**: 📋 Planned
 **Level**: Advanced
 **Topics**: Recursive binding, parse trees, deep composition, resonator factorization
-**Priority**: **HIGH**
+**Priority**: **NEXT**
 
 **Learning Goals**:
 - Encode hierarchical structures (parse trees, nested lists)

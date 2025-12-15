@@ -53,6 +53,7 @@ nav:
     - Kanerva's Dollar of Mexico: tutorials/03_kanerva_analogies.md
     - Word Analogies & Random Indexing: tutorials/04_word_analogies.md
     - Understanding VSA Models: tutorials/05_model_comparison.md
+    - VSA for Edge Computing: tutorials/06_edge_computing.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

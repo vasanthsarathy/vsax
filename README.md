@@ -255,7 +255,8 @@ See [todo.md](todo.md) for the complete development roadmap.
   - [Knowledge Graph Reasoning](docs/tutorials/02_knowledge_graph.md) - Multi-hop reasoning with relational facts
   - [Kanerva's "Dollar of Mexico"](docs/tutorials/03_kanerva_analogies.md) - Analogical reasoning and mapping
   - [Word Analogies & Random Indexing](docs/tutorials/04_word_analogies.md) - Word embeddings and semantic similarity
-  - [Understanding VSA Models](docs/tutorials/05_model_comparison.md) - Compare FHRR, MAP, and Binary models ✨ **NEW**
+  - [Understanding VSA Models](docs/tutorials/05_model_comparison.md) - Compare FHRR, MAP, and Binary models
+  - [VSA for Edge Computing](docs/tutorials/06_edge_computing.md) - Lightweight alternative to neural networks ✨ **NEW**
 - [VSAX vs Other Libraries](docs/comparison.md) - Why VSAX? Feature comparison with torchhd, hdlib, PyBHV
 - [Design Specification](docs/design-spec.md)
 - [API Reference](https://vasanthsarathy.github.io/vsax/api/)

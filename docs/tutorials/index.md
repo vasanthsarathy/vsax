@@ -59,6 +59,17 @@ Compare all three VSA models (FHRR, MAP, Binary) across classification accuracy,
 
 ---
 
+### Tutorial 6: VSA for Edge Computing - Lightweight Alternative to Neural Networks
+**Level**: Intermediate
+**Topics**: Edge computing, VSA vs neural networks, efficiency, deployment, resource constraints
+**Dataset**: Fashion-MNIST
+
+Compare VSA with neural networks on model size, training time, inference speed, and accuracy. Discover VSA's advantages for edge computing: 4-10x faster training, similar model size, and comparable accuracy without gradient descent. Perfect for IoT, wearables, and embedded systems where resources are limited.
+
+[📖 Read Tutorial](06_edge_computing.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_06_edge_computing.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:
