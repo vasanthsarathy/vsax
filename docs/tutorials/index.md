@@ -48,6 +48,17 @@ Build word embeddings using Random Indexing (Kanerva et al. 2000) and perform cl
 
 ---
 
+### Tutorial 5: Understanding VSA Models - Comparative Analysis
+**Level**: Intermediate
+**Topics**: Model comparison, FHRR vs MAP vs Binary, performance benchmarking, trade-offs
+**Dataset**: Iris classification dataset
+
+Compare all three VSA models (FHRR, MAP, Binary) across classification accuracy, noise robustness, capacity analysis, and speed benchmarks. Learn when to use each model, understand the trade-offs between accuracy, speed, and memory, and get a practical decision guide for choosing the right model for your task.
+
+[📖 Read Tutorial](05_model_comparison.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_05_model_comparison.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

@@ -36,78 +36,29 @@ Build and query a knowledge graph using VSA. Encode relational facts (triples), 
 
 Implement the classic examples from Pentti Kanerva's foundational paper on hyperdimensional computing. Learn to encode structured records holistically, compute mapping vectors from examples, perform analogical queries like "What's the dollar of Mexico?", solve IQ-test analogies, and chain mappings transitively.
 
----
-
-## Planned Tutorials - Next 3 (High Priority) 🎯
-
-### Tutorial 4: Word Analogies & Random Indexing ⭐⭐⭐
-**Status**: 📋 Planned
+### Tutorial 4: Word Analogies & Random Indexing
+**Status**: ✅ Complete
 **Level**: Intermediate
 **Topics**: Word embeddings, semantic similarity, Random Indexing, word analogies
-**Priority**: **NEXT**
+**Files**:
+- `examples/notebooks/tutorial_04_word_analogies.ipynb`
+- `docs/tutorials/04_word_analogies.md`
 
-**Learning Goals**:
-- Build word embeddings from text using Random Indexing
-- Perform classic word analogies: "king - man + woman = queen"
-- Semantic similarity search and nearest neighbors
-- Compare bag-of-words vs compositional encoding
+Build word embeddings using Random Indexing (Kanerva et al. 2000) and perform classic word analogies like "king - man + woman = queen". Learn how context co-occurrence shapes meaning, perform semantic similarity search, compare VSA models for NLP tasks, and understand vector composition for analogical reasoning.
 
-**Key Features Demonstrated**:
-- Mapping operations for analogical reasoning
-- Similarity metrics (cosine, dot)
-- Text encoding with VSA
-- Incremental learning from text
-
-**Dataset**: Text corpus (Wikipedia sample, news articles, or classic literature)
-
-**Reference Papers**:
-- Kanerva, P., Kristoferson, J., & Holst, A. (2000). "Random Indexing of text samples for Latent Semantic Analysis"
-- Landauer & Dumais (1997). "Latent Semantic Analysis"
-
-**Why This Tutorial**:
-- Classic VSA application with impressive results
-- Shows power of mapping operations
-- Practical NLP application
-- Easy to understand and verify results
-
----
-
-### Tutorial 5: Understanding VSA Models - Comparative Analysis ⭐⭐⭐
-**Status**: 📋 Planned
+### Tutorial 5: Understanding VSA Models - Comparative Analysis
+**Status**: ✅ Complete
 **Level**: Intermediate
 **Topics**: Model comparison, FHRR vs MAP vs Binary, capacity analysis, noise tolerance
-**Priority**: **HIGH**
+**Files**:
+- `examples/notebooks/tutorial_05_model_comparison.ipynb`
+- `docs/tutorials/05_model_comparison.md`
 
-**Learning Goals**:
-- Compare FHRR, MAP, and Binary on same task (classification)
-- Understand trade-offs: accuracy vs speed vs memory
-- Analyze noise tolerance and capacity
-- Learn when to use each model
-
-**Key Features Demonstrated**:
-- All three VSA models side-by-side
-- Performance benchmarking
-- Similarity metric differences
-- Dimensionality effects
-
-**Tasks**:
-1. Simple classification (e.g., iris dataset)
-2. Noise robustness test (add random noise, measure recovery)
-3. Capacity test (bundle increasing items, measure interference)
-4. Speed comparison (CPU vs GPU, different dimensions)
-
-**Deliverables**:
-- Comparison tables
-- Performance plots (accuracy vs dimension, speed vs dimension)
-- Decision guide: "Use FHRR when..., Use MAP when..., Use Binary when..."
-
-**Why This Tutorial**:
-- Helps users choose the right model
-- Educational comparison of VSA approaches
-- Shows VSAX's modular design philosophy
-- Practical for real applications
+Compare all three VSA models (FHRR, MAP, Binary) across classification accuracy, noise robustness, capacity analysis, and speed benchmarks. Learn when to use each model, understand the trade-offs between accuracy, speed, and memory, and get a practical decision guide for choosing the right model for your task.
 
 ---
+
+## Planned Tutorials - Next Priority 🎯
 
 ### Tutorial 6: Hierarchical Structures - Trees & Nested Composition ⭐⭐
 **Status**: 📋 Planned
