@@ -26,6 +26,17 @@ Build and query a knowledge graph using VSA. Encode relational facts (triples), 
 
 ---
 
+### Tutorial 3: Analogical Reasoning - Kanerva's "Dollar of Mexico"
+**Level**: Advanced
+**Topics**: Holistic encoding, mapping vectors, prototypes, analogical reasoning
+**Dataset**: Countries with structured attributes
+
+Implement the classic examples from Pentti Kanerva's foundational paper on hyperdimensional computing. Learn to encode structured records holistically, compute mapping vectors from examples, perform analogical queries like "What's the dollar of Mexico?", solve IQ-test analogies, and chain mappings transitively.
+
+[📖 Read Tutorial](03_kanerva_analogies.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_03_kanerva_analogies.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:
