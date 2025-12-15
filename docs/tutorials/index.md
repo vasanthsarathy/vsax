@@ -81,6 +81,17 @@ Encode hierarchical structures through recursive role-filler binding. Learn to r
 
 ---
 
+### Tutorial 8: Multi-Modal Concept Grounding with MNIST
+**Level**: Advanced
+**Topics**: Multi-modal fusion, heterogeneous binding, cross-modal queries, online learning
+**Dataset**: MNIST digits + arithmetic facts
+
+Demonstrate VSA's powerful multi-modal capabilities by fusing vision (MNIST images), symbolic atoms, and arithmetic relationships into rich concept representations. Learn to encode heterogeneous data (images, symbols, operations) in the same space, perform cross-modal queries ("What is 1+2?" → retrieve visual prototype of 3), and add new knowledge online without retraining. Shows VSA's unique advantage: concepts defined by multiple modalities and their relationships.
+
+[📖 Read Tutorial](08_multimodal_grounding.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_08_multimodal_grounding.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

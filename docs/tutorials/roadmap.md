@@ -76,6 +76,16 @@ Compare VSA with neural networks on Fashion-MNIST classification. Demonstrates V
 
 Encode hierarchical structures through recursive role-filler binding. Demonstrates arithmetic expression trees, nested lists, parse trees (sentence syntax), and family trees (genealogy). Shows how entire tree structures compress into single vectors and can be decoded with exact unbinding. Introduces resonator networks for robust factorization of nested structures.
 
+### Tutorial 8: Multi-Modal Concept Grounding with MNIST
+**Status**: ✅ Complete
+**Level**: Advanced
+**Topics**: Multi-modal fusion, heterogeneous binding, cross-modal queries, online learning
+**Files**:
+- `examples/notebooks/tutorial_08_multimodal_grounding.ipynb`
+- `docs/tutorials/08_multimodal_grounding.md`
+
+Demonstrate VSA's powerful multi-modal capabilities by fusing vision (MNIST images), symbolic atoms, and arithmetic relationships into rich concept representations. Learn to encode heterogeneous data in the same space, perform cross-modal queries ("What is 1+2?" → retrieve visual prototype), and add new knowledge online without retraining. Shows how concepts can be grounded in multiple modalities simultaneously.
+
 ---
 
 ## Planned Tutorials - Next Priority 🎯
