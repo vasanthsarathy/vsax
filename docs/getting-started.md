@@ -99,7 +99,7 @@ model = create_fhrr_model(dim=512)
 
 # Create memory for symbols
 memory = VSAMemory(model)
-memory.add_many(["dog", "cat", "run", "jump"])
+memory.add_many(["subject", "action", "dog", "cat", "run", "jump"])
 
 # Encode structured data
 encoder = DictEncoder(model, memory)

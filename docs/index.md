@@ -54,7 +54,7 @@ model = create_fhrr_model(dim=512)
 
 # Create memory for symbols
 memory = VSAMemory(model)
-memory.add_many(["dog", "cat", "animal", "run", "jump"])
+memory.add_many(["subject", "action", "dog", "cat", "animal", "run", "jump"])
 
 # Access and manipulate symbols
 dog = memory["dog"]
