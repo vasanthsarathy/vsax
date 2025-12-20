@@ -1046,6 +1046,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/10_clifford_operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1206,6 +1234,34 @@
     
   
     Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
   
 
     
@@ -2380,6 +2436,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/resonator/" class="md-nav__link">
         
   
@@ -2865,12 +2949,37 @@
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">new_memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">load_basis</span><span class="p">(</span><span class="n">new_memory</span><span class="p">,</span> <span class="s2">&quot;my_basis.json&quot;</span><span class="p">)</span>
 </code></pre></div>
+<p><strong>Clifford Operators</strong> (v1.1.0+) - Exact transformations for reasoning:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">CliffordOperator</span><span class="p">,</span> <span class="n">OperatorKind</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Create spatial operator</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">LEFT_OF</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LEFT_OF&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p">)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># Encode spatial relation: &quot;cup LEFT_OF plate&quot;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;cup&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="p">)</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1"># Query with exact inversion</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="n">RIGHT_OF</span> <span class="o">=</span> <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">RIGHT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">scene</span><span class="p">))</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="c1"># Similarity to &quot;cup&quot; will be &gt; 0.7 (vs ~0.6 with bundling)</span>
+</code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Explore the <a href="../api/">API Reference</a></li>
-<li>Check out <a href="../examples/">example notebooks</a></li>
+<li>Try the <a href="../tutorials/">Tutorials</a> with real datasets</li>
+<li><a href="../tutorials/10_clifford_operators/">Tutorial 10: Clifford Operators</a> - Exact transformations (NEW in v1.1.0)</li>
+<li>Read the <a href="../guide/models/">User Guide</a> for detailed information</li>
+<li><a href="../guide/operators/">Operators Guide</a> - Using Clifford operators (NEW)</li>
 <li>Read the <a href="../design-spec/">design specification</a></li>
-<li>See the <a href="../guide/models/">User Guide</a> for detailed tutorials</li>
 <li>Learn about <a href="../guide/resonator/">Resonator Networks</a></li>
 <li>Understand <a href="../guide/persistence/">Persistence</a></li>
 </ul>

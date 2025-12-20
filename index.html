@@ -632,17 +632,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#coming-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coming Next
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1088,6 +1077,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/10_clifford_operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1248,6 +1265,34 @@
     
   
     Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="guide/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
   
 
     
@@ -2422,6 +2467,34 @@
   
   
     <li class="md-nav__item">
+      <a href="api/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="api/resonator/" class="md-nav__link">
         
   
@@ -2765,17 +2838,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#coming-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coming Next
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2850,13 +2912,14 @@
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>🚀 <strong>Three VSA Models</strong>: FHRR, MAP, and Binary implementations ✅</li>
+<li>🔧 <strong>Clifford Operators</strong>: Exact, compositional, invertible transformations ✅ <strong>NEW in v1.1.0</strong></li>
 <li>⚡ <strong>GPU-Accelerated</strong>: Built on JAX for high-performance computation</li>
 <li>🧩 <strong>Modular Architecture</strong>: Clean separation between representations and operations</li>
 <li>🧬 <strong>Complete Representations</strong>: Complex, Real, and Binary hypervectors ✅</li>
 <li>⚙️ <strong>Full Operation Sets</strong>: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅</li>
 <li>🎲 <strong>Random Sampling</strong>: Sampling utilities for all representation types ✅</li>
 <li>💯 <strong>Type-Safe</strong>: Full type annotations with mypy support</li>
-<li>✅ <strong>Well-Tested</strong>: 339 tests with 96% coverage</li>
+<li>✅ <strong>Well-Tested</strong>: 410 tests with 94% coverage</li>
 <li>🔍 <strong>Similarity Metrics</strong>: Cosine, dot, and Hamming similarity</li>
 <li>⚡ <strong>Batch Operations</strong>: GPU-accelerated vmap operations</li>
 <li>💾 <strong>I/O &amp; Persistence</strong>: Save/load basis vectors to JSON</li>
@@ -2979,20 +3042,30 @@
 - ✅ Round-trip vector preservation
 - ✅ Dimension and type validation
 - ✅ 339 tests with 96% coverage</p>
-<h3 id="coming-next">Coming Next<a class="headerlink" href="#coming-next" title="Permanent link">&para;</a></h3>
-<p><strong>Iteration 7</strong> (v1.0.0): Full Documentation &amp; Production Release
-- Complete API documentation
-- Tutorial notebooks
-- Production-ready v1.0.0 release</p>
+<p><strong>Iteration 7</strong> (v1.0.0): Production Release ✅
+- ✅ Complete API documentation
+- ✅ 9 tutorial notebooks with real datasets
+- ✅ Production-ready v1.0.0 release
+- ✅ 387 tests with 94% coverage</p>
+<p><strong>Iteration 8</strong> (v1.1.0): Clifford Operators ✅ <strong>NEW</strong>
+- ✅ Clifford-inspired operator layer for exact reasoning
+- ✅ Phase-based transformations for FHRR hypervectors
+- ✅ Exact inversion (similarity &gt; 0.999)
+- ✅ Compositional algebra with compose()
+- ✅ 410 tests with 94% coverage</p>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="getting-started/">Getting Started</a> - Installation and first steps</li>
-<li><a href="tutorials/">Tutorials</a> - Interactive Jupyter notebooks with real datasets ✨ <strong>NEW</strong></li>
+<li><a href="tutorials/">Tutorials</a> - Hands-on tutorials with real datasets</li>
 <li><a href="tutorials/01_mnist_classification/">MNIST Classification</a> - Image classification with VSA</li>
-<li>Knowledge Graph Reasoning <em>(coming soon)</em></li>
-<li><a href="guide/representations/">User Guide</a> - Detailed guides for all components</li>
+<li><a href="tutorials/02_knowledge_graph/">Knowledge Graph Reasoning</a> - Multi-hop reasoning</li>
+<li><a href="tutorials/10_clifford_operators/">Clifford Operators</a> - Exact transformations ✨ <strong>NEW in v1.1.0</strong></li>
+<li>And 6 more tutorials covering analogies, word embeddings, edge computing, and more!</li>
+<li><a href="guide/operators/">User Guide</a> - Detailed guides for all components</li>
+<li><a href="guide/operators/">Operators Guide</a> - Using Clifford operators ✨ <strong>NEW</strong></li>
 <li><a href="examples/fhrr/">Examples</a> - Working examples for all three models</li>
 <li><a href="api/">API Reference</a> - Complete API documentation</li>
+<li><a href="api/operators/">Operators API</a> - Operators module reference ✨ <strong>NEW</strong></li>
 <li><a href="design-spec/">Design Specification</a> - Technical design details</li>
 </ul>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
@@ -3005,7 +3078,7 @@
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{VSAX: Vector Symbolic Algebra for JAX}</span><span class="p">,</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Sarathy, Vasanth}</span><span class="p">,</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2025}</span><span class="p">,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{1.0.0}</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{1.1.0}</span><span class="p">,</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{https://github.com/vasanthsarathy/vsax}</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
 </code></pre></div>

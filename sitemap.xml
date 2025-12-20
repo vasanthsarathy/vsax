@@ -73,6 +73,10 @@
          <lastmod>2025-12-20</lastmod>
     </url>
     <url>
+         <loc>https://vsax.readthedocs.io/api/operators/</loc>
+         <lastmod>2025-12-20</lastmod>
+    </url>
+    <url>
          <loc>https://vsax.readthedocs.io/api/ops/binary/</loc>
          <lastmod>2025-12-20</lastmod>
     </url>
@@ -149,6 +153,10 @@
          <lastmod>2025-12-20</lastmod>
     </url>
     <url>
+         <loc>https://vsax.readthedocs.io/guide/operators/</loc>
+         <lastmod>2025-12-20</lastmod>
+    </url>
+    <url>
          <loc>https://vsax.readthedocs.io/guide/persistence/</loc>
          <lastmod>2025-12-20</lastmod>
     </url>
@@ -206,6 +214,10 @@
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/09_neural_symbolic_fusion/</loc>
+         <lastmod>2025-12-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/tutorials/10_clifford_operators/</loc>
          <lastmod>2025-12-20</lastmod>
     </url>
     <url>
