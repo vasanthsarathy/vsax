@@ -39,10 +39,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 40 new comprehensive tests
   - 450 total tests with 95% coverage
 
-- **Comprehensive Documentation**:
-  - Tutorial 10: Clifford Operators - Complete hands-on tutorial
-  - User Guide: docs/guide/operators.md - When and how to use operators
-  - API Reference: docs/api/operators/index.md - Full API documentation
+- **Examples and Documentation (Phase 3):**
+  - **4 Complete Runnable Examples** (1,157 lines total):
+    - `examples/operators/spatial_reasoning.py` - Spatial operators demo (213 lines)
+    - `examples/operators/semantic_roles.py` - Semantic role labeling (318 lines)
+    - `examples/operators/typed_graph.py` - Knowledge graph reasoning (302 lines)
+    - `examples/operators/operator_algebra.py` - Algebraic properties (324 lines)
+  - **Comprehensive Documentation**:
+    - Tutorial 10: Clifford Operators - Complete hands-on tutorial
+    - User Guide: docs/guide/operators.md - When and how to use operators
+    - API Reference: docs/api/operators/index.md - Full API documentation
+  - All examples demonstrate real-world use cases with clear output
 
 ### Technical Details
 - Operators represent "what happens" (transformations, relations, actions)
@@ -52,10 +59,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Immutable design with frozen dataclasses
 - JAX-native for GPU acceleration and JIT compilation
 
+### Fixed
+- Cross-platform test compatibility: Adjusted similarity thresholds to account for numerical precision differences between Python versions (3.9 vs 3.14)
+
 ### Documentation
-- Updated README.md with operators example
-- Added operators to feature list
-- Updated test coverage numbers (387 → 410 tests)
+- Updated README.md with operators example and pre-defined operators
+- Added operators to feature list with usage examples
+- Updated test coverage numbers (387 → 450 tests, 94% → 95% coverage)
+- All examples verified to run on Windows without encoding issues
 
 No breaking changes from v1.0.0.
 
