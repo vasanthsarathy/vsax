@@ -8,14 +8,19 @@ echo.
 REM Create build directory if it doesn't exist
 if not exist "build" mkdir build
 
-REM Clean previous build to ensure fresh compilation
-latexmk -c -output-directory=build vsax_paper.tex 2>nul
+REM Clean previous auxiliary files
+if exist "build\*.aux" del /q "build\*.aux"
+if exist "build\*.toc" del /q "build\*.toc"
+if exist "build\*.out" del /q "build\*.out"
 
-REM Compile with latexmk (runs multiple passes automatically for TOC)
-REM -pdf: generate PDF
-REM -interaction=nonstopmode: don't stop on errors
-REM -silent: reduce output noise
-latexmk -pdf -output-directory=build -interaction=nonstopmode vsax_paper.tex
+echo Running first pass to generate TOC data...
+pdflatex -output-directory=build -interaction=nonstopmode vsax_paper.tex >nul
+
+echo Running second pass to include TOC...
+pdflatex -output-directory=build -interaction=nonstopmode vsax_paper.tex >nul
+
+echo Running third pass to finalize...
+pdflatex -output-directory=build -interaction=nonstopmode vsax_paper.tex
 
 REM Copy the PDF to the main directory
 if exist "build\vsax_paper.pdf" (
