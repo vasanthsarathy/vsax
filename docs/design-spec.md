@@ -247,7 +247,7 @@ bind(a, b)  # Automatically unwraps .vec if needed
 ---
 
 ## Summary
-VSAX (v0.7.1) provides a principled, modular, and efficient system for symbolic reasoning with hypervectors. It is built for researchers and developers interested in neurosymbolic AI, cognitive modeling, and high-performance semantic encoding systems.
+VSAX (v1.0.0) provides a principled, modular, and efficient system for symbolic reasoning with hypervectors. It is built for researchers and developers interested in neurosymbolic AI, cognitive modeling, and high-performance semantic encoding systems.
 
 **Key Features:**
 - Three complete VSA models (FHRR, MAP, Binary)

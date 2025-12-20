@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API documentation for VSAX v0.7.1.
+Complete API documentation for VSAX v1.0.0.
 
 ## Core Components
 
