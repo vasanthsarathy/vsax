@@ -8,7 +8,13 @@ echo.
 REM Create build directory if it doesn't exist
 if not exist "build" mkdir build
 
-REM Compile with latexmk, putting aux files in build/
+REM Clean previous build to ensure fresh compilation
+latexmk -c -output-directory=build vsax_paper.tex 2>nul
+
+REM Compile with latexmk (runs multiple passes automatically for TOC)
+REM -pdf: generate PDF
+REM -interaction=nonstopmode: don't stop on errors
+REM -silent: reduce output noise
 latexmk -pdf -output-directory=build -interaction=nonstopmode vsax_paper.tex
 
 REM Copy the PDF to the main directory
