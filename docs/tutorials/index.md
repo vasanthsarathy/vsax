@@ -103,6 +103,17 @@ Implement HD-Glue - a groundbreaking technique to fuse multiple neural networks 
 
 ---
 
+### Tutorial 10: Clifford Operators - Exact Transformations for Reasoning
+**Level**: Intermediate
+**Topics**: Clifford operators, exact inversion, spatial reasoning, semantic roles, compositional transformations
+**NEW in v1.1.0** ✨
+
+Learn to use Clifford-inspired operators for exact reasoning with transformations. Understand the distinction between hypervectors (concepts) and operators (transformations), encode spatial relations (LEFT_OF, ABOVE) and semantic roles (AGENT, PATIENT), perform exact queries with similarity > 0.999, and compose operators algebraically. Operators enable reasoning tasks that bundling alone cannot achieve, providing directional transformations with perfect inversion.
+
+[📖 Read Tutorial](10_clifford_operators.md)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

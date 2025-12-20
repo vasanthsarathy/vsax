@@ -5,13 +5,14 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 ## Features
 
 - 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
+- 🔧 **Clifford Operators**: Exact, compositional, invertible transformations ✅ **NEW in v1.1.0**
 - ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 💯 **Type-Safe**: Full type annotations with mypy support
-- ✅ **Well-Tested**: 339 tests with 96% coverage
+- ✅ **Well-Tested**: 410 tests with 94% coverage
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity
 - ⚡ **Batch Operations**: GPU-accelerated vmap operations
 - 💾 **I/O & Persistence**: Save/load basis vectors to JSON
@@ -160,22 +161,32 @@ model = VSAModel(
 - ✅ Dimension and type validation
 - ✅ 339 tests with 96% coverage
 
-### Coming Next
+**Iteration 7** (v1.0.0): Production Release ✅
+- ✅ Complete API documentation
+- ✅ 9 tutorial notebooks with real datasets
+- ✅ Production-ready v1.0.0 release
+- ✅ 387 tests with 94% coverage
 
-**Iteration 7** (v1.0.0): Full Documentation & Production Release
-- Complete API documentation
-- Tutorial notebooks
-- Production-ready v1.0.0 release
+**Iteration 8** (v1.1.0): Clifford Operators ✅ **NEW**
+- ✅ Clifford-inspired operator layer for exact reasoning
+- ✅ Phase-based transformations for FHRR hypervectors
+- ✅ Exact inversion (similarity > 0.999)
+- ✅ Compositional algebra with compose()
+- ✅ 410 tests with 94% coverage
 
 ## Documentation
 
 - [Getting Started](getting-started.md) - Installation and first steps
-- [Tutorials](tutorials/index.md) - Interactive Jupyter notebooks with real datasets ✨ **NEW**
+- [Tutorials](tutorials/index.md) - Hands-on tutorials with real datasets
   - [MNIST Classification](tutorials/01_mnist_classification.md) - Image classification with VSA
-  - Knowledge Graph Reasoning *(coming soon)*
-- [User Guide](guide/representations.md) - Detailed guides for all components
+  - [Knowledge Graph Reasoning](tutorials/02_knowledge_graph.md) - Multi-hop reasoning
+  - [Clifford Operators](tutorials/10_clifford_operators.md) - Exact transformations ✨ **NEW in v1.1.0**
+  - And 6 more tutorials covering analogies, word embeddings, edge computing, and more!
+- [User Guide](guide/operators.md) - Detailed guides for all components
+  - [Operators Guide](guide/operators.md) - Using Clifford operators ✨ **NEW**
 - [Examples](examples/fhrr.md) - Working examples for all three models
 - [API Reference](api/index.md) - Complete API documentation
+  - [Operators API](api/operators/index.md) - Operators module reference ✨ **NEW**
 - [Design Specification](design-spec.md) - Technical design details
 
 ## Contributing
@@ -195,7 +206,7 @@ If you use VSAX in your research, please cite:
   title = {VSAX: Vector Symbolic Algebra for JAX},
   author = {Sarathy, Vasanth},
   year = {2025},
-  version = {1.0.0},
+  version = {1.1.0},
   url = {https://github.com/vasanthsarathy/vsax}
 }
 ```

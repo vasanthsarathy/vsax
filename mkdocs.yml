@@ -58,11 +58,13 @@ nav:
     - Hierarchical Structures: tutorials/07_hierarchical_structures.md
     - Multi-Modal Concept Grounding: tutorials/08_multimodal_grounding.md
     - Neural-Symbolic Fusion (HD-Glue): tutorials/09_neural_symbolic_fusion.md
+    - Clifford Operators: tutorials/10_clifford_operators.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md
     - VSAMemory: guide/memory.md
     - Encoders: guide/encoders.md
+    - Operators: guide/operators.md
     - Similarity Metrics: guide/similarity.md
     - Batch Operations: guide/batch_operations.md
     - Resonator Networks: guide/resonator.md
@@ -97,6 +99,7 @@ nav:
       - FHRROperations: api/ops/fhrr.md
       - MAPOperations: api/ops/map.md
       - BinaryOperations: api/ops/binary.md
+    - Operators: api/operators/index.md
     - Resonator Networks: api/resonator/index.md
     - Sampling: api/sampling.md
     - Similarity: api/similarity/index.md

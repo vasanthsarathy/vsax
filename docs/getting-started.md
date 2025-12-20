@@ -142,11 +142,39 @@ new_memory = VSAMemory(model)
 load_basis(new_memory, "my_basis.json")
 ```
 
+**Clifford Operators** (v1.1.0+) - Exact transformations for reasoning:
+
+```python
+from vsax.operators import CliffordOperator, OperatorKind
+import jax
+
+# Create spatial operator
+LEFT_OF = CliffordOperator.random(
+    dim=512,
+    kind=OperatorKind.SPATIAL,
+    name="LEFT_OF",
+    key=jax.random.PRNGKey(100)
+)
+
+# Encode spatial relation: "cup LEFT_OF plate"
+scene = model.opset.bundle(
+    memory["cup"].vec,
+    LEFT_OF.apply(memory["plate"]).vec
+)
+
+# Query with exact inversion
+RIGHT_OF = LEFT_OF.inverse()
+answer = RIGHT_OF.apply(model.rep_cls(scene))
+# Similarity to "cup" will be > 0.7 (vs ~0.6 with bundling)
+```
+
 ## Next Steps
 
 - Explore the [API Reference](api/index.md)
-- Check out [example notebooks](../examples/)
+- Try the [Tutorials](tutorials/index.md) with real datasets
+  - [Tutorial 10: Clifford Operators](tutorials/10_clifford_operators.md) - Exact transformations (NEW in v1.1.0)
+- Read the [User Guide](guide/models.md) for detailed information
+  - [Operators Guide](guide/operators.md) - Using Clifford operators (NEW)
 - Read the [design specification](design-spec.md)
-- See the [User Guide](guide/models.md) for detailed tutorials
 - Learn about [Resonator Networks](guide/resonator.md)
 - Understand [Persistence](guide/persistence.md)
