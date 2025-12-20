@@ -22,6 +22,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 23 comprehensive tests with 96% coverage for CliffordOperator
   - 410 total tests with 94% coverage
 
+- **Pre-defined Operators (Phase 2):**
+  - **8 Spatial Operators**: Reproducible factory functions for spatial relations
+    - `create_left_of()`, `create_right_of()`
+    - `create_above()`, `create_below()`
+    - `create_in_front_of()`, `create_behind()`
+    - `create_near()`, `create_far()`
+    - `create_spatial_operators()` - Create all spatial operators at once
+  - **8 Semantic Role Operators**: Reproducible factory functions for semantic roles
+    - `create_agent()`, `create_patient()`, `create_theme()`, `create_experiencer()`
+    - `create_instrument()`, `create_location()`, `create_goal()`, `create_source()`
+    - `create_semantic_operators()` - Create all semantic operators at once
+  - All operators are reproducible: same dimension → same parameters
+  - Inverse pairs work perfectly (e.g., LEFT_OF/RIGHT_OF)
+  - Full integration with VSAMemory and encoders
+  - 40 new comprehensive tests
+  - 450 total tests with 95% coverage
+
+- **Comprehensive Documentation**:
+  - Tutorial 10: Clifford Operators - Complete hands-on tutorial
+  - User Guide: docs/guide/operators.md - When and how to use operators
+  - API Reference: docs/api/operators/index.md - Full API documentation
+
 ### Technical Details
 - Operators represent "what happens" (transformations, relations, actions)
 - Hypervectors represent "what exists" (concepts, objects, symbols)

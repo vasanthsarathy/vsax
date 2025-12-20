@@ -27,7 +27,7 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
 - 📓 **Interactive Tutorials**: Jupyter notebooks with real datasets (MNIST, knowledge graphs) ✅ **NEW in v0.7.1**
-- ✅ **94% Test Coverage**: 410 tests ensuring reliability
+- ✅ **95% Test Coverage**: 450 tests ensuring reliability
 
 ## Installation
 
@@ -171,37 +171,53 @@ for model in [fhrr, map_model, binary]:
 
 ```python
 from vsax import create_fhrr_model, VSAMemory
-from vsax.operators import CliffordOperator
+from vsax.operators import create_left_of, create_agent, create_patient
 from vsax.similarity import cosine_similarity
-import jax
 
 model = create_fhrr_model(dim=512)
 memory = VSAMemory(model)
-memory.add_many(["cup", "plate", "dog", "cat"])
+memory.add_many(["cup", "plate", "dog", "cat", "chase"])
 
-# Create operator (represents "LEFT_OF" relation)
-left_of = CliffordOperator.random(512, name="LEFT_OF", key=jax.random.PRNGKey(42))
+# Use pre-defined spatial operators
+LEFT_OF = create_left_of(512)
 
 # Encode: cup LEFT_OF plate
 scene = model.opset.bundle(
     memory["cup"].vec,
-    left_of.apply(memory["plate"]).vec
+    LEFT_OF.apply(memory["plate"]).vec
 )
 
-# Query: what's LEFT_OF plate? (use inverse operator)
-right_of = left_of.inverse()
-query = right_of.apply(model.rep_cls(scene))
-similarity = cosine_similarity(query.vec, memory["cup"].vec)
-print(f"Similarity to 'cup': {similarity:.3f}")  # High similarity!
+# Query with inverse operator
+RIGHT_OF = LEFT_OF.inverse()
+answer = LEFT_OF.inverse().apply(model.rep_cls(scene))
+# Returns plate with high similarity!
 
-# Operators are compositional
-left_twice = left_of.compose(left_of)  # Move left twice
+# Use pre-defined semantic operators
+AGENT = create_agent(512)
+PATIENT = create_patient(512)
+
+# Encode: "dog chases cat"
+sentence = model.opset.bundle(
+    AGENT.apply(memory["dog"]).vec,
+    memory["chase"].vec,
+    PATIENT.apply(memory["cat"]).vec
+)
+
+# Query: Who is the AGENT?
+who = AGENT.inverse().apply(model.rep_cls(sentence))
+similarity = cosine_similarity(who.vec, memory["dog"].vec)
+print(f"AGENT is 'dog': {similarity:.3f}")  # High similarity!
 ```
+
+**Pre-defined operators (NEW in Phase 2):**
+- **Spatial**: `create_left_of`, `create_right_of`, `create_above`, `create_below`, `create_in_front_of`, `create_behind`, `create_near`, `create_far`
+- **Semantic**: `create_agent`, `create_patient`, `create_theme`, `create_experiencer`, `create_instrument`, `create_location`, `create_goal`, `create_source`
 
 **Key features:**
 - ✅ **Exact inversion**: `op.inverse().apply(op.apply(v))` recovers original (similarity > 0.999)
 - ✅ **Compositional**: Combine operators algebraically with `compose()`
 - ✅ **Typed**: Semantic metadata (SPATIAL, SEMANTIC, TEMPORAL, etc.)
+- ✅ **Reproducible**: Same dimension always produces same operator
 - ✅ **FHRR-compatible**: Phase-based transformations for complex hypervectors
 
 ### Advanced: Manual Model Creation
