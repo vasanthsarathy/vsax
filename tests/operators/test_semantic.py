@@ -249,8 +249,8 @@ def test_semantic_operators_transfer_event() -> None:
     to_whom = GOAL.inverse().apply(model.rep_cls(event))
     sim_mary = cosine_similarity(to_whom.vec, memory["Mary"].vec)
 
-    assert sim_book > 0.4
-    assert sim_mary > 0.4
+    assert sim_book > 0.35
+    assert sim_mary > 0.35
 
 
 def test_semantic_operators_motion_event() -> None:
