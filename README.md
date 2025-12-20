@@ -311,7 +311,7 @@ If you use VSAX in your research, please cite:
   author = {Sarathy, Vasanth},
   year = {2025},
   url = {https://github.com/vasanthsarathy/vsax},
-  version = {0.7.2}
+  version = {1.0.0}
 }
 ```
 

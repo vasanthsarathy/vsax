@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vsax"
-version = "0.7.2"
+version = "1.0.0"
 description = "JAX-native Vector Symbolic Algebra library"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -14,7 +14,7 @@ authors = [
 ]
 keywords = ["vector-symbolic-architectures", "hyperdimensional-computing", "jax", "vsa", "hdc", "fhrr", "map", "cognitive-computing"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",

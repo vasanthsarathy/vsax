@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-01-20
+
+### Changed
+- **Production Release:** VSAX is now production-ready and stable
+- Development status upgraded from "Alpha" to "Production/Stable"
+- Version updated to 1.0.0 across all package files
+- All core features complete with 94% test coverage (387 tests)
+- Comprehensive documentation with 9 tutorials and complete API reference
+- Full type safety with mypy compliance
+- Ready for production use in research and applications
+
+### Summary
+This release marks VSAX as feature-complete and production-ready. The library provides:
+- Three complete VSA models (FHRR, MAP, Binary)
+- Five core encoders (Scalar, Sequence, Set, Dict, Graph)
+- Resonator networks for factorization
+- GPU acceleration and device management
+- Persistence and I/O
+- Comprehensive documentation and tutorials
+
+No breaking changes from v0.7.2.
+
 ## [0.7.2] - 2025-01-16
 
 ### Added
@@ -172,7 +194,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development tooling (ruff, mypy, pytest-cov)
 - GitHub workflows for CI and publishing
 
-[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v0.7.2...HEAD
+[Unreleased]: https://github.com/vasanthsarathy/vsax/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/vasanthsarathy/vsax/compare/v0.7.2...v1.0.0
 [0.7.2]: https://github.com/vasanthsarathy/vsax/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/vasanthsarathy/vsax/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/vasanthsarathy/vsax/compare/v0.6.0...v0.7.0
