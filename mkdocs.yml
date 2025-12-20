@@ -108,6 +108,11 @@ nav:
   - VSAX vs Other Libraries: comparison.md
   - Design Spec: design-spec.md
 
+extra:
+  version:
+    provider: mike
+    default: latest
+
 markdown_extensions:
   - admonition
   - codehilite
