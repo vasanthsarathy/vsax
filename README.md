@@ -18,7 +18,8 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity ✅
 - ⚡ **Batch Operations**: GPU-accelerated vmap operations for parallel processing ✅
 - 💾 **I/O & Persistence**: Save/load basis vectors to JSON ✅
-- 🎮 **GPU Utilities**: Device management, benchmarking, CPU/GPU comparison ✅ **NEW in v0.7.2**
+- 🎮 **GPU Utilities**: Device management, benchmarking, CPU/GPU comparison ✅
+- 🔧 **Clifford Operators**: Exact, compositional, invertible transformations for reasoning ✅ **NEW in v1.1.0**
 - 🚀 **GPU-Accelerated**: Built on JAX for automatic GPU acceleration (5-30x speedup)
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
@@ -26,7 +27,7 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
 - 📓 **Interactive Tutorials**: Jupyter notebooks with real datasets (MNIST, knowledge graphs) ✅ **NEW in v0.7.1**
-- ✅ **96% Test Coverage**: 377 tests ensuring reliability
+- ✅ **94% Test Coverage**: 410 tests ensuring reliability
 
 ## Installation
 
@@ -163,6 +164,45 @@ for model in [fhrr, map_model, binary]:
     memory.add("concept")
     vec = memory["concept"]
 ```
+
+### NEW: Clifford Operators (v1.1.0)
+
+**Exact, compositional, invertible transformations for reasoning:**
+
+```python
+from vsax import create_fhrr_model, VSAMemory
+from vsax.operators import CliffordOperator
+from vsax.similarity import cosine_similarity
+import jax
+
+model = create_fhrr_model(dim=512)
+memory = VSAMemory(model)
+memory.add_many(["cup", "plate", "dog", "cat"])
+
+# Create operator (represents "LEFT_OF" relation)
+left_of = CliffordOperator.random(512, name="LEFT_OF", key=jax.random.PRNGKey(42))
+
+# Encode: cup LEFT_OF plate
+scene = model.opset.bundle(
+    memory["cup"].vec,
+    left_of.apply(memory["plate"]).vec
+)
+
+# Query: what's LEFT_OF plate? (use inverse operator)
+right_of = left_of.inverse()
+query = right_of.apply(model.rep_cls(scene))
+similarity = cosine_similarity(query.vec, memory["cup"].vec)
+print(f"Similarity to 'cup': {similarity:.3f}")  # High similarity!
+
+# Operators are compositional
+left_twice = left_of.compose(left_of)  # Move left twice
+```
+
+**Key features:**
+- ✅ **Exact inversion**: `op.inverse().apply(op.apply(v))` recovers original (similarity > 0.999)
+- ✅ **Compositional**: Combine operators algebraically with `compose()`
+- ✅ **Typed**: Semantic metadata (SPATIAL, SEMANTIC, TEMPORAL, etc.)
+- ✅ **FHRR-compatible**: Phase-based transformations for complex hypervectors
 
 ### Advanced: Manual Model Creation
 

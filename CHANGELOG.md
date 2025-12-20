@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-01-20
+
+### Added
+- **Clifford-Inspired Operator Layer (Phase 1 - Core Infrastructure):**
+  - `AbstractOperator` - Base interface for all operators
+  - `CliffordOperator` - Phase-based operator for FHRR hypervectors
+  - `OperatorKind` enum - Semantic typing (SPATIAL, SEMANTIC, TEMPORAL, etc.)
+  - `OperatorMetadata` - Metadata dataclass for operator information
+  - Exact inversion: `op.inverse().apply(op.apply(v))` recovers original (similarity > 0.999)
+  - Compositional algebra: Combine operators with `compose()`
+  - FHRR-compatible: Phase rotations for complex hypervectors
+  - Full type safety with mypy compliance
+  - 23 comprehensive tests with 96% coverage for CliffordOperator
+  - 410 total tests with 94% coverage
+
+### Technical Details
+- Operators represent "what happens" (transformations, relations, actions)
+- Hypervectors represent "what exists" (concepts, objects, symbols)
+- Phase-based implementation: `apply(v) = v * exp(i * params)`
+- Composition via phase addition: associative and commutative
+- Immutable design with frozen dataclasses
+- JAX-native for GPU acceleration and JIT compilation
+
+### Documentation
+- Updated README.md with operators example
+- Added operators to feature list
+- Updated test coverage numbers (387 → 410 tests)
+
+No breaking changes from v1.0.0.
+
 ## [1.0.0] - 2025-01-20
 
 ### Changed
