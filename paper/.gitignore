@@ -1,0 +1,23 @@
+# LaTeX auxiliary files (in case they're in main dir)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+
+# Build directories
+build/
+_minted-*/
+
+# Generated PDF (keep in git or remove this line if you want to track it)
+# vsax_paper.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
