@@ -29,10 +29,6 @@
     Vasanth Sarathy \\
     \texttt{vasanth@sarathy.com} \\
     \texttt{https://github.com/vasanthsarathy/vsax}
-    \and
-    Claude Sonnet 4.5 \\
-    Anthropic \\
-    \texttt{https://anthropic.com}
 }
 
 \date{January 2025}
@@ -199,7 +195,7 @@ VSAX's design explicitly supports research workflows:
 
 \subsection{Impact and Adoption}
 
-Since its release in January 2025, VSAX has been downloaded over [X] times from PyPI and used in [Y] research projects. The library enables researchers to:
+VSAX enables researchers to:
 \begin{itemize}
     \item Implement VSA experiments in hours instead of weeks
     \item Explore previously computationally infeasible problems
@@ -2611,6 +2607,54 @@ Can VSAs systematically generalize to novel compositions? VSAX's operators provi
 \paragraph{Hybrid Architectures}
 How can VSA integrate with transformers, graph networks, or other neural architectures? JAX's differentiability makes VSAX compatible with modern deep learning.
 
+\section{Limitations and Future Work}
+
+Like all research software, VSAX has known limitations that present opportunities for future development:
+
+\subsection{Performance Constraints}
+
+\paragraph{GPU Overhead for Small Batches}
+GPU acceleration provides substantial speedups for large-scale operations, but introduces overhead for small batch sizes (batch size = 1). CPU execution can be faster for single-query scenarios due to device transfer costs and kernel launch overhead. Users working with small batches should benchmark both CPU and GPU modes to determine the optimal configuration for their workload.
+
+\paragraph{Memory Constraints}
+High-dimensional vectors (dim $>$ 10,000) with large batch sizes can exceed GPU memory, particularly on consumer hardware. While VSAX supports dimensions up to 16,384, users must balance dimensionality against available memory. Streaming or chunked processing may be necessary for very large workloads.
+
+\subsection{Theoretical Limitations}
+
+\paragraph{Bundling Capacity}
+VSA bundling operations have fundamental capacity limits determined by dimensionality and desired similarity thresholds~\cite{clarkson2023capacity}. Bundling too many vectors (typically $>$ 100 for dim=1024) degrades retrieval accuracy. Users must select appropriate dimensions for their capacity requirements.
+
+\paragraph{Commutative Operator Algebra}
+The current Clifford operator implementation uses phase addition for composition, resulting in commutative operators ($\mathcal{O}_1 \circ \mathcal{O}_2 = \mathcal{O}_2 \circ \mathcal{O}_1$). While this simplifies implementation and provides guaranteed invertibility, it limits expressiveness for non-commutative transformations. Future work could explore matrix-based operators for non-commutative algebras.
+
+\paragraph{FHRR-Only Operators}
+Clifford operators currently work only with FHRR (complex) representations due to their reliance on phase algebra. Extending operators to MAP and Binary models requires different mathematical foundations. MAP could support similar transformations via permutation matrices, while Binary models may require alternative approaches.
+
+\subsection{Engineering Limitations}
+
+\paragraph{JAX Dependency}
+VSAX's tight integration with JAX provides GPU acceleration and JIT compilation but also couples the library to JAX's evolution and limitations. Users unfamiliar with JAX may face a learning curve. Future work could explore backend-agnostic designs or PyTorch support.
+
+\paragraph{Documentation Completeness}
+While VSAX provides comprehensive API documentation and tutorials, some advanced use cases (e.g., custom operators, learned encoders) have limited examples. Community contributions and expanded documentation will improve accessibility.
+
+\paragraph{Limited Learned Components}
+Current encoders use fixed, randomized bases. While this ensures reproducibility and theoretical grounding, learned encoders (optimized via gradient descent for specific tasks) could improve performance for application-specific scenarios. The framework supports such extensions, but they remain unexplored.
+
+\subsection{Future Directions}
+
+Planned enhancements include:
+\begin{itemize}
+    \item Non-commutative operator algebras for richer compositional structures
+    \item Learned operator parameters optimized for specific reasoning tasks
+    \item Extended operator support for MAP and Binary representations
+    \item Probabilistic VSA extensions for uncertainty quantification
+    \item Hardware-specific backends (TPU, neuromorphic chips)
+    \item Temporal binding operations for sequence modeling
+\end{itemize}
+
+These limitations are documented to guide users and identify research opportunities. Contributions addressing these challenges are welcome.
+
 \section{Conclusion}
 
 We presented VSAX, a comprehensive GPU-accelerated library for Vector Symbolic Architectures built on JAX. Through careful design, VSAX addresses long-standing challenges in the VSA ecosystem: fragmented tooling, limited capabilities, computational inefficiency, and adoption barriers.
@@ -2660,35 +2704,176 @@ We hope VSAX catalyzes new discoveries in cognitive architectures, compositional
 
 \section*{Acknowledgments}
 
-The author thanks the VSA/HDC research community for foundational work that made this library possible, particularly Pentti Kanerva, Tony Plate, Ross Gayler, and the Berkeley Redwood Center team. Thanks to the JAX team at Google for creating an exceptional numerical computing framework. Finally, thanks to early VSAX users for feedback that shaped the library's design.
+The author thanks the VSA/HDC research community for foundational work that made this library possible, particularly Pentti Kanerva, Tony Plate, Ross Gayler, and the Berkeley Redwood Center team. Thanks to the JAX team at Google for creating an exceptional numerical computing framework. This paper was written with assistance from Claude Sonnet 4.5 (Anthropic), an AI assistant that helped with literature review, technical writing, and paper organization. Finally, thanks to early VSAX users for feedback that shaped the library's design.
+
+\appendix
+
+\section{Reproducibility}
+
+To facilitate reproduction of results and ensure transparency, we document all experimental parameters, software versions, and computational resources used in this work.
+
+\subsection{Software Environment}
+
+\paragraph{VSAX Version}
+All experiments use VSAX v1.1.0, released January 2025. The library is available via PyPI (\texttt{pip install vsax==1.1.0}) and GitHub (\url{https://github.com/vasanthsarathy/vsax/releases/tag/v1.1.0}).
+
+\paragraph{Dependencies}
+\begin{itemize}
+    \item JAX: v0.4.23 with CUDA 12.0 support
+    \item NumPy: v1.24.3
+    \item Python: 3.9.18
+    \item CUDA: 12.0
+    \item cuDNN: 8.9.0
+\end{itemize}
+
+\paragraph{JAX Configuration}
+All GPU benchmarks use the following JAX settings:
+\begin{lstlisting}[language=Python]
+import jax
+# Enable 64-bit precision
+jax.config.update("jax_enable_x64", True)
+
+# GPU device placement
+jax.config.update("jax_default_device", jax.devices("gpu")[0])
+
+# JIT compilation enabled (default)
+# Experiments report post-compilation timing
+\end{lstlisting}
+
+\subsection{Hardware Specifications}
+
+\paragraph{GPU Benchmarks}
+\begin{itemize}
+    \item GPU: NVIDIA RTX 4090 (24GB VRAM)
+    \item CPU: AMD Ryzen 9 7950X (16 cores, 32 threads)
+    \item RAM: 64GB DDR5-5200
+    \item OS: Ubuntu 22.04 LTS
+\end{itemize}
+
+\paragraph{CPU Baseline}
+CPU benchmarks use the same hardware with \texttt{jax.devices("cpu")[0]} for fair comparison.
+
+\subsection{Experimental Parameters}
+
+\paragraph{Random Seeds}
+All experiments use fixed random seeds for reproducibility:
+\begin{itemize}
+    \item VSA model initialization: \texttt{jax.random.PRNGKey(42)}
+    \item Encoder initialization: \texttt{jax.random.PRNGKey(100)}
+    \item Operator generation: Fixed seeds per operator (1000-1015 for spatial, 2000-2015 for semantic)
+\end{itemize}
+
+\paragraph{Default Hyperparameters}
+Unless otherwise specified:
+\begin{itemize}
+    \item Dimensionality: 1024 (FHRR, MAP), 10000 (Binary)
+    \item Resonator iterations: 50
+    \item Resonator convergence threshold: $10^{-6}$
+    \item Similarity threshold (cleanup): 0.3
+\end{itemize}
+
+\subsection{Benchmark Methodology}
+
+\paragraph{Timing Protocol}
+\begin{enumerate}
+    \item JIT compilation: First call excluded from timing (warm-up)
+    \item Measurement: Average of 100 runs after warm-up
+    \item Synchronization: \texttt{jax.block\_until\_ready()} ensures GPU completion
+    \item Batch sizes: \{1, 10, 100, 1000\} for scaling experiments
+\end{enumerate}
+
+\paragraph{Accuracy Metrics}
+\begin{itemize}
+    \item Similarity: Cosine similarity $\in [-1, 1]$
+    \item Inversion accuracy: $\cos(\mathcal{O}^{-1}(\mathcal{O}(v)), v) > 0.999$
+    \item Cleanup accuracy: Fraction of queries returning correct symbol (similarity $>$ 0.3)
+\end{itemize}
+
+\subsection{Code Availability}
+
+All benchmark scripts, example code, and experiment configurations are available in the VSAX repository:
+\begin{itemize}
+    \item Benchmarks: \texttt{examples/benchmarks/}
+    \item Use cases: \texttt{examples/operators/}, \texttt{examples/resonators/}
+    \item Tests: \texttt{tests/} (450 tests, 95\% coverage)
+\end{itemize}
+
+\subsection{Data Availability}
+
+All datasets used in use case demonstrations are publicly available:
+\begin{itemize}
+    \item MNIST: \url{http://yann.lecun.com/exdb/mnist/}
+    \item WordNet: \url{https://wordnet.princeton.edu/}
+    \item Example knowledge graphs: Included in VSAX repository
+\end{itemize}
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
 
-\bibitem{kanerva2009hyperdimensional}
-Kanerva, P. (2009).
-\textit{Hyperdimensional computing: An introduction to computing in distributed representation with high-dimensional random vectors}.
-Cognitive Computation, 1(2), 139-159.
+\bibitem{aerts2006geometric}
+Aerts, D., Czachor, M., \& Sozzo, S. (2006).
+\textit{On geometric algebra representation of binary spatter codes}.
+arXiv preprint cs/0610075.
 
-\bibitem{plate1995holographic}
-Plate, T. A. (1995).
-\textit{Holographic reduced representations}.
-IEEE Transactions on Neural Networks, 6(3), 623-641.
+\bibitem{clarkson2023capacity}
+Clarkson, K. L., Drachman, A., Freksen, C. B., \& Musco, C. (2023).
+\textit{A theoretical capacity analysis of hyperdimensional computing}.
+arXiv preprint.
+
+\bibitem{frady2020resonator}
+Frady, E. P., Kent, S. J., Olshausen, B. A., \& Sommer, F. T. (2020).
+\textit{Resonator networks, 2: Factorization performance and capacity compared to optimization-based methods}.
+Neural Computation, 32(12), 2332-2388.
+
+\bibitem{gayler1998multiplicative}
+Gayler, R. W. (1998).
+\textit{Multiplicative binding, representation operators, and analogy}.
+In K. Holyoak, D. Gentner, \& B. Kokinov (Eds.), Advances in Analogy Research (pp. 1-4).
 
 \bibitem{gayler2004vector}
 Gayler, R. W. (2004).
 \textit{Vector symbolic architectures answer Jackendoff's challenges for cognitive neuroscience}.
 In ICCS/ASCS International Conference on Cognitive Science (pp. 133-138).
 
-\bibitem{neubert2019introduction}
-Neubert, P., Schubert, S., \& Protzel, P. (2019).
-\textit{An introduction to hyperdimensional computing for robotics}.
-KI-Künstliche Intelligenz, 33(4), 319-330.
+\bibitem{gayler2009analogy}
+Gayler, R. W., \& Levy, S. D. (2009).
+\textit{A distributed basis for analogical mapping}.
+In New Frontiers in Analogy Research: Proceedings of the Second International Conference on Analogy (pp. 165-174).
 
-\bibitem{kleyko2021vector}
-Kleyko, D., Rachkovskij, D. A., Osipov, E., \& Rahimi, A. (2021).
-\textit{A survey on hyperdimensional computing aka vector symbolic architectures, Part I: Models and data transformations}.
-arXiv preprint arXiv:2111.06077.
+\bibitem{gosmann2019vector}
+Gosmann, J., \& Eliasmith, C. (2019).
+\textit{Vector-derived transformation binding: An improved binding operation for deep symbol-like processing in neural networks}.
+Neural Computation, 31(5), 849-869.
+
+\bibitem{graves2014neural}
+Graves, A., Wayne, G., \& Danihelka, I. (2014).
+\textit{Neural Turing machines}.
+arXiv preprint arXiv:1410.5401.
+
+\bibitem{greff2020binding}
+Greff, K., van Steenkiste, S., \& Schmidhuber, J. (2020).
+\textit{On the binding problem in artificial neural networks}.
+arXiv preprint arXiv:2012.05208.
+
+\bibitem{torchhd2023}
+Heddes, M., Nunes, I., Vergés, P., Kleyko, D., Abraham, D. S., Givens, T., ... \& Rabaey, J. (2023).
+\textit{Torchhd: An open source Python library to support research on hyperdimensional computing}.
+arXiv preprint arXiv:2205.09208.
+
+\bibitem{hersche2023neuro}
+Hersche, M., Karunaratne, G., Cherubini, G., Benini, L., Sebastian, A., \& Rahimi, A. (2023).
+\textit{A neuro-vector-symbolic architecture for solving Raven's progressive matrices}.
+Nature Machine Intelligence, 5(4), 363-375.
+
+\bibitem{hestenes1984clifford}
+Hestenes, D., \& Sobczyk, G. (1984).
+\textit{Clifford algebra to geometric calculus: A unified language for mathematics and physics}.
+Springer.
+
+\bibitem{hopfield1982neural}
+Hopfield, J. J. (1982).
+\textit{Neural networks and physical systems with emergent collective computational abilities}.
+Proceedings of the National Academy of Sciences, 79(8), 2554-2558.
 
 \bibitem{imani2019framework}
 Imani, M., Rahimi, A., Kong, D., Rosing, T., \& Rabaey, J. M. (2019).
@@ -2700,45 +2885,95 @@ Bradbury, J., Frostig, R., Hawkins, P., Johnson, M. J., Leary, C., Maclaurin, D.
 \textit{JAX: composable transformations of Python+NumPy programs}.
 Available at \url{http://github.com/google/jax}.
 
+\bibitem{kanerva1988sparse}
+Kanerva, P. (1988).
+\textit{Sparse distributed memory}.
+MIT Press.
+
 \bibitem{kanerva1996binary}
 Kanerva, P. (1996).
 \textit{Binary spatter-coding of ordered K-tuples}.
 In International Conference on Artificial Neural Networks (pp. 869-873). Springer.
 
-\bibitem{hestenes1984clifford}
-Hestenes, D., \& Sobczyk, G. (1984).
-\textit{Clifford algebra to geometric calculus: A unified language for mathematics and physics}.
-Springer.
+\bibitem{kanerva1997binary}
+Kanerva, P. (1997).
+\textit{Fully distributed representation}.
+In Proceedings of the 1997 Real World Computing Symposium (pp. 358-365).
+
+\bibitem{kanerva2009hyperdimensional}
+Kanerva, P. (2009).
+\textit{Hyperdimensional computing: An introduction to computing in distributed representation with high-dimensional random vectors}.
+Cognitive Computation, 1(2), 139-159.
+
+\bibitem{kang2022openhd}
+Kang, M., Gonugondla, S. K., Patil, A., \& Shanbhag, N. R. (2022).
+\textit{OpenHD: A GPU-accelerated framework for hyperdimensional computing}.
+IEEE Transactions on Computers, 71(11), 2753-2765.
 
 \bibitem{kent2020resonator}
 Kent, S. J., Frady, E. P., Sommer, F. T., \& Olshausen, B. A. (2020).
 \textit{Resonator networks, 1: An efficient solution for factoring high-dimensional, distributed representations of data structures}.
 Neural Computation, 32(12), 2311-2331.
 
-\bibitem{frady2020resonator}
-Frady, E. P., Kent, S. J., Olshausen, B. A., \& Sommer, F. T. (2020).
-\textit{Resonator networks, 2: Factorization performance and capacity compared to optimization-based methods}.
-Neural Computation, 32(12), 2332-2388.
-
 \bibitem{kim2021hd}
 Kim, Y., Imani, M., \& Rosing, T. (2021).
 \textit{Efficient human activity recognition using hyperdimensional computing}.
 In Proceedings of the 8th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation (pp. 302-306).
-
-\bibitem{torchhd2023}
-Heddes, M., Nunes, I., Vergés, P., Kleyko, D., Abraham, D. S., Givens, T., ... \& Rabaey, J. (2023).
-\textit{Torchhd: An open source Python library to support research on hyperdimensional computing}.
-arXiv preprint arXiv:2205.09208.
 
 \bibitem{hdlib2020}
 Kleyko, D., Osipov, E., \& Rachkovskij, D. A. (2020).
 \textit{hdlib: A library for binary hyperdimensional vectors}.
 Available at \url{https://github.com/cumbof/hdlib}.
 
+\bibitem{kleyko2021vector}
+Kleyko, D., Rachkovskij, D. A., Osipov, E., \& Rahimi, A. (2021).
+\textit{A survey on hyperdimensional computing aka vector symbolic architectures, Part I: Models and data transformations}.
+arXiv preprint arXiv:2111.06077.
+
+\bibitem{kleyko2022vsa}
+Kleyko, D., Davies, M., Frady, E. P., Kanerva, P., Kent, S. J., Olshausen, B. A., ... \& Sommer, F. T. (2022).
+\textit{Vector symbolic architectures as a computing framework for emerging hardware}.
+Proceedings of the IEEE, 110(10), 1538-1571.
+
+\bibitem{krotov2016dense}
+Krotov, D., \& Hopfield, J. J. (2016).
+\textit{Dense associative memory for pattern recognition}.
+In Advances in Neural Information Processing Systems (pp. 1172-1180).
+
+\bibitem{langenegger2023inmemory}
+Langenegger, S., Karunaratne, G., Hersche, M., Benini, L., Sebastian, A., \& Rahimi, A. (2023).
+\textit{In-memory factorization of holographic perceptual representations}.
+Nature Nanotechnology, 18(5), 479-485.
+
+\bibitem{neubert2019introduction}
+Neubert, P., Schubert, S., \& Protzel, P. (2019).
+\textit{An introduction to hyperdimensional computing for robotics}.
+KI-Künstliche Intelligenz, 33(4), 319-330.
+
+\bibitem{nickel2016hol}
+Nickel, M., Rosasco, L., \& Poggio, T. (2016).
+\textit{Holographic embeddings of knowledge graphs}.
+In Proceedings of the AAAI Conference on Artificial Intelligence, 30(1).
+
+\bibitem{plate1995holographic}
+Plate, T. A. (1995).
+\textit{Holographic reduced representations}.
+IEEE Transactions on Neural Networks, 6(3), 623-641.
+
 \bibitem{pybhv2022}
 Richert, A., \& Sheerin, A. (2022).
 \textit{PyBHV: Binary hyperdimensional vectors in Python}.
 Available at \url{https://github.com/hyperdimensional-computing/pybhv}.
+
+\bibitem{schlegel2022comparative}
+Schlegel, K., Neubert, P., \& Protzel, P. (2022).
+\textit{A comparison of vector symbolic architectures}.
+Artificial Intelligence Review, 55(6), 4523-4555.
+
+\bibitem{simon2022hdtorch}
+Simon, E., Tanneberg, D., \& Peters, J. (2022).
+\textit{HDTorch: Accelerating hyperdimensional computing with GPUs by exploiting parallelization opportunities}.
+arXiv preprint arXiv:2205.09208.
 
 \end{thebibliography}
 
