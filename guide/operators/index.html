@@ -1569,6 +1569,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#available-pre-defined-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available Pre-Defined Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#future-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3520,6 +3531,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#available-pre-defined-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Available Pre-Defined Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#future-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3686,7 +3708,7 @@
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">RIGHT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>  <span class="c1"># → plate (similarity &gt; 0.7)</span>
 </code></pre></div>
 <h3 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h3>
-<p>✅ <strong>Exact inversion</strong> - Similarity &gt; 0.999 (vs ~0.6-0.7 with bundling)
+<p>✅ <strong>Exact inversion</strong> - Similarity &gt; 0.999 (vs 0.3-0.6 with bundling)
 ✅ <strong>Directional</strong> - Preserves asymmetric relationships
 ✅ <strong>Compositional</strong> - Combine transformations algebraically
 ✅ <strong>Typed</strong> - Semantic metadata (SPATIAL, SEMANTIC, TEMPORAL)
@@ -3976,10 +3998,13 @@
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">real_hv</span><span class="p">)</span>  <span class="c1"># ❌ TypeError</span>
 </code></pre></div>
 <h3 id="4-fhrr-compatible">4. FHRR-Compatible<a class="headerlink" href="#4-fhrr-compatible" title="Permanent link">&para;</a></h3>
-<p>Operators compile to FHRR's phase algebra:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Operator applies phase rotation</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># This is compatible with FHRR&#39;s circular convolution</span>
+<p>Operators work seamlessly with FHRR's complex-valued representations:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Operators use phase rotation</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># Results can be combined with FHRR binding (circular convolution)</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">bound</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">hv1</span><span class="p">)</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">hv2</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1"># Both operators and FHRR binding preserve the complex structure</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="c1"># allowing them to be freely mixed in compositions</span>
 </code></pre></div>
 <h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
 <h3 id="test-coverage">Test Coverage<a class="headerlink" href="#test-coverage" title="Permanent link">&para;</a></h3>
@@ -4010,7 +4035,7 @@
 </tr>
 <tr>
 <td><strong>Inversion</strong></td>
-<td>Approximate (~0.6-0.7)</td>
+<td>Approximate (0.3-0.6)</td>
 <td>Exact (&gt;0.999)</td>
 </tr>
 <tr>
@@ -4034,19 +4059,29 @@
 <h3 id="current-limitations">Current Limitations<a class="headerlink" href="#current-limitations" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>FHRR-only</strong> - Operators require ComplexHypervector (phase representation)</li>
-<li><strong>No pre-defined operators yet</strong> - Must create operators manually with <code>random()</code></li>
 <li><strong>No learned operators</strong> - Parameters are randomly sampled, not learned from data</li>
-<li><strong>Single operator per application</strong> - Cannot apply multiple operators simultaneously</li>
+<li><strong>Commutative composition</strong> - Current operators use phase addition, which is commutative</li>
 </ol>
+<h3 id="available-pre-defined-operators">Available Pre-Defined Operators<a class="headerlink" href="#available-pre-defined-operators" title="Permanent link">&para;</a></h3>
+<p>VSAX provides factory functions for common operators:</p>
+<p><strong>Spatial operators</strong> (<code>vsax.operators.spatial</code>):
+- <code>create_left_of()</code>, <code>create_right_of()</code>
+- <code>create_above()</code>, <code>create_below()</code>
+- <code>create_in_front_of()</code>, <code>create_behind()</code>
+- <code>create_near()</code>, <code>create_far()</code></p>
+<p><strong>Semantic operators</strong> (<code>vsax.operators.semantic</code>):
+- <code>create_agent()</code>, <code>create_patient()</code>, <code>create_theme()</code>
+- <code>create_instrument()</code>, <code>create_location()</code>
+- <code>create_time()</code>, <code>create_goal()</code>, <code>create_source()</code></p>
+<p>All pre-defined operators are reproducible - the same dimension always produces the same operator.</p>
 <h3 id="future-extensions">Future Extensions<a class="headerlink" href="#future-extensions" title="Permanent link">&para;</a></h3>
 <p>Planned for future releases:</p>
 <ul>
-<li>Pre-defined spatial operators (LEFT_OF, ABOVE, NEAR, etc.)</li>
-<li>Pre-defined semantic operators (AGENT, PATIENT, THEME, etc.)</li>
 <li>Operator learning from data</li>
 <li>Batch operator application with vmap</li>
 <li>Non-commutative operators for sequence modeling</li>
 <li>Operator visualization tools</li>
+<li>MAP and Binary operator support</li>
 </ul>
 <h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <h3 id="when-to-use-operators">When to Use Operators<a class="headerlink" href="#when-to-use-operators" title="Permanent link">&para;</a></h3>
