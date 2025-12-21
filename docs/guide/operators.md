@@ -45,7 +45,7 @@ answer = RIGHT_OF.apply(scene)  # → plate (similarity > 0.7)
 
 ### Advantages
 
-✅ **Exact inversion** - Similarity > 0.999 (vs ~0.6-0.7 with bundling)
+✅ **Exact inversion** - Similarity > 0.999 (vs 0.3-0.6 with bundling)
 ✅ **Directional** - Preserves asymmetric relationships
 ✅ **Compositional** - Combine transformations algebraically
 ✅ **Typed** - Semantic metadata (SPATIAL, SEMANTIC, TEMPORAL)
@@ -390,12 +390,15 @@ result = op.apply(real_hv)  # ❌ TypeError
 
 ### 4. FHRR-Compatible
 
-Operators compile to FHRR's phase algebra:
+Operators work seamlessly with FHRR's complex-valued representations:
 
 ```python
-# Operator applies phase rotation
-# This is compatible with FHRR's circular convolution
+# Operators use phase rotation
+# Results can be combined with FHRR binding (circular convolution)
 bound = model.opset.bind(op.apply(hv1).vec, hv2.vec)
+
+# Both operators and FHRR binding preserve the complex structure
+# allowing them to be freely mixed in compositions
 ```
 
 ## Performance
@@ -419,7 +422,7 @@ All operations are JAX-native and GPU-accelerated.
 | Aspect | Bundling | Operators |
 |--------|----------|-----------|
 | **Use case** | Symmetric relations, prototypes | Asymmetric relations, transformations |
-| **Inversion** | Approximate (~0.6-0.7) | Exact (>0.999) |
+| **Inversion** | Approximate (0.3-0.6) | Exact (>0.999) |
 | **Directionality** | Lost | Preserved |
 | **Composition** | Limited | Full algebraic composition |
 | **Example** | "dog AND cat" | "dog CHASES cat" |
@@ -429,20 +432,35 @@ All operations are JAX-native and GPU-accelerated.
 ### Current Limitations
 
 1. **FHRR-only** - Operators require ComplexHypervector (phase representation)
-2. **No pre-defined operators yet** - Must create operators manually with `random()`
-3. **No learned operators** - Parameters are randomly sampled, not learned from data
-4. **Single operator per application** - Cannot apply multiple operators simultaneously
+2. **No learned operators** - Parameters are randomly sampled, not learned from data
+3. **Commutative composition** - Current operators use phase addition, which is commutative
+
+### Available Pre-Defined Operators
+
+VSAX provides factory functions for common operators:
+
+**Spatial operators** (`vsax.operators.spatial`):
+- `create_left_of()`, `create_right_of()`
+- `create_above()`, `create_below()`
+- `create_in_front_of()`, `create_behind()`
+- `create_near()`, `create_far()`
+
+**Semantic operators** (`vsax.operators.semantic`):
+- `create_agent()`, `create_patient()`, `create_theme()`
+- `create_instrument()`, `create_location()`
+- `create_time()`, `create_goal()`, `create_source()`
+
+All pre-defined operators are reproducible - the same dimension always produces the same operator.
 
 ### Future Extensions
 
 Planned for future releases:
 
-- Pre-defined spatial operators (LEFT_OF, ABOVE, NEAR, etc.)
-- Pre-defined semantic operators (AGENT, PATIENT, THEME, etc.)
 - Operator learning from data
 - Batch operator application with vmap
 - Non-commutative operators for sequence modeling
 - Operator visualization tools
+- MAP and Binary operator support
 
 ## Best Practices
 

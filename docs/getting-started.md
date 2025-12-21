@@ -165,7 +165,7 @@ scene = model.opset.bundle(
 # Query with exact inversion
 RIGHT_OF = LEFT_OF.inverse()
 answer = RIGHT_OF.apply(model.rep_cls(scene))
-# Similarity to "cup" will be > 0.7 (vs ~0.6 with bundling)
+# Similarity to "cup" will be > 0.7 (vs 0.3-0.6 with bundling)
 ```
 
 ## Next Steps

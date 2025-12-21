@@ -36,7 +36,7 @@ answer = LEFT_OF.inverse().apply(scene)  # → cup (exact!)
 
 **Key advantages of operators:**
 
-1. **Exact inversion** - Similarity > 0.999 (vs ~0.7 with bundling)
+1. **Exact inversion** - Similarity > 0.999 (vs 0.3-0.6 with bundling)
 2. **Compositional** - Combine transformations algebraically
 3. **Typed** - Semantic metadata (SPATIAL, SEMANTIC, TEMPORAL)
 4. **Directional** - Preserve asymmetric relationships
@@ -50,7 +50,7 @@ answer = LEFT_OF.inverse().apply(scene)  # → cup (exact!)
 | **Represents** | Concepts, objects, symbols | Transformations, relations, actions |
 | **Operations** | Bind, bundle, permute | Apply, inverse, compose |
 | **Example** | "cup", "dog", "3" | LEFT_OF, AGENT, ROTATE |
-| **Inversion** | Approximate (similarity ~0.7) | Exact (similarity > 0.999) |
+| **Inversion** | Approximate (similarity 0.3-0.6) | Exact (similarity > 0.999) |
 
 ### CliffordOperator
 
@@ -188,7 +188,7 @@ Recovery similarity: 1.000000
 ```
 
 **Why this matters:** Compare with approximate unbinding using bundling:
-- Bundling inversion: similarity ~0.6-0.7
+- Bundling inversion: similarity 0.3-0.6
 - Operator inversion: similarity > 0.999
 
 ### Operator Composition
@@ -673,7 +673,7 @@ Inverse of composition: 1.000000
 |------|----------|-----------|
 | **Spatial: "cup LEFT_OF plate"** | `bundle(cup, left_role, plate)` - loses direction | `bundle(cup, LEFT_OF.apply(plate))` - preserves direction ✅ |
 | **Query: what's left?** | Ambiguous - could return cup or plate | Exact - returns cup with high similarity ✅ |
-| **Inversion accuracy** | ~0.6-0.7 similarity | >0.999 similarity ✅ |
+| **Inversion accuracy** | 0.3-0.6 similarity | >0.999 similarity ✅ |
 | **Composition** | Limited | Full algebraic composition ✅ |
 
 ### Technical Details
