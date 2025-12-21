@@ -59,49 +59,19 @@ Recent years have seen renewed interest in VSAs driven by several factors: (1) t
 Despite this growing interest, the VSA ecosystem suffers from significant fragmentation and capability gaps that impede both research and deployment. Researchers and practitioners face several critical challenges:
 
 \paragraph{Fragmented Implementations}
-Existing VSA libraries are scattered across different programming languages, frameworks, and hardware platforms. Researchers implementing FHRR must often build from scratch or adapt legacy MATLAB code. Those exploring Binary VSAs may find hardware-specific implementations unsuitable for prototyping. This fragmentation forces researchers to:
-\begin{itemize}
-    \item Reimplement basic VSA operations for each new project
-    \item Maintain separate codebases for different VSA models
-    \item Sacrifice reproducibility when comparing models
-    \item Invest significant engineering effort before conducting research
-\end{itemize}
+Existing VSA libraries are scattered across different programming languages, frameworks, and hardware platforms. Researchers implementing FHRR must often build from scratch or adapt legacy MATLAB code. Those exploring Binary VSAs may find hardware-specific implementations unsuitable for prototyping. This fragmentation forces researchers to reimplement basic VSA operations for each new project, maintain separate codebases for different VSA models, sacrifice reproducibility when comparing models, and invest significant engineering effort before conducting research.
 
 \paragraph{Limited Scope}
-Most existing libraries focus on a single VSA model or specific application domain. A library supporting Binary vectors may lack FHRR's exact unbinding. A FHRR implementation may not provide resonator networks for factorization. This narrow scope means researchers must:
-\begin{itemize}
-    \item Use multiple incompatible libraries within one project
-    \item Develop custom extensions for advanced operations
-    \item Forgo systematic model comparisons
-    \item Build infrastructure for tasks beyond the library's scope
-\end{itemize}
+Most existing libraries focus on a single VSA model or specific application domain. A library supporting Binary vectors may lack FHRR's exact unbinding. A FHRR implementation may not provide resonator networks for factorization. This narrow scope means researchers must use multiple incompatible libraries within one project, develop custom extensions for advanced operations, forgo systematic model comparisons, and build infrastructure for tasks beyond the library's scope.
 
 \paragraph{Computational Inefficiency}
-Traditional VSA implementations operate on CPUs, processing vectors sequentially. As applications scale to higher dimensions, larger datasets, and more complex structures, this sequential processing becomes prohibitively slow. Researchers working with 10,000-dimensional vectors or batch processing thousands of queries face:
-\begin{itemize}
-    \item Hour-long experiments that could complete in minutes
-    \item Inability to explore large parameter spaces
-    \item Restricted problem sizes due to computational constraints
-    \item Difficulty transitioning from prototypes to production systems
-\end{itemize}
+Traditional VSA implementations operate on CPUs, processing vectors sequentially. As applications scale to higher dimensions, larger datasets, and more complex structures, this sequential processing becomes prohibitively slow. Researchers working with 10,000-dimensional vectors or batch processing thousands of queries face hour-long experiments that could complete in minutes, inability to explore large parameter spaces, restricted problem sizes due to computational constraints, and difficulty transitioning from prototypes to production systems.
 
 \paragraph{Missing Advanced Capabilities}
-Critical capabilities for modern VSA research remain unavailable in existing tools:
-\begin{itemize}
-    \item \textbf{Compositional operators}: No library provides exact, invertible operators for structured reasoning
-    \item \textbf{Resonator networks}: Factorization of composite structures requires custom implementation
-    \item \textbf{Automatic differentiation}: Gradient-based learning remains inaccessible
-    \item \textbf{Production features}: Serialization, versioning, and testing infrastructure are often absent
-\end{itemize}
+Critical capabilities for modern VSA research remain unavailable in existing tools. First, no library provides exact, invertible compositional operators for structured reasoning. Second, factorization of composite structures through resonator networks requires custom implementation. Third, gradient-based learning remains inaccessible without automatic differentiation support. Finally, production features such as serialization, versioning, and testing infrastructure are often absent.
 
 \paragraph{Adoption Barriers}
-The combination of these issues creates substantial barriers to VSA adoption:
-\begin{itemize}
-    \item New researchers face steep learning curves with incomplete documentation
-    \item Industry practitioners find existing tools unsuitable for production
-    \item Educators lack comprehensive libraries for teaching VSA concepts
-    \item Reproducibility suffers when researchers cannot share working code
-\end{itemize}
+The combination of these issues creates substantial barriers to VSA adoption. New researchers face steep learning curves with incomplete documentation, industry practitioners find existing tools unsuitable for production, educators lack comprehensive libraries for teaching VSA concepts, and reproducibility suffers when researchers cannot share working code.
 
 \subsection{VSAX: A Comprehensive Solution}
 
@@ -174,34 +144,15 @@ components = resonator.resonate(composite_vector)
 Resonators solve the critical inverse problem: given a bundled representation, recover constituent elements.
 
 \paragraph{Production Features}
-\begin{itemize}
-    \item \textbf{Persistence}: Save/load basis vectors as JSON
-    \item \textbf{Testing}: 450 tests with 95\% coverage
-    \item \textbf{Documentation}: Comprehensive API reference and 10 tutorials
-    \item \textbf{Type Safety}: Full mypy compliance with runtime validation
-    \item \textbf{Extensibility}: Abstract base classes for custom models
-\end{itemize}
+VSAX includes essential production capabilities. It provides persistence through JSON save/load functionality for basis vectors. The library includes comprehensive testing with 450 tests achieving 95\% coverage. Documentation features a complete API reference and 10 tutorials. Type safety is ensured through full mypy compliance with runtime validation. Finally, extensibility is supported through abstract base classes for custom models.
 
 \subsubsection{Research Enablement}
 
-VSAX's design explicitly supports research workflows:
-\begin{itemize}
-    \item \textbf{Rapid Prototyping}: Factory functions eliminate boilerplate
-    \item \textbf{Fair Comparison}: Consistent API across models
-    \item \textbf{Reproducibility}: Fixed random seeds and version tracking
-    \item \textbf{Extensibility}: Add custom encoders, operators, or models
-    \item \textbf{Sharing}: pip-installable with stable releases
-\end{itemize}
+VSAX's design explicitly supports research workflows through multiple features. Factory functions eliminate boilerplate to enable rapid prototyping. A consistent API across models ensures fair comparison of different VSA approaches. Reproducibility is supported through fixed random seeds and version tracking. Researchers can add custom encoders, operators, or models to extend the library's capabilities. Finally, the library is pip-installable with stable releases, facilitating easy sharing of implementations.
 
 \subsection{Impact and Adoption}
 
-VSAX enables researchers to:
-\begin{itemize}
-    \item Implement VSA experiments in hours instead of weeks
-    \item Explore previously computationally infeasible problems
-    \item Share reproducible implementations with the community
-    \item Deploy VSA systems in production environments
-\end{itemize}
+VSAX enables researchers to implement VSA experiments in hours instead of weeks, explore previously computationally infeasible problems, share reproducible implementations with the community, and deploy VSA systems in production environments.
 
 By lowering barriers to VSA research and providing modern computational capabilities, VSAX aims to accelerate progress in cognitive computing, neuro-symbolic AI, and brain-inspired architectures.
 
@@ -232,34 +183,13 @@ This statistical orthogonality enables the encoding of distinct symbols as appro
 VSAs define three fundamental operations that enable symbolic computation:
 
 \paragraph{Binding ($\otimes$)}
-Combines two hypervectors to create an associative representation. For vectors $a, b \in \mathbb{R}^d$, binding produces $c = a \otimes b$ with properties:
-\begin{itemize}
-    \item \textbf{Dissimilarity}: $c$ is approximately orthogonal to both $a$ and $b$
-    \item \textbf{Invertibility}: $a^{-1} \otimes c \approx b$ (unbinding)
-    \item \textbf{Commutativity}: $a \otimes b = b \otimes a$ (for most VSA models)
-\end{itemize}
-
-Binding encodes relationships such as role-filler pairs (SUBJECT: dog), feature-value pairs (COLOR: red), or edge-node associations in graphs.
+Combines two hypervectors to create an associative representation. For vectors $a, b \in \mathbb{R}^d$, binding produces $c = a \otimes b$ with three key properties. First, the result $c$ is approximately orthogonal to both $a$ and $b$, exhibiting dissimilarity to its constituents. Second, binding is invertible, allowing unbinding through $a^{-1} \otimes c \approx b$. Third, for most VSA models, binding is commutative such that $a \otimes b = b \otimes a$. Binding encodes relationships such as role-filler pairs (SUBJECT: dog), feature-value pairs (COLOR: red), or edge-node associations in graphs.
 
 \paragraph{Bundling ($\oplus$)}
-Superimposes multiple vectors to create a prototype representation. For vectors $v_1, \ldots, v_n$, bundling produces $s = v_1 \oplus \cdots \oplus v_n$ with properties:
-\begin{itemize}
-    \item \textbf{Similarity}: $s$ is similar to all input vectors
-    \item \textbf{Prototype Effect}: $s$ represents the "average" of inputs
-    \item \textbf{Capacity}: Can superimpose $O(\sqrt{d})$ vectors before information loss
-\end{itemize}
-
-Bundling implements OR-like operations, encodes sets, and creates semantic prototypes.
+Superimposes multiple vectors to create a prototype representation. For vectors $v_1, \ldots, v_n$, bundling produces $s = v_1 \oplus \cdots \oplus v_n$ with three characteristic properties. First, $s$ is similar to all input vectors, maintaining similarity relationships. Second, $s$ exhibits a prototype effect, representing the "average" of inputs. Third, bundling has a capacity limit, able to superimpose $O(\sqrt{d})$ vectors before information loss occurs. Bundling implements OR-like operations, encodes sets, and creates semantic prototypes.
 
 \paragraph{Permutation ($\rho$)}
-Reorders vector elements deterministically. For a permutation $\pi: [d] \to [d]$ and vector $v$, permutation produces $w = \rho_\pi(v)$ where $w[i] = v[\pi(i)]$.
-
-Properties:
-\begin{itemize}
-    \item \textbf{Invertibility}: $\rho_{\pi^{-1}}(\rho_\pi(v)) = v$
-    \item \textbf{Orthogonality}: For random $\pi$, $\rho_\pi(v)$ is approximately orthogonal to $v$
-    \item \textbf{Position Encoding}: Encode element positions in sequences
-\end{itemize}
+Reorders vector elements deterministically. For a permutation $\pi: [d] \to [d]$ and vector $v$, permutation produces $w = \rho_\pi(v)$ where $w[i] = v[\pi(i)]$. Permutation exhibits three important properties. First, it is invertible such that $\rho_{\pi^{-1}}(\rho_\pi(v)) = v$. Second, for random permutations $\pi$, the permuted vector $\rho_\pi(v)$ is approximately orthogonal to $v$. Third, permutation enables position encoding for element positions in sequences.
 
 \subsection{VSA Models: Implementation Choices}
 
@@ -275,12 +205,7 @@ FHRR~\cite{plate1995holographic} uses complex-valued vectors $v \in \mathbb{C}^d
 \end{align}
 
 \paragraph{Properties}
-\begin{itemize}
-    \item \textbf{Exact Unbinding}: Circular convolution in frequency domain becomes element-wise multiplication, enabling perfect inversion
-    \item \textbf{FFT Efficiency}: $O(d \log d)$ binding via Fast Fourier Transform
-    \item \textbf{Structured Binding}: Natural encoding of tree structures and recursive representations
-    \item \textbf{Memory}: Requires $2d$ floats per vector (real + imaginary components)
-\end{itemize}
+FHRR exhibits four key properties. First, it enables exact unbinding because circular convolution in the frequency domain becomes element-wise multiplication, allowing perfect inversion. Second, it achieves FFT efficiency with $O(d \log d)$ binding through the Fast Fourier Transform. Third, it provides structured binding that naturally encodes tree structures and recursive representations. Fourth, it requires $2d$ floats per vector to store both real and imaginary components.
 
 \paragraph{Use Cases}
 FHRR excels at applications requiring exact unbinding: knowledge representation, semantic parsing, structured reasoning, and tree encoding.
@@ -295,12 +220,7 @@ MAP~\cite{gayler2004vector} operates on real-valued vectors $v \in \mathbb{R}^d$
 \end{align}
 
 \paragraph{Properties}
-\begin{itemize}
-    \item \textbf{Computational Simplicity}: $O(d)$ binding via element-wise operations
-    \item \textbf{Approximate Unbinding}: $a \otimes a \otimes b \approx b$ but not exact
-    \item \textbf{Hardware Efficiency}: Minimal memory and compute requirements
-    \item \textbf{Memory}: Requires $d$ floats per vector
-\end{itemize}
+MAP exhibits four distinguishing properties. First, it offers computational simplicity with $O(d)$ binding via element-wise operations. Second, it provides approximate unbinding where $a \otimes a \otimes b \approx b$, though not exact. Third, it achieves hardware efficiency through minimal memory and compute requirements. Fourth, it requires only $d$ floats per vector.
 
 \paragraph{Use Cases}
 MAP suits applications prioritizing speed over precision: classification, clustering, similarity search, and real-time processing.
@@ -315,12 +235,7 @@ Binary VSAs~\cite{kanerva2009hyperdimensional} use binary or bipolar vectors $v 
 \end{align}
 
 \paragraph{Properties}
-\begin{itemize}
-    \item \textbf{Neuromorphic Compatibility}: Binary operations map naturally to spiking neurons
-    \item \textbf{Memory Efficiency}: 1 bit per dimension
-    \item \textbf{Exact Unbinding}: XOR is self-inverse
-    \item \textbf{Hardware Acceleration}: Fast bitwise operations on modern CPUs/GPUs
-\end{itemize}
+Binary VSAs exhibit four key properties. First, they offer neuromorphic compatibility as binary operations map naturally to spiking neurons. Second, they achieve memory efficiency with only 1 bit per dimension. Third, they enable exact unbinding since XOR is self-inverse. Fourth, they benefit from hardware acceleration through fast bitwise operations on modern CPUs and GPUs.
 
 \paragraph{Use Cases}
 Binary VSAs excel in resource-constrained environments: edge devices, neuromorphic chips, embedded systems, and energy-efficient computing.
@@ -343,34 +258,13 @@ VSAX's architecture reflects five core design principles developed through exten
 
 \subsubsection{Separation of Concerns}
 
-Traditional VSA libraries tightly couple vector representations with algebraic operations, making it difficult to experiment with new models or compare existing ones. VSAX enforces strict separation:
+Traditional VSA libraries tightly couple vector representations with algebraic operations, making it difficult to experiment with new models or compare existing ones. VSAX enforces strict separation through five distinct layers. Representations define vector types and storage (complex, real, binary). Operations define algebraic manipulations (bind, bundle, inverse). Models compose representations and operations into complete algebras. Encoders map structured data to hypervectors, independent of model choice. Finally, Memory manages symbol tables with model-agnostic storage.
 
-\begin{itemize}
-    \item \textbf{Representations} define vector types and storage (complex, real, binary)
-    \item \textbf{Operations} define algebraic manipulations (bind, bundle, inverse)
-    \item \textbf{Models} compose representations and operations into complete algebras
-    \item \textbf{Encoders} map structured data to hypervectors (independent of model choice)
-    \item \textbf{Memory} manages symbol tables (model-agnostic storage)
-\end{itemize}
-
-This modularity enables users to mix and match components. A researcher can:
-\begin{itemize}
-    \item Test the same encoder with FHRR and Binary models
-    \item Implement custom operations while reusing representations
-    \item Compare models using identical encoding strategies
-    \item Extend the library without modifying core components
-\end{itemize}
+This modularity enables users to mix and match components. A researcher can test the same encoder with FHRR and Binary models, implement custom operations while reusing representations, compare models using identical encoding strategies, and extend the library without modifying core components.
 
 \subsubsection{Functional Purity}
 
-All VSA operations in VSAX are pure functions: they take vectors as inputs, return new vectors as outputs, and produce no side effects. This functional approach:
-
-\begin{itemize}
-    \item Enables safe parallelization and JIT compilation
-    \item Simplifies testing and debugging (no hidden state)
-    \item Supports automatic differentiation through JAX
-    \item Facilitates reasoning about program behavior
-\end{itemize}
+All VSA operations in VSAX are pure functions: they take vectors as inputs, return new vectors as outputs, and produce no side effects. This functional approach provides four key benefits. It enables safe parallelization and JIT compilation. It simplifies testing and debugging by eliminating hidden state. It supports automatic differentiation through JAX. Finally, it facilitates reasoning about program behavior.
 
 For example, binding always creates a new vector rather than modifying inputs:
 
@@ -523,13 +417,7 @@ for name in memory:
     print(f"{name}: {memory[name]}")
 \end{lstlisting}
 
-Memory automatically handles:
-\begin{itemize}
-    \item Random vector generation for new symbols
-    \item Consistent retrieval (same symbol always returns same vector)
-    \item Type wrapping (raw arrays become Hypervector objects)
-    \item Cleanup (find nearest symbol to a query vector)
-\end{itemize}
+Memory automatically handles four key responsibilities. It performs random vector generation for new symbols. It ensures consistent retrieval where the same symbol always returns the same vector. It provides type wrapping so raw arrays become Hypervector objects. Finally, it offers cleanup functionality to find the nearest symbol to a query vector.
 
 \paragraph{Cleanup: Associative Memory}
 Memory provides cleanup to find the nearest stored symbol to a query vector:
@@ -740,13 +628,7 @@ Clear errors accelerate debugging and improve user experience.
 
 \subsection{The Performance Imperative}
 
-As VSA applications scale in complexity, computational performance becomes critical. Consider a typical experiment:
-\begin{itemize}
-    \item Dataset: 10,000 images (e.g., MNIST)
-    \item Encoding: Each image bundled from 784 pixel bindings
-    \item Classification: 10-way similarity search per image
-    \item Hyperparameter search: 10 different dimensions tested
-\end{itemize}
+As VSA applications scale in complexity, computational performance becomes critical. Consider a typical experiment with a dataset of 10,000 images (e.g., MNIST), where each image is bundled from 784 pixel bindings, classification requires a 10-way similarity search per image, and hyperparameter search tests 10 different dimensions.
 
 On a CPU, this experiment requires approximately 2.5 hours. On a GPU with VSAX, the same experiment completes in 8 minutes—a 19× speedup. Such performance gains transform research workflows, enabling rapid iteration and exploration of larger problem spaces.
 
@@ -834,27 +716,13 @@ We conducted comprehensive benchmarks on multiple hardware configurations to cha
 \subsubsection{Experimental Setup}
 
 \paragraph{Hardware}
-\begin{itemize}
-    \item \textbf{CPU}: AMD Ryzen 9 5950X (16 cores, 3.4 GHz)
-    \item \textbf{GPU}: NVIDIA RTX 3090 (24GB VRAM, 10496 CUDA cores)
-    \item \textbf{Memory}: 64GB DDR4-3200
-\end{itemize}
+The benchmark hardware consisted of an AMD Ryzen 9 5950X CPU (16 cores, 3.4 GHz), an NVIDIA RTX 3090 GPU (24GB VRAM, 10496 CUDA cores), and 64GB DDR4-3200 memory.
 
 \paragraph{Software}
-\begin{itemize}
-    \item Python 3.11, JAX 0.4.23, CUDA 12.1
-    \item VSAX 1.1.0
-    \item Measurements averaged over 100 runs after 10 warmup iterations
-\end{itemize}
+The software environment included Python 3.11, JAX 0.4.23, and CUDA 12.1, running VSAX 1.1.0. All measurements were averaged over 100 runs after 10 warmup iterations.
 
 \paragraph{Metrics}
-For each operation, we measured:
-\begin{itemize}
-    \item \textbf{Latency}: Time per operation (milliseconds)
-    \item \textbf{Throughput}: Operations per second
-    \item \textbf{Speedup}: GPU time / CPU time
-    \item \textbf{Scaling}: Performance vs. dimension and batch size
-\end{itemize}
+For each operation, we measured four key metrics: latency (time per operation in milliseconds), throughput (operations per second), speedup (GPU time divided by CPU time), and scaling (performance versus dimension and batch size).
 
 \subsubsection{Single Operation Performance}
 
@@ -911,12 +779,7 @@ Dimension & CPU (ms) & GPU (ms) & Speedup \\
 \end{table}
 
 \paragraph{Analysis}
-\begin{itemize}
-    \item CPU time scales as $O(d \log d)$ (FFT complexity)
-    \item GPU time remains nearly constant up to $d=8192$ due to parallelism saturation
-    \item Speedup increases with dimension: higher dimensions amortize GPU overhead
-    \item Crossover point: GPU faster for $d > 256$
-\end{itemize}
+The scaling analysis reveals several important patterns. CPU time scales as $O(d \log d)$ due to FFT complexity. GPU time remains nearly constant up to $d=8192$ due to parallelism saturation. Speedup increases with dimension as higher dimensions amortize GPU overhead. The crossover point occurs at $d > 256$, above which GPU becomes faster.
 
 \subsubsection{Batch Size Scaling}
 
@@ -940,12 +803,7 @@ Batch Size & CPU (ms) & GPU (ms) & Speedup \\
 \end{table}
 
 \paragraph{Analysis}
-\begin{itemize}
-    \item CPU time scales linearly: $T_{CPU}(b) \approx 0.045b$ ms
-    \item GPU time sub-linear: $T_{GPU}(b) \approx 0.3 + 0.0015b$ ms
-    \item Crossover: GPU faster for batch size $> 15$
-    \item GPU advantage grows with batch size (diminishing overhead)
-\end{itemize}
+The analysis reveals several key scaling patterns. CPU time scales linearly with $T_{CPU}(b) \approx 0.045b$ milliseconds. GPU time exhibits sub-linear scaling with $T_{GPU}(b) \approx 0.3 + 0.0015b$ milliseconds. The crossover point where GPU becomes faster occurs at batch size greater than 15. The GPU advantage grows with batch size due to diminishing overhead.
 
 \subsubsection{Model Comparison}
 
@@ -971,11 +829,7 @@ Binary & Bundle & 8.5 & 0.28 & 30.4× \\
 \end{table}
 
 \paragraph{Insights}
-\begin{itemize}
-    \item MAP shows lower absolute speedup but is fastest overall (simple operations)
-    \item Binary benefits greatly from GPU bitwise operations
-    \item All models achieve 14-31× speedups, making GPU beneficial regardless of model choice
-\end{itemize}
+The results reveal three key insights. First, MAP shows lower absolute speedup but is fastest overall due to its simple operations. Second, Binary VSA benefits greatly from GPU bitwise operations. Third, all models achieve 14-31× speedups, making GPU acceleration beneficial regardless of model choice.
 
 \subsection{Memory Usage and Efficiency}
 
@@ -1013,30 +867,15 @@ VSAX employs several strategies to optimize GPU memory:
 
 \subsubsection{MNIST Classification}
 
-Encoding 60,000 MNIST images (dim=10,000):
-\begin{itemize}
-    \item CPU: 145 minutes
-    \item GPU: 4.8 minutes
-    \item Speedup: 30.2×
-\end{itemize}
+Encoding 60,000 MNIST images (dim=10,000) required 145 minutes on CPU compared to 4.8 minutes on GPU, achieving a 30.2× speedup.
 
 \subsubsection{Knowledge Graph Reasoning}
 
-Processing 100,000 triple queries:
-\begin{itemize}
-    \item CPU: 82 minutes
-    \item GPU: 3.1 minutes
-    \item Speedup: 26.5×
-\end{itemize}
+Processing 100,000 triple queries took 82 minutes on CPU versus 3.1 minutes on GPU, resulting in a 26.5× speedup.
 
 \subsubsection{Resonator Network Convergence}
 
-Factorizing 1,000 composite vectors (100 iterations each):
-\begin{itemize}
-    \item CPU: 38 minutes
-    \item GPU: 1.9 minutes
-    \item Speedup: 20.0×
-\end{itemize}
+Factorizing 1,000 composite vectors (100 iterations each) completed in 38 minutes on CPU compared to 1.9 minutes on GPU, demonstrating a 20.0× speedup.
 
 These real-world speedups transform interactive experimentation, enabling rapid prototyping and large-scale deployment.
 
@@ -1239,12 +1078,7 @@ def create_right_of(dim: int) -> CliffordOperator:
     return create_left_of(dim).inverse()
 \end{lstlisting}
 
-This design ensures:
-\begin{itemize}
-    \item \textbf{Reproducibility}: \texttt{create\_left\_of(1024)} always returns the same operator
-    \item \textbf{Inverse Pairs}: RIGHT\_OF is exactly $-$LEFT\_OF in parameter space
-    \item \textbf{Cross-Session Consistency}: Results are identical across machines and sessions
-\end{itemize}
+This design ensures three key guarantees. First, it provides reproducibility such that \texttt{create\_left\_of(1024)} always returns the same operator. Second, it maintains inverse pairs where RIGHT\_OF is exactly $-$LEFT\_OF in parameter space. Third, it guarantees cross-session consistency with identical results across machines and sessions.
 
 \subsubsection{Semantic Role Operators}
 
@@ -1310,12 +1144,7 @@ query2 = ABOVE.inverse().apply(model.rep_cls(scene))
 # Returns composite (cup LEFT_OF plate)
 \end{lstlisting}
 
-Applications:
-\begin{itemize}
-    \item Robot localization: "Where is the cup relative to the plate?"
-    \item Scene understanding: "What objects are above the table?"
-    \item Path planning: Compose directions (LEFT, FORWARD, UP)
-\end{itemize}
+This capability enables multiple applications. In robot localization, it answers questions like "Where is the cup relative to the plate?" For scene understanding, it identifies "What objects are above the table?" In path planning, it allows composing directions such as LEFT, FORWARD, and UP.
 
 \subsubsection{Semantic Role Labeling: Natural Language Understanding}
 
@@ -1355,12 +1184,7 @@ instrument_name, sim = memory.cleanup(with_what.vec)
 # Output: INSTRUMENT: knife (similarity: 0.413)
 \end{lstlisting}
 
-This capability enables:
-\begin{itemize}
-    \item Question answering: "Who cut the bread?" → Extract AGENT
-    \item Information extraction: Identify participants in events
-    \item Semantic parsing: Map sentences to structured representations
-\end{itemize}
+This capability enables several key applications. For question answering, it can extract the AGENT to answer "Who cut the bread?" In information extraction, it identifies participants in events. For semantic parsing, it maps sentences to structured representations.
 
 \subsubsection{Knowledge Graph Reasoning}
 
@@ -1412,12 +1236,7 @@ answer3 = model.opset.bind(
 # Returns: "dog" (via inverse operator)
 \end{lstlisting}
 
-Knowledge graph applications:
-\begin{itemize}
-    \item Ontology representation: Encode IS-A hierarchies
-    \item Relation extraction: Identify entity relationships
-    \item Multi-hop reasoning: Compose operators for path queries
-\end{itemize}
+Knowledge graph applications include ontology representation to encode IS-A hierarchies, relation extraction to identify entity relationships, and multi-hop reasoning through operator composition for path queries.
 
 \subsection{Operator Composition for Complex Reasoning}
 
@@ -1441,25 +1260,13 @@ similarity = cosine_similarity(transformed.vec, transformed_seq.vec)
 # similarity > 0.999 (exact composition)
 \end{lstlisting}
 
-Composition enables:
-\begin{itemize}
-    \item Complex spatial relations: "North-East" = compose(NORTH, EAST)
-    \item Causal chains: "A caused B which caused C"
-    \item Multi-step reasoning: Compose relations for graph traversal
-\end{itemize}
+Composition enables complex spatial relations such as "North-East" formed by compose(NORTH, EAST), causal chains like "A caused B which caused C", and multi-step reasoning through composed relations for graph traversal.
 
 \section{Resonator Networks for Structure Factorization}
 
 \subsection{The Factorization Problem}
 
-A fundamental challenge in VSA is the inverse problem: given a composite (bundled) representation $s = v_1 \oplus v_2 \oplus \cdots \oplus v_n$, recover the constituent vectors $\{v_i\}$. This factorization is critical for:
-
-\begin{itemize}
-    \item \textbf{Set Membership}: Determine which symbols are in a bundled set
-    \item \textbf{Tree Decomposition}: Extract subtrees from hierarchical structures
-    \item \textbf{Working Memory}: Recall items from superimposed memories
-    \item \textbf{Attention Mechanisms}: Select relevant components from composite representations
-\end{itemize}
+A fundamental challenge in VSA is the inverse problem: given a composite (bundled) representation $s = v_1 \oplus v_2 \oplus \cdots \oplus v_n$, recover the constituent vectors $\{v_i\}$. This factorization is critical for four key applications. For set membership, it determines which symbols are in a bundled set. In tree decomposition, it extracts subtrees from hierarchical structures. For working memory, it recalls items from superimposed memories. In attention mechanisms, it selects relevant components from composite representations.
 
 Traditional VSA operations lack a general factorization method. If we know the possible constituents (codebook), cleanup (nearest neighbor search) can identify individual components, but this requires querying each possibility individually. For unknown or large codebooks, this becomes computationally prohibitive.
 
@@ -1689,26 +1496,13 @@ Components & Avg Iterations & Success Rate & Avg Similarity \\
 \end{table}
 
 \paragraph{Observations}
-\begin{itemize}
-    \item Convergence rate increases with number of components (capacity limits)
-    \item Success rate decreases beyond $\sqrt{d}$ components (noise dominates)
-    \item Higher dimensions improve recovery (10,000-dim better than 1,000-dim)
-\end{itemize}
+The results reveal three key patterns. Convergence rate increases with the number of components up to capacity limits. Success rate decreases beyond $\sqrt{d}$ components as noise dominates. Higher dimensions improve recovery, with 10,000-dimensional vectors outperforming 1,000-dimensional ones.
 
 \subsubsection{Computational Cost}
 
-Per iteration, resonator networks require:
-\begin{itemize}
-    \item $k$ unbinding operations: $O(kd)$
-    \item $k$ cleanup operations: $O(km\cdot d)$ where $m = |\mathcal{C}|$
-    \item Total per iteration: $O(kmd)$
-\end{itemize}
+Per iteration, resonator networks require $k$ unbinding operations with complexity $O(kd)$ and $k$ cleanup operations with complexity $O(km\cdot d)$ where $m = |\mathcal{C}|$, yielding a total complexity per iteration of $O(kmd)$.
 
-For typical parameters ($k=3$, $m=1000$, $d=10000$, 15 iterations):
-\begin{itemize}
-    \item CPU: 450ms
-    \item GPU: 23ms (20× speedup)
-\end{itemize}
+For typical parameters ($k=3$, $m=1000$, $d=10000$, 15 iterations), execution requires 450ms on CPU compared to 23ms on GPU, achieving a 20× speedup.
 
 \section{Use Cases and Applications}
 
@@ -1825,13 +1619,7 @@ print(f"HD-Glue prediction: {predicted_class} (true: {true_label})")
 \end{lstlisting}
 
 \paragraph{Results}
-HD-Glue outperforms individual networks and matches traditional ensemble methods while:
-\begin{itemize}
-    \item Using 100× less memory (no probability averaging)
-    \item Enabling online network addition/removal
-    \item Supporting transparent reasoning (can query which network contributed)
-    \item Providing robustness to network failures
-\end{itemize}
+HD-Glue outperforms individual networks and matches traditional ensemble methods while offering four key advantages. It uses 100× less memory by avoiding probability averaging. It enables online network addition and removal. It supports transparent reasoning through the ability to query which network contributed to predictions. Finally, it provides robustness to network failures.
 
 \subsection{Multi-Modal Learning: Concept Grounding}
 
@@ -1881,11 +1669,7 @@ print(f"  Visual similarity: {visual_similarity:.3f}")
 \end{lstlisting}
 
 \paragraph{Applications}
-\begin{itemize}
-    \item \textbf{Symbol grounding}: Connect abstract symbols to sensory experiences
-    \item \textbf{Transfer learning}: Leverage knowledge from one modality in another
-    \item \textbf{Cross-modal reasoning}: Answer questions requiring multiple modalities
-\end{itemize}
+This multimodal approach enables three key applications. For symbol grounding, it connects abstract symbols to sensory experiences. In transfer learning, it leverages knowledge from one modality to enhance learning in another. For cross-modal reasoning, it answers questions requiring integration of multiple modalities.
 
 \subsection{Robotics: Visual Place Recognition}
 
@@ -1937,11 +1721,7 @@ if best_similarity > 0.7:  # Threshold for match
 \end{lstlisting}
 
 \paragraph{Benefits}
-\begin{itemize}
-    \item \textbf{Invariance}: Bundling provides viewpoint/lighting robustness
-    \item \textbf{Efficiency}: Single cosine similarity vs. costly feature matching
-    \item \textbf{Memory}: Constant memory per place vs. storing all features
-\end{itemize}
+This approach provides three key benefits. Bundling provides invariance to viewpoint and lighting changes. Efficiency is achieved through single cosine similarity comparisons rather than costly feature matching. Memory usage is constant per place, avoiding the need to store all individual features.
 
 \subsection{Language Processing: Dependency Parsing}
 
@@ -2014,21 +1794,10 @@ The VSA/HDC ecosystem includes several libraries with varying scopes and capabil
 Torchhd~\cite{torchhd2023} is a PyTorch-based library focused on hyperdimensional computing for machine learning.
 
 \paragraph{Strengths}
-\begin{itemize}
-    \item PyTorch integration enables GPU acceleration
-    \item Strong focus on classification tasks
-    \item Provides MAP and Binary models
-    \item Active development and community
-\end{itemize}
+Torchhd offers several strengths. PyTorch integration enables GPU acceleration for hyperdimensional operations. The library maintains a strong focus on classification tasks with optimized implementations. It provides both MAP and Binary models. Finally, it benefits from active development and a growing community.
 
 \paragraph{Limitations}
-\begin{itemize}
-    \item No FHRR support (complex vectors)
-    \item Lacks compositional operators
-    \item No resonator networks
-    \item Limited encoding abstractions
-    \item Primarily designed for supervised learning, less support for symbolic reasoning
-\end{itemize}
+However, Torchhd has several limitations. It lacks FHRR support for complex vectors and exact unbinding. The library does not provide compositional operators for structured reasoning. Resonator networks for factorization are absent. Encoding abstractions are limited compared to comprehensive frameworks. Furthermore, it is primarily designed for supervised learning with less support for symbolic reasoning tasks.
 
 \paragraph{VSAX Advantages}
 VSAX provides FHRR for exact unbinding, compositional operators for structured reasoning, and resonator networks for factorization—capabilities absent in Torchhd. Additionally, VSAX's JAX foundation enables automatic differentiation with functional purity, while Torchhd's PyTorch basis assumes mutable state.
@@ -2038,20 +1807,10 @@ VSAX provides FHRR for exact unbinding, compositional operators for structured r
 hdlib~\cite{hdlib2020} implements Binary Spatter Code in C++ with Python bindings.
 
 \paragraph{Strengths}
-\begin{itemize}
-    \item Highly optimized C++ implementation
-    \item Efficient binary operations
-    \item Low memory footprint
-\end{itemize}
+hdlib provides three main strengths. It features a highly optimized C++ implementation for performance. Binary operations are executed efficiently with minimal overhead. The library maintains a low memory footprint suitable for embedded systems.
 
 \paragraph{Limitations}
-\begin{itemize}
-    \item Binary vectors only (no FHRR or MAP)
-    \item CPU-only (no GPU acceleration)
-    \item Limited documentation and examples
-    \item No high-level encoders
-    \item Narrow scope (basic operations only)
-\end{itemize}
+However, hdlib has significant limitations. It supports binary vectors only, lacking FHRR and MAP implementations. The library is CPU-only without GPU acceleration support. Documentation and examples are limited, creating barriers to adoption. High-level encoders for structured data are absent. Finally, its scope is narrow, providing only basic operations without advanced capabilities.
 
 \paragraph{VSAX Advantages}
 VSAX supports three complete models (FHRR, MAP, Binary) with consistent APIs, GPU acceleration through JAX, comprehensive encoders, and production features (testing, documentation, persistence). While hdlib excels at binary operations specifically, VSAX provides a complete ecosystem.
@@ -2061,19 +1820,10 @@ VSAX supports three complete models (FHRR, MAP, Binary) with consistent APIs, GP
 PyBHV~\cite{pybhv2022} focuses on binary hyperdimensional vectors in pure Python.
 
 \paragraph{Strengths}
-\begin{itemize}
-    \item Pure Python (easy installation)
-    \item Clear educational examples
-    \item Good documentation
-\end{itemize}
+PyBHV offers three main strengths. It is implemented in pure Python for easy installation. It provides clear educational examples. Finally, it includes good documentation.
 
 \paragraph{Limitations}
-\begin{itemize}
-    \item Binary vectors only
-    \item CPU-only, relatively slow
-    \item No advanced operations (resonators, operators)
-    \item Limited to basic VSA operations
-\end{itemize}
+PyBHV has several limitations. It supports binary vectors only. It is CPU-only and relatively slow. It lacks advanced operations such as resonators and operators. Finally, it is limited to basic VSA operations.
 
 \paragraph{VSAX Advantages}
 VSAX provides multi-model support, GPU acceleration (5-30× speedups), advanced capabilities (operators, resonators), and production-ready quality (95% test coverage, type safety, comprehensive documentation).
@@ -2138,33 +1888,13 @@ Bundle Speedup & 30× & 28× & 1× & 1× \\
 VSAX distinguishes itself through \textbf{comprehensiveness}, \textbf{performance}, and \textbf{production-readiness}:
 
 \paragraph{Comprehensiveness}
-VSAX is the only library providing:
-\begin{itemize}
-    \item All three major VSA models (FHRR, MAP, Binary) with consistent APIs
-    \item Compositional operators for exact reasoning
-    \item Resonator networks for structure factorization
-    \item Five core encoders plus extensible custom encoders
-    \item Memory management with persistence
-\end{itemize}
+VSAX is the only library providing all three major VSA models (FHRR, MAP, Binary) with consistent APIs, compositional operators for exact reasoning, resonator networks for structure factorization, five core encoders plus extensible custom encoders, and memory management with persistence.
 
 \paragraph{Performance}
-Through JAX integration, VSAX achieves:
-\begin{itemize}
-    \item 5-30× GPU speedups across operations
-    \item Automatic TPU support (unique among VSA libraries)
-    \item JIT compilation for 2-3× additional speedups
-    \item Batch processing with near-linear scaling
-\end{itemize}
+Through JAX integration, VSAX achieves 5-30× GPU speedups across operations, automatic TPU support (unique among VSA libraries), JIT compilation for 2-3× additional speedups, and batch processing with near-linear scaling.
 
 \paragraph{Production-Readiness}
-VSAX provides software engineering rigor:
-\begin{itemize}
-    \item 95\% test coverage (450 tests)
-    \item Full type safety with mypy compliance
-    \item Comprehensive documentation (API reference + 10 tutorials)
-    \item Semantic versioning and stable releases
-    \item pip-installable with minimal dependencies
-\end{itemize}
+VSAX provides software engineering rigor through 95\% test coverage (450 tests), full type safety with mypy compliance, comprehensive documentation (API reference plus 10 tutorials), semantic versioning and stable releases, and pip-installable packages with minimal dependencies.
 
 These factors make VSAX suitable for both research exploration and production deployment—a combination unavailable in existing libraries.
 
@@ -2193,12 +1923,7 @@ model = create_fhrr_model(dim=1024)
 \end{lstlisting}
 
 \paragraph{Choosing Dimensionality}
-\begin{itemize}
-    \item \textbf{$d=512$}: Prototyping, small symbol sets ($<50$ symbols)
-    \item \textbf{$d=1024$}: Standard applications, moderate capacity
-    \item \textbf{$d=2048-4096$}: Complex structures, many symbols
-    \item \textbf{$d=10000+$}: Maximum capacity, research experiments
-\end{itemize}
+Dimensionality should be selected based on application requirements. For $d=512$, use when prototyping or working with small symbol sets (fewer than 50 symbols). For $d=1024$, this is suitable for standard applications requiring moderate capacity. For $d=2048-4096$, choose this range for complex structures involving many symbols. For $d=10000$ and above, use when maximum capacity is needed for research experiments.
 
 \paragraph{Step 2: Symbol Management}
 Create a memory instance and add symbols:
@@ -2467,13 +2192,7 @@ print(f"Theoretical SNR: {theoretical_snr:.2f}")
 # If SNR < 3, increase dimension or reduce components
 \end{lstlisting}
 
-\textbf{Solutions}:
-\begin{itemize}
-    \item Increase dimensionality (e.g., 1024 → 2048)
-    \item Reduce superimposed bindings
-    \item Use resonator networks for factorization
-    \item Switch to FHRR for exact unbinding
-\end{itemize}
+\textbf{Solutions}: Increase dimensionality (e.g., from 1024 to 2048). Reduce the number of superimposed bindings. Use resonator networks for factorization. Switch to FHRR for exact unbinding.
 
 \paragraph{Issue 2: Slow Performance}
 \textbf{Symptom}: Operations take longer than expected.
@@ -2496,13 +2215,7 @@ bind_time = benchmark_operation(
 print(f"Bind time: {bind_time:.3f} ms")
 \end{lstlisting}
 
-\textbf{Solutions}:
-\begin{itemize}
-    \item Ensure JAX recognizes GPU: \texttt{pip install jax[cuda]}
-    \item Use JIT compilation: \texttt{@jax.jit}
-    \item Batch operations with \texttt{vmap}
-    \item Check data transfer overhead (move data to GPU once)
-\end{itemize}
+\textbf{Solutions}: Ensure JAX recognizes GPU by installing \texttt{pip install jax[cuda]}. Use JIT compilation with \texttt{@jax.jit}. Batch operations with \texttt{vmap}. Check data transfer overhead by moving data to GPU once.
 
 \paragraph{Issue 3: Dimension Mismatch}
 \textbf{Symptom}: \texttt{ValueError: Cannot bind vectors of different dimensions}
@@ -2545,21 +2258,11 @@ Applications: learning task-specific transformations, optimizing for downstream 
 
 \subsubsection{Temporal Binding and Dynamics}
 
-Extend VSAX with time-varying associations:
-\begin{itemize}
-    \item \textbf{Decay}: Older bindings fade over time
-    \item \textbf{Strengthening}: Repeated associations grow stronger
-    \item \textbf{Temporal sequences}: Encode time explicitly
-\end{itemize}
+Extend VSAX with time-varying associations through three mechanisms. Decay allows older bindings to fade over time. Strengthening enables repeated associations to grow stronger. Temporal sequences allow explicit encoding of time.
 
 \subsubsection{Probabilistic VSA}
 
-Incorporate uncertainty quantification:
-\begin{itemize}
-    \item \textbf{Distributional Embeddings}: Vectors as Gaussian distributions
-    \item \textbf{Probabilistic Binding}: Track uncertainty through operations
-    \item \textbf{Bayesian Inference}: Posterior updates via VSA operations
-\end{itemize}
+Incorporate uncertainty quantification through distributional embeddings representing vectors as Gaussian distributions, probabilistic binding to track uncertainty through operations, and Bayesian inference enabling posterior updates via VSA operations.
 
 \subsubsection{Non-Commutative Operators}
 
@@ -2573,23 +2276,11 @@ where $M_1, M_2$ are learned matrices. Enables order-dependent transformations.
 
 \subsubsection{Neuromorphic Integration}
 
-JAX's XLA compiler can target custom backends. Future work will interface with neuromorphic chips:
-\begin{itemize}
-    \item Intel Loihi 2
-    \item IBM TrueNorth
-    \item BrainScaleS
-\end{itemize}
-
-Binary VSAs map naturally to spiking neurons, enabling ultra-low-power VSA computation.
+JAX's XLA compiler can target custom backends. Future work will interface with neuromorphic chips including Intel Loihi 2, IBM TrueNorth, and BrainScaleS. Binary VSAs map naturally to spiking neurons, enabling ultra-low-power VSA computation.
 
 \subsubsection{FPGA Acceleration}
 
-Custom FPGA implementations could provide:
-\begin{itemize}
-    \item 100× speedup for binary operations
-    \item Reduced power consumption
-    \item Real-time processing for robotics
-\end{itemize}
+Custom FPGA implementations could provide 100× speedup for binary operations, reduced power consumption, and real-time processing for robotics.
 
 \subsection{Research Opportunities}
 
@@ -2643,15 +2334,7 @@ Current encoders use fixed, randomized bases. While this ensures reproducibility
 
 \subsection{Future Directions}
 
-Planned enhancements include:
-\begin{itemize}
-    \item Non-commutative operator algebras for richer compositional structures
-    \item Learned operator parameters optimized for specific reasoning tasks
-    \item Extended operator support for MAP and Binary representations
-    \item Probabilistic VSA extensions for uncertainty quantification
-    \item Hardware-specific backends (TPU, neuromorphic chips)
-    \item Temporal binding operations for sequence modeling
-\end{itemize}
+Planned enhancements include non-commutative operator algebras for richer compositional structures, learned operator parameters optimized for specific reasoning tasks, extended operator support for MAP and Binary representations, probabilistic VSA extensions for uncertainty quantification, hardware-specific backends (TPU, neuromorphic chips), and temporal binding operations for sequence modeling.
 
 These limitations are documented to guide users and identify research opportunities. Contributions addressing these challenges are welcome.
 
@@ -2668,33 +2351,16 @@ VSAX provides three complete VSA models (FHRR, MAP, Binary) with consistent APIs
 By leveraging JAX, VSAX achieves 5-30× speedups across operations through automatic GPU placement, JIT compilation, and vectorization. This performance transforms research workflows, enabling experiments that were previously computationally infeasible.
 
 \paragraph{Novel Capabilities}
-VSAX introduces capabilities unavailable in existing libraries:
-\begin{itemize}
-    \item \textbf{Clifford Operators}: Exact, compositional, invertible transformations for structured reasoning
-    \item \textbf{Resonator Networks}: Factorization of composite structures through coupled dynamics
-    \item \textbf{Comprehensive Encoders}: Five core encoders plus extensibility for custom domains
-\end{itemize}
+VSAX introduces capabilities unavailable in existing libraries. It provides Clifford Operators for exact, compositional, invertible transformations in structured reasoning. It includes Resonator Networks for factorization of composite structures through coupled dynamics. Finally, it offers comprehensive encoders with five core encoders plus extensibility for custom domains.
 
 \paragraph{Production Quality}
 With 95\% test coverage, full type safety, comprehensive documentation, and stable releases, VSAX is suitable for both research and production deployment—a combination previously unavailable.
 
 \subsection{Impact and Availability}
 
-VSAX lowers barriers to VSA research and application by providing:
-\begin{itemize}
-    \item Rapid prototyping (hours instead of weeks)
-    \item Fair model comparison (consistent APIs)
-    \item High performance (GPU acceleration)
-    \item Reproducibility (serialization, versioning)
-    \item Extensibility (abstract base classes)
-\end{itemize}
+VSAX lowers barriers to VSA research and application by providing rapid prototyping (hours instead of weeks), fair model comparison (consistent APIs), high performance (GPU acceleration), reproducibility (serialization, versioning), and extensibility (abstract base classes).
 
-The library is open-source (MIT license) and available via:
-\begin{itemize}
-    \item \textbf{GitHub}: \url{https://github.com/vasanthsarathy/vsax}
-    \item \textbf{PyPI}: \texttt{pip install vsax}
-    \item \textbf{Documentation}: \url{https://vasanthsarathy.github.io/vsax}
-\end{itemize}
+The library is open-source (MIT license) and available via GitHub (\url{https://github.com/vasanthsarathy/vsax}), PyPI (\texttt{pip install vsax}), and comprehensive documentation (\url{https://vasanthsarathy.github.io/vsax}).
 
 \subsection{Looking Forward}
 
@@ -2718,13 +2384,7 @@ To facilitate reproduction of results and ensure transparency, we document all e
 All experiments use VSAX v1.1.0, released January 2025. The library is available via PyPI (\texttt{pip install vsax==1.1.0}) and GitHub (\url{https://github.com/vasanthsarathy/vsax/releases/tag/v1.1.0}).
 
 \paragraph{Dependencies}
-\begin{itemize}
-    \item JAX: v0.4.23 with CUDA 12.0 support
-    \item NumPy: v1.24.3
-    \item Python: 3.9.18
-    \item CUDA: 12.0
-    \item cuDNN: 8.9.0
-\end{itemize}
+The software dependencies include JAX v0.4.23 with CUDA 12.0 support, NumPy v1.24.3, Python 3.9.18, CUDA 12.0, and cuDNN 8.9.0.
 
 \paragraph{JAX Configuration}
 All GPU benchmarks use the following JAX settings:
@@ -2743,12 +2403,7 @@ jax.config.update("jax_default_device", jax.devices("gpu")[0])
 \subsection{Hardware Specifications}
 
 \paragraph{GPU Benchmarks}
-\begin{itemize}
-    \item GPU: NVIDIA RTX 4090 (24GB VRAM)
-    \item CPU: AMD Ryzen 9 7950X (16 cores, 32 threads)
-    \item RAM: 64GB DDR5-5200
-    \item OS: Ubuntu 22.04 LTS
-\end{itemize}
+The GPU benchmark system utilized an NVIDIA RTX 4090 (24GB VRAM), an AMD Ryzen 9 7950X CPU (16 cores, 32 threads), 64GB DDR5-5200 RAM, and Ubuntu 22.04 LTS as the operating system.
 
 \paragraph{CPU Baseline}
 CPU benchmarks use the same hardware with \texttt{jax.devices("cpu")[0]} for fair comparison.
@@ -2756,21 +2411,10 @@ CPU benchmarks use the same hardware with \texttt{jax.devices("cpu")[0]} for fai
 \subsection{Experimental Parameters}
 
 \paragraph{Random Seeds}
-All experiments use fixed random seeds for reproducibility:
-\begin{itemize}
-    \item VSA model initialization: \texttt{jax.random.PRNGKey(42)}
-    \item Encoder initialization: \texttt{jax.random.PRNGKey(100)}
-    \item Operator generation: Fixed seeds per operator (1000-1015 for spatial, 2000-2015 for semantic)
-\end{itemize}
+All experiments use fixed random seeds for reproducibility. VSA model initialization uses \texttt{jax.random.PRNGKey(42)}. Encoder initialization uses \texttt{jax.random.PRNGKey(100)}. Operator generation uses fixed seeds per operator (1000-1015 for spatial, 2000-2015 for semantic).
 
 \paragraph{Default Hyperparameters}
-Unless otherwise specified:
-\begin{itemize}
-    \item Dimensionality: 1024 (FHRR, MAP), 10000 (Binary)
-    \item Resonator iterations: 50
-    \item Resonator convergence threshold: $10^{-6}$
-    \item Similarity threshold (cleanup): 0.3
-\end{itemize}
+Unless otherwise specified, the following hyperparameters apply. Dimensionality is 1024 for FHRR and MAP, and 10000 for Binary. Resonator iterations are set to 50. Resonator convergence threshold is $10^{-6}$. Similarity threshold for cleanup is 0.3.
 
 \subsection{Benchmark Methodology}
 
@@ -2783,29 +2427,15 @@ Unless otherwise specified:
 \end{enumerate}
 
 \paragraph{Accuracy Metrics}
-\begin{itemize}
-    \item Similarity: Cosine similarity $\in [-1, 1]$
-    \item Inversion accuracy: $\cos(\mathcal{O}^{-1}(\mathcal{O}(v)), v) > 0.999$
-    \item Cleanup accuracy: Fraction of queries returning correct symbol (similarity $>$ 0.3)
-\end{itemize}
+Three accuracy metrics are used. Similarity is measured via cosine similarity in the range $[-1, 1]$. Inversion accuracy requires $\cos(\mathcal{O}^{-1}(\mathcal{O}(v)), v) > 0.999$. Cleanup accuracy is the fraction of queries returning the correct symbol with similarity greater than 0.3.
 
 \subsection{Code Availability}
 
-All benchmark scripts, example code, and experiment configurations are available in the VSAX repository:
-\begin{itemize}
-    \item Benchmarks: \texttt{examples/benchmarks/}
-    \item Use cases: \texttt{examples/operators/}, \texttt{examples/resonators/}
-    \item Tests: \texttt{tests/} (450 tests, 95\% coverage)
-\end{itemize}
+All benchmark scripts, example code, and experiment configurations are available in the VSAX repository. Benchmarks are located in \texttt{examples/benchmarks/}. Use cases can be found in \texttt{examples/operators/} and \texttt{examples/resonators/}. Tests are available in \texttt{tests/} with 450 tests achieving 95\% coverage.
 
 \subsection{Data Availability}
 
-All datasets used in use case demonstrations are publicly available:
-\begin{itemize}
-    \item MNIST: \url{http://yann.lecun.com/exdb/mnist/}
-    \item WordNet: \url{https://wordnet.princeton.edu/}
-    \item Example knowledge graphs: Included in VSAX repository
-\end{itemize}
+All datasets used in use case demonstrations are publicly available. MNIST is available at \url{http://yann.lecun.com/exdb/mnist/}. WordNet can be accessed at \url{https://wordnet.princeton.edu/}. Example knowledge graphs are included in the VSAX repository.
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
