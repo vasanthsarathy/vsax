@@ -879,6 +879,98 @@ Factorizing 1,000 composite vectors (100 iterations each) completed in 38 minute
 
 These real-world speedups transform interactive experimentation, enabling rapid prototyping and large-scale deployment.
 
+\section{Scientific Evaluation: Hypothesis-Driven Experiments}
+
+While performance benchmarks demonstrate implementation efficiency, understanding the fundamental behavior and limits of VSA methods requires carefully controlled scientific experiments. We present two hypothesis-driven evaluations that reveal insights into compositional factorization and capacity-accuracy tradeoffs across VSA representations.
+
+\subsection{Experiment 1: Operator Factorization Under Compositional Complexity}
+
+\subsubsection{Research Question and Hypothesis}
+
+How does factorization performance degrade as a function of operator composition depth and noise perturbations? We hypothesize that recovery accuracy decreases with composition depth, revealing fundamental limits of VSA factorization under structured compositional complexity.
+
+\subsubsection{Methodology}
+
+We systematically varied two independent variables: (1) composition depth (number of nested operator applications, ranging from 1 to 4), and (2) noise level (Gaussian noise standard deviation, ranging from 0.0 to 0.2). For each condition, we created composite structures of the form:
+\begin{equation}
+c = \mathcal{O}_d(\cdots \mathcal{O}_2(\mathcal{O}_1(v_1) \otimes v_2) \otimes \cdots \otimes v_{d+1})
+\end{equation}
+where $\mathcal{O}_i$ are Clifford operators and $v_i$ are concept vectors from memory. Gaussian noise was then added to the composite and the result renormalized.
+
+We attempted to recover the constituent concepts by iteratively applying inverse operators and unbinding operations, then matching the result against memory using cosine similarity. Accuracy was measured as the proportion of correctly recovered concepts across 20 trials per condition (dimension=1024, FHRR representation).
+
+\subsubsection{Results and Interpretation}
+
+Figure~\ref{fig:exp1_depth} shows that factorization accuracy decreases monotonically with composition depth, dropping from 50\% at depth 1 to 20\% at depth 4. Notably, noise level had minimal impact on recovery accuracy across all tested ranges (Figure~\ref{fig:exp1_noise}), suggesting that compositional depth is the dominant limiting factor rather than perturbation robustness.
+
+This finding reveals a fundamental tradeoff: while Clifford operators enable exact invertibility for individual transformations, deeply nested compositions amplify the difficulty of the factorization problem. The results quantify practical limits for structured reasoning applications, suggesting that compositional hierarchies should be kept shallow (depth $\leq$ 2-3) for reliable factorization.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\columnwidth]{experiments/exp1_results/exp1_accuracy_vs_depth.pdf}
+\caption{Factorization accuracy vs. composition depth across noise levels. Accuracy degrades monotonically with depth, from 50\% at depth 1 to 20\% at depth 4, with minimal noise sensitivity.}
+\label{fig:exp1_depth}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\columnwidth]{experiments/exp1_results/exp1_accuracy_vs_noise.pdf}
+\caption{Factorization accuracy vs. noise level across composition depths. Flat lines across all depths indicate that compositional structure, not noise, dominates factorization difficulty.}
+\label{fig:exp1_noise}
+\end{figure}
+
+\subsection{Experiment 2: Capacity-Accuracy Tradeoffs Across VSA Representations}
+
+\subsubsection{Research Question and Hypothesis}
+
+How do different VSA representations (FHRR, MAP, Binary) trade off capacity versus retrieval accuracy under identical encoding schemes? We hypothesize that FHRR maintains higher accuracy at larger capacities due to complex-valued representations, while Binary shows earlier degradation due to limited expressiveness.
+
+\subsubsection{Methodology}
+
+We compared three VSA models under controlled conditions: FHRR and MAP at dimension 1024, and Binary at dimension 10,000 (reflecting typical dimension requirements for comparable performance). We created bundles of varying capacity (2 to 100 items) by superimposing randomly selected concept vectors:
+\begin{equation}
+s = v_1 \oplus v_2 \oplus \cdots \oplus v_n
+\end{equation}
+where $n$ is the bundle capacity. We then queried each bundle by attempting to retrieve a randomly selected constituent vector, measuring both retrieval accuracy (whether the top-ranked match was correct) and similarity to the target.
+
+For each capacity level, we performed 50 random queries across 10 trials, with a codebook of 200 total concepts. This design isolates the fundamental capacity limits of each VSA algebra under controlled conditions.
+
+\subsubsection{Results and Interpretation}
+
+Figure~\ref{fig:exp2_accuracy} shows clear capacity-accuracy tradeoffs across all three representations. At low capacity (2-5 items), all models achieve 40-50\% accuracy, but performance degrades rapidly as capacity increases. By capacity 20-30, all models approach near-chance performance ($<5\%$ accuracy), quantifying a fundamental limit for VSA bundling.
+
+Interestingly, while the three models show similar accuracy curves, Figure~\ref{fig:exp2_similarity} reveals important differences in similarity scores. Binary representations maintain higher similarity to target vectors even as accuracy degrades (similarity $\approx 0.55$ at capacity 100), compared to FHRR (similarity $\approx 0.15$) and MAP (similarity $\approx 0.18$). This suggests that Binary preserves more structural information in high-capacity bundles, even when failing to produce correct top-1 matches.
+
+These results provide quantitative guidance for practitioners: bundling should be limited to $\leq 10$ items for reliable retrieval, and similarity metrics can provide confidence estimates even when exact matches fail.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\columnwidth]{experiments/exp2_results/exp2_capacity_accuracy.pdf}
+\caption{Retrieval accuracy vs. bundle capacity for FHRR, MAP, and Binary representations. All models show rapid degradation beyond capacity 10-15, with convergence to near-chance performance by capacity 30.}
+\label{fig:exp2_accuracy}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\columnwidth]{experiments/exp2_results/exp2_capacity_similarity.pdf}
+\caption{Mean similarity to target vs. bundle capacity. Binary maintains higher similarity scores ($\approx 0.55$) at high capacities compared to FHRR and MAP ($\approx 0.15-0.18$), suggesting better preservation of structural information despite retrieval failures.}
+\label{fig:exp2_similarity}
+\end{figure}
+
+\subsection{Scientific Contribution Summary}
+
+These hypothesis-driven experiments provide scientific insights beyond performance benchmarks:
+
+\begin{enumerate}
+\item \textbf{Compositional Depth Limits}: Factorization difficulty scales with compositional structure depth, not noise, revealing fundamental constraints for hierarchical reasoning applications.
+
+\item \textbf{Capacity Laws}: Quantitative capacity-accuracy curves establish that VSA bundling should be limited to $\leq 10$ items for reliable retrieval across all major representation types.
+
+\item \textbf{Representation Tradeoffs}: While FHRR, MAP, and Binary show similar accuracy curves, Binary's higher similarity preservation at capacity limits may enable confidence-weighted retrieval strategies.
+
+\item \textbf{Reproducibility}: All experiments use fixed random seeds and are included in the VSAX repository (\texttt{examples/experiments/}), enabling replication and extension by the research community.
+\end{enumerate}
+
 \section{Compositional Reasoning with Clifford Operators}
 
 \subsection{Motivation: The Limits of Traditional VSA Operations}
