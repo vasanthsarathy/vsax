@@ -1,5 +1,7 @@
 """Fourier Holographic Reduced Representation operations."""
 
+from typing import Union
+
 import jax.numpy as jnp
 
 from vsax.core.base import AbstractOpSet
@@ -123,7 +125,7 @@ class FHRROperations(AbstractOpSet):
             # Note: index 0 stays in place, rest are reversed
             return jnp.concatenate([a[:1], jnp.flip(a[1:])])
 
-    def fractional_power(self, a: jnp.ndarray, exponent: float | jnp.ndarray) -> jnp.ndarray:
+    def fractional_power(self, a: jnp.ndarray, exponent: Union[float, jnp.ndarray]) -> jnp.ndarray:
         """Raise complex hypervector to fractional power.
 
         For complex vectors v = exp(i*θ), this computes v^r = exp(i*r*θ).

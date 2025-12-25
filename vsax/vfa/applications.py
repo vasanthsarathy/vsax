@@ -130,6 +130,7 @@ class DensityEstimator:
                 "DensityEstimator must be fitted before evaluation. Call fit() first."
             )
 
+        assert self._density_hv is not None  # Set by fit()
         return self.vfa.evaluate_batch(self._density_hv, x_query)
 
     def sample(self, key: jax.Array, n_samples: int = 1) -> jnp.ndarray:
@@ -241,6 +242,7 @@ class NonlinearRegressor:
                 "NonlinearRegressor must be fitted before prediction. Call fit() first."
             )
 
+        assert self._function_hv is not None  # Set by fit()
         return self.vfa.evaluate_batch(self._function_hv, x_test)
 
     def score(self, x_test: jnp.ndarray, y_test: jnp.ndarray) -> float:

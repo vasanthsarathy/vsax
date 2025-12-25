@@ -190,7 +190,7 @@ class VectorFunctionEncoder:
         result = jnp.vdot(query_vec, function_hv.vec)
 
         # Return real part (imaginary part should be ~0 for real functions)
-        return jnp.real(result)
+        return float(jnp.real(result))
 
     def add_functions(
         self,

@@ -1,15 +1,12 @@
 """Utility functions for Spatial Semantic Pointers."""
 
-from typing import TYPE_CHECKING
+from typing import Any
 
 import jax.numpy as jnp
 
 from vsax.representations import ComplexHypervector
 from vsax.similarity import cosine_similarity
 from vsax.spatial.ssp import SpatialSemanticPointers
-
-if TYPE_CHECKING:
-    import matplotlib.figure
 
 
 def create_spatial_scene(
@@ -128,7 +125,7 @@ def plot_ssp_2d_scene(
     y_range: tuple[float, float] = (0, 5),
     resolution: int = 30,
     figsize: tuple[int, int] = (12, 4),
-) -> "matplotlib.figure.Figure":
+) -> Any:  # matplotlib.figure.Figure when matplotlib is installed
     """Plot 2D scene showing where each object is located.
 
     Creates a figure with subplots showing similarity heatmaps for each object.
@@ -161,7 +158,7 @@ def plot_ssp_2d_scene(
         >>> plt.show()
     """
     try:
-        import matplotlib.pyplot as plt
+        import matplotlib.pyplot as plt  # type: ignore[import-not-found]
     except ImportError:
         raise ImportError(
             "matplotlib is required for plotting. Install with: pip install matplotlib"

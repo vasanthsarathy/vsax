@@ -33,7 +33,7 @@ class SSPConfig:
     scale: Optional[float] = None
     axis_names: Optional[list[str]] = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """Set default axis names if not provided."""
         if self.axis_names is None:
             # Default axis names: x, y, z, w, v, u, ...
@@ -120,6 +120,9 @@ class SpatialSemanticPointers:
         self.memory = memory
         self.config = config if config is not None else SSPConfig()
 
+        # axis_names is always set by SSPConfig.__post_init__
+        assert self.config.axis_names is not None
+
         # Create FractionalPowerEncoder
         self.encoder = FractionalPowerEncoder(model, memory, scale=self.config.scale)
 
@@ -150,6 +153,7 @@ class SpatialSemanticPointers:
         if len(coordinates) != self.config.num_axes:
             raise ValueError(f"Expected {self.config.num_axes} coordinates, got {len(coordinates)}")
 
+        assert self.config.axis_names is not None  # Always set in __init__
         return self.encoder.encode_multi(self.config.axis_names, coordinates)
 
     def bind_object_location(
@@ -342,4 +346,6 @@ class SpatialSemanticPointers:
                 best_similarity = similarity
                 best_coords = candidate
 
-        return best_coords.tolist()
+        assert best_coords is not None  # At least one candidate should exist
+        result: list[float] = best_coords.tolist()
+        return result

@@ -74,7 +74,7 @@ class KernelConfig:
     dim: int = 512
     custom_sampler: Optional[Callable[[jax.Array, int], jnp.ndarray]] = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """Validate configuration."""
         if self.bandwidth <= 0:
             raise ValueError(f"bandwidth must be positive, got {self.bandwidth}")
