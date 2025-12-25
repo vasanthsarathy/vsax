@@ -5,14 +5,17 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 ## Features
 
 - 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
-- 🔧 **Clifford Operators**: Exact, compositional, invertible transformations ✅ **NEW in v1.1.0**
+- 🔧 **Clifford Operators**: Exact, compositional, invertible transformations ✅
+- 🎯 **Fractional Power Encoding**: Continuous value encoding via v^r ✅ **NEW in v1.2.0**
+- 📍 **Spatial Semantic Pointers**: 1D/2D/3D spatial reasoning ✅ **NEW in v1.2.0**
+- 📊 **Vector Function Architecture**: Function approximation in RKHS ✅ **NEW in v1.2.0**
 - ⚡ **GPU-Accelerated**: Built on JAX for high-performance computation
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 💯 **Type-Safe**: Full type annotations with mypy support
-- ✅ **Well-Tested**: 410 tests with 94% coverage
+- ✅ **Well-Tested**: 618 tests with 94% coverage
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity
 - ⚡ **Batch Operations**: GPU-accelerated vmap operations
 - 💾 **I/O & Persistence**: Save/load basis vectors to JSON
@@ -115,7 +118,7 @@ model = VSAModel(
 
 ## Development Status
 
-**Current**: Iteration 6 Complete ✅
+**Current**: Iteration 9 (v1.2.0) Complete ✅
 
 ### Completed
 
@@ -167,26 +170,41 @@ model = VSAModel(
 - ✅ Production-ready v1.0.0 release
 - ✅ 387 tests with 94% coverage
 
-**Iteration 8** (v1.1.0): Clifford Operators ✅ **NEW**
+**Iteration 8** (v1.1.0): Clifford Operators ✅
 - ✅ Clifford-inspired operator layer for exact reasoning
 - ✅ Phase-based transformations for FHRR hypervectors
 - ✅ Exact inversion (similarity > 0.999)
 - ✅ Compositional algebra with compose()
 - ✅ 410 tests with 94% coverage
 
+**Iteration 9** (v1.2.0): FPE, SSP, and VFA ✅ **NEW**
+- ✅ Fractional Power Encoding for continuous values (v^r)
+- ✅ Spatial Semantic Pointers for 1D/2D/3D spatial reasoning
+- ✅ Vector Function Architecture for function approximation
+- ✅ Tutorial 11: Analogical Reasoning with Conceptual Spaces
+- ✅ 5 new examples (SSP 1D/2D, VFA density/regression/images)
+- ✅ 186 new tests (54 FPE + 47 SSP + 85 VFA)
+- ✅ 618 total tests with 94% coverage
+
 ## Documentation
 
 - [Getting Started](getting-started.md) - Installation and first steps
-- [Tutorials](tutorials/index.md) - Hands-on tutorials with real datasets
+- [Tutorials](tutorials/index.md) - Hands-on tutorials with real datasets (11 tutorials!)
   - [MNIST Classification](tutorials/01_mnist_classification.md) - Image classification with VSA
   - [Knowledge Graph Reasoning](tutorials/02_knowledge_graph.md) - Multi-hop reasoning
-  - [Clifford Operators](tutorials/10_clifford_operators.md) - Exact transformations ✨ **NEW in v1.1.0**
-  - And 6 more tutorials covering analogies, word embeddings, edge computing, and more!
+  - [Clifford Operators](tutorials/10_clifford_operators.md) - Exact transformations
+  - [Analogical Reasoning](tutorials/11_analogical_reasoning.md) - Conceptual spaces ✨ **NEW in v1.2.0**
+  - And 7 more tutorials covering analogies, word embeddings, edge computing, and more!
 - [User Guide](guide/operators.md) - Detailed guides for all components
-  - [Operators Guide](guide/operators.md) - Using Clifford operators ✨ **NEW**
+  - [Fractional Power Encoding](guide/fpe.md) - Continuous value encoding ✨ **NEW in v1.2.0**
+  - [Spatial Semantic Pointers](guide/spatial.md) - Spatial reasoning ✨ **NEW in v1.2.0**
+  - [Vector Function Architecture](guide/vfa.md) - Function approximation ✨ **NEW in v1.2.0**
+  - [Operators Guide](guide/operators.md) - Using Clifford operators
 - [Examples](examples/fhrr.md) - Working examples for all three models
 - [API Reference](api/index.md) - Complete API documentation
-  - [Operators API](api/operators/index.md) - Operators module reference ✨ **NEW**
+  - [Spatial API](api/spatial/index.md) - SSP module reference ✨ **NEW in v1.2.0**
+  - [VFA API](api/vfa/index.md) - VFA module reference ✨ **NEW in v1.2.0**
+  - [Operators API](api/operators/index.md) - Operators module reference
 - [Design Specification](design-spec.md) - Technical design details
 
 ## Contributing
@@ -206,7 +224,7 @@ If you use VSAX in your research, please cite:
   title = {VSAX: Vector Symbolic Algebra for JAX},
   author = {Sarathy, Vasanth},
   year = {2025},
-  version = {1.1.0},
+  version = {1.2.0},
   url = {https://github.com/vasanthsarathy/vsax}
 }
 ```

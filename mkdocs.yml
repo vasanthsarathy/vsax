@@ -59,12 +59,16 @@ nav:
     - Multi-Modal Concept Grounding: tutorials/08_multimodal_grounding.md
     - Neural-Symbolic Fusion (HD-Glue): tutorials/09_neural_symbolic_fusion.md
     - Clifford Operators: tutorials/10_clifford_operators.md
+    - Analogical Reasoning: tutorials/11_analogical_reasoning.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md
     - VSAMemory: guide/memory.md
     - Encoders: guide/encoders.md
+    - Fractional Power Encoding: guide/fpe.md
     - Operators: guide/operators.md
+    - Spatial Semantic Pointers: guide/spatial.md
+    - Vector Function Architecture: guide/vfa.md
     - Similarity Metrics: guide/similarity.md
     - Batch Operations: guide/batch_operations.md
     - Resonator Networks: guide/resonator.md
@@ -87,6 +91,7 @@ nav:
     - Encoders:
       - Overview: api/encoders/index.md
       - ScalarEncoder: api/encoders/scalar.md
+      - FractionalPowerEncoder: api/encoders/fpe.md
       - SequenceEncoder: api/encoders/sequence.md
       - SetEncoder: api/encoders/set.md
       - DictEncoder: api/encoders/dict.md
@@ -100,6 +105,8 @@ nav:
       - MAPOperations: api/ops/map.md
       - BinaryOperations: api/ops/binary.md
     - Operators: api/operators/index.md
+    - Spatial: api/spatial/index.md
+    - VFA: api/vfa/index.md
     - Resonator Networks: api/resonator/index.md
     - Sampling: api/sampling.md
     - Similarity: api/similarity/index.md
