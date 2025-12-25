@@ -1,0 +1,275 @@
+\section{Continuous Spatial and Function Encoding}
+\label{sec:continuous}
+
+While VSAs excel at discrete symbolic reasoning, many real-world applications require encoding and manipulating \textit{continuous} values—spatial coordinates, sensor readings, temporal data, and mathematical functions. Traditional VSA approaches discretize continuous domains into bins, losing precision and introducing artifacts. VSAX v1.2.0 introduces three interconnected capabilities that enable smooth, compositional encoding of continuous spaces: Fractional Power Encoding (FPE), Spatial Semantic Pointers (SSP), and Vector Function Architecture (VFA).
+
+\subsection{Fractional Power Encoding: Foundation for Continuity}
+
+\subsubsection{Mathematical Framework}
+
+Fractional Power Encoding leverages the complex exponential representation of FHRR hypervectors to encode continuous real values. For a basis vector $v = \exp(i\theta) \in \mathbb{C}^d$ and real exponent $r \in \mathbb{R}$, fractional power encoding computes:
+\begin{equation}
+v^r = \exp(i \cdot r \cdot \theta)
+\end{equation}
+where the operation is applied element-wise to each component $\theta_j$.
+
+This encoding satisfies three critical properties that make it suitable for continuous representation:
+
+\paragraph{Continuity} Small changes in value produce small changes in representation:
+\begin{equation}
+\lim_{r_2 \to r_1} \cos(v^{r_1}, v^{r_2}) = 1
+\end{equation}
+
+\paragraph{Compositionality} Powers compose algebraically under binding (circular convolution):
+\begin{equation}
+v^{r_1} \otimes v^{r_2} = v^{r_1 + r_2}
+\end{equation}
+
+\paragraph{Invertibility} Encoding and decoding preserve information:
+\begin{equation}
+v^r \otimes v^{-r} = v^0 = \mathbf{1}
+\end{equation}
+
+\subsubsection{Implementation}
+
+VSAX provides \texttt{FractionalPowerEncoder} with support for single and multi-dimensional encoding:
+
+\begin{lstlisting}[language=Python]
+from vsax.encoders import FractionalPowerEncoder
+
+encoder = FractionalPowerEncoder(model, memory)
+
+# Single dimension: encode temperature
+memory.add("temperature")
+temp_hv = encoder.encode("temperature", 23.7)
+
+# Multi-dimensional: encode 3D point
+memory.add_many(["x", "y", "z"])
+point = encoder.encode_multi(
+    ["x", "y", "z"],
+    [1.5, 2.7, 3.2]  # Coordinates
+)
+# Computes: X^1.5 ⊗ Y^2.7 ⊗ Z^3.2
+\end{lstlisting}
+
+The encoder supports optional scaling to map large ranges to stable exponents, ensuring numerical stability for arbitrary input domains.
+
+\subsection{Spatial Semantic Pointers: Continuous Spatial Reasoning}
+
+\subsubsection{Motivation and Background}
+
+Spatial Semantic Pointers~\cite{komer2019neural} extend VSAs to continuous spatial domains, enabling representation of locations, scenes, and spatial relationships. Traditional grid-based approaches force discretization; SSPs maintain continuity while preserving compositional properties.
+
+\subsubsection{Spatial Encoding}
+
+A 2D location $(x, y)$ is encoded as:
+\begin{equation}
+S(x, y) = X^x \otimes Y^y
+\end{equation}
+where $X, Y$ are randomly sampled basis vectors and $\otimes$ denotes circular convolution. This generalizes to arbitrary dimensions: for 3D space, $S(x, y, z) = X^x \otimes Y^y \otimes Z^z$.
+
+\subsubsection{Object-Location Binding}
+
+To encode "object O at location $(x, y)$":
+\begin{equation}
+\text{Scene} = O \otimes S(x, y) = O \otimes X^x \otimes Y^y
+\end{equation}
+
+Multiple object-location pairs are bundled to create composite scenes:
+\begin{equation}
+\text{Scene} = (O_1 \otimes S(x_1, y_1)) \oplus (O_2 \otimes S(x_2, y_2)) \oplus \cdots
+\end{equation}
+
+\subsubsection{Spatial Queries}
+
+SSPs support bidirectional queries:
+
+\paragraph{Location Query ("What is at $(x, y)$?")}
+\begin{equation}
+\text{Result} = \text{Scene} \otimes S(x, y)^{-1} \approx O
+\end{equation}
+
+\paragraph{Object Query ("Where is $O$?")}
+\begin{equation}
+\text{Result} = \text{Scene} \otimes O^{-1} \approx S(x, y)
+\end{equation}
+
+Location decoding uses grid search: encode candidate locations, compute similarity to query result, select maximum.
+
+\subsubsection{Scene Transformations}
+
+SSPs enable global spatial transformations. To shift an entire scene by offset $(\Delta x, \Delta y)$:
+\begin{equation}
+\text{Scene}_{\text{shifted}} = \text{Scene} \otimes S(\Delta x, \Delta y)
+\end{equation}
+
+This works because:
+\begin{equation}
+(O \otimes X^x \otimes Y^y) \otimes (X^{\Delta x} \otimes Y^{\Delta y}) = O \otimes X^{x+\Delta x} \otimes Y^{y+\Delta y}
+\end{equation}
+
+\subsubsection{Implementation and Utilities}
+
+VSAX provides comprehensive SSP support through \texttt{vsax.spatial}:
+
+\begin{lstlisting}[language=Python]
+from vsax.spatial import (
+    SpatialSemanticPointers,
+    SSPConfig
+)
+
+# Configure 2D spatial representation
+config = SSPConfig(dim=512, num_axes=2)
+ssp = SpatialSemanticPointers(model, memory, config)
+
+# Encode location
+location = ssp.encode_location([3.5, 2.1])
+
+# Bind object to location
+memory.add("apple")
+scene = ssp.bind_object_location("apple", [3.5, 2.1])
+
+# Query: what is at (3.5, 2.1)?
+result = ssp.query_location(scene, [3.5, 2.1])
+# result has high similarity to memory["apple"]
+
+# Query: where is apple?
+location_hv = ssp.query_object(scene, "apple")
+coords = ssp.decode_location(
+    location_hv,
+    search_range=[(0, 5), (0, 5)],
+    resolution=50
+)
+# coords ≈ [3.5, 2.1]
+\end{lstlisting}
+
+The module includes visualization utilities (\texttt{similarity\_map\_2d}, \texttt{plot\_ssp\_2d\_scene}) and region queries for spatial analysis.
+
+\subsection{Vector Function Architecture: Functions as Vectors}
+
+\subsubsection{RKHS Representation}
+
+Vector Function Architecture~\cite{frady2021computing} enables encoding arbitrary functions $f: \mathbb{R} \to \mathbb{R}$ as fixed-size hypervectors in a Reproducing Kernel Hilbert Space (RKHS). A function is represented as:
+\begin{equation}
+f(x) \approx \langle \alpha, z^x \rangle = \sum_{i=1}^d \alpha_i (z_i)^x
+\end{equation}
+where $\alpha \in \mathbb{C}^d$ are learned coefficients, $z \in \mathbb{C}^d$ is a randomly sampled basis vector, and $\langle \cdot, \cdot \rangle$ denotes complex inner product.
+
+The kernel is $K(z, x) = z^x$, implemented via fractional power encoding.
+
+\subsubsection{Learning from Samples}
+
+Given sample points $(x_1, y_1), \ldots, (x_n, y_n)$, coefficients are learned via regularized least squares:
+\begin{equation}
+\alpha = (Z^H Z + \lambda I)^{-1} Z^H y
+\end{equation}
+where $Z_{ij} = (z_j)^{x_i}$ is the design matrix and $\lambda$ is a regularization parameter.
+
+\subsubsection{Function Operations}
+
+VFA enables symbolic manipulation of functions:
+
+\paragraph{Evaluation} For query point $x_q$:
+\begin{equation}
+f(x_q) = \langle \alpha, z^{x_q} \rangle = \text{Re}\left(\sum_{i=1}^d \alpha_i \overline{(z_i)^{x_q}}\right)
+\end{equation}
+
+\paragraph{Addition} Linear combinations:
+\begin{equation}
+h = \gamma_1 f + \gamma_2 g \quad \Rightarrow \quad \alpha_h = \gamma_1 \alpha_f + \gamma_2 \alpha_g
+\end{equation}
+
+\paragraph{Shifting} Translation $f(x) \to f(x - s)$:
+\begin{equation}
+\alpha_{\text{shifted}} = z^{-s} \odot \alpha
+\end{equation}
+where $\odot$ is element-wise multiplication.
+
+\paragraph{Convolution} Approximate via binding:
+\begin{equation}
+\alpha_{f * g} = \alpha_f \otimes \alpha_g
+\end{equation}
+
+\subsubsection{Implementation}
+
+VSAX provides \texttt{VectorFunctionEncoder} and application modules:
+
+\begin{lstlisting}[language=Python]
+from vsax.vfa import VectorFunctionEncoder
+import jax.numpy as jnp
+
+vfa = VectorFunctionEncoder(model, memory)
+
+# Sample function
+x = jnp.linspace(0, 2*jnp.pi, 50)
+y = jnp.sin(x)
+
+# Encode as hypervector
+f_hv = vfa.encode_function_1d(x, y)
+
+# Evaluate at new points
+y_pred = vfa.evaluate_1d(f_hv, 1.5)
+
+# Function arithmetic
+g_hv = vfa.encode_function_1d(x, jnp.cos(x))
+h_hv = vfa.add_functions(f_hv, g_hv)  # h = f + g
+
+# Shift function
+f_shifted = vfa.shift_function(f_hv, jnp.pi/2)
+\end{lstlisting}
+
+\subsubsection{Applications}
+
+The \texttt{vsax.vfa.applications} module provides:
+
+\paragraph{Density Estimation} Kernel density estimation in hypervector space:
+\begin{lstlisting}[language=Python]
+from vsax.vfa.applications import DensityEstimator
+
+estimator = DensityEstimator(model, memory)
+estimator.fit(samples, bandwidth=0.5)
+density = estimator.evaluate_batch(query_points)
+\end{lstlisting}
+
+\paragraph{Nonlinear Regression} Function approximation for regression tasks:
+\begin{lstlisting}[language=Python]
+from vsax.vfa.applications import NonlinearRegressor
+
+regressor = NonlinearRegressor(model, memory)
+regressor.fit(x_train, y_train, regularization=1e-3)
+y_pred = regressor.predict_batch(x_test)
+\end{lstlisting}
+
+\paragraph{Image Processing} Encoding 2D images as spatial functions:
+\begin{lstlisting}[language=Python]
+from vsax.vfa.applications import ImageProcessor
+
+processor = ImageProcessor(model, memory)
+img_hv = processor.encode(image)
+reconstructed = processor.decode(img_hv, shape=(28, 28))
+\end{lstlisting}
+
+\subsection{Unified Continuous Framework}
+
+FPE, SSP, and VFA form a unified framework for continuous representation:
+
+\begin{itemize}
+\item \textbf{FPE} provides the mathematical foundation: continuous exponentiation via phase rotation.
+\item \textbf{SSP} applies FPE to spatial coordinates, enabling object-location reasoning.
+\item \textbf{VFA} applies FPE to function encoding, treating functions as first-class symbolic objects.
+\end{itemize}
+
+All three require ComplexHypervector (FHRR) representations due to reliance on phase-based fractional powers. This architectural decision ensures mathematical correctness while providing GPU-accelerated performance through JAX.
+
+\subsection{Performance and Testing}
+
+The continuous encoding modules add 186 new tests (54 FPE, 47 SSP, 85 VFA) to VSAX's test suite, maintaining 94\% overall coverage. Performance benchmarks show:
+
+\begin{itemize}
+\item \textbf{FPE encoding}: $O(d)$ per value, GPU-accelerated via JAX
+\item \textbf{SSP scene creation}: $O(n \cdot k \cdot d)$ for $n$ objects in $k$ dimensions
+\item \textbf{VFA function encoding}: $O(m \cdot d + d^3)$ for $m$ samples (dominated by least squares solve)
+\item \textbf{VFA evaluation}: $O(d)$ per query point, enabling real-time inference
+\end{itemize}
+
+All operations leverage JAX's JIT compilation and automatic vectorization for efficient GPU execution.
