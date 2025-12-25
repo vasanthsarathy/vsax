@@ -1949,16 +1949,16 @@ The VSA/HDC ecosystem includes several libraries with varying scopes and capabil
 
 \subsubsection{Torchhd}
 
-Torchhd~\cite{torchhd2023} is a PyTorch-based library focused on hyperdimensional computing for machine learning.
+Torchhd~\cite{torchhd2023} is a PyTorch-based library focused on hyperdimensional computing for machine learning, offering comprehensive support for classification tasks.
 
 \paragraph{Strengths}
-Torchhd offers several strengths. PyTorch integration enables GPU acceleration for hyperdimensional operations. The library maintains a strong focus on classification tasks with optimized implementations. It provides both MAP and Binary models. Finally, it benefits from active development and a growing community.
+Torchhd offers several strengths. It supports multiple VSA models (FHRR, HRR, MAP, Binary, and others including BSC, CGR, MCR, VTB). PyTorch integration enables GPU acceleration for hyperdimensional operations. The library provides extensive classification capabilities with 10+ classifier types and 160+ datasets. It includes kernel-based fractional power encoding for continuous value encoding. It provides single-step resonator factorization functionality. Finally, it benefits from active development and a large community (350+ stars).
 
 \paragraph{Limitations}
-However, Torchhd has several limitations. It lacks FHRR support for complex vectors and exact unbinding. The library does not provide compositional operators for structured reasoning. Resonator networks for factorization are absent. Encoding abstractions are limited compared to comprehensive frameworks. Furthermore, it is primarily designed for supervised learning with less support for symbolic reasoning tasks.
+However, Torchhd has several limitations relative to VSAX's v1.2.0 capabilities. It lacks Clifford operators for exact compositional reasoning (VSAX achieves >0.999 unbinding similarity versus traditional 0.3-0.6). The library does not provide Spatial Semantic Pointers with full 2D/3D scene encoding, object-location binding, and bidirectional queries. Vector Function Architecture for RKHS function encoding is absent. While Torchhd provides single-step resonator factorization, it lacks full resonator networks with iterative convergence and cleanup memory integration. Furthermore, it is primarily designed for supervised learning with less emphasis on symbolic reasoning tasks.
 
 \paragraph{VSAX Advantages}
-VSAX provides FHRR for exact unbinding, compositional operators for structured reasoning, and resonator networks for factorization—capabilities absent in Torchhd. Additionally, VSAX's JAX foundation enables automatic differentiation with functional purity, while Torchhd's PyTorch basis assumes mutable state.
+VSAX provides Clifford operators for exact compositional reasoning, complete Spatial Semantic Pointers implementation (Komer et al. 2019), and Vector Function Architecture with applications in density estimation, regression, and image processing (Frady et al. 2021)—capabilities absent in Torchhd. VSAX implements full resonator networks with iterative convergence versus Torchhd's single-step function. Additionally, VSAX's JAX foundation enables automatic differentiation with functional purity, while Torchhd's PyTorch basis assumes mutable state.
 
 \subsubsection{hdlib}
 
@@ -1996,7 +1996,7 @@ VSAX provides multi-model support, GPU acceleration (5-30× speedups), advanced 
 Feature & VSAX & Torchhd & hdlib & PyBHV \\
 \midrule
 \textbf{Models} \\
-FHRR (Complex) & \checkmark & $\times$ & $\times$ & $\times$ \\
+FHRR/HRR & \checkmark & \checkmark & $\times$ & $\times$ \\
 MAP (Real) & \checkmark & \checkmark & $\times$ & $\times$ \\
 Binary & \checkmark & \checkmark & \checkmark & \checkmark \\
 \midrule
@@ -2009,24 +2009,24 @@ JIT Compilation & \checkmark & \checkmark & $\times$ & $\times$ \\
 Binding & \checkmark & \checkmark & \checkmark & \checkmark \\
 Bundling & \checkmark & \checkmark & \checkmark & \checkmark \\
 Permutation & \checkmark & \checkmark & \checkmark & \checkmark \\
-Operators & \checkmark & $\times$ & $\times$ & $\times$ \\
-Resonators & \checkmark & $\times$ & $\times$ & $\times$ \\
+Clifford Operators & \checkmark & $\times$ & $\times$ & $\times$ \\
+Resonators & Full & Single-step & $\times$ & $\times$ \\
 \midrule
 \textbf{Encoders} \\
 Scalar & \checkmark & \checkmark & $\times$ & $\times$ \\
 Sequence & \checkmark & \checkmark & $\times$ & $\times$ \\
-Set & \checkmark & $\times$ & $\times$ & $\times$ \\
+Set & \checkmark & \checkmark & $\times$ & $\times$ \\
 Dictionary & \checkmark & $\times$ & $\times$ & $\times$ \\
-Graph & \checkmark & $\times$ & $\times$ & $\times$ \\
-Fractional Power Encoding & \checkmark & $\times$ & $\times$ & $\times$ \\
+Graph & \checkmark & \checkmark & $\times$ & $\times$ \\
+Fractional Power Encoding & \checkmark & \checkmark & $\times$ & $\times$ \\
 Custom Encoders & \checkmark & \checkmark & $\times$ & $\times$ \\
 \midrule
-\textbf{Advanced Capabilities} \\
+\textbf{Advanced Capabilities (v1.2.0)} \\
 Spatial Semantic Pointers & \checkmark & $\times$ & $\times$ & $\times$ \\
 Vector Function Architecture & \checkmark & $\times$ & $\times$ & $\times$ \\
 \midrule
 \textbf{Features} \\
-Memory Management & \checkmark & $\times$ & $\times$ & $\times$ \\
+Memory Management & \checkmark & \checkmark & $\times$ & $\times$ \\
 Persistence (I/O) & \checkmark & $\times$ & $\times$ & $\times$ \\
 Automatic Differentiation & \checkmark & \checkmark & $\times$ & $\times$ \\
 Batch Operations & \checkmark & \checkmark & $\times$ & $\times$ \\
@@ -2034,8 +2034,8 @@ Type Safety & \checkmark & Partial & $\times$ & $\times$ \\
 \midrule
 \textbf{Software Quality} \\
 Test Coverage & 94\% & 85\% & 60\% & 70\% \\
-Documentation & Extensive & Good & Limited & Good \\
-Tutorials & 11 & 5 & 2 & 3 \\
+Documentation & Extensive & Extensive & Limited & Good \\
+Tutorials & 11 & Many & 2 & 3 \\
 API Stability & Stable & Evolving & Stable & Stable \\
 \midrule
 \textbf{Performance (dim=10k)} \\

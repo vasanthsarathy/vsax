@@ -16,9 +16,37 @@ echo.
 REM Create build directory if it doesn't exist
 if not exist "build" mkdir build
 
-REM Function to build a single paper
+if "%PAPER%"=="all" goto build_all
+if "%PAPER%"=="main" goto build_main
+if "%PAPER%"=="mloss" goto build_mloss
+echo Unknown paper: %PAPER%
+echo Usage: build.bat [all^|main^|mloss]
+exit /b 1
+
+:build_all
+call :build_paper vsax_paper
+if errorlevel 1 exit /b 1
+call :build_paper vsax_mloss
+if errorlevel 1 exit /b 1
+echo.
+echo ========================================
+echo All papers built successfully!
+echo ========================================
+echo   - vsax_paper.pdf (main paper)
+echo   - vsax_mloss.pdf (MLOSS submission)
+echo ========================================
+exit /b 0
+
+:build_main
+call :build_paper vsax_paper
+exit /b %errorlevel%
+
+:build_mloss
+call :build_paper vsax_mloss
+exit /b %errorlevel%
+
 :build_paper
-set BASENAME=%1
+set BASENAME=%~1
 echo.
 echo Building %BASENAME%.pdf...
 echo ----------------------------------------
@@ -33,9 +61,9 @@ echo [1/5] First pdflatex pass...
 pdflatex -output-directory=build -interaction=nonstopmode %BASENAME%.tex >nul 2>&1
 
 echo [2/5] Running bibtex...
-cd build
+pushd build
 bibtex %BASENAME% >nul 2>&1
-cd ..
+popd
 
 echo [3/5] Second pdflatex pass...
 pdflatex -output-directory=build -interaction=nonstopmode %BASENAME%.tex >nul 2>&1
@@ -60,33 +88,3 @@ if exist "build\%BASENAME%.pdf" (
     echo.
     exit /b 1
 )
-
-:main
-if "%PAPER%"=="all" goto build_all
-if "%PAPER%"=="main" goto build_main
-if "%PAPER%"=="mloss" goto build_mloss
-echo Unknown paper: %PAPER%
-echo Usage: build.bat [all^|main^|mloss]
-exit /b 1
-
-:build_all
-call :build_paper vsax_paper
-if errorlevel 1 exit /b 1
-call :build_paper vsax_mloss
-if errorlevel 1 exit /b 1
-echo.
-echo ========================================
-echo All papers built successfully!
-echo ========================================
-echo   - vsax_paper.pdf (main paper)
-echo   - vsax_mloss.pdf (MLOSS submission)
-echo ========================================
-exit /b 0
-
-:build_main
-call :build_paper vsax_paper
-exit /b !errorlevel!
-
-:build_mloss
-call :build_paper vsax_mloss
-exit /b !errorlevel!

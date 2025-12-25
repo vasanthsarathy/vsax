@@ -8,14 +8,17 @@ This document explains VSAX's design philosophy and how it compares to other ope
 - ✅ JAX-native functional programming with automatic GPU acceleration
 - ✅ Clean separation between representations and operations
 - ✅ Composable, modular architecture for research and prototyping
-- ✅ Strong theoretical grounding (implements canonical VSA models)
+- ✅ **Clifford Operators** for exact compositional reasoning
+- ✅ **Spatial Semantic Pointers (SSP)** for continuous spatial encoding
+- ✅ **Vector Function Architecture (VFA)** for function encoding and RKHS operations
+- ✅ Full resonator networks with iterative convergence
 - ✅ Type-safe, well-documented API with 94% test coverage
-- ✅ Resonator networks for factorization
 - ✅ Seamless integration with JAX ecosystem (jit, vmap, grad)
 
 **Choose alternatives if you need:**
 - ❌ PyTorch integration → **torchhd**
-- ❌ Production ML classifiers with 150+ datasets → **torchhd**
+- ❌ Production ML classifiers with 160+ datasets → **torchhd**
+- ❌ 8+ VSA model variants → **torchhd**
 - ❌ Biomedical/medical informatics focus → **hdlib**
 - ❌ Advanced boolean operations and circuit compilation → **PyBHV**
 - ❌ Custom CUDA kernels → **hdtorch**
@@ -79,7 +82,7 @@ VSAX prioritizes **understanding** over **features**:
 - **3 canonical VSA models** (FHRR, MAP, Binary) implemented correctly
 - **Clear abstractions**: Every operation has a mathematical meaning
 - **Comprehensive tutorials**: Learn VSA concepts, not just API calls
-- **Theory-first**: Based on foundational papers (Plate, Gayler, Kanerva)
+- **Theory-first**: Based on foundational papers (Plate, Gayler, Kanerva, Komer, Frady)
 
 ---
 
@@ -105,22 +108,40 @@ VSAX prioritizes **understanding** over **features**:
 | Bundling | ✅ | ✅ | ✅ | ✅ (Majority) | ✅ |
 | Permutation | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Similarity | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Resonator Networks | ✅ | ❌ | ❌ | ❌ | ❌ |
 | Memory/Cleanup | ✅ | ✅ | ✅ | ❌ | ❌ |
+| **Resonator Networks** | ✅ Full | ✅ Single-step | ❌ | ❌ | ❌ |
 
-**VSAX unique feature**: Full implementation of resonator networks for factorization (from Frady et al. 2020).
+**Note on Resonators**: Torchhd provides a single-step `resonator()` function for factorization, while VSAX implements full resonator networks with iterative convergence, cleanup memory, and multi-factor factorization (Frady et al. 2020).
+
+### Advanced Capabilities (v1.2.0+)
+
+| Feature | VSAX | torchhd | hdlib | PyBHV | hdtorch |
+|---------|------|---------|-------|-------|---------|
+| **Clifford Operators** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Spatial Semantic Pointers (SSP)** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Vector Function Architecture (VFA)** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Fractional Power Encoding** | ✅ | ✅ (Kernel-based) | ❌ | ❌ | ❌ |
+
+**VSAX unique features (v1.2.0)**:
+- **Clifford Operators**: Phase-based binding with exact invertibility (similarity > 0.999 vs 0.3-0.6)
+- **Spatial Semantic Pointers**: Full 2D/3D scene encoding with object-location binding, bidirectional queries, scene transformations
+- **Vector Function Architecture**: Complete RKHS function encoding with density estimation, nonlinear regression, image processing applications
+- **Integrated FPE**: Fractional power encoding integrated with SSP and VFA for continuous spatial and functional representation
+
+**Torchhd's FractionalPower**: Kernel-based continuous value encoding (sinc, gaussian kernels) - different scope from VSAX's integrated FPE/SSP/VFA system.
 
 ### Encoders
 
 | Feature | VSAX | torchhd | hdlib | PyBHV | hdtorch |
 |---------|------|---------|-------|-------|---------|
-| Scalar | ✅ | ✅ (Level, Thermometer) | ✅ | ❌ | ✅ |
+| Scalar | ✅ | ✅ (Level, Thermometer, Circular) | ✅ | ❌ | ✅ |
 | Sequence | ✅ | ✅ | ✅ | ❌ | ✅ |
 | Set | ✅ | ✅ (Multiset) | ✅ | ❌ | ❌ |
 | Dict/Record | ✅ | ❌ | ❌ | ❌ | ❌ |
 | Graph | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Tree | ❌ | ✅ | ❌ | ❌ | ❌ |
 | FSA | ❌ | ✅ | ❌ | ❌ | ❌ |
+| **FractionalPowerEncoder** | ✅ | ✅ | ❌ | ❌ | ❌ |
 
 **VSAX strength**: Clean, extensible encoder API with `AbstractEncoder` base class.
 
@@ -128,8 +149,8 @@ VSAX prioritizes **understanding** over **features**:
 
 | Feature | VSAX | torchhd | hdlib | PyBHV | hdtorch |
 |---------|------|---------|-------|-------|---------|
-| Classification | ❌ | ✅ (9+ types) | ✅ | ✅ | ✅ (Basic) |
-| Built-in Datasets | ❌ | ✅ (150+) | ✅ (Some) | ❌ | ❌ |
+| Classification | ❌ | ✅ (10+ types) | ✅ | ✅ | ✅ (Basic) |
+| Built-in Datasets | ❌ | ✅ (160+) | ✅ (Some) | ❌ | ❌ |
 | Online Learning | ❌ | ✅ (OnlineHD) | ❌ | ❌ | ❌ |
 | Neural Integration | ❌ | ✅ (NeuralHD) | ❌ | ❌ | ❌ |
 | Regression | ❌ | ❌ | ✅ | ❌ | ❌ |
@@ -156,9 +177,9 @@ VSAX prioritizes **understanding** over **features**:
 | Feature | VSAX | torchhd | hdlib | PyBHV | hdtorch |
 |---------|------|---------|-------|-------|---------|
 | Type Hints | ✅ (Full) | ✅ | ❓ | ❌ | ❓ |
-| Test Coverage | 94% | ❓ | ❓ | ❓ | ❓ |
+| Test Coverage | 94% | 85% | ❓ | ❓ | ❓ |
 | Documentation | ✅ | ✅ | ✅ (Wiki) | ✅ | ✅ |
-| Tutorials | ✅ (3 deep) | ✅ | ✅ | ✅ (Examples) | ✅ |
+| Tutorials | ✅ (11) | ✅ (Many) | ✅ | ✅ (Examples) | ✅ |
 | Examples | ✅ | ✅ | ✅ | ✅ (Many) | ✅ |
 
 **VSAX prioritizes code quality**: Type-safe, well-tested, thoroughly documented.
@@ -172,16 +193,19 @@ VSAX prioritizes **understanding** over **features**:
 **Best for**: Machine learning applications, classification tasks, production deployment
 
 **Strengths**:
-- **Comprehensive**: 8 VSA models, 9+ classifiers, 150+ datasets
-- **Production-ready**: Battle-tested with active community (346 stars)
+- **Comprehensive**: 8 VSA models, 10+ classifiers, 160+ datasets
+- **Production-ready**: Battle-tested with active community (350+ stars)
 - **PyTorch integration**: Seamless with existing PyTorch workflows
 - **Rich structures**: Graph, Tree, FSA, HashTable implementations
 - **Well-documented**: Extensive tutorials and examples
+- **Kernel-based FPE**: FractionalPower embedding with sinc/gaussian kernels
 
 **Weaknesses**:
 - **Complexity**: Large API surface, steeper learning curve
 - **PyTorch-coupled**: Hard to use without PyTorch knowledge
 - **Less modular**: Models are monolithic classes
+- **No SSP/VFA**: Missing spatial semantic pointers and vector function architecture
+- **No Clifford operators**: Traditional unbinding only
 
 **When to choose over VSAX**:
 - You need production ML classifiers
@@ -286,46 +310,120 @@ VSAX implements the **canonical VSA models** from foundational papers:
 
 Each implementation is **mathematically correct** and **well-documented**.
 
-### 3. **Resonator Networks**
+### 3. **Clifford Operators for Exact Compositional Reasoning**
 
-VSAX is the **only library with full resonator support**:
+VSAX is the **only library with Clifford operators**:
 
 ```python
-# Factorize compositional structures
-resonator = Resonator(model, codebooks=[subjects, relations, objects])
-factors = resonator.factorize(composite_vector)
-# ['dog', 'isA', 'mammal']
+from vsax.operators import CliffordOperator
+
+# Create phase-based binding operator
+op = CliffordOperator(model, memory, "LEFT_OF")
+
+# Exact invertibility: similarity > 0.999
+bound = op.bind("cup", "plate")
+retrieved = op.unbind(bound, "cup")  # Returns "plate" with >0.999 similarity
 ```
 
-Based on Frady et al. (2020), resonators enable:
-- Decoding compositional structures
-- Iterative refinement with convergence
+Based on Aerts et al. (2007), Clifford operators enable:
+- Near-perfect unbinding (>0.999 vs traditional 0.3-0.6)
+- Exact compositional reasoning
+- Precise spatial and semantic relations
+
+### 4. **Spatial Semantic Pointers (SSP)**
+
+VSAX is the **only library with complete SSP implementation**:
+
+```python
+from vsax.spatial import SpatialSemanticPointers, SSPConfig
+
+# Configure 2D spatial encoding
+config = SSPConfig(dim=512, num_axes=2)
+ssp = SpatialSemanticPointers(model, memory, config)
+
+# Encode scene: apple at (3.5, 2.1), banana at (1.0, 4.0)
+scene = ssp.create_scene({
+    "apple": [3.5, 2.1],
+    "banana": [1.0, 4.0]
+})
+
+# Query: what is at (3.5, 2.1)?
+result = ssp.query_location(scene, [3.5, 2.1])  # Returns "apple"
+
+# Query: where is the banana?
+coords = ssp.query_object(scene, "banana")  # Returns [1.0, 4.0]
+
+# Transform: shift entire scene by (2, 2)
+shifted = ssp.shift_scene(scene, [2.0, 2.0])
+```
+
+Based on Komer et al. (2019), SSPs enable:
+- Continuous spatial encoding (no discretization)
+- Object-location binding
+- Bidirectional queries (what/where)
+- Global scene transformations
+- 2D/3D spatial reasoning
+
+### 5. **Vector Function Architecture (VFA)**
+
+VSAX is the **only library with full VFA implementation**:
+
+```python
+from vsax.vfa import VectorFunctionEncoder
+from vsax.vfa.applications import DensityEstimator, NonlinearRegressor
+
+# Encode function in RKHS
+vfa = VectorFunctionEncoder(model, memory)
+x = jnp.linspace(0, 2*jnp.pi, 50)
+y = jnp.sin(x)
+f_hv = vfa.encode_function_1d(x, y)
+
+# Evaluate at new points
+y_pred = vfa.evaluate_1d(f_hv, 1.5)
+
+# Function arithmetic
+g_hv = vfa.encode_function_1d(x, jnp.cos(x))
+h_hv = vfa.add_functions(f_hv, g_hv)  # h = sin + cos
+
+# Applications
+estimator = DensityEstimator(model, memory)
+estimator.fit(data_samples)
+density = estimator.evaluate_batch(query_points)
+```
+
+Based on Frady et al. (2021), VFA enables:
+- Functions as first-class symbolic objects
+- RKHS representation: $f(x) \approx \langle \alpha, z^x \rangle$
+- Function arithmetic (add, scale, shift, convolve)
+- Kernel density estimation
+- Nonlinear regression
+- Image processing
+
+### 6. **Full Resonator Networks**
+
+VSAX implements **complete resonator networks** (not just single-step):
+
+```python
+from vsax.resonator import ResonatorNetwork
+
+# Create resonator with multiple codebooks
+resonator = ResonatorNetwork(
+    model,
+    codebooks=[subjects, relations, objects],
+    max_iterations=15
+)
+
+# Factorize compositional structure
+composite = bind3(dog_hv, isA_hv, mammal_hv)
+factors, convergence = resonator.factorize(composite)
+# Returns: [dog_hv, isA_hv, mammal_hv] with convergence metrics
+```
+
+Based on Frady et al. (2020), resonator networks provide:
+- Iterative convergence (not single-step like torchhd)
 - Multi-factor factorization
-
-### 4. **Tutorial-Driven Documentation**
-
-VSAX teaches **VSA concepts**, not just API:
-
-1. **MNIST Classification**: Learn encoding and prototypes
-2. **Knowledge Graphs**: Understand binding and bundling
-3. **Kanerva's Analogies**: Master mappings and transformations
-
-Each tutorial implements **foundational papers** with full code.
-
-### 5. **Research-Friendly Architecture**
-
-VSAX makes it **easy to experiment**:
-
-```python
-# Try different operations with same representation
-model1 = VSAModel(dim=512, rep_cls=ComplexHypervector,
-                  opset=FHRROperations(), sampler=sample_complex_random)
-
-model2 = VSAModel(dim=512, rep_cls=ComplexHypervector,
-                  opset=MAPOperations(), sampler=sample_complex_random)
-
-# Same API, different algebra!
-```
+- Cleanup memory integration
+- Convergence tracking
 
 ---
 
@@ -347,7 +445,7 @@ prototypes = {label: bundle(class_examples) for label, class_examples in data}
 prediction = max(prototypes, key=lambda l: similarity(query, prototypes[l]))
 ```
 
-**Future**: v1.0+ will add classifiers
+**Future**: v2.0+ will add classifiers
 
 ### ❌ Advanced Structures
 
@@ -358,7 +456,7 @@ prediction = max(prototypes, key=lambda l: similarity(query, prototypes[l]))
 
 **Workaround**: Use GraphEncoder as building block
 
-**Future**: May add in v1.x based on demand
+**Future**: May add in v2.x based on demand
 
 ### ❌ Additional VSA Models
 
@@ -391,15 +489,18 @@ prediction = max(prototypes, key=lambda l: similarity(query, prototypes[l]))
 - 🔬 Are doing **research** and need flexibility
 - 🧮 Prefer **functional programming** and JAX
 - 📐 Value **theoretical correctness** over feature count
-- 🧩 Need **compositional operations** (resonators, mappings)
+- 🧩 Need **compositional operations** (Clifford operators, SSP, VFA, resonators)
+- 🌐 Need **continuous spatial encoding** or **function representation**
 - 💻 Want **type-safe, well-tested** code
+- 🔍 Need **exact unbinding** (Clifford operators)
 
 ### Use torchhd if you:
 - 🏭 Need **production ML** with classifiers and datasets
 - 🔥 Are already using **PyTorch**
-- 📊 Want **many VSA models** to experiment with
+- 📊 Want **many VSA models** to experiment with (8+ models)
 - 🚀 Need **battle-tested** software (350+ stars)
 - 🎯 Are building **classification systems**
+- 📚 Want **extensive pre-built benchmarks**
 
 ### Use hdlib if you:
 - 🧬 Work in **bioinformatics** or **medical AI**
@@ -422,16 +523,23 @@ prediction = max(prototypes, key=lambda l: similarity(query, prototypes[l]))
 
 ## VSAX Roadmap: Closing the Gaps
 
-### v1.0.0 (Future)
+### v1.2.0 (Current)
+- ✅ Clifford Operators
+- ✅ Fractional Power Encoding
+- ✅ Spatial Semantic Pointers (SSP)
+- ✅ Vector Function Architecture (VFA)
+- ✅ Resonator Networks
+
+### v2.0.0 (Future)
 - ✅ Basic classifiers (Centroid, kNN)
 - ✅ Common datasets (MNIST, CIFAR-10)
 - ✅ Training utilities
 
-### v1.1.0 (Future)
+### v2.1.0 (Future)
 - ✅ Tree and FSA encoders
 - ✅ Additional VSA models (HRR, BSC variants)
 
-### v2.0.0 (Future)
+### v3.0.0 (Future)
 - ✅ Advanced classifiers (OnlineHD, AdaptHD)
 - ✅ Performance optimizations
 - ✅ Production tooling
@@ -460,13 +568,21 @@ See [CONTRIBUTING.md](https://github.com/vasanthsarathy/vsax/blob/main/CONTRIBUT
 - ✨ **Clarity** over completeness
 - 🧮 **Theory** over features
 - 🔬 **Research** over production
+- 🎯 **Depth** over breadth
+
+**Unique strengths** (as of v1.2.0):
+- Only library with Clifford Operators for exact compositional reasoning
+- Only library with complete Spatial Semantic Pointers implementation
+- Only library with Vector Function Architecture (RKHS function encoding)
+- Full resonator networks with iterative convergence
+- JAX-native for research and GPU acceleration
 
 If you need **production ML** → choose **torchhd**
 If you need **biomedical apps** → choose **hdlib**
 If you need **boolean operations** → choose **PyBHV**
 If you need **custom CUDA** → choose **hdtorch**
 
-**If you want to understand VSA deeply and build novel approaches** → choose **VSAX** ✨
+**If you want advanced VSA capabilities (Clifford, SSP, VFA) and to understand VSA deeply** → choose **VSAX** ✨
 
 ---
 
@@ -479,4 +595,4 @@ If you need **custom CUDA** → choose **hdtorch**
 
 ---
 
-*Last updated: 2025-01-16*
+*Last updated: 2025-01-25 (v1.2.1)*
