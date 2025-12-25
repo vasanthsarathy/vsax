@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2025-01-24
+
+### Added
+- **Documentation:**
+  - User Guide for Fractional Power Encoding (`docs/guide/fpe.md`)
+  - User Guide for Spatial Semantic Pointers (`docs/guide/spatial.md`)
+  - User Guide for Vector Function Architecture (`docs/guide/vfa.md`)
+  - API Reference for FractionalPowerEncoder (`docs/api/encoders/fpe.md`)
+  - API Reference for spatial module (`docs/api/spatial/index.md`)
+  - API Reference for VFA module (`docs/api/vfa/index.md`)
+  - Step 8 in CLAUDE.md for documentation deployment workflow
+
+### Fixed
+- Navigation links in mkdocs.yml now include FPE, SSP, and VFA guides
+- Documentation now properly displays all v1.2.0 features
+
 ## [1.2.0] - 2025-01-24
 
 ### Added
