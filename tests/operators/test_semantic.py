@@ -156,9 +156,7 @@ def test_semantic_operators_basic_sentence() -> None:
 
     # Encode: "dog chases cat"
     sentence = model.opset.bundle(
-        AGENT.apply(memory["dog"]).vec,
-        memory["chase"].vec,
-        PATIENT.apply(memory["cat"]).vec
+        AGENT.apply(memory["dog"]).vec, memory["chase"].vec, PATIENT.apply(memory["cat"]).vec
     )
 
     # Query: Who is the AGENT?
@@ -197,7 +195,7 @@ def test_semantic_operators_complex_event() -> None:
         memory["cut"].vec,
         PATIENT.apply(memory["bread"]).vec,
         INSTRUMENT.apply(memory["knife"]).vec,
-        LOCATION.apply(memory["kitchen"]).vec
+        LOCATION.apply(memory["kitchen"]).vec,
     )
 
     # Query 1: Who is the AGENT?
@@ -238,7 +236,7 @@ def test_semantic_operators_transfer_event() -> None:
         AGENT.apply(memory["John"]).vec,
         memory["give"].vec,
         THEME.apply(memory["book"]).vec,
-        GOAL.apply(memory["Mary"]).vec
+        GOAL.apply(memory["Mary"]).vec,
     )
 
     # Query: What was given? (THEME)
@@ -268,7 +266,7 @@ def test_semantic_operators_motion_event() -> None:
         AGENT.apply(memory["John"]).vec,
         memory["travel"].vec,
         SOURCE.apply(memory["Boston"]).vec,
-        GOAL.apply(memory["Paris"]).vec
+        GOAL.apply(memory["Paris"]).vec,
     )
 
     # Query: From where? (SOURCE)
@@ -294,9 +292,7 @@ def test_semantic_operators_experiencer_event() -> None:
 
     # Encode: "Mary loves music"
     event = model.opset.bundle(
-        EXPERIENCER.apply(memory["Mary"]).vec,
-        memory["love"].vec,
-        THEME.apply(memory["music"]).vec
+        EXPERIENCER.apply(memory["Mary"]).vec, memory["love"].vec, THEME.apply(memory["music"]).vec
     )
 
     # Query: Who experiences the feeling?
@@ -338,10 +334,7 @@ def test_semantic_operators_composition() -> None:
 
     assert composed.dim == 512
     # Composed params should be sum of individual params
-    assert jnp.allclose(
-        composed.params,
-        AGENT.params + PATIENT.params
-    )
+    assert jnp.allclose(composed.params, AGENT.params + PATIENT.params)
 
 
 def test_semantic_operators_multiple_sentences() -> None:
@@ -355,16 +348,12 @@ def test_semantic_operators_multiple_sentences() -> None:
 
     # Sentence 1: "dog chases cat"
     s1 = model.opset.bundle(
-        AGENT.apply(memory["dog"]).vec,
-        memory["chase"].vec,
-        PATIENT.apply(memory["cat"]).vec
+        AGENT.apply(memory["dog"]).vec, memory["chase"].vec, PATIENT.apply(memory["cat"]).vec
     )
 
     # Sentence 2: "cat eats fish"
     s2 = model.opset.bundle(
-        AGENT.apply(memory["cat"]).vec,
-        memory["eat"].vec,
-        PATIENT.apply(memory["fish"]).vec
+        AGENT.apply(memory["cat"]).vec, memory["eat"].vec, PATIENT.apply(memory["fish"]).vec
     )
 
     # Query S1 PATIENT

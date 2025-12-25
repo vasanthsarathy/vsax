@@ -20,6 +20,9 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 💾 **I/O & Persistence**: Save/load basis vectors to JSON ✅
 - 🎮 **GPU Utilities**: Device management, benchmarking, CPU/GPU comparison ✅
 - 🔧 **Clifford Operators**: Exact, compositional, invertible transformations for reasoning ✅ **NEW in v1.1.0**
+- 📍 **Fractional Power Encoding (FPE)**: Continuous value encoding using v^r for spatial/function representations ✅ **NEW in v1.2.0**
+- 🗺️ **Spatial Semantic Pointers (SSP)**: Continuous spatial encoding with what/where queries ✅ **NEW in v1.2.0**
+- 🎯 **Vector Function Architecture (VFA)**: Function approximation in RKHS for density estimation, regression, image processing ✅ **NEW in v1.2.0**
 - 🚀 **GPU-Accelerated**: Built on JAX for automatic GPU acceleration (5-30x speedup)
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
@@ -220,6 +223,102 @@ print(f"AGENT is 'dog': {similarity:.3f}")  # High similarity!
 - ✅ **Reproducible**: Same dimension always produces same operator
 - ✅ **FHRR-compatible**: Phase-based transformations for complex hypervectors
 
+### NEW: Spatial Semantic Pointers (v1.2.0)
+
+**Continuous spatial encoding for 2D navigation and spatial reasoning:**
+
+```python
+from vsax import create_fhrr_model, VSAMemory
+from vsax.spatial import SpatialSemanticPointers, SSPConfig
+
+model = create_fhrr_model(dim=1024)
+memory = VSAMemory(model)
+
+# Create 2D spatial encoder
+config = SSPConfig(dim=1024, num_axes=2, axis_names=["X", "Y"])
+ssp = SpatialSemanticPointers(model, memory, config)
+
+# Add objects to memory
+memory.add_many(["table", "chair", "plant"])
+
+# Bind objects to locations in a 10x10 room
+table_at_loc = ssp.bind_object_location("table", [3.0, 7.0])
+chair_at_loc = ssp.bind_object_location("chair", [5.0, 7.5])
+plant_at_loc = ssp.bind_object_location("plant", [8.0, 3.0])
+
+# Bundle into scene
+from vsax.representations import ComplexHypervector
+scene_vec = model.opset.bundle(
+    table_at_loc.vec,
+    model.opset.bundle(chair_at_loc.vec, plant_at_loc.vec)
+)
+scene = ComplexHypervector(scene_vec)
+
+# Query: What's at location (3.0, 7.0)?
+result = ssp.query_location(scene, [3.0, 7.0])
+# Returns hypervector similar to "table"!
+
+# Query: Where is the plant?
+location_hv = ssp.query_object(scene, "plant")
+decoded_location = ssp.decode_location(
+    location_hv,
+    search_range=[(0, 10), (0, 10)],
+    resolution=20
+)
+# Returns approximately [8.0, 3.0]!
+```
+
+**Key features:**
+- ✅ **Continuous encoding**: Positions encoded as X^x ⊗ Y^y using fractional powers
+- ✅ **What/Where queries**: Both "what is at (x,y)" and "where is X" supported
+- ✅ **Scene shifting**: Transform entire scenes spatially
+- ✅ **Similarity maps**: Visualize spatial distributions
+
+### NEW: Vector Function Architecture (v1.2.0)
+
+**Function approximation in RKHS for density estimation, regression, and image processing:**
+
+```python
+from vsax import create_fhrr_model, VSAMemory
+from vsax.vfa import DensityEstimator, NonlinearRegressor, ImageProcessor
+import jax.numpy as jnp
+
+model = create_fhrr_model(dim=2048)
+
+# 1. Density Estimation
+estimator = DensityEstimator(model, VSAMemory(model), bandwidth=0.5)
+samples = jax.random.normal(jax.random.PRNGKey(42), (100,))
+estimator.fit(samples)
+density = estimator.evaluate(jnp.array([0.0, 1.0, 2.0]))
+
+# 2. Nonlinear Regression
+regressor = NonlinearRegressor(model, VSAMemory(model))
+x_train = jnp.linspace(0, 2 * jnp.pi, 50)
+y_train = jnp.sin(x_train)
+regressor.fit(x_train, y_train)
+y_pred = regressor.predict(jnp.array([0.5, 1.0, 1.5]))
+r2_score = regressor.score(x_train, y_train)
+
+# 3. Image Processing
+processor = ImageProcessor(model, VSAMemory(model))
+image = jnp.zeros((16, 16))
+image = image.at[4:12, 4:12].set(1.0)  # White square
+image_hv = processor.encode(image)
+reconstructed = processor.decode(image_hv, shape=(16, 16))
+
+# Blend two images
+image2 = jnp.zeros((16, 16))
+image2_hv = processor.encode(image2)
+blended = processor.blend(image_hv, image2_hv, alpha=0.5)
+```
+
+**Key features:**
+- ✅ **Kernel density estimation**: Estimate probability densities from samples
+- ✅ **Nonlinear regression**: Fit complex functions with scikit-learn-like API
+- ✅ **Image encoding**: Compact hypervector representation of images
+- ✅ **Function arithmetic**: Add, scale, shift, and convolve functions
+- ✅ **RKHS approximation**: Reproducing Kernel Hilbert Space function representation
+
 ### Advanced: Manual Model Creation
 
 You can still create models manually if you need custom configuration:
@@ -367,7 +466,7 @@ If you use VSAX in your research, please cite:
   author = {Sarathy, Vasanth},
   year = {2025},
   url = {https://github.com/vasanthsarathy/vsax},
-  version = {1.1.0}
+  version = {1.2.0}
 }
 ```
 

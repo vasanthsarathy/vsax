@@ -1,6 +1,5 @@
 """GraphEncoder for encoding graph structures into hypervectors."""
 
-
 from vsax.core.base import AbstractHypervector
 from vsax.encoders.base import AbstractEncoder
 
@@ -33,9 +32,7 @@ class GraphEncoder(AbstractEncoder):
         ... ])
     """
 
-    def encode(
-        self, edges: list[tuple[str, str, str]]
-    ) -> AbstractHypervector:
+    def encode(self, edges: list[tuple[str, str, str]]) -> AbstractHypervector:
         """Encode a graph as a list of edges.
 
         Args:

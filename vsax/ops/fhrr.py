@@ -123,6 +123,50 @@ class FHRROperations(AbstractOpSet):
             # Note: index 0 stays in place, rest are reversed
             return jnp.concatenate([a[:1], jnp.flip(a[1:])])
 
+    def fractional_power(self, a: jnp.ndarray, exponent: float | jnp.ndarray) -> jnp.ndarray:
+        """Raise complex hypervector to fractional power.
+
+        For complex vectors v = exp(i*θ), this computes v^r = exp(i*r*θ).
+        This enables continuous encoding of scalar values using phase rotation.
+
+        Properties:
+            - Continuous: small changes in exponent produce small output changes
+            - Compositional: (v^r1)^r2 = v^(r1*r2)
+            - Invertible: v^r ⊗ v^(-r) = identity
+
+        This operation is fundamental for:
+            - Fractional Power Encoding (FPE)
+            - Spatial Semantic Pointers (SSP)
+            - Vector Function Architecture (VFA)
+
+        Args:
+            a: Complex hypervector as JAX array.
+            exponent: Scalar or array of exponents to raise the vector to.
+
+        Returns:
+            Hypervector raised to the given power as JAX array.
+
+        Raises:
+            TypeError: If input array is not complex-valued.
+
+        Example:
+            >>> import jax.numpy as jnp
+            >>> ops = FHRROperations()
+            >>> # Create a unit complex vector
+            >>> a = jnp.exp(1j * jnp.array([0.5, 1.0, 1.5]))
+            >>> # Raise to fractional power
+            >>> powered = ops.fractional_power(a, 0.5)
+            >>> # Test compositionality: (a^0.5)^2 ≈ a
+            >>> composed = ops.fractional_power(powered, 2.0)
+            >>> assert jnp.allclose(composed, a, atol=1e-6)
+        """
+        if not jnp.iscomplexobj(a):
+            raise TypeError(
+                "fractional_power only works with complex-valued arrays. "
+                "Use ComplexHypervector for fractional power encoding."
+            )
+        return jnp.power(a, exponent)
+
     def permute(self, a: jnp.ndarray, shift: int) -> jnp.ndarray:
         """Permute a hypervector by circular rotation.
 

@@ -13,11 +13,22 @@ from vsax.encoders.base import AbstractEncoder
 class ScalarEncoder(AbstractEncoder):
     """Encoder for numeric scalar values using power encoding.
 
-    For complex hypervectors (FHRR), encodes values by raising the basis
-    hypervector to the power of the value, which rotates the phase.
+    **Encoding Methods:**
 
-    For real and binary hypervectors, encodes by iterated binding of the
-    basis vector with itself.
+    - **Complex hypervectors (FHRR)**: Uses true fractional power encoding
+      via phase rotation. For v = exp(i*θ), encodes as v^r = exp(i*r*θ).
+      This provides continuous, compositional encoding ideal for numeric data.
+
+    - **Real and binary hypervectors**: Uses iterated binding approximation.
+      The basis vector is bound with itself multiple times. This is a discrete
+      approximation that works for integer-like values.
+
+    **When to use:**
+
+    - Use ScalarEncoder for simple numeric value encoding
+    - For spatial encoding (coordinates) or function encoding, see
+      :class:`~vsax.encoders.FractionalPowerEncoder` which provides
+      multi-dimensional encoding and is optimized for those use cases.
 
     Attributes:
         model: The VSAModel instance defining the VSA algebra.
@@ -33,6 +44,10 @@ class ScalarEncoder(AbstractEncoder):
         >>> memory.add("temperature")
         >>> encoder = ScalarEncoder(model, memory)
         >>> temp_hv = encoder.encode("temperature", 23.5)
+
+    See Also:
+        - :class:`~vsax.encoders.FractionalPowerEncoder`: Multi-dimensional
+          fractional power encoding for spatial and function representations.
     """
 
     def __init__(
@@ -75,19 +90,21 @@ class ScalarEncoder(AbstractEncoder):
         # Normalize value if range is specified
         if self.min_val is not None and self.max_val is not None:
             if not (self.min_val <= value <= self.max_val):
-                raise ValueError(
-                    f"Value {value} outside range [{self.min_val}, {self.max_val}]"
-                )
+                raise ValueError(f"Value {value} outside range [{self.min_val}, {self.max_val}]")
             # Normalize to 0-1 range
             value = (value - self.min_val) / (self.max_val - self.min_val)
 
         # Get basis hypervector
         basis_hv = self.memory[symbol_name]
 
-        # For complex hypervectors, use power encoding
+        # For complex hypervectors, use fractional power encoding
         if jnp.iscomplexobj(basis_hv.vec):
-            # Power encoding: v ** value rotates the phase
-            powered_vec = jnp.power(basis_hv.vec, value)
+            # Fractional power encoding: v^r = exp(i*r*θ) rotates the phase
+            # Use opset.fractional_power if available, otherwise use jnp.power
+            if hasattr(self.model.opset, "fractional_power"):
+                powered_vec = self.model.opset.fractional_power(basis_hv.vec, value)
+            else:
+                powered_vec = jnp.power(basis_hv.vec, value)
             return self.model.rep_cls(powered_vec)
 
         # For real and binary hypervectors, use iterated binding

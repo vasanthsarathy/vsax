@@ -201,10 +201,7 @@ def test_spatial_operators_integration() -> None:
 
     # Encode spatial relation: cup, LEFT_OF(plate)
     # Bundle them together into a scene
-    scene = model.opset.bundle(
-        memory["cup"].vec,
-        LEFT_OF.apply(memory["plate"]).vec
-    )
+    scene = model.opset.bundle(memory["cup"].vec, LEFT_OF.apply(memory["plate"]).vec)
 
     # Query: what's LEFT_OF plate? (apply inverse operator to scene)
     answer = LEFT_OF.inverse().apply(model.rep_cls(scene))
@@ -231,9 +228,7 @@ def test_spatial_operators_complex_scene() -> None:
 
     # Encode: cup, LEFT_OF(plate), ABOVE(table)
     scene = model.opset.bundle(
-        memory["cup"].vec,
-        LEFT_OF.apply(memory["plate"]).vec,
-        ABOVE.apply(memory["table"]).vec
+        memory["cup"].vec, LEFT_OF.apply(memory["plate"]).vec, ABOVE.apply(memory["table"]).vec
     )
 
     # Query 1: what's LEFT_OF transformed?
@@ -259,10 +254,7 @@ def test_spatial_operators_composition() -> None:
 
     assert left_and_up.dim == 512
     # Composed params should be sum of individual params
-    assert jnp.allclose(
-        left_and_up.params,
-        LEFT_OF.params + ABOVE.params
-    )
+    assert jnp.allclose(left_and_up.params, LEFT_OF.params + ABOVE.params)
 
 
 def test_spatial_operators_exact_inversion() -> None:

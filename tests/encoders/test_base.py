@@ -64,6 +64,7 @@ def test_encoder_must_implement_encode():
 
     class IncompleteEncoder(AbstractEncoder):
         """Encoder that doesn't implement encode()."""
+
         pass
 
     model = create_fhrr_model(dim=128)

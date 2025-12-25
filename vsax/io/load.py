@@ -52,8 +52,7 @@ def load_basis(memory: VSAMemory, path: Union[str, Path]) -> None:
     # Check dimension matches
     if saved_dim != memory.model.dim:
         raise ValueError(
-            f"Dimension mismatch: memory has dim={memory.model.dim}, "
-            f"but file has dim={saved_dim}"
+            f"Dimension mismatch: memory has dim={memory.model.dim}, but file has dim={saved_dim}"
         )
 
     # Check representation type matches

@@ -53,15 +53,13 @@ def vmap_bind(
     # Validate batch sizes
     if X.shape[0] != Y.shape[0]:
         raise ValueError(
-            f"Batch size mismatch: X has {X.shape[0]} vectors, "
-            f"Y has {Y.shape[0]} vectors"
+            f"Batch size mismatch: X has {X.shape[0]} vectors, Y has {Y.shape[0]} vectors"
         )
 
     # Validate dimensions
     if X.shape[1:] != Y.shape[1:]:
         raise ValueError(
-            f"Dimension mismatch: X has shape {X.shape[1:]}, "
-            f"Y has shape {Y.shape[1:]}"
+            f"Dimension mismatch: X has shape {X.shape[1:]}, Y has shape {Y.shape[1:]}"
         )
 
     # Vectorize bind operation across batch dimension

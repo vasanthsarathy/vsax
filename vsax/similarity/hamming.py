@@ -48,8 +48,7 @@ def hamming_similarity(
     # Validate shapes
     if vec_a.shape != vec_b.shape:
         raise ValueError(
-            f"Shape mismatch: vectors must have same shape, "
-            f"got {vec_a.shape} and {vec_b.shape}"
+            f"Shape mismatch: vectors must have same shape, got {vec_a.shape} and {vec_b.shape}"
         )
 
     # Count matching elements

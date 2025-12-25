@@ -193,3 +193,115 @@ class TestFHRROperations:
         # Should work without error
         assert result.shape == a.shape
         assert jnp.iscomplexobj(result)
+
+    def test_fractional_power_scalar_exponent(self, ops, complex_vectors):
+        """Test fractional power with scalar exponent."""
+        a = complex_vectors[0]
+        result = ops.fractional_power(a, 0.5)
+
+        assert result.shape == a.shape
+        assert jnp.iscomplexobj(result)
+        assert not jnp.any(jnp.isnan(result))
+        assert not jnp.any(jnp.isinf(result))
+
+    def test_fractional_power_array_exponent(self, ops):
+        """Test fractional power with array exponent."""
+        key = jax.random.PRNGKey(42)
+        phases = jax.random.uniform(key, shape=(128,), minval=0, maxval=2 * jnp.pi)
+        a = jnp.exp(1j * phases)
+
+        # Apply exponent to all dimensions
+        result = ops.fractional_power(a, 0.5)
+
+        assert result.shape == a.shape
+        assert jnp.iscomplexobj(result)
+
+    def test_fractional_power_compositionality(self, ops, complex_vectors):
+        """Test that (v^r1)^r2 ≈ v^(r1*r2)."""
+        a = complex_vectors[0]
+        r1, r2 = 0.5, 3.0
+
+        # Method 1: (a^r1)^r2
+        step1 = ops.fractional_power(a, r1)
+        result1 = ops.fractional_power(step1, r2)
+
+        # Method 2: a^(r1*r2)
+        result2 = ops.fractional_power(a, r1 * r2)
+
+        assert jnp.allclose(result1, result2, atol=1e-6)
+
+    def test_fractional_power_invertibility(self, ops, complex_vectors):
+        """Test that v^r * conj(v^r) ≈ constant (element-wise multiplication)."""
+        a = complex_vectors[0]
+        r = 2.5
+
+        powered = ops.fractional_power(a, r)
+        inv_powered = ops.inverse(powered)  # Complex conjugate
+
+        # Element-wise multiplication (not binding via circular convolution)
+        # For phase-only vectors: exp(i*r*θ) * exp(-i*r*θ) = 1
+        result = powered * inv_powered
+
+        # All elements should be very close to 1.0
+        assert jnp.allclose(result, 1.0, atol=1e-6)
+
+    def test_fractional_power_continuity(self, ops):
+        """Test that small changes in exponent produce small output changes."""
+        key = jax.random.PRNGKey(42)
+        phases = jax.random.uniform(key, shape=(512,), minval=0, maxval=2 * jnp.pi)
+        a = jnp.exp(1j * phases)
+
+        # Two close exponents
+        r1 = 1.0
+        r2 = 1.01
+
+        result1 = ops.fractional_power(a, r1)
+        result2 = ops.fractional_power(a, r2)
+
+        # Results should be very similar
+        similarity = jnp.abs(jnp.vdot(result1, result2)) / 512
+        assert similarity > 0.99
+
+    def test_fractional_power_identity(self, ops, complex_vectors):
+        """Test that v^1 = v."""
+        a = complex_vectors[0]
+        result = ops.fractional_power(a, 1.0)
+
+        assert jnp.allclose(result, a)
+
+    def test_fractional_power_zero(self, ops, complex_vectors):
+        """Test that v^0 = all-ones (identity element)."""
+        a = complex_vectors[0]
+        result = ops.fractional_power(a, 0.0)
+
+        # v^0 should be all ones (magnitude 1, phase 0)
+        expected = jnp.ones_like(a)
+        assert jnp.allclose(result, expected)
+
+    def test_fractional_power_negative_exponent(self, ops, complex_vectors):
+        """Test negative exponents (inverse operation)."""
+        a = complex_vectors[0]
+        result = ops.fractional_power(a, -1.0)
+
+        # v^(-1) should be the complex conjugate for unit vectors
+        expected = jnp.conj(a)
+        assert jnp.allclose(result, expected, atol=1e-6)
+
+    def test_fractional_power_real_array_raises_error(self, ops):
+        """Test that fractional_power raises TypeError for real arrays."""
+        a = jnp.array([1.0, 2.0, 3.0, 4.0])
+
+        with pytest.raises(TypeError, match="complex-valued arrays"):
+            ops.fractional_power(a, 0.5)
+
+    def test_fractional_power_preserves_unit_magnitude(self, ops):
+        """Test that fractional power preserves unit magnitude for phase-only vectors."""
+        key = jax.random.PRNGKey(42)
+        phases = jax.random.uniform(key, shape=(256,), minval=0, maxval=2 * jnp.pi)
+        a = jnp.exp(1j * phases)  # Unit magnitude
+
+        result = ops.fractional_power(a, 0.7)
+
+        # All magnitudes should still be 1.0
+        magnitudes = jnp.abs(result)
+        assert jnp.allclose(magnitudes, 1.0)

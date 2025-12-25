@@ -39,9 +39,7 @@ class ComplexHypervector(AbstractHypervector):
             TypeError: If vec is not complex-valued.
         """
         if not jnp.iscomplexobj(vec):
-            raise TypeError(
-                f"ComplexHypervector requires complex array, got {vec.dtype}"
-            )
+            raise TypeError(f"ComplexHypervector requires complex array, got {vec.dtype}")
         super().__init__(vec)
 
     def normalize(self) -> "ComplexHypervector":

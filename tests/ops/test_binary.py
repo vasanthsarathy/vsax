@@ -21,11 +21,7 @@ class TestBinaryOperations:
         dim = 512
         vectors = []
         for i in range(3):
-            vec = jax.random.choice(
-                jax.random.PRNGKey(42 + i),
-                jnp.array([-1, 1]),
-                shape=(dim,)
-            )
+            vec = jax.random.choice(jax.random.PRNGKey(42 + i), jnp.array([-1, 1]), shape=(dim,))
             vectors.append(vec)
         return tuple(vectors)
 
@@ -173,21 +169,11 @@ class TestBinaryOperations:
 
         # Create similar vectors (flip 10% of bits)
         similar1 = base.copy()
-        flip_indices1 = jax.random.choice(
-            jax.random.PRNGKey(43),
-            512,
-            shape=(51,),
-            replace=False
-        )
+        flip_indices1 = jax.random.choice(jax.random.PRNGKey(43), 512, shape=(51,), replace=False)
         similar1 = similar1.at[flip_indices1].multiply(-1)
 
         similar2 = base.copy()
-        flip_indices2 = jax.random.choice(
-            jax.random.PRNGKey(44),
-            512,
-            shape=(51,),
-            replace=False
-        )
+        flip_indices2 = jax.random.choice(jax.random.PRNGKey(44), 512, shape=(51,), replace=False)
         similar2 = similar2.at[flip_indices2].multiply(-1)
 
         bundled = ops.bundle(similar1, similar2)

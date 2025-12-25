@@ -69,9 +69,7 @@ class CliffordOperator(AbstractOperator):
 
         # Validate shape
         if len(self.params.shape) != 1:
-            raise ValueError(
-                f"params must be 1-dimensional, got shape {self.params.shape}"
-            )
+            raise ValueError(f"params must be 1-dimensional, got shape {self.params.shape}")
 
     @property
     def dim(self) -> int:
@@ -215,14 +213,11 @@ class CliffordOperator(AbstractOperator):
             compose(OP1, OP2)
         """
         if not isinstance(other, CliffordOperator):
-            raise TypeError(
-                f"Can only compose with CliffordOperator, got {type(other).__name__}"
-            )
+            raise TypeError(f"Can only compose with CliffordOperator, got {type(other).__name__}")
 
         if self.dim != other.dim:
             raise ValueError(
-                f"Dimension mismatch: self has dim={self.dim}, "
-                f"other has dim={other.dim}"
+                f"Dimension mismatch: self has dim={self.dim}, other has dim={other.dim}"
             )
 
         # Compose by adding phases

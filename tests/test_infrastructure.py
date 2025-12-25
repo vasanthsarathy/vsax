@@ -6,12 +6,14 @@ import pytest
 def test_jax_available() -> None:
     """Test that JAX is available and importable."""
     import jax
+
     assert jax.__version__ is not None
 
 
 def test_jax_numpy_available() -> None:
     """Test that JAX NumPy is available."""
     import jax.numpy as jnp
+
     # Simple test to ensure jnp works
     arr = jnp.array([1, 2, 3])
     assert arr.shape == (3,)
@@ -22,7 +24,7 @@ def test_package_imports() -> None:
     import vsax
     from vsax.core import AbstractHypervector, AbstractOpSet, VSAModel
 
-    assert vsax.__version__ == "1.1.0"
+    assert vsax.__version__ == "1.2.0"
     assert AbstractHypervector is not None
     assert AbstractOpSet is not None
     assert VSAModel is not None
@@ -61,8 +63,10 @@ def test_vsa_model_creation() -> None:
     class MockOpSet(AbstractOpSet):
         def bind(self, a, b):
             return a * b
+
         def bundle(self, *vecs):
             return jnp.mean(jnp.stack(vecs), axis=0)
+
         def inverse(self, a):
             return a
 
@@ -72,12 +76,7 @@ def test_vsa_model_creation() -> None:
         return jax.random.normal(key, shape=(n, dim))
 
     # Test valid model creation
-    model = VSAModel(
-        dim=512,
-        rep_cls=MockHypervector,
-        opset=MockOpSet(),
-        sampler=mock_sampler
-    )
+    model = VSAModel(dim=512, rep_cls=MockHypervector, opset=MockOpSet(), sampler=mock_sampler)
 
     assert model.dim == 512
     assert model.rep_cls == MockHypervector
@@ -98,8 +97,10 @@ def test_vsa_model_invalid_dim() -> None:
     class MockOpSet(AbstractOpSet):
         def bind(self, a, b):
             return a * b
+
         def bundle(self, *vecs):
             return jnp.mean(jnp.stack(vecs), axis=0)
+
         def inverse(self, a):
             return a
 
@@ -110,17 +111,7 @@ def test_vsa_model_invalid_dim() -> None:
 
     # Test invalid dimension
     with pytest.raises(ValueError, match="dim must be positive"):
-        VSAModel(
-            dim=0,
-            rep_cls=MockHypervector,
-            opset=MockOpSet(),
-            sampler=mock_sampler
-        )
+        VSAModel(dim=0, rep_cls=MockHypervector, opset=MockOpSet(), sampler=mock_sampler)
 
     with pytest.raises(ValueError, match="dim must be positive"):
-        VSAModel(
-            dim=-100,
-            rep_cls=MockHypervector,
-            opset=MockOpSet(),
-            sampler=mock_sampler
-        )
+        VSAModel(dim=-100, rep_cls=MockHypervector, opset=MockOpSet(), sampler=mock_sampler)

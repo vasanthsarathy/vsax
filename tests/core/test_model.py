@@ -45,10 +45,7 @@ class TestVSAModel:
     def test_creation(self) -> None:
         """Test basic model creation."""
         model = VSAModel(
-            dim=512,
-            rep_cls=SimpleHypervector,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
+            dim=512, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
         )
 
         assert model.dim == 512
@@ -59,10 +56,7 @@ class TestVSAModel:
     def test_immutable(self) -> None:
         """Test that model is immutable."""
         model = VSAModel(
-            dim=512,
-            rep_cls=SimpleHypervector,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
+            dim=512, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
         )
 
         with pytest.raises(Exception):  # FrozenInstanceError in dataclasses
@@ -71,37 +65,23 @@ class TestVSAModel:
     def test_validation_zero_dim(self) -> None:
         """Test validation rejects zero dimension."""
         with pytest.raises(ValueError, match="dim must be positive"):
-            VSAModel(
-                dim=0,
-                rep_cls=SimpleHypervector,
-                opset=SimpleOpSet(),
-                sampler=simple_sampler
-            )
+            VSAModel(dim=0, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler)
 
     def test_validation_negative_dim(self) -> None:
         """Test validation rejects negative dimension."""
         with pytest.raises(ValueError, match="dim must be positive"):
             VSAModel(
-                dim=-100,
-                rep_cls=SimpleHypervector,
-                opset=SimpleOpSet(),
-                sampler=simple_sampler
+                dim=-100, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
             )
 
     def test_different_dimensions(self) -> None:
         """Test models with different dimensions."""
         model_512 = VSAModel(
-            dim=512,
-            rep_cls=SimpleHypervector,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
+            dim=512, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
         )
 
         model_1024 = VSAModel(
-            dim=1024,
-            rep_cls=SimpleHypervector,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
+            dim=1024, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
         )
 
         assert model_512.dim == 512
@@ -111,10 +91,7 @@ class TestVSAModel:
     def test_large_dimension(self) -> None:
         """Test model with large dimension."""
         model = VSAModel(
-            dim=10000,
-            rep_cls=SimpleHypervector,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
+            dim=10000, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
         )
 
         assert model.dim == 10000
@@ -122,10 +99,7 @@ class TestVSAModel:
     def test_sampler_callable(self) -> None:
         """Test that sampler is callable and works."""
         model = VSAModel(
-            dim=512,
-            rep_cls=SimpleHypervector,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
+            dim=512, rep_cls=SimpleHypervector, opset=SimpleOpSet(), sampler=simple_sampler
         )
 
         key = jax.random.PRNGKey(42)
@@ -143,17 +117,11 @@ class TestVSAModel:
             pass
 
         model1 = VSAModel(
-            dim=512,
-            rep_cls=SimpleHypervector,
-            opset=OpSet1(),
-            sampler=simple_sampler
+            dim=512, rep_cls=SimpleHypervector, opset=OpSet1(), sampler=simple_sampler
         )
 
         model2 = VSAModel(
-            dim=512,
-            rep_cls=SimpleHypervector,
-            opset=OpSet2(),
-            sampler=simple_sampler
+            dim=512, rep_cls=SimpleHypervector, opset=OpSet2(), sampler=simple_sampler
         )
 
         assert not isinstance(model1.opset, type(model2.opset))
@@ -167,18 +135,8 @@ class TestVSAModel:
         class HV2(SimpleHypervector):
             pass
 
-        model1 = VSAModel(
-            dim=512,
-            rep_cls=HV1,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
-        )
+        model1 = VSAModel(dim=512, rep_cls=HV1, opset=SimpleOpSet(), sampler=simple_sampler)
 
-        model2 = VSAModel(
-            dim=512,
-            rep_cls=HV2,
-            opset=SimpleOpSet(),
-            sampler=simple_sampler
-        )
+        model2 = VSAModel(dim=512, rep_cls=HV2, opset=SimpleOpSet(), sampler=simple_sampler)
 
         assert model1.rep_cls != model2.rep_cls

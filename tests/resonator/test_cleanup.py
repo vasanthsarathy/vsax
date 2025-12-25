@@ -126,6 +126,7 @@ class TestCleanupMemoryQuery:
     def test_query_below_threshold(self) -> None:
         """Test querying with threshold filtering."""
         import jax
+
         model = create_binary_model(dim=10000, bipolar=True)
         memory = VSAMemory(model)
         memory.add_many(["red", "blue", "green"])
@@ -144,6 +145,7 @@ class TestCleanupMemoryQuery:
     def test_query_below_threshold_with_similarity(self) -> None:
         """Test querying below threshold returns None and similarity."""
         import jax
+
         model = create_binary_model(dim=10000, bipolar=True)
         memory = VSAMemory(model)
         memory.add_many(["red", "blue"])

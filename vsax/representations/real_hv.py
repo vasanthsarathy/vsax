@@ -39,9 +39,7 @@ class RealHypervector(AbstractHypervector):
             TypeError: If vec is complex-valued.
         """
         if jnp.iscomplexobj(vec):
-            raise TypeError(
-                f"RealHypervector requires real array, got complex dtype {vec.dtype}"
-            )
+            raise TypeError(f"RealHypervector requires real array, got complex dtype {vec.dtype}")
         super().__init__(vec)
 
     def normalize(self) -> "RealHypervector":

@@ -7,7 +7,6 @@ All operators are reproducible - the same dimension will always produce the
 same operator parameters for a given spatial relation.
 """
 
-
 import jax.random as random
 
 from vsax.operators.clifford import CliffordOperator

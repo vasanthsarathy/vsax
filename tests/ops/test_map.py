@@ -189,7 +189,7 @@ class TestMAPOperations:
         c = jnp.array([0.0, 0.0, 1.0])
 
         result = ops.bundle(a, b, c)
-        expected = jnp.array([1/3, 1/3, 1/3])
+        expected = jnp.array([1 / 3, 1 / 3, 1 / 3])
         assert jnp.allclose(result, expected)
 
     def test_bind_distributive_over_bundle(self, ops, real_vectors):

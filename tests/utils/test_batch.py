@@ -119,9 +119,7 @@ def test_vmap_bundle_matches_individual() -> None:
     batch_result = vmap_bundle(model.opset, batch)
 
     # Individual operation
-    individual_result = model.opset.bundle(
-        memory["x"].vec, memory["y"].vec, memory["z"].vec
-    )
+    individual_result = model.opset.bundle(memory["x"].vec, memory["y"].vec, memory["z"].vec)
 
     # Should match
     assert jnp.allclose(batch_result, individual_result)

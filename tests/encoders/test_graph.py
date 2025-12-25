@@ -14,10 +14,7 @@ def test_graph_encoder_basic():
     memory.add_many(["Alice", "Bob", "knows", "likes"])
 
     encoder = GraphEncoder(model, memory)
-    graph_hv = encoder.encode([
-        ("Alice", "knows", "Bob"),
-        ("Alice", "likes", "Bob")
-    ])
+    graph_hv = encoder.encode([("Alice", "knows", "Bob"), ("Alice", "likes", "Bob")])
 
     assert graph_hv.vec.shape == (128,)
 
@@ -44,14 +41,8 @@ def test_graph_encoder_edge_order_invariant():
 
     encoder = GraphEncoder(model, memory)
 
-    graph1 = encoder.encode([
-        ("A", "r1", "B"),
-        ("B", "r2", "C")
-    ])
-    graph2 = encoder.encode([
-        ("B", "r2", "C"),
-        ("A", "r1", "B")
-    ])
+    graph1 = encoder.encode([("A", "r1", "B"), ("B", "r2", "C")])
+    graph2 = encoder.encode([("B", "r2", "C"), ("A", "r1", "B")])
 
     # Should be the same (bundling is commutative)
     assert jnp.allclose(graph1.vec, graph2.vec)
@@ -118,11 +109,13 @@ def test_graph_encoder_multi_edge_graph():
 
     encoder = GraphEncoder(model, memory)
 
-    graph_hv = encoder.encode([
-        ("Alice", "knows", "Bob"),
-        ("Alice", "likes", "Charlie"),
-        ("Bob", "follows", "Charlie"),
-        ("Charlie", "knows", "Alice")
-    ])
+    graph_hv = encoder.encode(
+        [
+            ("Alice", "knows", "Bob"),
+            ("Alice", "likes", "Charlie"),
+            ("Bob", "follows", "Charlie"),
+            ("Charlie", "knows", "Alice"),
+        ]
+    )
 
     assert graph_hv.vec.shape == (256,)

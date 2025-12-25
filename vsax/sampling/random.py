@@ -6,9 +6,7 @@ import jax
 import jax.numpy as jnp
 
 
-def sample_random(
-    dim: int, n: int, key: Optional[jax.random.PRNGKey] = None
-) -> jnp.ndarray:
+def sample_random(dim: int, n: int, key: Optional[jax.random.PRNGKey] = None) -> jnp.ndarray:
     """Sample n random real-valued vectors from normal distribution.
 
     Generates random vectors with elements drawn from a standard normal

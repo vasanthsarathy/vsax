@@ -51,9 +51,7 @@ class TestFHRRIntegration:
 
         # Create sentence: "dog chases cat"
         subject_dog = model.opset.bind(memory["subject"].vec, memory["dog"].vec)
-        predicate_chases = model.opset.bind(
-            memory["predicate"].vec, memory["chases"].vec
-        )
+        predicate_chases = model.opset.bind(memory["predicate"].vec, memory["chases"].vec)
         object_cat = model.opset.bind(memory["object"].vec, memory["cat"].vec)
 
         # Bundle into sentence
@@ -206,9 +204,7 @@ class TestCrossModelComparison:
 
     def test_memory_isolation(self):
         """Test that memories from different models don't interfere."""
-        fhrr_memory = VSAMemory(
-            create_fhrr_model(dim=512), key=jax.random.PRNGKey(42)
-        )
+        fhrr_memory = VSAMemory(create_fhrr_model(dim=512), key=jax.random.PRNGKey(42))
         map_memory = VSAMemory(create_map_model(dim=512), key=jax.random.PRNGKey(42))
 
         # Add same symbol to both

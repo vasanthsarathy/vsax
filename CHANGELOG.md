@@ -7,6 +7,89 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-01-24
+
+### Added
+- **Fractional Power Encoding (FPE) - Phase 1:**
+  - `fractional_power()` method added to FHRROperations for continuous value encoding
+  - `FractionalPowerEncoder` - General encoder for fractional power encoding (`v^r`)
+  - Enables continuous spatial and function representations
+  - True fractional powers via phase rotation: `exp(i*θ)^r = exp(i*r*θ)`
+  - Properties: continuous, compositional, invertible
+  - Full type safety: requires ComplexHypervector (FHRR) model
+  - 28 new tests for FHRR operations, 26 tests for FractionalPowerEncoder
+
+- **Spatial Semantic Pointers (SSP) - Phase 2:**
+  - `vsax.spatial` module for continuous spatial encoding (Komer et al. 2019)
+  - `SpatialSemanticPointers` - 1D, 2D, 3D spatial encoding with `X^x ⊗ Y^y` representation
+  - `SSPConfig` - Configuration for spatial dimensions and axis names
+  - Spatial utilities:
+    - `create_spatial_scene()` - Bundle multiple object-location pairs
+    - `similarity_map_2d()` - Generate 2D similarity heatmaps
+    - `plot_ssp_2d_scene()` - Matplotlib visualization
+    - `region_query()` - Find objects within spatial regions
+  - Query operations:
+    - "What is at (x, y)?" - Query objects at locations
+    - "Where is X?" - Query locations of objects
+  - Scene transformations:
+    - `shift_scene()` - Translate entire scene
+  - Location decoding with grid search
+  - 30 tests for SSP core, 17 tests for utilities (100% & 74% coverage)
+
+- **Vector Function Architecture (VFA) - Phase 3:**
+  - `vsax.vfa` module for function approximation in RKHS (Frady et al. 2021)
+  - **Kernel Abstraction:**
+    - `KernelType` enum (UNIFORM, GAUSSIAN, LAPLACE, CUSTOM)
+    - `KernelConfig` - Configure kernel type, bandwidth, dimensionality
+    - `sample_kernel_basis()` - Sample basis vectors for function encoding
+    - 26 tests with 95% coverage
+  - **VectorFunctionEncoder:**
+    - Function encoding from samples using regularized least squares
+    - Point and batch evaluation: `evaluate_1d()`, `evaluate_batch()`
+    - Function arithmetic: `add_functions()` with alpha/beta coefficients
+    - Function shifting: `shift_function()` for f(x) → f(x - shift)
+    - Function convolution: `convolve_functions()`
+    - 29 tests with 100% coverage
+  - **VFA Applications:**
+    - `DensityEstimator` - Kernel density estimation with fit()/evaluate()
+    - `NonlinearRegressor` - Scikit-learn-like API with fit()/predict()/score()
+    - `ImageProcessor` - Image encoding/decoding/blending
+    - 30 tests with 100% coverage
+  - Represents functions as `f(x) ≈ Σ α_i * z_i^x` in RKHS
+  - Compact hypervector representation of entire functions
+
+- **Examples (Phase 4):**
+  - **Spatial Examples:**
+    - `examples/spatial/ssp_1d_line.py` - 1D spatial encoding tutorial
+    - `examples/spatial/ssp_2d_navigation.py` - 2D navigation with landmarks
+  - **VFA Examples:**
+    - `examples/vfa/density_estimation.py` - Kernel density estimation demo
+    - `examples/vfa/nonlinear_regression.py` - Function regression with multiple test functions
+    - `examples/vfa/image_processing.py` - Image encoding/decoding/blending
+
+### Documentation
+- Updated README.md with FPE/SSP/VFA features and examples
+- Added Quick Start sections for Spatial Semantic Pointers and VFA
+- Updated citation version to 1.2.0
+- Added new feature highlights to feature list
+
+### Technical Details
+- **Total new tests:** 85 (26 kernels + 29 function encoder + 30 applications)
+- **VFA module coverage:** 95-100% across all submodules
+- **Foundations:** Komer et al. 2019 (SSP), Frady et al. 2021 (VFA)
+- **Requirements:** Requires ComplexHypervector (FHRR) model for FPE/SSP/VFA
+- **JAX-native:** All operations GPU-accelerated and JIT-compatible
+
+### Summary
+This release adds continuous spatial encoding and function approximation capabilities to VSAX:
+- **FPE** enables encoding continuous values as fractional powers
+- **SSP** provides spatial semantic pointers for navigation and spatial reasoning
+- **VFA** enables function approximation in RKHS for density estimation, regression, and image processing
+- All features build on ComplexHypervector (FHRR) representations
+- Comprehensive examples and 85 new tests ensure reliability
+
+No breaking changes from v1.1.0.
+
 ## [1.1.0] - 2025-01-20
 
 ### Added

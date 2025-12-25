@@ -211,11 +211,16 @@ class TestResonatorThreeFactors:
         """Test factorizing three-factor binary composite."""
         model = create_binary_model(dim=10000, bipolar=True)
         memory = VSAMemory(model)
-        memory.add_many([
-            "red", "blue",
-            "circle", "square",
-            "large", "small",
-        ])
+        memory.add_many(
+            [
+                "red",
+                "blue",
+                "circle",
+                "square",
+                "large",
+                "small",
+            ]
+        )
 
         # Create composite: red ⊙ circle ⊙ large
         composite = model.opset.bind(
@@ -241,11 +246,16 @@ class TestResonatorThreeFactors:
         """Test several combinations of three factors."""
         model = create_binary_model(dim=10000, bipolar=True)
         memory = VSAMemory(model)
-        memory.add_many([
-            "red", "blue",
-            "circle", "square",
-            "large", "small",
-        ])
+        memory.add_many(
+            [
+                "red",
+                "blue",
+                "circle",
+                "square",
+                "large",
+                "small",
+            ]
+        )
 
         colors = CleanupMemory(["red", "blue"], memory)
         shapes = CleanupMemory(["circle", "square"], memory)

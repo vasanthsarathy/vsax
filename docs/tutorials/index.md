@@ -114,6 +114,17 @@ Learn to use Clifford-inspired operators for exact reasoning with transformation
 
 ---
 
+### Tutorial 11: Analogical Reasoning with Conceptual Spaces
+**Level**: Advanced
+**Topics**: Fractional Power Encoding, Conceptual Spaces Theory, parallelogram model, multi-dimensional encoding, code books
+**NEW in v1.2.0** ✨
+
+Learn to perform analogical reasoning using Fractional Power Encoding (FPE) to represent concepts in continuous conceptual spaces. Encode colors in 3D space (hue, saturation, brightness), solve category-based analogies (PURPLE : BLUE :: ORANGE : YELLOW) using the parallelogram model, perform property-based analogies (APPLE : RED :: BANANA : ?), decode results using code books, and visualize conceptual spaces. Based on "Analogical Reasoning Within a Conceptual Hyperspace" (Goldowsky & Sarathy, 2024).
+
+[📖 Read Tutorial](11_analogical_reasoning.md)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

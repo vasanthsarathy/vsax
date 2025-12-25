@@ -47,10 +47,12 @@ def mock_opset():
 @pytest.fixture
 def mock_sampler():
     """Fixture providing mock sampling function."""
+
     def sampler(dim: int, n: int, key: jax.random.PRNGKey = None) -> jnp.ndarray:
         if key is None:
             key = jax.random.PRNGKey(0)
         return jax.random.normal(key, shape=(n, dim))
+
     return sampler
 
 

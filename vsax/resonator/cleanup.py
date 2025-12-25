@@ -130,10 +130,7 @@ class CleanupMemory:
         top_k_indices = jnp.argsort(similarities)[-k:][::-1]
 
         # Build result list
-        results = [
-            (self.codebook[int(idx)], float(similarities[idx]))
-            for idx in top_k_indices
-        ]
+        results = [(self.codebook[int(idx)], float(similarities[idx])) for idx in top_k_indices]
 
         return results
 

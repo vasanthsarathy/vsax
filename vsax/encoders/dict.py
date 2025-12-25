@@ -1,6 +1,5 @@
 """DictEncoder for encoding dictionaries into hypervectors using role-filler binding."""
 
-
 from vsax.core.base import AbstractHypervector
 from vsax.encoders.base import AbstractEncoder
 

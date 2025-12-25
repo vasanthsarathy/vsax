@@ -182,9 +182,7 @@ def compare_devices(
     return results
 
 
-def print_benchmark_results(
-    results: dict[str, Union[dict[str, Union[float, str]], float]]
-) -> None:
+def print_benchmark_results(results: dict[str, Union[dict[str, Union[float, str]], float]]) -> None:
     """Pretty-print benchmark results.
 
     Args:
@@ -209,8 +207,8 @@ def print_benchmark_results(
 
         print(f"\n{device_name.upper()}:")
         print(f"  Device: {device_str}")
-        print(f"  Mean time: {mean_time*1000:.2f} ms")
-        print(f"  Std time: {std_time*1000:.2f} ms")
+        print(f"  Mean time: {mean_time * 1000:.2f} ms")
+        print(f"  Std time: {std_time * 1000:.2f} ms")
         print(f"  Throughput: {throughput:.2f} ops/sec")
 
     if "speedup" in results:

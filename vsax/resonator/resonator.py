@@ -105,9 +105,7 @@ class Resonator:
         for iteration in range(self.max_iterations):
             # Update each factor estimate
             for i in range(self.num_factors):
-                estimates[i] = self._update_factor(
-                    composite, estimates, i
-                )
+                estimates[i] = self._update_factor(composite, estimates, i)
 
             # Track history
             if return_history:
@@ -139,15 +137,12 @@ class Resonator:
         if initial_estimates is not None:
             if len(initial_estimates) != self.num_factors:
                 raise ValueError(
-                    f"Expected {self.num_factors} initial estimates, "
-                    f"got {len(initial_estimates)}"
+                    f"Expected {self.num_factors} initial estimates, got {len(initial_estimates)}"
                 )
             # Validate estimates exist in codebooks
             for i, est in enumerate(initial_estimates):
                 if est not in self.codebooks[i].codebook:
-                    raise ValueError(
-                        f"Initial estimate '{est}' not in codebook {i}"
-                    )
+                    raise ValueError(f"Initial estimate '{est}' not in codebook {i}")
             # Cast to list[Optional[str]] for type compatibility
             return cast(list[Optional[str]], initial_estimates.copy())
 
