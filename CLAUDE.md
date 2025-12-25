@@ -75,8 +75,48 @@ git push
 **If CI/CD errors occur:**
 - User will report the errors
 - Go back to Step 2 and fix the issues
-- Run through ALL steps again (2-7)
+- Run through ALL steps again (2-8)
 - Do NOT skip steps when fixing CI/CD errors
+
+### Step 8: Documentation Deployment
+
+**CRITICAL: Deploy documentation AFTER committing/pushing but BEFORE running publish.ps1**
+
+This ensures users see correct documentation when the new version is published to PyPI.
+
+**Pre-deployment Verification:**
+- [ ] Verify `mkdocs.yml` has all new tutorials/guides in navigation
+- [ ] Verify `docs/index.md` version numbers are updated
+- [ ] Verify citation version is current in `README.md` and `docs/index.md`
+- [ ] Build locally to test: `uv run mkdocs build`
+- [ ] Fix any build errors before deploying
+
+**Option 1: Versioned Documentation with Mike (Recommended for releases)**
+```bash
+# Deploy new version and set as latest
+uv run mike deploy --push <version> latest
+
+# Example for v1.2.0:
+uv run mike deploy --push 1.2.0 latest
+
+# Set as default version (optional)
+uv run mike set-default --push 1.2.0
+```
+
+**Option 2: Simple Deployment (For quick updates, no versioning)**
+```bash
+# Deploy directly to gh-pages branch
+uv run mkdocs gh-deploy --force
+```
+
+**Post-deployment Verification:**
+- [ ] Visit documentation site (e.g., https://vsax.readthedocs.io or GitHub Pages URL)
+- [ ] Verify version number displays correctly
+- [ ] Verify new tutorials/guides appear in navigation
+- [ ] Verify all links work
+- [ ] Check that code examples render correctly
+
+**IMPORTANT: After successful deployment, proceed to run `publish.ps1` to publish to PyPI**
 
 ## Project Overview
 
