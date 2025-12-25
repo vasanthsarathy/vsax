@@ -2718,10 +2718,26 @@
 
 
         <p>Encoder for numeric scalar values using power encoding.</p>
-<p>For complex hypervectors (FHRR), encodes values by raising the basis
-hypervector to the power of the value, which rotates the phase.</p>
-<p>For real and binary hypervectors, encodes by iterated binding of the
-basis vector with itself.</p>
+<p><strong>Encoding Methods:</strong></p>
+<ul>
+<li>
+<p><strong>Complex hypervectors (FHRR)</strong>: Uses true fractional power encoding
+  via phase rotation. For v = exp(i<em>θ), encodes as v^r = exp(i</em>r*θ).
+  This provides continuous, compositional encoding ideal for numeric data.</p>
+</li>
+<li>
+<p><strong>Real and binary hypervectors</strong>: Uses iterated binding approximation.
+  The basis vector is bound with itself multiple times. This is a discrete
+  approximation that works for integer-like values.</p>
+</li>
+</ul>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Use ScalarEncoder for simple numeric value encoding</li>
+<li>For spatial encoding (coordinates) or function encoding, see
+  :class:<code>~vsax.encoders.FractionalPowerEncoder</code> which provides
+  multi-dimensional encoding and is optimized for those use cases.</li>
+</ul>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -2793,6 +2809,14 @@ temp_hv = encoder.encode("temperature", 23.5)</p>
 </blockquote>
 </blockquote>
 </blockquote>
+</details>
+
+<details class="see-also" open>
+  <summary>See Also</summary>
+  <ul>
+<li>:class:<code>~vsax.encoders.FractionalPowerEncoder</code>: Multi-dimensional
+  fractional power encoding for spatial and function representations.</li>
+</ul>
 </details>
 
 
@@ -2896,100 +2920,134 @@ temp_hv = encoder.encode("temperature", 23.5)</p>
 <span class="normal"><a href="#__codelineno-0-103">103</a></span>
 <span class="normal"><a href="#__codelineno-0-104">104</a></span>
 <span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">ScalarEncoder</span><span class="p">(</span><span class="n">AbstractEncoder</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span>
+<span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span>
+<span class="normal"><a href="#__codelineno-0-123">123</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">ScalarEncoder</span><span class="p">(</span><span class="n">AbstractEncoder</span><span class="p">):</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encoder for numeric scalar values using power encoding.</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    For complex hypervectors (FHRR), encodes values by raising the basis</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    hypervector to the power of the value, which rotates the phase.</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    For real and binary hypervectors, encodes by iterated binding of the</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">    basis vector with itself.</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    **Encoding Methods:**</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">    - **Complex hypervectors (FHRR)**: Uses true fractional power encoding</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">      via phase rotation. For v = exp(i*θ), encodes as v^r = exp(i*r*θ).</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">      This provides continuous, compositional encoding ideal for numeric data.</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    Attributes:</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">        model: The VSAModel instance defining the VSA algebra.</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        memory: The VSAMemory instance for accessing basis hypervectors.</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        min_val: Minimum value for the encoding range (optional).</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        max_val: Maximum value for the encoding range (optional).</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    - **Real and binary hypervectors**: Uses iterated binding approximation.</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">      The basis vector is bound with itself multiple times. This is a discrete</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">      approximation that works for integer-like values.</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    **When to use:**</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; from vsax import create_fhrr_model, VSAMemory</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        &gt;&gt;&gt; from vsax.encoders import ScalarEncoder</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">        &gt;&gt;&gt; model = create_fhrr_model(dim=512)</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">        &gt;&gt;&gt; memory = VSAMemory(model)</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">        &gt;&gt;&gt; memory.add(&quot;temperature&quot;)</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">        &gt;&gt;&gt; encoder = ScalarEncoder(model, memory)</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        &gt;&gt;&gt; temp_hv = encoder.encode(&quot;temperature&quot;, 23.5)</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>        <span class="n">model</span><span class="p">:</span> <span class="n">VSAModel</span><span class="p">,</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="n">memory</span><span class="p">:</span> <span class="n">VSAMemory</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="n">min_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="n">max_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the ScalarEncoder.</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">            model: The VSAModel instance.</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">            memory: The VSAMemory instance with basis symbols.</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">            min_val: Minimum value for normalization (optional).</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">            max_val: Maximum value for normalization (optional).</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="n">min_val</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="n">max_val</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractHypervector</span><span class="p">:</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Encode a scalar value.</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">            symbol_name: Name of the basis symbol in memory to use.</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">            value: The numeric value to encode.</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">            The encoded hypervector.</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">            KeyError: If symbol_name is not in memory.</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">            ValueError: If value is outside the specified range.</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">            &gt;&gt;&gt; encoder = ScalarEncoder(model, memory)</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">            &gt;&gt;&gt; temp_hv = encoder.encode(&quot;temperature&quot;, 23.5)</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>        <span class="c1"># Normalize value if range is specified</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="p">):</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>                    <span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> outside range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="si">}</span><span class="s2">]&quot;</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>                <span class="p">)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a>            <span class="c1"># Normalize to 0-1 range</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>            <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>        <span class="c1"># Get basis hypervector</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="n">basis_hv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">[</span><span class="n">symbol_name</span><span class="p">]</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>        <span class="c1"># For complex hypervectors, use power encoding</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a>        <span class="k">if</span> <span class="n">jnp</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">):</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>            <span class="c1"># Power encoding: v ** value rotates the phase</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a>            <span class="n">powered_vec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">powered_vec</span><span class="p">)</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>        <span class="c1"># For real and binary hypervectors, use iterated binding</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a>        <span class="c1"># Bind the vector with itself &#39;value&#39; times</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>        <span class="c1"># For fractional values, we approximate with integer binding</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a>        <span class="n">iterations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># Scale for finer granularity</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>        <span class="k">if</span> <span class="n">iterations</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>            <span class="c1"># Return normalized zero-like vector</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>            <span class="k">return</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    - Use ScalarEncoder for simple numeric value encoding</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    - For spatial encoding (coordinates) or function encoding, see</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">      :class:`~vsax.encoders.FractionalPowerEncoder` which provides</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">      multi-dimensional encoding and is optimized for those use cases.</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">    Attributes:</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">        model: The VSAModel instance defining the VSA algebra.</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        memory: The VSAMemory instance for accessing basis hypervectors.</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        min_val: Minimum value for the encoding range (optional).</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        max_val: Maximum value for the encoding range (optional).</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">        &gt;&gt;&gt; from vsax import create_fhrr_model, VSAMemory</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">        &gt;&gt;&gt; from vsax.encoders import ScalarEncoder</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">        &gt;&gt;&gt; model = create_fhrr_model(dim=512)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">        &gt;&gt;&gt; memory = VSAMemory(model)</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">        &gt;&gt;&gt; memory.add(&quot;temperature&quot;)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">        &gt;&gt;&gt; encoder = ScalarEncoder(model, memory)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">        &gt;&gt;&gt; temp_hv = encoder.encode(&quot;temperature&quot;, 23.5)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    See Also:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        - :class:`~vsax.encoders.FractionalPowerEncoder`: Multi-dimensional</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">          fractional power encoding for spatial and function representations.</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>        <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="n">model</span><span class="p">:</span> <span class="n">VSAModel</span><span class="p">,</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="n">memory</span><span class="p">:</span> <span class="n">VSAMemory</span><span class="p">,</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="n">min_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="n">max_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the ScalarEncoder.</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">            model: The VSAModel instance.</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">            memory: The VSAMemory instance with basis symbols.</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">            min_val: Minimum value for normalization (optional).</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">            max_val: Maximum value for normalization (optional).</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="n">min_val</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="n">max_val</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractHypervector</span><span class="p">:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Encode a scalar value.</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">            symbol_name: Name of the basis symbol in memory to use.</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">            value: The numeric value to encode.</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">            The encoded hypervector.</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">            KeyError: If symbol_name is not in memory.</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">            ValueError: If value is outside the specified range.</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">        Example:</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">            &gt;&gt;&gt; encoder = ScalarEncoder(model, memory)</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">            &gt;&gt;&gt; temp_hv = encoder.encode(&quot;temperature&quot;, 23.5)</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>        <span class="c1"># Normalize value if range is specified</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="p">):</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> outside range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>            <span class="c1"># Normalize to 0-1 range</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>            <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>        <span class="c1"># Get basis hypervector</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>        <span class="n">basis_hv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">[</span><span class="n">symbol_name</span><span class="p">]</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="c1"># For complex hypervectors, use fractional power encoding</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        <span class="k">if</span> <span class="n">jnp</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">):</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>            <span class="c1"># Fractional power encoding: v^r = exp(i*r*θ) rotates the phase</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>            <span class="c1"># Use opset.fractional_power if available, otherwise use jnp.power</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="p">,</span> <span class="s2">&quot;fractional_power&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>                <span class="n">powered_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">fractional_power</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a>                <span class="n">powered_vec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">powered_vec</span><span class="p">)</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="c1"># For real and binary hypervectors, use iterated binding</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>        <span class="c1"># Bind the vector with itself &#39;value&#39; times</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="c1"># For fractional values, we approximate with integer binding</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="n">iterations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># Scale for finer granularity</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>        <span class="k">if</span> <span class="n">iterations</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>            <span class="c1"># Return normalized zero-like vector</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a>            <span class="k">return</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>
+<a id="__codelineno-0-123" name="__codelineno-0-123"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -3106,41 +3164,41 @@ temp_hv = encoder.encode("temperature", 23.5)</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>vsax/encoders/scalar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-53">53</a></span>
 <span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>    <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>    <span class="n">model</span><span class="p">:</span> <span class="n">VSAModel</span><span class="p">,</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>    <span class="n">memory</span><span class="p">:</span> <span class="n">VSAMemory</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="n">min_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="n">max_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the ScalarEncoder.</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        model: The VSAModel instance.</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        memory: The VSAMemory instance with basis symbols.</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        min_val: Minimum value for normalization (optional).</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        max_val: Maximum value for normalization (optional).</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="n">min_val</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="n">max_val</span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#__codelineno-0-61">61</a></span>
+<span class="normal"><a href="#__codelineno-0-62">62</a></span>
+<span class="normal"><a href="#__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="n">model</span><span class="p">:</span> <span class="n">VSAModel</span><span class="p">,</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>    <span class="n">memory</span><span class="p">:</span> <span class="n">VSAMemory</span><span class="p">,</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="n">min_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>    <span class="n">max_val</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the ScalarEncoder.</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        model: The VSAModel instance.</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        memory: The VSAMemory instance with basis symbols.</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        min_val: Minimum value for normalization (optional).</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">        max_val: Maximum value for normalization (optional).</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">=</span> <span class="n">min_val</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">=</span> <span class="n">max_val</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3278,22 +3336,7 @@ temp_hv = encoder.encode("temperature", 23.5)</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>vsax/encoders/scalar.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
-<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
-<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
-<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
-<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
-<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
-<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
-<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
-<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
-<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
-<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
 <span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
 <span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
 <span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
@@ -3327,56 +3370,75 @@ temp_hv = encoder.encode("temperature", 23.5)</p>
 <span class="normal"><a href="#__codelineno-0-103">103</a></span>
 <span class="normal"><a href="#__codelineno-0-104">104</a></span>
 <span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractHypervector</span><span class="p">:</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encode a scalar value.</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        symbol_name: Name of the basis symbol in memory to use.</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        value: The numeric value to encode.</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        The encoded hypervector.</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="sd">        KeyError: If symbol_name is not in memory.</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        ValueError: If value is outside the specified range.</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">        &gt;&gt;&gt; encoder = ScalarEncoder(model, memory)</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">        &gt;&gt;&gt; temp_hv = encoder.encode(&quot;temperature&quot;, 23.5)</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="c1"># Normalize value if range is specified</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="p">):</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>                <span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> outside range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="si">}</span><span class="s2">]&quot;</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a>            <span class="p">)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a>        <span class="c1"># Normalize to 0-1 range</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="c1"># Get basis hypervector</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>    <span class="n">basis_hv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">[</span><span class="n">symbol_name</span><span class="p">]</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>    <span class="c1"># For complex hypervectors, use power encoding</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a>    <span class="k">if</span> <span class="n">jnp</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">):</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>        <span class="c1"># Power encoding: v ** value rotates the phase</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a>        <span class="n">powered_vec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">powered_vec</span><span class="p">)</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="c1"># For real and binary hypervectors, use iterated binding</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a>    <span class="c1"># Bind the vector with itself &#39;value&#39; times</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>    <span class="c1"># For fractional values, we approximate with integer binding</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a>    <span class="n">iterations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># Scale for finer granularity</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="k">if</span> <span class="n">iterations</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="c1"># Return normalized zero-like vector</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="k">return</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span>
+<span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span>
+<span class="normal"><a href="#__codelineno-0-123">123</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractHypervector</span><span class="p">:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encode a scalar value.</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        symbol_name: Name of the basis symbol in memory to use.</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">        value: The numeric value to encode.</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">        The encoded hypervector.</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">        KeyError: If symbol_name is not in memory.</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">        ValueError: If value is outside the specified range.</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">        &gt;&gt;&gt; encoder = ScalarEncoder(model, memory)</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">        &gt;&gt;&gt; temp_hv = encoder.encode(&quot;temperature&quot;, 23.5)</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="c1"># Normalize value if range is specified</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="p">):</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> outside range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>        <span class="c1"># Normalize to 0-1 range</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>        <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_val</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_val</span><span class="p">)</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>    <span class="c1"># Get basis hypervector</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="n">basis_hv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">[</span><span class="n">symbol_name</span><span class="p">]</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>    <span class="c1"># For complex hypervectors, use fractional power encoding</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="k">if</span> <span class="n">jnp</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">):</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>        <span class="c1"># Fractional power encoding: v^r = exp(i*r*θ) rotates the phase</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>        <span class="c1"># Use opset.fractional_power if available, otherwise use jnp.power</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="p">,</span> <span class="s2">&quot;fractional_power&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>            <span class="n">powered_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">fractional_power</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a>            <span class="n">powered_vec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">powered_vec</span><span class="p">)</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>    <span class="c1"># For real and binary hypervectors, use iterated binding</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>    <span class="c1"># Bind the vector with itself &#39;value&#39; times</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>    <span class="c1"># For fractional values, we approximate with integer binding</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>    <span class="n">iterations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># Scale for finer granularity</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>    <span class="k">if</span> <span class="n">iterations</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        <span class="c1"># Return normalized zero-like vector</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a>        <span class="k">return</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">basis_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>
+<a id="__codelineno-0-123" name="__codelineno-0-123"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
