@@ -8,161 +8,109 @@
 % Code listing style
 \lstset{
     language=Python,
-    basicstyle=\ttfamily\small,
+    basicstyle=\ttfamily\footnotesize,
     keywordstyle=\color{blue},
     commentstyle=\color{gray},
     stringstyle=\color{red},
     showstringspaces=false,
     breaklines=true,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny\color{gray}
+    frame=none,
+    numbers=none
 }
 
 \begin{document}
 
-\title{VSAX: A Production-Ready JAX Library for Vector Symbolic Architectures}
+\title{VSAX: A JAX Library for Vector Symbolic Architectures}
 
 \author{\name Vasanth Sarathy \email vasanth@sarathy.com \\
-       \addr Independent Researcher \\
-       \addr \url{https://github.com/vasanthsarathy/vsax}}
+       \addr Independent Researcher}
 
 \editor{(Editor information will be added upon acceptance)}
 
 \maketitle
 
 \begin{abstract}
-VSAX is an open-source Python library providing comprehensive implementations of Vector Symbolic Architectures (VSAs) with GPU acceleration via JAX. The library addresses critical gaps in the VSA ecosystem by unifying three complete VSA models (FHRR, MAP, Binary) under a consistent API, introducing advanced capabilities for compositional reasoning and continuous encoding, and maintaining production-ready quality with 94\% test coverage and extensive documentation. VSAX enables researchers to rapidly prototype VSA systems, fairly compare models, and deploy to production with confidence. The library has been actively developed since December 2024, demonstrates strong software engineering practices, and is available under the MIT license at \url{https://github.com/vasanthsarathy/vsax} and via PyPI as \texttt{pip install vsax}.
+VSAX is an open-source Python library for Vector Symbolic Architectures (VSAs) with GPU acceleration via JAX. It provides complete implementations of three major VSA models (FHRR, MAP, Binary) under a unified API, advanced capabilities for compositional reasoning and continuous encoding (Clifford operators, Spatial Semantic Pointers, Vector Function Architecture), and production-ready quality with 94\% test coverage and comprehensive documentation. VSAX enables researchers to prototype VSA systems rapidly, compare models fairly, and deploy to production with confidence. The library is available via PyPI (\texttt{pip install vsax}) and GitHub (\url{https://github.com/vasanthsarathy/vsax}) under the MIT license.
 \end{abstract}
 
 \begin{keywords}
-vector symbolic architectures, hyperdimensional computing, GPU acceleration, JAX, open-source software, machine learning library
+vector symbolic architectures, hyperdimensional computing, GPU acceleration, JAX, machine learning
 \end{keywords}
 
 \section{Introduction}
 
-Vector Symbolic Architectures (VSAs), also known as Hyperdimensional Computing (HDC), provide a computational framework for representing and manipulating symbolic information in high-dimensional vector spaces~\citep{kanerva2009hyperdimensional,plate1995holographic}. The central idea is to represent concepts as randomly generated high-dimensional vectors (hypervectors) and use algebraic operations to combine them into compositional structures. This approach enables features such as reasoning by analogy, cognitive modeling, and neuro-symbolic integration that complement current artificial neural networks.
+Vector Symbolic Architectures (VSAs), also known as Hyperdimensional Computing, represent symbolic information in high-dimensional vector spaces~\citep{kanerva2009hyperdimensional,plate1995holographic}. Concepts are encoded as randomly generated high-dimensional vectors (hypervectors) and combined using algebraic operations for compositional reasoning, analogical inference, and cognitive modeling~\citep{kleyko2022vsasurvey1,kleyko2023vsasurvey2}.
 
-Despite growing interest across robotics, edge computing, and cognitive science, the VSA research community faces significant tooling challenges. Existing implementations are fragmented across different frameworks, provide incomplete model coverage, lack production-quality engineering, and offer limited documentation. This fragmentation raises barriers to entry for newcomers and hinders reproducibility for experienced researchers. While recent surveys have consolidated theoretical knowledge~\citep{kleyko2022vsasurvey1,kleyko2023vsasurvey2}, much less attention has been paid to providing coherent, high-quality open-source software.
+Despite growing interest across robotics, edge computing, and cognitive science, VSA research faces significant tooling challenges. Existing implementations are fragmented across frameworks (PyTorch, NumPy), provide incomplete model coverage (missing FHRR or advanced operators), lack production-quality engineering (low test coverage, minimal documentation), and offer limited GPU acceleration. This fragmentation raises barriers for newcomers and hinders reproducibility for experienced researchers.
 
-To address these issues, we developed VSAX—an open-source library for VSA research and applications. Building on JAX~\citep{jax2018github}, VSAX provides GPU-accelerated implementations of all major VSA models with a unified API, advanced capabilities unavailable elsewhere (Clifford operators for exact compositional reasoning, continuous spatial and function encoding, resonator networks for factorization), and production-ready quality (94\% test coverage, full type safety, extensive documentation). Our design philosophy prioritizes ease of use without sacrificing expressiveness, enabling both application-driven research and theoretical investigation of individual VSA components. We believe VSAX will benefit the VSA and broader machine learning communities by lowering barriers to entry, accelerating research cycles, and enabling deployment of VSA systems in production environments.
+VSAX addresses these issues through: (1) \textbf{unified implementations} of all major VSA models (FHRR, MAP, Binary) with consistent APIs enabling fair comparisons, (2) \textbf{advanced capabilities} unavailable elsewhere (Clifford operators for exact compositional reasoning, complete Spatial Semantic Pointers, Vector Function Architecture), (3) \textbf{production-ready quality} with 94\% test coverage, full type safety, and comprehensive documentation (11 tutorials, 9 user guides), and (4) \textbf{GPU acceleration} via JAX with 5-30$\times$ speedups over CPU implementations.
 
-\section{Software Description}
+Installation is straightforward via PyPI:
+\begin{lstlisting}
+pip install vsax
+\end{lstlisting}
 
-\subsection{Core Functionality}
+\noindent A minimal example demonstrates the unified API:
+\begin{lstlisting}
+import jax
+from vsax import create_fhrr_model, VSAMemory
 
-VSAX provides complete implementations of three major VSA models, each differing in their representation space and fundamental operations. FHRR (Fourier Holographic Reduced Representations)~\citep{plate1995holographic} uses complex-valued vectors with circular convolution via FFT, enabling exact unbinding through complex conjugation. MAP (Multiply-Add-Permute) uses real-valued vectors with element-wise multiplication for binding and addition for bundling, offering computational efficiency. Binary VSA uses bipolar vectors with XOR for binding and majority voting for bundling, optimized for hardware implementation.
+# Create model and symbol table
+model = create_fhrr_model(dim=1024, key=jax.random.PRNGKey(0))
+memory = VSAMemory(model)
 
-All three models share a consistent API, enabling fair comparisons by changing a single function call. Model switching requires only modifying the factory function (\texttt{create\_fhrr\_model}, \texttt{create\_map\_model}, or \texttt{create\_binary\_model}), while all downstream code—encoders, memory operations, and similarity computations—remains identical. This design allows researchers to empirically evaluate which model best suits their application without rewriting code.
+# Add basis vectors
+memory.add_many(["cat", "mat", "on"])
+
+# Bind and bundle operations
+cat_on_mat = model.opset.bind(
+    model.opset.bind(memory["cat"].vec, memory["on"].vec),
+    memory["mat"].vec
+)
+\end{lstlisting}
+
+\section{Package Design and Implementation}
+
+\subsection{Core Functionality and Unified API}
+
+VSAX implements three major VSA models: FHRR (Fourier Holographic Reduced Representations)~\citep{plate1995holographic} uses complex-valued vectors with circular convolution via FFT for exact unbinding; MAP (Multiply-Add-Permute) uses real-valued vectors with element-wise multiplication for computational efficiency; Binary VSA uses bipolar vectors with XOR for binding, optimized for hardware. All models share a consistent API—switching models requires changing only the factory function:
 
 \begin{lstlisting}
-# Switch models trivially
+# Compare models by changing one line
 model = create_fhrr_model(dim=1024)
 # model = create_map_model(dim=1024)
 # model = create_binary_model(dim=10000)
 
 # All downstream code remains identical
 memory = VSAMemory(model)
+encoder = DictEncoder(model, memory)
 result = model.opset.bind(vec1, vec2)
 \end{lstlisting}
 
 \subsection{Advanced Capabilities}
 
-Beyond standard VSA operations, VSAX introduces several advanced capabilities for compositional reasoning and continuous representation. Clifford operators~\citep{aerts2007clifford} provide phase-based binding operations with near-perfect invertibility (similarity exceeding 0.999) compared to traditional unbinding (0.3-0.6 similarity). This exactness enables precise recovery of compositional structures for spatial relations, semantic roles, and graph traversal tasks where approximate retrieval is insufficient.
+VSAX provides several advanced capabilities beyond standard VSA operations. \textbf{Clifford operators}~\citep{aerts2007clifford} enable phase-based transformations with near-perfect invertibility (similarity $>0.999$) compared to traditional unbinding (0.3-0.6 similarity), critical for precise compositional reasoning. \textbf{Spatial Semantic Pointers}~\citep{komer2019neural} encode continuous spatial coordinates as $S(x,y) = X^x \otimes Y^y$ using Fractional Power Encoding, enabling object-location binding and bidirectional spatial queries for robotic navigation and scene understanding. The \textbf{Vector Function Architecture}~\citep{frady2021computing} represents functions as hypervectors in a Reproducing Kernel Hilbert Space, supporting function evaluation, arithmetic, and transformations for density estimation and nonlinear regression. \textbf{Resonator networks}~\citep{kent2020resonator,frady2020resonator} factorize superimposed hypervectors through iterative coupled dynamics, essential for parsing complex compositional structures.
 
-The library's most significant recent addition is comprehensive support for continuous encoding, introduced in version 1.2.0. Fractional Power Encoding (FPE) provides the mathematical foundation by encoding real-valued scalars via $v^r = \exp(i \cdot r \cdot \theta)$, where $v$ is a basis hypervector and $r$ is the continuous value. This encoding is continuous (small changes in $r$ produce small changes in the representation), compositional (powers combine algebraically under binding), and invertible (enabling exact reconstruction).
+\subsection{Software Architecture}
 
-Building on FPE, Spatial Semantic Pointers~\citep{komer2019neural} encode continuous spatial coordinates as $S(x,y) = X^x \otimes Y^y$, where $X$ and $Y$ are axis basis vectors. This representation supports object-location binding (binding an object hypervector to its spatial coordinates), bidirectional queries (``what is at location $(x,y)$?'' and ``where is object $O$?''), and global scene transformations (shifting an entire scene by binding with a displacement vector). SSPs have applications in robotic navigation, spatial memory, and visual scene understanding.
+VSAX follows clean architecture principles with modular, immutable, and type-safe design. The core abstraction separates representations (\texttt{AbstractHypervector}) from operations (\texttt{AbstractOpSet}), enabling arbitrary combinations and easy extension. All data structures are immutable following JAX's functional paradigm, ensuring thread safety and enabling JIT optimization. Full type annotations verified by mypy in strict mode provide IDE support and catch errors at development time.
 
-The Vector Function Architecture~\citep{frady2021computing} extends VSAs to represent functions as first-class symbolic objects in a Reproducing Kernel Hilbert Space (RKHS). A function $f: \mathbb{R} \to \mathbb{R}$ is encoded as $f(x) \approx \langle \alpha, z^x \rangle$, where $\alpha$ are learned coefficients and $z$ is a random basis vector. This representation enables function evaluation at arbitrary points, function arithmetic (addition, scaling), and transformations (shifting, convolution). The VFA module includes applications for kernel density estimation, nonlinear regression, and image processing, demonstrating the versatility of functional representation.
+The library is organized into focused modules: \texttt{vsax.core} (base abstractions, factory functions), \texttt{vsax.representations} (Complex/Real/Binary hypervectors), \texttt{vsax.ops} (FHRR/MAP/Binary operations), \texttt{vsax.encoders} (Scalar/Sequence/Dict/Graph/FPE encoders), \texttt{vsax.operators} (Clifford operators), \texttt{vsax.spatial} (Spatial Semantic Pointers), \texttt{vsax.vfa} (Vector Function Architecture), \texttt{vsax.resonator} (factorization networks), \texttt{vsax.similarity} (distance metrics), and \texttt{vsax.io} (persistence).
 
-VSAX also implements resonator networks~\citep{kent2020resonator,frady2020resonator}, which use coupled neural dynamics to factorize superimposed hypervectors into their constituent components. This capability is critical for tasks requiring structure recovery, such as parsing bundled role-filler pairs in semantic frames or implementing attention mechanisms in cognitive architectures.
+Users extend VSAX by subclassing abstractions and implementing required methods, seamlessly integrating custom components with existing functionality.
 
-\subsection{Performance and Scalability}
+\subsection{Performance and GPU Acceleration}
 
-Built on JAX~\citep{jax2018github}, VSAX achieves substantial performance improvements over CPU-only implementations through GPU acceleration, JIT compilation, and automatic vectorization. JAX's functional programming model aligns naturally with VSA's algebraic operations, enabling aggressive optimization while maintaining code clarity. The library supports both CUDA and TPU backends, with automatic device placement and memory management.
+Built on JAX~\citep{jax2018github}, VSAX achieves substantial performance improvements through GPU acceleration, JIT compilation, and automatic vectorization. Benchmarks on an NVIDIA RTX 4090 with 10,000-dimensional vectors demonstrate 5-30$\times$ speedups over CPU: binding operations achieve 26$\times$ speedup (0.31ms GPU vs 8.1ms CPU), bundling shows 18$\times$ speedup (0.52ms vs 9.3ms CPU), and resonator factorization achieves 20$\times$ speedup. JAX's \texttt{vmap} enables efficient batch operations for parallel processing of datasets. The library supports CUDA and TPU backends with automatic device placement.
 
-Performance benchmarks on an NVIDIA RTX 4090 with 10,000-dimensional vectors demonstrate 5-30× speedups over equivalent CPU implementations. Binding operations (circular convolution for FHRR, element-wise multiplication for MAP) achieve 26× speedup (0.31ms GPU vs 8.1ms CPU). Bundling operations show 18× speedup (0.52ms GPU vs 9.3ms CPU). Resonator network factorization achieves 20× speedup for 15-iteration convergence. JIT compilation provides an additional 2-3× improvement for iterative algorithms by eliminating Python interpreter overhead.
+\section{Comparison with Existing Tools}
 
-The library's support for batch operations through JAX's \texttt{vmap} enables efficient processing of multiple inputs in parallel, critical for training classification models or encoding large datasets. This vectorization ensures that applications scale efficiently from small experiments to production deployments without algorithmic changes.
+Table~\ref{tab:comparison} compares VSAX with major VSA libraries. Torchhd~\citep{heddes2023torchhd} provides excellent PyTorch-based implementations with multiple models and GPU support, but lacks Clifford operators, complete Spatial Semantic Pointers, and Vector Function Architecture. hdlib offers basic CPU-only implementations with limited documentation. PyBHV focuses exclusively on Binary hypervectors with narrow scope. VSAX uniquely provides Clifford operators for exact compositional reasoning, complete SSP implementation with full 2D/3D scene encoding, Vector Function Architecture for RKHS function encoding, full resonator networks with iterative convergence, and JAX-based automatic differentiation for hybrid neuro-symbolic models.
 
-\section{Software Architecture}
-
-\subsection{Design Principles}
-
-VSAX follows clean architecture principles to ensure modularity, extensibility, and maintainability. The core abstraction separates representations (\texttt{AbstractHypervector}) from operations (\texttt{AbstractOpSet}), allowing arbitrary combinations of representation types and operation strategies. This decoupling means users can implement custom hypervector types (e.g., quantized representations for hardware deployment) or novel operation sets (e.g., non-commutative binding) without modifying existing code.
-
-All core data structures are immutable, following JAX's functional programming paradigm. Immutability ensures thread safety, enables aggressive JIT optimization through pure functional transformations, and simplifies reasoning about program behavior. Operations return new hypervector instances rather than modifying existing ones, preventing subtle bugs from shared mutable state.
-
-The library enforces full type safety through comprehensive type annotations verified by mypy in strict mode. Every function signature specifies parameter types, return types, and shape constraints (e.g., \texttt{jnp.ndarray} with shape \texttt{(dim,)} for hypervectors). Static type checking catches errors at development time, provides IDE autocomplete and inline documentation, and serves as machine-checked documentation of API contracts.
-
-Small, focused abstractions compose to build complex systems. A \texttt{VSAModel} contains a representation class, operation set, dimensionality, and sampling function. \texttt{VSAMemory} provides a symbol table for named hypervectors. \texttt{Encoder} classes transform structured data (dictionaries, graphs, sequences) into hypervectors. \texttt{Operator} classes provide pre-configured binding operators for specific tasks (spatial relations, semantic roles). These components combine freely, enabling researchers to mix and match capabilities for their specific needs.
-
-\subsection{Module Organization}
-
-The library is organized into focused modules, each addressing a specific aspect of VSA functionality. The \texttt{vsax.core} module defines base abstractions (\texttt{VSAModel}, \texttt{VSAMemory}) and factory functions for model creation. The \texttt{vsax.representations} module implements \texttt{ComplexHypervector}, \texttt{RealHypervector}, and \texttt{BinaryHypervector} classes wrapping JAX arrays. The \texttt{vsax.ops} module provides \texttt{FHRROperations}, \texttt{MAPOperations}, and \texttt{BinaryOperations} implementing bind, bundle, and inverse operations for each model.
-
-The \texttt{vsax.encoders} module includes classes for transforming various data types into hypervectors: \texttt{ScalarEncoder} for continuous values, \texttt{SequenceEncoder} for temporal data, \texttt{SetEncoder} for unordered collections, \texttt{DictEncoder} for key-value pairs, \texttt{GraphEncoder} for relational structures, and \texttt{FractionalPowerEncoder} for continuous spatial and functional encoding. The \texttt{vsax.operators} module provides \texttt{CliffordOperator} and pre-defined operators for common relations (LEFT\_OF, PART\_OF, AGENT, PATIENT).
-
-The \texttt{vsax.spatial} module implements Spatial Semantic Pointers through \texttt{SpatialSemanticPointers} and \texttt{SSPConfig} classes, along with visualization utilities for 2D similarity maps and scene plots. The \texttt{vsax.vfa} module implements Vector Function Architecture via \texttt{VectorFunctionEncoder} and application classes (\texttt{DensityEstimator}, \texttt{NonlinearRegressor}, \texttt{ImageProcessor}). The \texttt{vsax.resonator} module provides \texttt{CleanupMemory} and \texttt{ResonatorNetwork} for factorization. The \texttt{vsax.similarity} module implements distance metrics (cosine, dot product, Hamming). The \texttt{vsax.io} module enables persistence through \texttt{save\_basis} and \texttt{load\_basis} functions for serializing named hypervectors.
-
-\subsection{Extensibility}
-
-Users extend VSAX by subclassing abstractions and implementing required methods. Custom hypervector types might implement specialized normalization strategies, efficient storage formats, or hardware-specific representations. Custom operation sets might implement non-standard binding operations, learned transformations, or approximate algorithms for resource-constrained environments. The library's modular design ensures that custom components integrate seamlessly with existing functionality.
-
-\begin{lstlisting}
-class CustomHypervector(AbstractHypervector):
-    def normalize(self):
-        return CustomHypervector(self._vec / custom_norm(self._vec))
-
-class CustomOperations(AbstractOpSet):
-    def bind(self, a, b):
-        return custom_bind_implementation(a, b)
-    def bundle(self, *args):
-        return custom_bundle_implementation(*args)
-    def inverse(self, a):
-        return custom_inverse_implementation(a)
-\end{lstlisting}
-
-\section{Software Engineering Practices}
-
-\subsection{Testing and Quality Assurance}
-
-VSAX maintains 618 automated tests across all modules, achieving 94\% code coverage. The test suite includes unit tests for every public method, integration tests for end-to-end workflows, property-based tests for mathematical invariants, and regression tests from reported issues. Unit tests verify individual operations (bind, bundle, normalize) against known results and mathematical properties. Integration tests validate complete workflows such as encoding a knowledge graph, performing multi-hop reasoning, and decoding results. Property-based tests use Hypothesis to verify algebraic properties (associativity, commutativity where expected, distributivity) across random inputs. Regression tests ensure previously fixed bugs remain fixed.
-
-Continuous integration via GitHub Actions executes the full test suite on Linux, macOS, and Windows for Python versions 3.9, 3.10, 3.11, and 3.12. This matrix testing ensures cross-platform compatibility and catches platform-specific issues early. Each CI run performs type checking with mypy in strict mode, linting with ruff (replacing flake8, isort, and black), formatting verification, and coverage reporting to prevent regressions. Failed tests block merging, ensuring the main branch always passes all checks.
-
-Code quality is maintained through automated tooling and manual review. Ruff provides fast linting with over 700 rules covering code style, potential bugs, and performance anti-patterns. Mypy verifies type annotations in strict mode, requiring explicit types for all function parameters and return values. Pre-commit hooks run these checks locally before commits, providing immediate feedback. Semantic versioning (MAJOR.MINOR.PATCH) ensures API stability, with clear communication of breaking changes through version increments and changelog entries.
-
-\subsection{Documentation}
-
-API documentation is auto-generated from docstrings using mkdocstrings with the Google docstring format. Every public function includes purpose description with mathematical formulation, parameter specifications with types and constraints, return type and shape information, usage examples demonstrating typical calls, and exception documentation describing error conditions. This comprehensive documentation serves as both reference material and executable specification.
-
-The library includes eleven hands-on tutorials with real datasets, covering fundamental tasks (MNIST classification, knowledge graph reasoning), advanced techniques (analogical reasoning with conceptual spaces, Clifford operators for structured reasoning), practical concerns (model comparison and selection, edge computing deployment), and recent additions (spatial semantic pointers, vector function architecture). Each tutorial provides narrative explanation, complete working code, and expected outputs, enabling users to learn by example.
-
-Nine topic-specific user guides provide in-depth coverage of major capabilities: models and operation sets, memory management and persistence, encoder design patterns, fractional power encoding mathematics, spatial semantic pointers applications, vector function architecture theory, similarity metrics and batch operations, resonator network dynamics, and GPU usage with performance tuning. These guides bridge the gap between API reference and tutorials, explaining design rationale and best practices.
-
-Working examples demonstrate all three VSA models in realistic scenarios, showing typical workflows for classification, similarity search, and compositional reasoning. Examples are maintained as runnable scripts in the repository, verified by CI to ensure they remain compatible with API changes.
-
-\subsection{Community and Accessibility}
-
-All development occurs in a public GitHub repository with transparent processes. Issues track bug reports and feature requests, providing a searchable record of known problems and planned enhancements. Discussions enable questions and design conversations, fostering community involvement in architectural decisions. Pull requests are welcome with clear contribution guidelines (\texttt{CONTRIBUTING.md}), code review processes, and automated checks ensuring quality standards. Semantic versioning provides API stability guarantees, with deprecation warnings for planned breaking changes.
-
-Research reproducibility is supported through multiple mechanisms. Fixed random seeds enable deterministic results across runs, critical for scientific comparisons. The \texttt{save\_basis} and \texttt{load\_basis} functions serialize named hypervectors to JSON, enabling exact replication of experiments with specific basis vectors. Version pinning via \texttt{pip freeze} or \texttt{pyproject.toml} ensures consistent dependencies. Example experiments in the repository provide reference implementations of published results.
-
-The MIT license enables both academic research and commercial deployment without restrictions, fostering broad adoption. This permissive licensing aligns with the open science principles of the VSA community and removes barriers to integration with proprietary systems.
-
-\section{Community Impact}
-
-\subsection{Comparison with Existing Tools}
-
-Several VSA software libraries exist, but each has significant limitations. Torchhd~\citep{heddes2023torchhd}, built on PyTorch, provides excellent support for multiple VSA models (FHRR, HRR, MAP, Binary, and others) with GPU acceleration and extensive classification capabilities. However, it lacks Clifford operators for exact compositional reasoning, complete Spatial Semantic Pointers implementation, and Vector Function Architecture. Torchhd provides kernel-based fractional power encoding and single-step resonator factorization, but these differ in scope from VSAX's integrated FPE/SSP/VFA system and iterative resonator networks. hdlib provides CPU-only implementations with basic functionality but lacks comprehensive documentation and production-quality engineering. PyBHV focuses exclusively on Binary hypervectors with narrow scope unsuitable for general VSA research.
-
-VSAX is the only library with Clifford-inspired operators for exact compositional reasoning (similarity exceeding 0.999 versus traditional 0.3-0.6), critical for knowledge representation tasks requiring precise unbinding. It uniquely provides complete Spatial Semantic Pointers with full 2D/3D scene encoding, object-location binding, bidirectional queries, and scene transformations. It is the only library with Vector Function Architecture, enabling RKHS function encoding with applications in density estimation, nonlinear regression, and image processing. While Torchhd provides single-step resonator factorization, VSAX implements full resonator networks with iterative convergence and cleanup memory integration. As the only JAX-based VSA library, VSAX provides automatic differentiation support for hybrid neuro-symbolic models and TPU compatibility for large-scale research.
-
-\begin{table}[h]
+\begin{table}[t]
 \centering
-\caption{Feature comparison with major VSA libraries (as of January 2025)}
+\caption{Feature comparison with major VSA libraries (January 2025)}
+\label{tab:comparison}
 \small
 \begin{tabular}{lcccc}
 \toprule
@@ -183,63 +131,24 @@ Tutorials & 11 & Many & 2 & 3 \\
 \end{tabular}
 \end{table}
 
-\subsection{Usage and Adoption}
+\section{Software Engineering and Community}
 
-VSAX has been publicly available on PyPI since December 2024, with active downloads and growing community engagement. The GitHub repository has garnered stars and forks from researchers across cognitive science, neuroscience, and machine learning. The library is being used in academic courses on cognitive architectures and neuro-symbolic AI, providing hands-on experience with VSA concepts. Production deployments include edge computing applications for sensor data processing and robotic navigation systems.
+VSAX maintains 618 automated tests achieving 94\% code coverage, including unit tests for individual operations, integration tests for end-to-end workflows, and property-based tests for algebraic invariants. Continuous integration via GitHub Actions tests on Linux, macOS, and Windows for Python 3.9-3.12, with type checking (mypy), linting (ruff), and coverage reporting. Code quality is enforced through automated tooling and pre-commit hooks.
 
-\section{Typical Workflows}
+API documentation is auto-generated from comprehensive docstrings using mkdocstrings with the Google format. Every public function includes purpose, parameters, return types, usage examples, and exception documentation. The library includes 11 hands-on tutorials with real datasets (MNIST classification, knowledge graph reasoning, analogical reasoning, Clifford operators, SSP, VFA) and 9 topic-specific user guides covering models, encoders, spatial encoding, and performance tuning.
 
-The following examples demonstrate typical research and production workflows using VSAX. Model comparison is straightforward due to the unified API, enabling researchers to evaluate FHRR versus MAP for knowledge graph reasoning by changing only the factory function while keeping all experimental code identical. This ensures fair comparisons with identical dimensionality, random seeds, and hyperparameters.
+Development occurs transparently on GitHub with issues tracking bugs and features, pull requests welcome with contribution guidelines, and semantic versioning for API stability. The \texttt{save\_basis} and \texttt{load\_basis} functions enable reproducible experiments by serializing named hypervectors. The MIT license enables both academic research and commercial deployment without restrictions.
 
-\begin{lstlisting}
-import jax
-from vsax import create_fhrr_model, create_map_model, VSAMemory
-from vsax.encoders import DictEncoder
-
-# Compare FHRR vs MAP for knowledge graph task
-models = {
-    "FHRR": create_fhrr_model(dim=1024, key=jax.random.PRNGKey(0)),
-    "MAP": create_map_model(dim=1024, key=jax.random.PRNGKey(0))
-}
-
-results = {}
-for name, model in models.items():
-    memory = VSAMemory(model)
-    encoder = DictEncoder(model, memory)
-    # ... run experiments ...
-    results[name] = accuracy
-\end{lstlisting}
-
-Production deployment workflows benefit from VSAX's persistence capabilities. Training creates a model and populates memory with domain-specific basis vectors, which are serialized to JSON for deployment. The production system loads these pre-trained basis vectors, ensuring exact consistency between training and inference. This workflow supports version control of basis vectors, reproducible deployments, and rapid model updates.
-
-\begin{lstlisting}
-from vsax import create_fhrr_model, VSAMemory
-from vsax.io import save_basis, load_basis
-
-# Training: create and save model
-model = create_fhrr_model(dim=512)
-memory = VSAMemory(model)
-memory.add_many(["concept1", "concept2", ...])
-save_basis(memory, "production_basis.json")
-
-# Deployment: load pre-trained basis
-deployment_memory = VSAMemory(model)
-load_basis(deployment_memory, "production_basis.json")
-\end{lstlisting}
-
-\section{Future Development}
-
-Future enhancements will be guided by user feedback and emerging research. Planned additions include non-commutative operator algebras for representing asymmetric relations, learned encoder bases via gradient descent for domain adaptation, multi-dimensional VFA supporting functions $f: \mathbb{R}^n \to \mathbb{R}^m$, probabilistic VSA extensions for uncertainty quantification, and neuromorphic backends (Intel Loihi, BrainScaleS) for energy-efficient edge deployment. Community contributions are welcome through the GitHub repository, with clear guidelines for proposing features, submitting patches, and maintaining code quality standards.
+VSAX has been publicly available on PyPI since December 2024 with active downloads and growing community engagement. The library is used in academic courses on cognitive architectures and production deployments for edge computing and robotic navigation.
 
 \section{Conclusion}
 
-VSAX provides the VSA community with comprehensive, production-ready software that combines research capabilities with software engineering best practices. By unifying fragmented tools under a consistent API, providing GPU acceleration through JAX, and introducing novel capabilities unavailable elsewhere (Clifford operators, continuous encoding, resonator networks), VSAX lowers barriers to VSA research and enables deployment of VSA-based systems with confidence. The library's MIT license, extensive documentation (11 tutorials, 9 user guides, complete API reference), strong testing (618 tests, 94\% coverage), and active development make it suitable for academic research, educational use, and production applications. We believe VSAX will accelerate VSA research by enabling rapid prototyping, fair model comparisons, and seamless transition from research to deployment.
+VSAX provides the VSA community with comprehensive, production-ready software combining research capabilities with software engineering best practices. By unifying three VSA models under a consistent API, providing GPU acceleration through JAX, and introducing novel capabilities (Clifford operators, continuous encoding, resonator networks), VSAX lowers barriers to VSA research and enables confident deployment. The library's MIT license, extensive documentation, strong testing, and active development make it suitable for academic research, education, and production applications. Future enhancements include non-commutative operator algebras, learned encoder bases, multi-dimensional VFA, probabilistic extensions, and neuromorphic backends.
 
 \section*{Acknowledgments}
 
-We thank the JAX team at Google for providing the excellent framework underlying VSAX's performance and the VSA research community for feedback on design and functionality.
+We thank the JAX team at Google for the excellent framework underlying VSAX's performance and the VSA research community for feedback on design and functionality.
 
-\vskip 0.2in
 \bibliography{vsax_mloss}
 \bibliographystyle{plainnat}
 

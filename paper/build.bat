@@ -61,6 +61,8 @@ echo [1/5] First pdflatex pass...
 pdflatex -output-directory=build -interaction=nonstopmode %BASENAME%.tex >nul 2>&1
 
 echo [2/5] Running bibtex...
+REM Copy .bib file to build directory so bibtex can find it
+if exist "%BASENAME%.bib" copy "%BASENAME%.bib" "build\" >nul 2>&1
 pushd build
 bibtex %BASENAME% >nul 2>&1
 popd
