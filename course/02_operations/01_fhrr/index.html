@@ -298,7 +298,7 @@
           
   
   
-  Course
+  Learn
 
         </a>
       </li>
@@ -585,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Course
+    Learn
   
 
     
@@ -601,7 +601,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course
+    Learn
   
 
           </label>
@@ -1756,7 +1756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
         
   
   
@@ -1784,7 +1784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
         
   
   
@@ -1812,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
         
   
   
@@ -1840,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
         
   
   
@@ -1961,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
         
   
   
@@ -1989,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
         
   
   
@@ -2017,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
         
   
   
@@ -4631,9 +4631,9 @@
 <p>FHRR vectors are complex numbers: each element has a <strong>real</strong> and <strong>imaginary</strong> part.</p>
 <h3 id="unit-magnitude-complex-vectors">Unit-Magnitude Complex Vectors<a class="headerlink" href="#unit-magnitude-complex-vectors" title="Permanent link">&para;</a></h3>
 <p>FHRR vectors are normalized to unit magnitude. In polar form:</p>
-<p>$$z = e^{i\theta} = \cos(\theta) + i\sin(\theta)$$</p>
-<p>where $\theta$ is the <strong>phase angle</strong>.</p>
-<p><strong>Key property:</strong> $|e^{i\theta}| = 1$ for all $\theta$.</p>
+<div class="arithmatex">\[z = e^{i\theta} = \cos(\theta) + i\sin(\theta)\]</div>
+<p>where <span class="arithmatex">\(\theta\)</span> is the <strong>phase angle</strong>.</p>
+<p><strong>Key property:</strong> <span class="arithmatex">\(|e^{i\theta}| = 1\)</span> for all <span class="arithmatex">\(\theta\)</span>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Create a unit-magnitude complex vector</span>
@@ -4652,22 +4652,22 @@
 <h2 id="binding-circular-convolution-via-fft">Binding: Circular Convolution via FFT<a class="headerlink" href="#binding-circular-convolution-via-fft" title="Permanent link">&para;</a></h2>
 <p>FHRR binding is <strong>circular convolution</strong>, efficiently computed using the FFT.</p>
 <h3 id="what-is-circular-convolution">What is Circular Convolution?<a class="headerlink" href="#what-is-circular-convolution" title="Permanent link">&para;</a></h3>
-<p>For two vectors $\mathbf{a}$ and $\mathbf{b}$ of length $n$, circular convolution is:</p>
-<p>$$(a \circledast b)[k] = \sum_{j=0}^{n-1} a[j] \cdot b[(k-j) \mod n]$$</p>
+<p>For two vectors <span class="arithmatex">\(\mathbf{a}\)</span> and <span class="arithmatex">\(\mathbf{b}\)</span> of length <span class="arithmatex">\(n\)</span>, circular convolution is:</p>
+<div class="arithmatex">\[(a \circledast b)[k] = \sum_{j=0}^{n-1} a[j] \cdot b[(k-j) \mod n]\]</div>
 <p><strong>Intuition:</strong> Each output element is a weighted sum of rotated versions of the inputs.</p>
 <h3 id="why-use-convolution-for-binding">Why Use Convolution for Binding?<a class="headerlink" href="#why-use-convolution-for-binding" title="Permanent link">&para;</a></h3>
 <p><strong>The Convolution Theorem</strong> states:</p>
-<p>$$\mathcal{F}(a \circledast b) = \mathcal{F}(a) \odot \mathcal{F}(b)$$</p>
+<div class="arithmatex">\[\mathcal{F}(a \circledast b) = \mathcal{F}(a) \odot \mathcal{F}(b)\]</div>
 <p>where:
-- $\mathcal{F}$ is the Fourier transform (FFT)
-- $\odot$ is element-wise multiplication
-- $\circledast$ is circular convolution</p>
+- <span class="arithmatex">\(\mathcal{F}\)</span> is the Fourier transform (FFT)
+- <span class="arithmatex">\(\odot\)</span> is element-wise multiplication
+- <span class="arithmatex">\(\circledast\)</span> is circular convolution</p>
 <p><strong>Key insight:</strong> Convolution in the spatial domain = multiplication in the frequency domain!</p>
 <p>This means we can compute convolution efficiently:
-1. FFT both vectors: $O(n \log n)$
-2. Multiply element-wise: $O(n)$
-3. Inverse FFT: $O(n \log n)$</p>
-<p>Total: $O(n \log n)$ instead of $O(n^2)$ for direct convolution.</p>
+1. FFT both vectors: <span class="arithmatex">\(O(n \log n)\)</span>
+2. Multiply element-wise: <span class="arithmatex">\(O(n)\)</span>
+3. Inverse FFT: <span class="arithmatex">\(O(n \log n)\)</span></p>
+<p>Total: <span class="arithmatex">\(O(n \log n)\)</span> instead of <span class="arithmatex">\(O(n^2)\)</span> for direct convolution.</p>
 <hr />
 <h2 id="implementing-fhrr-binding">Implementing FHRR Binding<a class="headerlink" href="#implementing-fhrr-binding" title="Permanent link">&para;</a></h2>
 <p>Let's implement binding step-by-step.</p>
@@ -4692,7 +4692,7 @@
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="n">result_naive</span> <span class="o">=</span> <span class="n">circular_convolution_naive</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Naive result:&quot;</span><span class="p">,</span> <span class="n">result_naive</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>Problem:</strong> $O(n^2)$ complexity - too slow for d=2048!</p>
+<p><strong>Problem:</strong> <span class="arithmatex">\(O(n^2)\)</span> complexity - too slow for d=2048!</p>
 <h3 id="step-2-fft-based-convolution-fast">Step 2: FFT-Based Convolution (Fast!)<a class="headerlink" href="#step-2-fft-based-convolution-fast" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">circular_convolution_fft</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -4753,7 +4753,7 @@
 <p>The magic of FHRR is that binding operates on <strong>phase angles</strong>.</p>
 <h3 id="visualizing-phase-arithmetic">Visualizing Phase Arithmetic<a class="headerlink" href="#visualizing-phase-arithmetic" title="Permanent link">&para;</a></h3>
 <p>For unit-magnitude complex numbers:</p>
-<p>$$e^{i\theta_1} \cdot e^{i\theta_2} = e^{i(\theta_1 + \theta_2)}$$</p>
+<div class="arithmatex">\[e^{i\theta_1} \cdot e^{i\theta_2} = e^{i(\theta_1 + \theta_2)}\]</div>
 <p><strong>Binding adds phases!</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Example: Simple 2D case</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">theta_a</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
@@ -4774,9 +4774,9 @@
 <hr />
 <h2 id="unbinding-complex-conjugate">Unbinding: Complex Conjugate<a class="headerlink" href="#unbinding-complex-conjugate" title="Permanent link">&para;</a></h2>
 <p>The <strong>complex conjugate</strong> flips the sign of the imaginary part:</p>
-<p>$$\overline{e^{i\theta}} = e^{-i\theta}$$</p>
+<div class="arithmatex">\[\overline{e^{i\theta}} = e^{-i\theta}\]</div>
 <p>This gives us <strong>exact inversion</strong>:</p>
-<p>$$e^{i\theta_1} \cdot e^{i\theta_2} \cdot e^{-i\theta_2} = e^{i\theta_1}$$</p>
+<div class="arithmatex">\[e^{i\theta_1} \cdot e^{i\theta_2} \cdot e^{-i\theta_2} = e^{i\theta_1}\]</div>
 <h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
@@ -5146,6 +5146,12 @@ d) MAP uses lossy compression</p>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

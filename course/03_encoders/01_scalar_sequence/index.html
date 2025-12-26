@@ -298,7 +298,7 @@
           
   
   
-  Course
+  Learn
 
         </a>
       </li>
@@ -585,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Course
+    Learn
   
 
     
@@ -601,7 +601,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course
+    Learn
   
 
           </label>
@@ -1777,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
         
   
   
@@ -1805,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
         
   
   
@@ -1833,7 +1833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
         
   
   
@@ -1861,7 +1861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
         
   
   
@@ -1982,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
         
   
   
@@ -2010,7 +2010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
         
   
   
@@ -2038,7 +2038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
         
   
   
@@ -4707,8 +4707,8 @@
 </code></pre></div></p>
 <h3 id="scalarencoder-basic-usage">ScalarEncoder: Basic Usage<a class="headerlink" href="#scalarencoder-basic-usage" title="Permanent link">&para;</a></h3>
 <p><strong>ScalarEncoder</strong> encodes numeric values using <strong>power encoding</strong>:</p>
-<p>$$\text{encode}(s, v) = s^v$$</p>
-<p>where $s$ is the basis symbol and $v$ is the value.</p>
+<div class="arithmatex">\[\text{encode}(s, v) = s^v\]</div>
+<p>where <span class="arithmatex">\(s\)</span> is the basis symbol and <span class="arithmatex">\(v\)</span> is the value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">VSAMemory</span><span class="p">,</span> <span class="n">ScalarEncoder</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
@@ -4739,12 +4739,12 @@
 <hr />
 <h3 id="how-power-encoding-works">How Power Encoding Works<a class="headerlink" href="#how-power-encoding-works" title="Permanent link">&para;</a></h3>
 <p>For <strong>FHRR (complex vectors)</strong>, power encoding uses <strong>phase rotation</strong>:</p>
-<p>$$v = e^{i\theta} \quad \Rightarrow \quad v^r = e^{i \cdot r \cdot \theta}$$</p>
+<div class="arithmatex">\[v = e^{i\theta} \quad \Rightarrow \quad v^r = e^{i \cdot r \cdot \theta}\]</div>
 <ul>
-<li>Each element is a unit complex number: $e^{i\theta}$</li>
-<li>Raising to power $r$ rotates phase by $r \times \theta$</li>
-<li><strong>Smooth:</strong> Small change in $r$ → small rotation → high similarity</li>
-<li><strong>Norm-preserving:</strong> $|v^r| = 1$ for all $r$</li>
+<li>Each element is a unit complex number: <span class="arithmatex">\(e^{i\theta}\)</span></li>
+<li>Raising to power <span class="arithmatex">\(r\)</span> rotates phase by <span class="arithmatex">\(r \times \theta\)</span></li>
+<li><strong>Smooth:</strong> Small change in <span class="arithmatex">\(r\)</span> → small rotation → high similarity</li>
+<li><strong>Norm-preserving:</strong> <span class="arithmatex">\(|v^r| = 1\)</span> for all <span class="arithmatex">\(r\)</span></li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
@@ -4761,7 +4761,7 @@
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;|v^3| = </span><span class="si">{</span><span class="n">jnp</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v_cubed</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 1.0 (norm preserved)</span>
 </code></pre></div>
 <p>For <strong>MAP and Binary</strong>, power encoding uses <strong>iterated binding</strong>:
-- $v^3 = v \otimes v \otimes v$ (bind vector with itself 3 times)
+- <span class="arithmatex">\(v^3 = v \otimes v \otimes v\)</span> (bind vector with itself 3 times)
 - Less precise than FHRR's phase rotation
 - <strong>Recommendation:</strong> Use FHRR for continuous encoding</p>
 <hr />
@@ -4862,7 +4862,7 @@
 <a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">point1</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">point2</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spatial similarity: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># ~0.95</span>
 </code></pre></div>
-<p><strong>What it does:</strong> Computes $X^{3.5} \otimes Y^{2.1}$</p>
+<p><strong>What it does:</strong> Computes <span class="arithmatex">\(X^{3.5} \otimes Y^{2.1}\)</span></p>
 <p><strong>Why it's useful:</strong> Spatial proximity is preserved as hypervector similarity!</p>
 <hr />
 <h3 id="fpe-use-cases">FPE Use Cases<a class="headerlink" href="#fpe-use-cases" title="Permanent link">&para;</a></h3>
@@ -5015,11 +5015,11 @@
 <hr />
 <h3 id="how-sequenceencoder-works">How SequenceEncoder Works<a class="headerlink" href="#how-sequenceencoder-works" title="Permanent link">&para;</a></h3>
 <p><strong>Encoding algorithm:</strong>
-1. For each element at index $i$:
+1. For each element at index <span class="arithmatex">\(i\)</span>:
    - Get position vector: <code>POS[i]</code>
    - Bind element with position: <code>POS[i] ⊗ element[i]</code>
 2. Bundle all position-bound elements:</p>
-<p>$$\text{sequence} = \bigoplus_{i=0}^{n-1} (\text{POS}[i] \otimes \text{elem}[i])$$</p>
+<div class="arithmatex">\[\text{sequence} = \bigoplus_{i=0}^{n-1} (\text{POS}[i] \otimes \text{elem}[i])\]</div>
 <p><strong>Position vectors</strong> are created automatically by binding a base "POSITION" vector:
 - <code>POS[0] = POSITION^0 = identity</code>
 - <code>POS[1] = POSITION^1 = POSITION</code>
@@ -5435,6 +5435,12 @@ d) No effect</p>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

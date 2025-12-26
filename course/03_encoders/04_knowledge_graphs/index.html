@@ -298,7 +298,7 @@
           
   
   
-  Course
+  Learn
 
         </a>
       </li>
@@ -585,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Course
+    Learn
   
 
     
@@ -601,7 +601,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course
+    Learn
   
 
           </label>
@@ -1777,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
         
   
   
@@ -1805,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
         
   
   
@@ -1833,7 +1833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
         
   
   
@@ -1861,7 +1861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
         
   
   
@@ -1982,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
         
   
   
@@ -2010,7 +2010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
         
   
   
@@ -2038,7 +2038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
         
   
   
@@ -4689,7 +4689,7 @@
 <hr />
 <h3 id="encoding-triples-with-vsa">Encoding Triples with VSA<a class="headerlink" href="#encoding-triples-with-vsa" title="Permanent link">&para;</a></h3>
 <p>Each triple is encoded using <strong>3-way binding</strong>:</p>
-<p>$$\text{fact} = \text{subject} \otimes \text{relation} \otimes \text{object}$$</p>
+<div class="arithmatex">\[\text{fact} = \text{subject} \otimes \text{relation} \otimes \text{object}\]</div>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -4735,7 +4735,7 @@
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Knowledge base: </span><span class="si">{</span><span class="nb">len</span><span class="p">([</span><span class="o">...</span><span class="p">])</span><span class="si">}</span><span class="s2"> facts encoded&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>What it does:</strong>
-$$\text{KB} = (\text{dog} \otimes \text{isA} \otimes \text{mammal}) \oplus (\text{cat} \otimes \text{isA} \otimes \text{mammal}) \oplus \ldots$$</p>
+$<span class="arithmatex">\(\text{KB} = (\text{dog} \otimes \text{isA} \otimes \text{mammal}) \oplus (\text{cat} \otimes \text{isA} \otimes \text{mammal}) \oplus \ldots\)</span>$</p>
 <hr />
 <h2 id="querying-knowledge-graphs">Querying Knowledge Graphs<a class="headerlink" href="#querying-knowledge-graphs" title="Permanent link">&para;</a></h2>
 <h3 id="query-type-1-subject-relation">Query Type 1: (Subject, Relation, ?)<a class="headerlink" href="#query-type-1-subject-relation" title="Permanent link">&para;</a></h3>
@@ -5158,6 +5158,12 @@ d) FHRR supports more relations</p>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

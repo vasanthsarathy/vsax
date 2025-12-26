@@ -298,7 +298,7 @@
           
   
   
-  Course
+  Learn
 
         </a>
       </li>
@@ -585,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Course
+    Learn
   
 
     
@@ -601,7 +601,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course
+    Learn
   
 
           </label>
@@ -1717,7 +1717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
         
   
   
@@ -1745,7 +1745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
         
   
   
@@ -1773,7 +1773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
         
   
   
@@ -1801,7 +1801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
         
   
   
@@ -1922,7 +1922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
         
   
   
@@ -1950,7 +1950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
         
   
   
@@ -1978,7 +1978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
         
   
   
@@ -4553,7 +4553,7 @@
 <hr />
 <h2 id="metric-1-cosine-similarity">Metric 1: Cosine Similarity<a class="headerlink" href="#metric-1-cosine-similarity" title="Permanent link">&para;</a></h2>
 <p><strong>Cosine similarity</strong> measures the angle between two vectors, normalized to [-1, 1].</p>
-<p>$$\text{sim}(\mathbf{a}, \mathbf{b}) = \frac{\mathbf{a} \cdot \mathbf{b}}{||\mathbf{a}|| \cdot ||\mathbf{b}||}$$</p>
+<div class="arithmatex">\[\text{sim}(\mathbf{a}, \mathbf{b}) = \frac{\mathbf{a} \cdot \mathbf{b}}{||\mathbf{a}|| \cdot ||\mathbf{b}||}\]</div>
 <p><strong>Interpretation:</strong>
 - <strong>1.0</strong>: Identical direction (perfect match)
 - <strong>0.7-0.9</strong>: Strong similarity
@@ -4590,7 +4590,7 @@
 <hr />
 <h2 id="metric-2-dot-product-similarity">Metric 2: Dot Product Similarity<a class="headerlink" href="#metric-2-dot-product-similarity" title="Permanent link">&para;</a></h2>
 <p><strong>Dot product</strong> is unnormalized similarity - just the raw inner product.</p>
-<p>$$\text{sim}(\mathbf{a}, \mathbf{b}) = \mathbf{a} \cdot \mathbf{b} = \sum_{i} a_i \cdot b_i$$</p>
+<div class="arithmatex">\[\text{sim}(\mathbf{a}, \mathbf{b}) = \mathbf{a} \cdot \mathbf{b} = \sum_{i} a_i \cdot b_i\]</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot_similarity</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Works with all hypervector types</span>
@@ -4609,7 +4609,7 @@
 <hr />
 <h2 id="metric-3-hamming-similarity">Metric 3: Hamming Similarity<a class="headerlink" href="#metric-3-hamming-similarity" title="Permanent link">&para;</a></h2>
 <p><strong>Hamming similarity</strong> counts the fraction of matching elements (for binary vectors).</p>
-<p>$$\text{sim}(\mathbf{a}, \mathbf{b}) = \frac{1}{n} \sum_{i} \mathbb{1}[a_i = b_i]$$</p>
+<div class="arithmatex">\[\text{sim}(\mathbf{a}, \mathbf{b}) = \frac{1}{n} \sum_{i} \mathbb{1}[a_i = b_i]\]</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_binary_model</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">hamming_similarity</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
@@ -5055,6 +5055,12 @@ d) Works on GPU only</p>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

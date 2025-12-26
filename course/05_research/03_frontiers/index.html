@@ -1,0 +1,5999 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JAX-native Vector Symbolic Algebra library">
+      
+      
+        <meta name="author" content="VSAX Contributors">
+      
+      
+        <link rel="canonical" href="https://vsax.readthedocs.io/course/05_research/03_frontiers/">
+      
+      
+        <link rel="prev" href="../02_custom_encoders/">
+      
+      
+        <link rel="next" href="../../troubleshooting/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>5.3 Research Frontiers - VSAX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lesson-53-research-frontiers-open-problems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSAX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.3 Research Frontiers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../modeling-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Modeling Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Learn
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guide/models/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../examples/fhrr/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../comparison/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  VSAX vs Other Libraries
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../design-spec/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Design Spec
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSAX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modeling-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 1 - Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/01_high_dimensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Why High Dimensions?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/02_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Binding and Bundling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/03_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Three VSA Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/04_first_program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 First Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - Core Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 2 - Core Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/01_fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 FHRR Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/02_map_binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 MAP and Binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/03_similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/04_selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Model Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - Encoders & Applications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 3 - Encoders & Applications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/01_scalar_sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Scalar & Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/02_dict_sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Dict & Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/03_images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Image Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/04_knowledge_graphs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Knowledge Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/05_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Analogies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - Advanced Techniques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 4 - Advanced Techniques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Spatial Semantic Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Hierarchical & Resonators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Multi-Modal & Neural-Symbolic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 5 - Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Vector Function Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_custom_encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Custom Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Research Frontiers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Research Frontiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-state-of-vsa-research-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The State of VSA Research (2025)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-1-learning-based-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 1: Learning-Based VSA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 1: Learning-Based VSA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-2-vsa-large-language-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 2: VSA + Large Language Models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 2: VSA + Large Language Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-3-neuromorphic-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 3: Neuromorphic Hardware
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 3: Neuromorphic Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-4-dimensionality-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 4: Dimensionality &amp; Capacity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 4: Dimensionality &amp; Capacity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-5-continual-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 5: Continual Learning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 5: Continual Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-6-interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 6: Interpretability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 6: Interpretability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-problems-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Problems Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Problems Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theoretical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithmic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applied
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-vsax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing to VSAX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contributing to VSAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-get-involved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Get Involved
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formulating-your-research-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formulating Your Research Question
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formulating Your Research Question">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-turn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Turn
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-for-further-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources for Further Learning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources for Further Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-papers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Papers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conferences-workshops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conferences &amp; Workshops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-communities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Online Communities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Assessment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Quiz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Complete!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-go-from-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to Go From Here
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where to Go From Here">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics-beyond-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Topics (Beyond This Course)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Opportunities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-words" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Words
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/01_mnist_classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MNIST Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/02_knowledge_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Graph Reasoning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/03_kanerva_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kanerva's Dollar of Mexico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/04_word_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Word Analogies & Random Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/05_model_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding VSA Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/06_edge_computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA for Edge Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/07_hierarchical_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hierarchical Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/08_multimodal_grounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Modal Concept Grounding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/09_neural_symbolic_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neural-Symbolic Fusion (HD-Glue)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/10_clifford_operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/11_analogical_reasoning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analogical Reasoning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/fpe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fractional Power Encoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Semantic Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Function Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/batch_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/gpu_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/representations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRR Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAP Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAModel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Encoders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScalarEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/fpe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FractionalPowerEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SequenceEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SetEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/dict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DictEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Representations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/complex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComplexHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RealHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRROperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAPOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VFA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAX vs Other Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-state-of-vsa-research-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The State of VSA Research (2025)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-1-learning-based-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 1: Learning-Based VSA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 1: Learning-Based VSA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-2-vsa-large-language-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 2: VSA + Large Language Models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 2: VSA + Large Language Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-3-neuromorphic-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 3: Neuromorphic Hardware
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 3: Neuromorphic Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-4-dimensionality-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 4: Dimensionality &amp; Capacity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 4: Dimensionality &amp; Capacity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-5-continual-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 5: Continual Learning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 5: Continual Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#research-direction-6-interpretability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Direction 6: Interpretability
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research Direction 6: Interpretability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-question_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approaches_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-research-opportunity_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Research Opportunity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-problems-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Problems Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Problems Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theoretical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithmic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applied
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-vsax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contributing to VSAX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contributing to VSAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-get-involved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Get Involved
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formulating-your-research-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formulating Your Research Question
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formulating Your Research Question">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-turn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your Turn
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-for-further-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources for Further Learning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources for Further Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-papers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Papers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conferences-workshops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conferences &amp; Workshops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-communities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Online Communities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Assessment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Quiz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course Complete!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-go-from-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to Go From Here
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where to Go From Here">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics-beyond-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Topics (Beyond This Course)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research Opportunities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-words" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Words
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lesson-53-research-frontiers-open-problems">Lesson 5.3: Research Frontiers &amp; Open Problems<a class="headerlink" href="#lesson-53-research-frontiers-open-problems" title="Permanent link">&para;</a></h1>
+<p><strong>Estimated time:</strong> 45 minutes</p>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Identify current research directions in Vector Symbolic Architectures</li>
+<li>Understand open problems and challenges in the field</li>
+<li>Explore connections between VSA and modern deep learning</li>
+<li>Recognize opportunities for neuromorphic hardware implementations</li>
+<li>Find ways to contribute to VSAX and the VSA research community</li>
+<li>Formulate your own research questions in VSA</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Completion of Modules 1-4 (foundational VSA knowledge)</li>
+<li>Lessons 5.1-5.2 (VFA and custom encoders)</li>
+<li>Interest in research and pushing boundaries</li>
+</ul>
+<hr />
+<h2 id="the-state-of-vsa-research-2025">The State of VSA Research (2025)<a class="headerlink" href="#the-state-of-vsa-research-2025" title="Permanent link">&para;</a></h2>
+<p>Vector Symbolic Architectures have evolved from a niche area to a vibrant research field with applications across:</p>
+<ul>
+<li><strong>Cognitive Science:</strong> Modeling human memory and reasoning</li>
+<li><strong>Robotics:</strong> Efficient control and perception</li>
+<li><strong>Neuroscience:</strong> Understanding neural computation</li>
+<li><strong>Edge Computing:</strong> Lightweight AI for resource-constrained devices</li>
+<li><strong>Neuromorphic Hardware:</strong> Brain-inspired computing architectures</li>
+</ul>
+<p><strong>Recent momentum:</strong>
+- 📈 Papers at major conferences (NeurIPS, ICML, ICLR, CVPR)
+- 🏢 Industrial adoption (Intel, IBM, startups)
+- 🔬 Cross-disciplinary collaborations (neuroscience + ML + hardware)</p>
+<hr />
+<h2 id="research-direction-1-learning-based-vsa">Research Direction 1: Learning-Based VSA<a class="headerlink" href="#research-direction-1-learning-based-vsa" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Permanent link">&para;</a></h3>
+<p>Traditional VSA uses <strong>random basis vectors</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>  <span class="c1"># Samples random vector</span>
+</code></pre></div></p>
+<p><strong>Limitations:</strong>
+- No semantic structure (random vectors don't capture meaning)
+- Cannot leverage pre-trained knowledge
+- Similarity depends on encoding, not inherent meaning</p>
+<h3 id="research-question">Research Question<a class="headerlink" href="#research-question" title="Permanent link">&para;</a></h3>
+<p><strong>Can we learn basis vectors that capture semantic structure?</strong></p>
+<h3 id="approaches">Approaches<a class="headerlink" href="#approaches" title="Permanent link">&para;</a></h3>
+<p><strong>1. Pre-training from Data</strong></p>
+<p>Train basis vectors to preserve semantic relationships:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Hypothetical learned basis</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_learned</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">embedding_from_bert</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">))</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_learned</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="n">embedding_from_bert</span><span class="p">(</span><span class="s2">&quot;dog&quot;</span><span class="p">))</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Now cat and dog have inherent similarity!</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>  <span class="c1"># High!</span>
+</code></pre></div>
+<p><strong>Current work:</strong>
+- Mikolić et al. (2024): "Learning Hyperdimensional Representations from Data"
+- VSA + Word2Vec/BERT hybrid models</p>
+<p><strong>2. Meta-Learning VSA Operations</strong></p>
+<p>Learn optimal binding/bundling strategies for specific domains:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Learn domain-specific binding operator</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">learned_bind</span> <span class="o">=</span> <span class="n">LearnedBindingOperator</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;vision&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">learned_bind</span><span class="p">(</span><span class="n">object1</span><span class="p">,</span> <span class="n">object2</span><span class="p">)</span>  <span class="c1"># Better than random binding?</span>
+</code></pre></div>
+<p><strong>Open problems:</strong>
+- How to integrate gradient-based learning with discrete VSA ops?
+- Can we learn in high dimensions (10,000+) efficiently?
+- What inductive biases preserve VSA properties?</p>
+<h3 id="your-research-opportunity">Your Research Opportunity<a class="headerlink" href="#your-research-opportunity" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project idea:</strong> Train VSA basis vectors using contrastive learning</li>
+<li><strong>Questions:</strong> Do learned bases retain VSA's symbolic properties? How much data is needed?</li>
+</ul>
+<hr />
+<h2 id="research-direction-2-vsa-large-language-models">Research Direction 2: VSA + Large Language Models<a class="headerlink" href="#research-direction-2-vsa-large-language-models" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem_1">The Problem<a class="headerlink" href="#the-problem_1" title="Permanent link">&para;</a></h3>
+<p>LLMs are powerful but:
+- ❌ Opaque reasoning (black box)
+- ❌ Cannot perform symbolic operations (binding, unbinding)
+- ❌ Huge computational cost</p>
+<p>VSA is efficient but:
+- ❌ Requires manual feature engineering
+- ❌ Cannot handle raw text well</p>
+<h3 id="research-question_1">Research Question<a class="headerlink" href="#research-question_1" title="Permanent link">&para;</a></h3>
+<p><strong>How can we combine LLM representations with VSA symbolic reasoning?</strong></p>
+<h3 id="approaches_1">Approaches<a class="headerlink" href="#approaches_1" title="Permanent link">&para;</a></h3>
+<p><strong>1. LLM Embeddings → VSA Encoding</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Get LLM embedding</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">model_llm</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-uncased&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-uncased&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The cat sat on the mat&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">embedding</span> <span class="o">=</span> <span class="n">model_llm</span><span class="p">(</span><span class="o">**</span><span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [CLS] pooling</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Project to VSA space</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">vsa_hv</span> <span class="o">=</span> <span class="n">project_to_vsa</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># Now can perform symbolic operations</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;sentence&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="p">(</span><span class="n">vsa_hv</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>2. VSA-Augmented LLM Reasoning</strong></p>
+<p>Use VSA as external symbolic memory for LLMs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>LLM generates text → Extract facts → Encode in VSA → Query VSA → Feed back to LLM
+</code></pre></div>
+<p><strong>Current work:</strong>
+- Nunes et al. (2024): "Neuro-Symbolic Question Answering with HDC"
+- VSA for factual knowledge grounding in LLMs</p>
+<p><strong>3. Hybrid Architecture</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Input → LLM encoder → VSA layer → Reasoning → VSA decoder → LLM decoder → Output
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>         (perception)   (symbolic)  (inference)  (symbolic)    (generation)
+</code></pre></div>
+<p><strong>Open problems:</strong>
+- How to backpropagate through VSA operations?
+- Can VSA help with LLM hallucinations (via symbolic grounding)?
+- What's the optimal dimensionality for LLM-VSA hybrids?</p>
+<h3 id="your-research-opportunity_1">Your Research Opportunity<a class="headerlink" href="#your-research-opportunity_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project idea:</strong> Build a VSA-augmented chatbot that can reason symbolically</li>
+<li><strong>Questions:</strong> Does VSA improve factual accuracy? Can it explain reasoning steps?</li>
+</ul>
+<hr />
+<h2 id="research-direction-3-neuromorphic-hardware">Research Direction 3: Neuromorphic Hardware<a class="headerlink" href="#research-direction-3-neuromorphic-hardware" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem_2">The Problem<a class="headerlink" href="#the-problem_2" title="Permanent link">&para;</a></h3>
+<p>Traditional von Neumann architectures are inefficient for VSA:
+- High-dimensional vectors (10,000 dims) → memory bottleneck
+- Binding/bundling are embarrassingly parallel → underutilized</p>
+<h3 id="research-question_2">Research Question<a class="headerlink" href="#research-question_2" title="Permanent link">&para;</a></h3>
+<p><strong>Can we build specialized hardware for VSA that's orders of magnitude more efficient?</strong></p>
+<h3 id="approaches_2">Approaches<a class="headerlink" href="#approaches_2" title="Permanent link">&para;</a></h3>
+<p><strong>1. In-Memory Computing</strong></p>
+<p>Store hypervectors directly in analog memory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Hypervector [0.3, -0.7, 0.5, ...] → Stored as resistances in ReRAM
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Bundling → Parallel current summation (analog addition)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Binding → Element-wise multiply in crossbar array
+</code></pre></div>
+<p><strong>Advantages:</strong>
+- ⚡ Extremely fast (nanosecond operations)
+- 🔋 Low power (no data movement)
+- 📦 Compact (analog storage)</p>
+<p><strong>Current work:</strong>
+- Karunaratne et al. (2020): "In-memory hyperdimensional computing"
+- IBM neuromorphic chips with HDC</p>
+<p><strong>2. Spiking Neural Networks (SNNs) + VSA</strong></p>
+<p>Encode hypervectors as spike patterns:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Hypervector component 0.7 → High firing rate neuron
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Hypervector component -0.3 → Low firing rate neuron
+</code></pre></div>
+<p><strong>Advantages:</strong>
+- 🧠 Biologically plausible
+- ⚡ Event-driven (sparse activity)
+- 🔋 Ultra-low power</p>
+<p><strong>Current work:</strong>
+- Mitrokhin et al. (2023): "Learning sensorimotor representations with spiking HDC"
+- Intel Loihi neuromorphic chip</p>
+<p><strong>3. Photonic Computing</strong></p>
+<p>Use light for hypervector operations:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Hypervector → Optical signal (wavelength/phase encoded)
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Binding → Optical interference
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Bundling → Beam combining
+</code></pre></div>
+<p><strong>Advantages:</strong>
+- 🚀 Speed of light computation
+- ❄️ Minimal heat generation
+- 🔧 Massively parallel</p>
+<p><strong>Open problems:</strong>
+- How to handle negative values in analog hardware?
+- Can we train VSA models directly on neuromorphic chips?
+- What's the optimal hypervector representation for SNNs?</p>
+<h3 id="your-research-opportunity_2">Your Research Opportunity<a class="headerlink" href="#your-research-opportunity_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project idea:</strong> Simulate VSA on spiking neural network simulator (e.g., Brian2, NEST)</li>
+<li><strong>Questions:</strong> What's the energy efficiency gain? Can SNNs learn VSA operations?</li>
+</ul>
+<hr />
+<h2 id="research-direction-4-dimensionality-capacity">Research Direction 4: Dimensionality &amp; Capacity<a class="headerlink" href="#research-direction-4-dimensionality-capacity" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem_3">The Problem<a class="headerlink" href="#the-problem_3" title="Permanent link">&para;</a></h3>
+<p>Current VSA uses <strong>fixed dimensionality</strong> (typically 512-10,000):
+- Too low → poor capacity, high noise
+- Too high → wasteful computation and memory</p>
+<h3 id="research-questions">Research Questions<a class="headerlink" href="#research-questions" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>What is the theoretical minimum dimensionality for a given task?</strong></li>
+<li><strong>Can we adaptively adjust dimensionality during computation?</strong></li>
+<li><strong>Are there compressive encodings that preserve VSA properties at lower dimensions?</strong></li>
+</ol>
+<h3 id="approaches_3">Approaches<a class="headerlink" href="#approaches_3" title="Permanent link">&para;</a></h3>
+<p><strong>1. Dimensionality Theory</strong></p>
+<p><strong>Johnson-Lindenstrauss Lemma</strong> tells us random projections preserve distances.</p>
+<p>Can we derive similar guarantees for VSA operations?</p>
+<p><strong>Conjecture:</strong> For N symbols with ε error tolerance, minimum dimension:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>d_min ≥ O(log(N) / ε²)
+</code></pre></div></p>
+<p><strong>Open problems:</strong>
+- Exact bounds for binding/bundling capacity
+- Trade-offs between dimensionality, accuracy, and computational cost</p>
+<p><strong>2. Dynamic Dimensionality</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">AdaptiveDimensionalityVSA</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_min</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dim_max</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">current_dim</span> <span class="o">=</span> <span class="n">dim_min</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="c1"># Monitor reconstruction error</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">fhrr_bind</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dim</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_error</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="k">if</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>            <span class="c1"># Increase dimensionality</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">current_dim</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dim</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim_max</span><span class="p">)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p><strong>3. Compression Techniques</strong></p>
+<p>Apply dimensionality reduction while preserving structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Full VSA at 10,000 dims</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">hv_full</span> <span class="o">=</span> <span class="n">encode_full</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Compress to 512 dims using learned projection</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">hv_compressed</span> <span class="o">=</span> <span class="n">learned_projection</span><span class="p">(</span><span class="n">hv_full</span><span class="p">,</span> <span class="n">target_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Can we still unbind/bundle?</span>
+</code></pre></div>
+<h3 id="your-research-opportunity_3">Your Research Opportunity<a class="headerlink" href="#your-research-opportunity_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project idea:</strong> Empirically measure capacity vs dimensionality for different VSA models</li>
+<li><strong>Questions:</strong> Is there a phase transition in performance? Can we predict required dimensionality from task complexity?</li>
+</ul>
+<hr />
+<h2 id="research-direction-5-continual-learning">Research Direction 5: Continual Learning<a class="headerlink" href="#research-direction-5-continual-learning" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem_4">The Problem<a class="headerlink" href="#the-problem_4" title="Permanent link">&para;</a></h3>
+<p>Traditional ML suffers from <strong>catastrophic forgetting</strong>:
+- Train on task A → good performance
+- Train on task B → task A performance collapses</p>
+<p><strong>VSA has natural advantages:</strong>
+- Bundling is order-invariant (can add facts any time)
+- High-dimensional space has room for many concepts
+- No destructive updates</p>
+<h3 id="research-question_3">Research Question<a class="headerlink" href="#research-question_3" title="Permanent link">&para;</a></h3>
+<p><strong>Can VSA enable perfect continual learning?</strong></p>
+<h3 id="approaches_4">Approaches<a class="headerlink" href="#approaches_4" title="Permanent link">&para;</a></h3>
+<p><strong>1. Incremental Bundling</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ContinualMemory</span><span class="p">:</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">learn_fact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fact_hv</span><span class="p">):</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        <span class="c1"># Simply bundle new fact</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span><span class="p">,</span> <span class="n">fact_hv</span><span class="p">)</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        <span class="c1"># No forgetting!</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">recall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_hv</span><span class="p">):</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span><span class="p">,</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>                                      <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">query_hv</span><span class="p">))</span>
+</code></pre></div>
+<p><strong>2. Hierarchical Consolidation</strong></p>
+<p>Organize memories in tree structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>       Root (general knowledge)
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>      /    |    \
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>   Math  Science  History  ← Domains
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    /\     /\      /\
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>   ...    ...     ...      ← Specific facts
+</code></pre></div>
+<p><strong>3. Selective Forgetting</strong></p>
+<p>Unbundle old/irrelevant facts to make room:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Remove outdated fact</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">outdated_fact_hv</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;2020_covid_stats&quot;</span><span class="p">]</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">knowledge</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">unbundle</span><span class="p">(</span><span class="n">knowledge</span><span class="p">,</span> <span class="n">outdated_fact_hv</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Open problems:</strong>
+- What's the capacity limit for bundled knowledge?
+- How to detect and correct interference?
+- Can we compress old knowledge (lossy but space-efficient)?</p>
+<h3 id="your-research-opportunity_4">Your Research Opportunity<a class="headerlink" href="#your-research-opportunity_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project idea:</strong> Build continual learning benchmark for VSA</li>
+<li><strong>Questions:</strong> At what point does bundling degrade? Can we quantify forgetting rate?</li>
+</ul>
+<hr />
+<h2 id="research-direction-6-interpretability">Research Direction 6: Interpretability<a class="headerlink" href="#research-direction-6-interpretability" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem_5">The Problem<a class="headerlink" href="#the-problem_5" title="Permanent link">&para;</a></h3>
+<p>Deep learning is often a <strong>black box</strong>. VSA promises interpretability:
+- Unbind to extract components
+- Similarity to known concepts
+- Symbolic structure</p>
+<p><strong>But challenges remain:</strong>
+- High dimensions are hard to visualize
+- Approximate unbinding introduces noise
+- Resonator convergence may fail</p>
+<h3 id="research-question_4">Research Question<a class="headerlink" href="#research-question_4" title="Permanent link">&para;</a></h3>
+<p><strong>How can we make VSA reasoning fully transparent and interpretable?</strong></p>
+<h3 id="approaches_5">Approaches<a class="headerlink" href="#approaches_5" title="Permanent link">&para;</a></h3>
+<p><strong>1. Visualization Tools</strong></p>
+<p>Dimensionality reduction for plotting:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Encode many concepts</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">concepts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="s2">&quot;mountain&quot;</span><span class="p">]</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">hvs</span> <span class="o">=</span> <span class="p">[</span><span class="n">memory</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">concepts</span><span class="p">]</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># Reduce to 2D for plotting</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">hvs_2d</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">hvs</span><span class="p">)</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hvs_2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">hvs_2d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">concept</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">concepts</span><span class="p">):</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">concept</span><span class="p">,</span> <span class="p">(</span><span class="n">hvs_2d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">hvs_2d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>2. Explanation Generation</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">explain_hypervector</span><span class="p">(</span><span class="n">hv</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="sd">    Explain what a hypervector represents by finding</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="sd">    most similar known concepts.</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">similarities</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">stored_hv</span> <span class="ow">in</span> <span class="n">memory</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">hv</span><span class="p">,</span> <span class="n">stored_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>        <span class="n">similarities</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">sim</span><span class="p">))</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">similarities</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This hypervector is most similar to:&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sim</span> <span class="ow">in</span> <span class="n">similarities</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]:</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>3. Causal Tracing</strong></p>
+<p>Track which components contribute to final answer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Query: &quot;What is the capital of France?&quot;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">query_hv</span> <span class="o">=</span> <span class="n">encode_query</span><span class="p">(</span><span class="s2">&quot;capital of France&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Unbind to get answer</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">answer_hv</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">knowledge_base</span><span class="p">,</span> <span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">query_hv</span><span class="p">))</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># Which facts in knowledge_base contributed most?</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">for</span> <span class="n">fact_name</span><span class="p">,</span> <span class="n">fact_hv</span> <span class="ow">in</span> <span class="n">facts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="n">contribution</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">answer_hv</span><span class="p">,</span> <span class="n">fact_hv</span><span class="p">)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fact &#39;</span><span class="si">{</span><span class="n">fact_name</span><span class="si">}</span><span class="s2">&#39; contribution: </span><span class="si">{</span><span class="n">contribution</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Open problems:</strong>
+- Can we visualize high-dimensional binding structures?
+- How to present VSA reasoning to non-experts?
+- Quantifying uncertainty in VSA predictions?</p>
+<h3 id="your-research-opportunity_5">Your Research Opportunity<a class="headerlink" href="#your-research-opportunity_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project idea:</strong> Build interactive VSA debugger/visualizer</li>
+<li><strong>Questions:</strong> Can users understand VSA reasoning? What visualizations are most helpful?</li>
+</ul>
+<hr />
+<h2 id="open-problems-summary">Open Problems Summary<a class="headerlink" href="#open-problems-summary" title="Permanent link">&para;</a></h2>
+<h3 id="theoretical">Theoretical<a class="headerlink" href="#theoretical" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Capacity bounds:</strong> Exact theoretical limits for binding/bundling</li>
+<li><strong>Optimal dimensionality:</strong> Principled way to choose dimension for a task</li>
+<li><strong>Error propagation:</strong> How does noise accumulate in multi-hop reasoning?</li>
+<li><strong>Universality:</strong> What computations can/cannot be expressed in VSA?</li>
+</ol>
+<h3 id="algorithmic">Algorithmic<a class="headerlink" href="#algorithmic" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Learning:</strong> How to integrate gradient-based learning with VSA?</li>
+<li><strong>Scaling:</strong> Efficient VSA for millions of symbols?</li>
+<li><strong>Streaming data:</strong> Online learning with unbounded data?</li>
+<li><strong>Multi-modality:</strong> Principled fusion of heterogeneous data?</li>
+</ol>
+<h3 id="applied">Applied<a class="headerlink" href="#applied" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Benchmarks:</strong> Standard datasets for VSA evaluation?</li>
+<li><strong>Real-world deployment:</strong> Production-ready VSA systems?</li>
+<li><strong>Hybrid architectures:</strong> Best way to combine VSA + DNNs?</li>
+<li><strong>Energy efficiency:</strong> How much better is VSA than DNNs on edge devices?</li>
+</ol>
+<hr />
+<h2 id="contributing-to-vsax">Contributing to VSAX<a class="headerlink" href="#contributing-to-vsax" title="Permanent link">&para;</a></h2>
+<h3 id="how-to-get-involved">How to Get Involved<a class="headerlink" href="#how-to-get-involved" title="Permanent link">&para;</a></h3>
+<p><strong>1. Report Issues</strong></p>
+<p>Found a bug or have a feature request?
+- GitHub Issues: https://github.com/anthropics/vsax/issues
+- Provide minimal reproducible example
+- Describe expected vs actual behavior</p>
+<p><strong>2. Contribute Code</strong></p>
+<ul>
+<li>Fork the repository</li>
+<li>Create feature branch: <code>git checkout -b feature/my-encoder</code></li>
+<li>Write tests for your code</li>
+<li>Submit pull request with clear description</li>
+</ul>
+<p><strong>Example contributions:</strong>
+- New encoder for your domain
+- Performance optimization
+- Additional examples/tutorials
+- Bug fixes</p>
+<p><strong>3. Share Your Research</strong></p>
+<ul>
+<li>Publish papers using VSAX</li>
+<li>Share your custom encoders on GitHub</li>
+<li>Write blog posts about applications</li>
+<li>Present at conferences</li>
+</ul>
+<p><strong>4. Improve Documentation</strong></p>
+<ul>
+<li>Fix typos or unclear explanations</li>
+<li>Add examples</li>
+<li>Expand API documentation</li>
+<li>Translate to other languages</li>
+</ul>
+<hr />
+<h2 id="formulating-your-research-question">Formulating Your Research Question<a class="headerlink" href="#formulating-your-research-question" title="Permanent link">&para;</a></h2>
+<h3 id="template">Template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Given [DOMAIN/PROBLEM],
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>can we [VSA TECHNIQUE/APPROACH]
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>to achieve [GOAL/METRIC]
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>better than [BASELINE]?
+</code></pre></div>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p><strong>Example 1: Robotics</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Given multi-modal sensor streams from a robot,
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>can we use SensorFusionEncoder + SSP
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>to achieve real-time localization and mapping
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>better than traditional SLAM algorithms?
+</code></pre></div></p>
+<p><strong>Example 2: NLP</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Given large-scale knowledge graphs,
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>can we use hierarchical VSA encoding + resonators
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>to achieve one-shot question answering
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>better than fine-tuned LLMs?
+</code></pre></div></p>
+<p><strong>Example 3: Neuroscience</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Given fMRI brain activity data,
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>can we decode mental states using VSA encoders
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>to achieve interpretable cognitive state classification
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>better than black-box DNNs?
+</code></pre></div></p>
+<h3 id="your-turn">Your Turn<a class="headerlink" href="#your-turn" title="Permanent link">&para;</a></h3>
+<p>What research question excites YOU?</p>
+<p>Write it down using the template:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Given _______________________,
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>can we _______________________
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>to achieve __________________
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>better than _________________?
+</code></pre></div>
+<hr />
+<h2 id="resources-for-further-learning">Resources for Further Learning<a class="headerlink" href="#resources-for-further-learning" title="Permanent link">&para;</a></h2>
+<h3 id="key-papers">Key Papers<a class="headerlink" href="#key-papers" title="Permanent link">&para;</a></h3>
+<p><strong>Foundational:</strong>
+1. Plate (1995): "Holographic Reduced Representations"
+2. Kanerva (2009): "Hyperdimensional Computing"
+3. Gayler (2003): "Vector Symbolic Architectures"</p>
+<p><strong>Recent Surveys:</strong>
+1. Kleyko et al. (2022): "Vector Symbolic Architectures as a Computing Framework" (IEEE Proceedings)
+2. Schlegel et al. (2022): "A Comparison of Vector Symbolic Architectures"</p>
+<p><strong>Applications:</strong>
+1. Imani et al. (2019): "A framework for collaborative learning in secure high-dimensional space" (Edge ML)
+2. Ge &amp; Parhi (2021): "Classification using hyperdimensional computing" (Efficient AI)</p>
+<h3 id="conferences-workshops">Conferences &amp; Workshops<a class="headerlink" href="#conferences-workshops" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>NeurIPS:</strong> Neuro-symbolic AI workshops</li>
+<li><strong>ICML:</strong> Efficient ML track</li>
+<li><strong>NICE:</strong> Neuro-Inspired Computational Elements workshop</li>
+<li><strong>CoRL:</strong> Conference on Robot Learning (VSA for control)</li>
+</ul>
+<h3 id="online-communities">Online Communities<a class="headerlink" href="#online-communities" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>VSAX GitHub Discussions:</strong> Ask questions, share projects</li>
+<li><strong>Reddit r/MachineLearning:</strong> HDC/VSA threads</li>
+<li><strong>Twitter #VectorSymbolicArchitectures</strong></li>
+</ul>
+<hr />
+<h2 id="self-assessment">Self-Assessment<a class="headerlink" href="#self-assessment" title="Permanent link">&para;</a></h2>
+<p>Before concluding, ensure you can:</p>
+<ul>
+<li>[ ] Identify at least 3 current research directions in VSA</li>
+<li>[ ] Explain challenges in learning-based VSA</li>
+<li>[ ] Describe opportunities for VSA + LLMs</li>
+<li>[ ] Understand neuromorphic hardware potential</li>
+<li>[ ] Recognize open theoretical and applied problems</li>
+<li>[ ] Formulate your own research question</li>
+<li>[ ] Know how to contribute to VSAX</li>
+</ul>
+<h2 id="final-quiz">Final Quiz<a class="headerlink" href="#final-quiz" title="Permanent link">&para;</a></h2>
+<p><strong>Question 1:</strong> What is the main advantage of learned basis vectors over random ones?</p>
+<p>a) Faster computation
+b) Semantic structure in the representation space
+c) Lower memory usage
+d) Easier to implement</p>
+<details>
+<summary>Answer</summary>
+**b) Semantic structure in the representation space**
+
+Learned basis vectors can capture inherent semantic relationships (e.g., "cat" and "dog" are similar) rather than being randomly orthogonal. This could improve generalization and reasoning while preserving VSA's compositional properties.
+</details>
+
+<p><strong>Question 2:</strong> Why is neuromorphic hardware promising for VSA?</p>
+<p>a) VSA operations are naturally parallel and efficient in analog compute
+b) Neuromorphic chips are cheaper
+c) VSA doesn't work on traditional CPUs
+d) It's just a trend</p>
+<details>
+<summary>Answer</summary>
+**a) VSA operations are naturally parallel and efficient in analog compute**
+
+Binding and bundling are embarrassingly parallel element-wise operations. In-memory analog computing can perform these operations extremely fast and energy-efficiently by avoiding data movement and leveraging physical properties (current summation, resistance multiplication).
+</details>
+
+<p><strong>Question 3:</strong> What is continual learning's main challenge that VSA might address?</p>
+<p>a) Training speed
+b) Catastrophic forgetting
+c) Model size
+d) Data collection</p>
+<details>
+<summary>Answer</summary>
+**b) Catastrophic forgetting**
+
+Traditional neural networks overwrite old knowledge when learning new tasks. VSA's bundling operation is additive and non-destructive - new facts can be added without erasing old ones, potentially enabling perfect continual learning.
+</details>
+
+<hr />
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<p>✓ <strong>VSA research is vibrant and growing</strong> - opportunities across theory, algorithms, and applications
+✓ <strong>Learning-based VSA</strong> - integrating gradient learning with symbolic operations
+✓ <strong>VSA + LLMs</strong> - combining neural perception with symbolic reasoning
+✓ <strong>Neuromorphic hardware</strong> - orders of magnitude efficiency gains possible
+✓ <strong>Open problems abound</strong> - dimensionality, capacity, interpretability, continual learning
+✓ <strong>You can contribute!</strong> - VSAX welcomes encoders, optimizations, and applications</p>
+<hr />
+<h2 id="course-complete">Course Complete!<a class="headerlink" href="#course-complete" title="Permanent link">&para;</a></h2>
+<p><strong>Congratulations!</strong> You've completed the VSAX course covering:</p>
+<ul>
+<li>✅ <strong>Module 1:</strong> Foundational concepts (high dimensions, binding/bundling, three models)</li>
+<li>✅ <strong>Module 2:</strong> Core operations (FHRR, MAP, Binary, similarity, model selection)</li>
+<li>✅ <strong>Module 3:</strong> Encoders &amp; applications (scalars, sequences, images, knowledge graphs, analogies)</li>
+<li>✅ <strong>Module 4:</strong> Advanced techniques (operators, SSP, hierarchical, multi-modal)</li>
+<li>✅ <strong>Module 5:</strong> Research &amp; extensions (VFA, custom encoders, frontiers)</li>
+</ul>
+<p><strong>You are now equipped to:</strong>
+- Build VSA-powered applications
+- Design custom encoders for your domain
+- Contribute to VSA research
+- Push the boundaries of hyperdimensional computing</p>
+<hr />
+<h2 id="where-to-go-from-here">Where to Go From Here<a class="headerlink" href="#where-to-go-from-here" title="Permanent link">&para;</a></h2>
+<h3 id="immediate-next-steps">Immediate Next Steps<a class="headerlink" href="#immediate-next-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Build something!</strong> Apply VSAX to your research or project</li>
+<li><strong>Share your work</strong> - Publish code, write blog posts, present at conferences</li>
+<li><strong>Join the community</strong> - GitHub Discussions, contribute to VSAX</li>
+<li><strong>Read papers</strong> - Dive deeper into topics that interest you</li>
+</ol>
+<h3 id="advanced-topics-beyond-this-course">Advanced Topics (Beyond This Course)<a class="headerlink" href="#advanced-topics-beyond-this-course" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Quantum VSA:</strong> Using quantum superposition for hypervectors</li>
+<li><strong>Biological VSA:</strong> Modeling neural circuits with VSA</li>
+<li><strong>VSA for Causality:</strong> Encoding causal relationships</li>
+<li><strong>Federated VSA:</strong> Distributed learning with privacy</li>
+</ul>
+<h3 id="research-opportunities">Research Opportunities<a class="headerlink" href="#research-opportunities" title="Permanent link">&para;</a></h3>
+<p>Pick a research direction from this lesson and:
+1. Read 3-5 key papers
+2. Implement a proof-of-concept
+3. Run experiments and analyze results
+4. Write it up and share with the community!</p>
+<hr />
+<h2 id="final-words">Final Words<a class="headerlink" href="#final-words" title="Permanent link">&para;</a></h2>
+<p>Vector Symbolic Architectures represent a <strong>paradigm shift</strong> in how we think about computation:</p>
+<ul>
+<li>Not neural networks (though compatible with them)</li>
+<li>Not classical symbolic AI (though shares symbolic properties)</li>
+<li>A unique fusion of <strong>continuous + discrete</strong>, <strong>distributed + compositional</strong>, <strong>learned + structured</strong></li>
+</ul>
+<p>The field is young, the problems are hard, and the opportunities are immense.</p>
+<p><strong>Welcome to the VSA research community!</strong></p>
+<p>We can't wait to see what you build.</p>
+<hr />
+<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
+<p>This course was built on decades of research by pioneers:
+- Tony Plate (Holographic Reduced Representations)
+- Pentti Kanerva (Hyperdimensional Computing)
+- Ross Gayler (Vector Symbolic Architectures)
+- Many others who advanced the field</p>
+<p>Thank you for learning with us.</p>
+<p><strong>Now go forth and compute in high dimensions!</strong></p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p><strong>Key Surveys:</strong>
+- Kleyko, D., et al. (2022). "Vector Symbolic Architectures as a Computing Framework for Nanoscale Hardware." <em>Proceedings of the IEEE</em>, 109(8), 1366-1397.
+- Schlegel, K., Neubert, P., &amp; Protzel, P. (2022). "A Comparison of Vector Symbolic Architectures." <em>Artificial Intelligence Review</em>, 55, 4523-4555.</p>
+<p><strong>Foundational Works:</strong>
+- Plate, T. A. (1995). "Holographic Reduced Representations." <em>IEEE Transactions on Neural Networks</em>, 6(3), 623-641.
+- Kanerva, P. (2009). "Hyperdimensional Computing: An Introduction to Computing in Distributed Representation with High-Dimensional Random Vectors." <em>Cognitive Computation</em>, 1, 139-159.</p>
+<p><strong>Recent Applications:</strong>
+- Imani, M., et al. (2019). "A Framework for Collaborative Learning in Secure High-Dimensional Space."
+- Neubert, P., Schubert, S., &amp; Protzel, P. (2019). "Learning Vector Symbolic Architectures for Reactive Robot Behaviours."
+- Mitrokhin, A., et al. (2023). "Learning sensorimotor representations with spiking HDC."</p>
+<p><strong>Neuromorphic Hardware:</strong>
+- Karunaratne, G., et al. (2020). "In-memory hyperdimensional computing." <em>Nature Electronics</em>, 3, 327-337.
+- Poduval, P., et al. (2021). "HDnn: Hyperdimensional Inference with Spiking Neural Networks."</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

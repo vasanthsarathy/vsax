@@ -1,0 +1,5288 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JAX-native Vector Symbolic Algebra library">
+      
+      
+        <meta name="author" content="VSAX Contributors">
+      
+      
+        <link rel="canonical" href="https://vsax.readthedocs.io/course/04_advanced/01_operators/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02_ssp/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>4.1 Clifford Operators - VSAX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lesson-41-clifford-operators" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSAX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1 Clifford Operators
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../modeling-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Modeling Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Learn
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guide/models/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../examples/fhrr/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../comparison/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  VSAX vs Other Libraries
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../design-spec/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Design Spec
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSAX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modeling-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 1 - Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/01_high_dimensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Why High Dimensions?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/02_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Binding and Bundling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/03_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Three VSA Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/04_first_program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 First Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - Core Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 2 - Core Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/01_fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 FHRR Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/02_map_binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 MAP and Binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/03_similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_operations/04_selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Model Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - Encoders & Applications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 3 - Encoders & Applications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/01_scalar_sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Scalar & Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/02_dict_sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Dict & Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/03_images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Image Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/04_knowledge_graphs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Knowledge Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/05_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Analogies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - Advanced Techniques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 4 - Advanced Techniques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-binding-loses-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem: Binding Loses Direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Problem: Binding Loses Direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asymmetric-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asymmetric Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution-clifford-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution: Clifford Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Solution: Clifford Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operators-as-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operators as Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoding-with-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoding with Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-with-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying with Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inverse Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-operators-vs-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Operators vs Binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mathematical Foundation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Foundation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-based-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase-Based Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator-types-operatorkind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operator Types (OperatorKind)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-for-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases for Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases for Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-spatial-scene-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Spatial Scene Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-semantic-role-labeling-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Semantic Role Labeling (NLP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-temporal-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Temporal Ordering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-complete-operators-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hands-On: Complete Operators Tutorial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-from-the-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Concepts from the Tutorial
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts from the Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-exact-inversion-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Exact Inversion Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-directional-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Directional Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-operator-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Operator Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-operators-vs-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison: Operators vs Binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-operator-composition-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced: Operator Composition Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced: Operator Composition Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-chaining-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 1: Chaining Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-inverse-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 2: Inverse Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-hierarchical-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 3: Hierarchical Roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Assessment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Quiz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_ssp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Spatial Semantic Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_hierarchical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Hierarchical & Resonators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multimodal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Multi-Modal & Neural-Symbolic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 5 - Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Vector Function Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Custom Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Research Frontiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/01_mnist_classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MNIST Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/02_knowledge_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Graph Reasoning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/03_kanerva_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kanerva's Dollar of Mexico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/04_word_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Word Analogies & Random Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/05_model_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding VSA Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/06_edge_computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA for Edge Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/07_hierarchical_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hierarchical Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/08_multimodal_grounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Modal Concept Grounding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/09_neural_symbolic_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neural-Symbolic Fusion (HD-Glue)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/10_clifford_operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/11_analogical_reasoning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analogical Reasoning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/fpe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fractional Power Encoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Semantic Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Function Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/batch_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/gpu_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/representations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRR Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAP Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAModel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Encoders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScalarEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/fpe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FractionalPowerEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SequenceEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SetEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/dict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DictEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Representations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/complex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComplexHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RealHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRROperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAPOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VFA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAX vs Other Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-binding-loses-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem: Binding Loses Direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Problem: Binding Loses Direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asymmetric-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asymmetric Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution-clifford-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution: Clifford Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Solution: Clifford Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operators-as-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operators as Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoding-with-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoding with Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-with-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying with Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inverse Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-operators-vs-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Operators vs Binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mathematical Foundation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Foundation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-based-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase-Based Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator-types-operatorkind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operator Types (OperatorKind)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases-for-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Cases for Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases for Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-spatial-scene-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Spatial Scene Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-semantic-role-labeling-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Semantic Role Labeling (NLP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-temporal-ordering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Temporal Ordering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-complete-operators-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hands-On: Complete Operators Tutorial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-from-the-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Concepts from the Tutorial
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts from the Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-exact-inversion-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Exact Inversion Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-directional-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Directional Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-operator-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Operator Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-operators-vs-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison: Operators vs Binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-operator-composition-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced: Operator Composition Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced: Operator Composition Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-1-chaining-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 1: Chaining Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-2-inverse-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 2: Inverse Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-hierarchical-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern 3: Hierarchical Roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Assessment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Quiz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lesson-41-clifford-operators">Lesson 4.1: Clifford Operators<a class="headerlink" href="#lesson-41-clifford-operators" title="Permanent link">&para;</a></h1>
+<p><strong>Duration:</strong> ~50 minutes (25 min theory + 25 min tutorial)</p>
+<p><strong>Learning Objectives:</strong></p>
+<ul>
+<li>Understand operators vs hypervectors (transformations vs concepts)</li>
+<li>Learn when to use operators vs binding</li>
+<li>Master exact, invertible transformations</li>
+<li>Apply operators for spatial relations and semantic roles</li>
+<li>Complete the Clifford operators tutorial</li>
+<li>Build directional reasoning systems</li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>So far, you've used <strong>hypervectors</strong> to represent concepts ("dog", "cat", "red") and <strong>binding</strong> to create associations. But what about <strong>transformations</strong> and <strong>directed relationships</strong>?</p>
+<p><strong>Operators</strong> represent "what happens" rather than "what exists":
+- <strong>Hypervectors:</strong> Concepts, objects, symbols ("cup", "dog", "3")
+- <strong>Operators:</strong> Transformations, relations, actions (LEFT_OF, AGENT, ROTATE)</p>
+<p><strong>Key insight:</strong> Hypervectors + Operators = Complete symbolic reasoning system</p>
+<hr />
+<h2 id="the-problem-binding-loses-direction">The Problem: Binding Loses Direction<a class="headerlink" href="#the-problem-binding-loses-direction" title="Permanent link">&para;</a></h2>
+<h3 id="asymmetric-relations">Asymmetric Relations<a class="headerlink" href="#asymmetric-relations" title="Permanent link">&para;</a></h3>
+<p>Consider encoding the spatial relation "cup is left of plate":</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;cup&quot;</span><span class="p">,</span> <span class="s2">&quot;plate&quot;</span><span class="p">,</span> <span class="s2">&quot;left_of&quot;</span><span class="p">,</span> <span class="s2">&quot;right_of&quot;</span><span class="p">])</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Attempt 1: Bind cup with left_of and plate</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;cup&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;left_of&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">),</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Problem:</strong> How do we distinguish:
+- "cup left_of plate" from
+- "plate left_of cup"?</p>
+<p>Both cup and plate are bound together with left_of, losing <strong>directionality</strong>!</p>
+<hr />
+<h3 id="query-ambiguity">Query Ambiguity<a class="headerlink" href="#query-ambiguity" title="Permanent link">&para;</a></h3>
+<p>If we try to query "what is left of the plate?":</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Unbind plate and left_of to find what&#39;s on the left</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">plate_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">left_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;left_of&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">plate_inv</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">left_inv</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Check similarity to cup</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">sim_cup</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;cup&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">sim_plate</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cup:   </span><span class="si">{</span><span class="n">sim_cup</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   <span class="c1"># ~0.35 (low!)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Plate: </span><span class="si">{</span><span class="n">sim_plate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># ~0.30 (also low!)</span>
+</code></pre></div>
+<p><strong>Issue:</strong> Regular binding produces <strong>approximate, symmetric</strong> results. We can't reliably recover directional information.</p>
+<hr />
+<h2 id="the-solution-clifford-operators">The Solution: Clifford Operators<a class="headerlink" href="#the-solution-clifford-operators" title="Permanent link">&para;</a></h2>
+<p><strong>Clifford operators</strong> provide <strong>exact, invertible, directional</strong> transformations.</p>
+<h3 id="operators-as-transformations">Operators as Transformations<a class="headerlink" href="#operators-as-transformations" title="Permanent link">&para;</a></h3>
+<p>Think of operators as <strong>functions</strong> that transform hypervectors:</p>
+<div class="arithmatex">\[\text{Operator}(v) = v'\]</div>
+<p><strong>Properties:</strong>
+- ✅ <strong>Exact inversion:</strong> <span class="arithmatex">\(O^{-1}(O(v)) = v\)</span> with similarity &gt; 0.999
+- ✅ <strong>Directional:</strong> <span class="arithmatex">\(O_{\text{LEFT}}(plate) \neq O_{\text{RIGHT}}(plate)\)</span>
+- ✅ <strong>Compositional:</strong> <span class="arithmatex">\(O_1 \circ O_2 = O_3\)</span>
+- ✅ <strong>Norm-preserving:</strong> <span class="arithmatex">\(|O(v)| = |v|\)</span></p>
+<hr />
+<h3 id="encoding-with-operators">Encoding with Operators<a class="headerlink" href="#encoding-with-operators" title="Permanent link">&para;</a></h3>
+<p>Using operators, we encode "cup left_of plate" as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">CliffordOperator</span><span class="p">,</span> <span class="n">OperatorKind</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Create spatial operator for LEFT_OF</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">LEFT_OF</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LEFT_OF&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Encode: cup and (LEFT_OF applied to plate)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">cup</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;cup&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">plate</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">]</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1"># LEFT_OF.apply(plate) means &quot;what&#39;s at this spatial relation to plate&quot;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">cup</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">plate</span><span class="p">)</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Interpretation:</strong> The scene contains "cup" and "the left-of-plate position" (which should match cup).</p>
+<hr />
+<h3 id="querying-with-operators">Querying with Operators<a class="headerlink" href="#querying-with-operators" title="Permanent link">&para;</a></h3>
+<p>Now we can query directionally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Query: What is left of the plate?</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Apply LEFT_OF to plate, then check similarity to scene</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">left_of_plate</span> <span class="o">=</span> <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">plate</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Find what matches this position</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cup&quot;</span><span class="p">,</span> <span class="s2">&quot;plate&quot;</span><span class="p">,</span> <span class="s2">&quot;spoon&quot;</span><span class="p">,</span> <span class="s2">&quot;fork&quot;</span><span class="p">]</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">left_of_plate</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="n">item</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Expected:</strong> Cup has high similarity (~0.7-0.9), others have low similarity (~0.0).</p>
+<hr />
+<h3 id="inverse-operators">Inverse Operators<a class="headerlink" href="#inverse-operators" title="Permanent link">&para;</a></h3>
+<p>Operators have <strong>exact inverses</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Create operator</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">AGENT</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SEMANTIC</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AGENT&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Apply and invert</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">original</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">transformed</span> <span class="o">=</span> <span class="n">AGENT</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">AGENT</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># Check recovery</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">recovered</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">original</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recovery similarity: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># &gt; 0.999 (exact!)</span>
+</code></pre></div>
+<p><strong>Compare to regular binding:</strong> Binding gives ~0.7-0.8 similarity after unbinding. Operators give &gt;0.999!</p>
+<hr />
+<h2 id="when-to-use-operators-vs-binding">When to Use Operators vs Binding<a class="headerlink" href="#when-to-use-operators-vs-binding" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Use Binding</th>
+<th>Use Operators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Symmetric relations</strong></td>
+<td>✅ (color ⊗ red)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Asymmetric relations</strong></td>
+<td>❌</td>
+<td>✅ (LEFT_OF(plate))</td>
+</tr>
+<tr>
+<td><strong>Set membership</strong></td>
+<td>✅ (tag ⊗ value)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Spatial relations</strong></td>
+<td>❌</td>
+<td>✅ (ABOVE, BELOW)</td>
+</tr>
+<tr>
+<td><strong>Semantic roles</strong></td>
+<td>❌</td>
+<td>✅ (AGENT, PATIENT)</td>
+</tr>
+<tr>
+<td><strong>Transformations</strong></td>
+<td>❌</td>
+<td>✅ (ROTATE, NEGATE)</td>
+</tr>
+<tr>
+<td><strong>Simple composition</strong></td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Exact recovery needed</strong></td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb:</strong>
+- <strong>Binding:</strong> Symmetric associations, flexible composition
+- <strong>Operators:</strong> Directed relations, exact transformations</p>
+<hr />
+<h2 id="mathematical-foundation">Mathematical Foundation<a class="headerlink" href="#mathematical-foundation" title="Permanent link">&para;</a></h2>
+<h3 id="phase-based-transformations">Phase-Based Transformations<a class="headerlink" href="#phase-based-transformations" title="Permanent link">&para;</a></h3>
+<p>Clifford operators work via <strong>element-wise phase rotation</strong> on complex hypervectors:</p>
+<div class="arithmatex">\[O(v) = v \odot e^{i\theta}\]</div>
+<p>Where:
+- <span class="arithmatex">\(v\)</span> is a ComplexHypervector (unit complex numbers)
+- <span class="arithmatex">\(\theta\)</span> is a vector of phase shifts (shape: <code>dim</code>)
+- <span class="arithmatex">\(\odot\)</span> is element-wise multiplication</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Single complex element</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">v_elem</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">)</span>  <span class="c1"># e^(i*2.5)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Operator phase shift</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">theta</span> <span class="o">=</span> <span class="mf">1.0</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># Apply operator</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">result</span> <span class="o">=</span> <span class="n">v_elem</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">theta</span><span class="p">)</span>  <span class="c1"># e^(i*3.5)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Inverse</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="n">inverse_result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">theta</span><span class="p">)</span>  <span class="c1"># e^(i*2.5) = v_elem</span>
+</code></pre></div></p>
+<p><strong>Why it works:</strong> Phase rotation is <strong>reversible</strong> (just rotate back) and <strong>norm-preserving</strong> (<span class="arithmatex">\(|e^{i\theta}| = 1\)</span>).</p>
+<hr />
+<h3 id="composition">Composition<a class="headerlink" href="#composition" title="Permanent link">&para;</a></h3>
+<p>Operators compose algebraically:</p>
+<div class="arithmatex">\[O_1 \circ O_2 = O_3\]</div>
+<p>where <span class="arithmatex">\(\theta_3 = \theta_1 + \theta_2\)</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Create two operators</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">SPATIAL</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SPATIAL&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">TEMPORAL</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;TEMPORAL&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Compose</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">SPATIOTEMPORAL</span> <span class="o">=</span> <span class="n">SPATIAL</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">TEMPORAL</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Apply composed = apply sequentially</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">v</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;event&quot;</span><span class="p">]</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">result1</span> <span class="o">=</span> <span class="n">SPATIAL</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">TEMPORAL</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>  <span class="c1"># Sequential</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">result2</span> <span class="o">=</span> <span class="n">SPATIOTEMPORAL</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>            <span class="c1"># Composed</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># These are equivalent</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">result1</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">result2</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Composition equivalence: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># ~1.0</span>
+</code></pre></div>
+<hr />
+<h2 id="operator-types-operatorkind">Operator Types (OperatorKind)<a class="headerlink" href="#operator-types-operatorkind" title="Permanent link">&para;</a></h2>
+<p>VSAX provides semantic typing for operators:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">OperatorKind</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Spatial relations</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">LEFT_OF</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LEFT_OF&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">ABOVE</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ABOVE&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Semantic roles (NLP)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">AGENT</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SEMANTIC</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AGENT&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">PATIENT</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SEMANTIC</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PATIENT&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># Temporal relations</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="n">BEFORE</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">TEMPORAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BEFORE&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">AFTER</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">TEMPORAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AFTER&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1"># General purpose</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="n">TRANSFORM</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">GENERAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;TRANSFORM&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Note:</strong> <code>kind</code> is metadata for documentation—doesn't affect operator behavior.</p>
+<hr />
+<h2 id="use-cases-for-operators">Use Cases for Operators<a class="headerlink" href="#use-cases-for-operators" title="Permanent link">&para;</a></h2>
+<h3 id="1-spatial-scene-encoding">1. Spatial Scene Encoding<a class="headerlink" href="#1-spatial-scene-encoding" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Scene: cup is left of plate, spoon is above plate</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;cup&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;spoon&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">ABOVE</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Query: What is left of the plate?</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">left_of_plate_pos</span> <span class="o">=</span> <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">])</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1"># Cup should have high similarity to this position</span>
+</code></pre></div>
+<hr />
+<h3 id="2-semantic-role-labeling-nlp">2. Semantic Role Labeling (NLP)<a class="headerlink" href="#2-semantic-role-labeling-nlp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Sentence: &quot;Alice gave Bob a book&quot;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># AGENT(Alice), ACTION(gave), RECIPIENT(Bob), THEME(book)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">AGENT</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SEMANTIC</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AGENT&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">RECIPIENT</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SEMANTIC</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;RECIPIENT&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">THEME</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SEMANTIC</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;THEME&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">sentence</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="n">AGENT</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;gave&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">RECIPIENT</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="n">THEME</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">)</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="c1"># Query: Who is the AGENT?</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="n">agent_role</span> <span class="o">=</span> <span class="n">AGENT</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="c1"># Alice should be recovered</span>
+</code></pre></div>
+<hr />
+<h3 id="3-temporal-ordering">3. Temporal Ordering<a class="headerlink" href="#3-temporal-ordering" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Events: breakfast BEFORE lunch BEFORE dinner</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">BEFORE</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">TEMPORAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BEFORE&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">timeline</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;breakfast&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">BEFORE</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;lunch&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">BEFORE</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">BEFORE</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;dinner&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span>  <span class="c1"># 2x BEFORE</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Query: What comes BEFORE dinner?</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># Apply BEFORE^(-1) to dinner to find lunch</span>
+</code></pre></div>
+<hr />
+<h2 id="hands-on-complete-operators-tutorial">Hands-On: Complete Operators Tutorial<a class="headerlink" href="#hands-on-complete-operators-tutorial" title="Permanent link">&para;</a></h2>
+<p>Now dive deep into Clifford operators!</p>
+<p><strong>📓 <a href="../../../tutorials/10_clifford_operators/">Tutorial 10: Clifford Operators</a></strong></p>
+<p><strong>What you'll learn:</strong>
+- Creating and applying Clifford operators
+- Exact inversion (similarity &gt; 0.999)
+- Operator composition
+- Spatial scene understanding
+- Semantic role encoding
+- Comparing operators vs binding
+- Building directional reasoning systems</p>
+<p><strong>Time estimate:</strong> 25-30 minutes</p>
+<p><strong>Prerequisites:</strong>
+- Understanding of binding and bundling (Module 1)
+- FHRR operations (Module 2)</p>
+<hr />
+<p><strong>Additional Reference:</strong></p>
+<p><strong>📖 <a href="../../../guide/operators/">Operators Guide</a></strong></p>
+<p>Complete technical documentation on:
+- Mathematical foundations
+- Clifford algebra inspiration
+- Advanced composition
+- Performance optimization
+- Design patterns</p>
+<hr />
+<h2 id="key-concepts-from-the-tutorial">Key Concepts from the Tutorial<a class="headerlink" href="#key-concepts-from-the-tutorial" title="Permanent link">&para;</a></h2>
+<h3 id="1-exact-inversion-property">1. Exact Inversion Property<a class="headerlink" href="#1-exact-inversion-property" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Create operator</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">op</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;OP&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Apply and invert</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">original</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;concept&quot;</span><span class="p">]</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">transformed</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Measure recovery</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">recovered</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">original</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recovery: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># &gt; 0.999 (exact!)</span>
+</code></pre></div>
+<hr />
+<h3 id="2-directional-encoding">2. Directional Encoding<a class="headerlink" href="#2-directional-encoding" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Asymmetric relation: A relates-to B</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">RELATION</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Query: What does RELATION map B to?</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># Answer: Should retrieve A</span>
+</code></pre></div>
+<hr />
+<h3 id="3-operator-library">3. Operator Library<a class="headerlink" href="#3-operator-library" title="Permanent link">&para;</a></h3>
+<p>Build a reusable library of operators:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">SpatialOperators</span><span class="p">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Collection of spatial relation operators.&quot;&quot;&quot;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>        <span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="c1"># Generate operators</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        <span class="n">keys</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">LEFT_OF</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LEFT_OF&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">RIGHT_OF</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;RIGHT_OF&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ABOVE</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ABOVE&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">BELOW</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BELOW&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">IN_FRONT</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;IN_FRONT&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">BEHIND</span> <span class="o">=</span> <span class="n">CliffordOperator</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">OperatorKind</span><span class="o">.</span><span class="n">SPATIAL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BEHIND&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">keys</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># Usage</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="n">spatial</span> <span class="o">=</span> <span class="n">SpatialOperators</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="n">scene</span> <span class="o">=</span> <span class="n">spatial</span><span class="o">.</span><span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="comparison-operators-vs-binding">Comparison: Operators vs Binding<a class="headerlink" href="#comparison-operators-vs-binding" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Binding (⊗)</th>
+<th>Operators (O)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inversion accuracy</strong></td>
+<td>~0.7-0.8 similarity</td>
+<td>&gt;0.999 similarity</td>
+</tr>
+<tr>
+<td><strong>Directionality</strong></td>
+<td>Symmetric</td>
+<td>Asymmetric</td>
+</tr>
+<tr>
+<td><strong>Use case</strong></td>
+<td>Associations, composition</td>
+<td>Relations, transformations</td>
+</tr>
+<tr>
+<td><strong>Composition</strong></td>
+<td>Approximate</td>
+<td>Exact (algebraic)</td>
+</tr>
+<tr>
+<td><strong>Requirement</strong></td>
+<td>Works with all models</td>
+<td>FHRR only (complex vectors)</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Fast (FFT)</td>
+<td>Fast (element-wise)</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td>Same as vectors</td>
+<td>Small (just phase params)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When operators excel:</strong>
+- Spatial reasoning (LEFT_OF, ABOVE)
+- Semantic roles (AGENT, PATIENT, THEME)
+- Exact recovery requirements
+- Directional relationships
+- Transformation chains</p>
+<p><strong>When binding excels:</strong>
+- Symmetric associations
+- Quick prototyping
+- Non-FHRR models (MAP, Binary)
+- Flexible composition
+- Similarity-based matching</p>
+<hr />
+<h2 id="advanced-operator-composition-patterns">Advanced: Operator Composition Patterns<a class="headerlink" href="#advanced-operator-composition-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="pattern-1-chaining-relations">Pattern 1: Chaining Relations<a class="headerlink" href="#pattern-1-chaining-relations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># A is-left-of B, B is-left-of C</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Therefore, A is (2× left-of) C</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">DOUBLE_LEFT</span> <span class="o">=</span> <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">LEFT_OF</span><span class="p">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># Encode</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">spatial_chain</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="n">DOUBLE_LEFT</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="pattern-2-inverse-relations">Pattern 2: Inverse Relations<a class="headerlink" href="#pattern-2-inverse-relations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># LEFT_OF and RIGHT_OF are inverses</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># LEFT_OF^(-1) should approximate RIGHT_OF</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Check</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">sample</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">]</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">left_then_inverse</span> <span class="o">=</span> <span class="n">LEFT_OF</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">LEFT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">right_direct</span> <span class="o">=</span> <span class="n">RIGHT_OF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># These should be similar (depending on operator design)</span>
+</code></pre></div>
+<hr />
+<h3 id="pattern-3-hierarchical-roles">Pattern 3: Hierarchical Roles<a class="headerlink" href="#pattern-3-hierarchical-roles" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># AGENT of ACTION1, ACTION1 is-part-of EVENT</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">AGENT_OF_EVENT</span> <span class="o">=</span> <span class="n">AGENT</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">PART_OF</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Apply hierarchically</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">event_agent</span> <span class="o">=</span> <span class="n">AGENT_OF_EVENT</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;complex_event&quot;</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="self-assessment">Self-Assessment<a class="headerlink" href="#self-assessment" title="Permanent link">&para;</a></h2>
+<p>Before moving to the next lesson, ensure you can:</p>
+<ul>
+<li>[ ] Explain the difference between hypervectors and operators</li>
+<li>[ ] Identify when to use operators vs binding</li>
+<li>[ ] Create and apply Clifford operators</li>
+<li>[ ] Use operator inversion for exact recovery</li>
+<li>[ ] Compose operators for complex relations</li>
+<li>[ ] Encode spatial scenes with directional relations</li>
+<li>[ ] Complete the Clifford operators tutorial</li>
+<li>[ ] Build operator libraries for specific domains</li>
+</ul>
+<hr />
+<h2 id="quick-quiz">Quick Quiz<a class="headerlink" href="#quick-quiz" title="Permanent link">&para;</a></h2>
+<p><strong>Q1:</strong> What is the main advantage of operators over regular binding?</p>
+<p>a) Operators are faster
+b) Operators provide exact inversion (&gt;0.999 similarity)
+c) Operators use less memory
+d) Operators work with all VSA models</p>
+<details>
+<summary>Answer</summary>
+**b) Operators provide exact inversion** - Clifford operators can recover the original hypervector with >0.999 similarity after applying and inverting, compared to ~0.7-0.8 with binding. This enables exact directional reasoning.
+</details>
+
+<p><strong>Q2:</strong> Why are operators necessary for encoding "cup is left of plate"?</p>
+<p>a) Binding is too slow
+b) We need exact numerical precision
+c) Binding loses directionality (can't distinguish "cup left of plate" from "plate left of cup")
+d) Binding doesn't work with spatial data</p>
+<details>
+<summary>Answer</summary>
+**c) Binding loses directionality** - Regular binding creates symmetric associations. Using operators like LEFT_OF.apply(plate) preserves the directional relationship, allowing us to query "what is left of plate?" and correctly retrieve "cup".
+</details>
+
+<p><strong>Q3:</strong> How do Clifford operators work mathematically?</p>
+<p>a) Matrix multiplication
+b) Element-wise phase rotation on complex vectors
+c) Gradient descent optimization
+d) Discrete Fourier transforms</p>
+<details>
+<summary>Answer</summary>
+**b) Element-wise phase rotation** - Clifford operators apply element-wise phase shifts to complex hypervectors: O(v) = v * exp(i*θ). This is norm-preserving and exactly invertible (rotate back by -θ).
+</details>
+
+<p><strong>Q4:</strong> Can operators be used with Binary or MAP models?</p>
+<p>a) Yes, operators work with all models
+b) No, operators require complex vectors (FHRR only)
+c) Yes, but only Binary
+d) Yes, but only MAP</p>
+<details>
+<summary>Answer</summary>
+**b) No, operators require FHRR** - Clifford operators use phase rotation on complex numbers, which requires ComplexHypervector (FHRR). Binary and MAP use real-valued or binary vectors that don't support phase arithmetic.
+</details>
+
+<hr />
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Operators complement hypervectors</strong> - Hypervectors = concepts, Operators = transformations</li>
+<li><strong>Exact inversion</strong> - Similarity &gt;0.999 after apply + inverse (vs ~0.7 for binding)</li>
+<li><strong>Directional relations</strong> - Essential for asymmetric spatial/semantic roles</li>
+<li><strong>Phase-based</strong> - Work via element-wise phase rotation on complex vectors</li>
+<li><strong>Compositional</strong> - Operators compose algebraically (O₁ ∘ O₂)</li>
+<li><strong>FHRR-only</strong> - Require ComplexHypervector representation</li>
+<li><strong>When to use</strong> - Spatial relations, semantic roles, exact recovery, transformations</li>
+</ol>
+<hr />
+<p><strong>Next:</strong> <a href="../02_ssp/">Lesson 4.2: Spatial Semantic Pointers</a></p>
+<p>Learn how to encode continuous spatial coordinates for navigation, robotics, and spatial reasoning.</p>
+<p><strong>Previous:</strong> <a href="../../03_encoders/05_analogies/">Module 3: Encoders &amp; Applications</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

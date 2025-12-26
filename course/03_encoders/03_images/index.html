@@ -298,7 +298,7 @@
           
   
   
-  Course
+  Learn
 
         </a>
       </li>
@@ -585,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Course
+    Learn
   
 
     
@@ -601,7 +601,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course
+    Learn
   
 
           </label>
@@ -1788,7 +1788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
         
   
   
@@ -1816,7 +1816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
         
   
   
@@ -1844,7 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
         
   
   
@@ -1872,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
         
   
   
@@ -1993,7 +1993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
         
   
   
@@ -2021,7 +2021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
         
   
   
@@ -2049,7 +2049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
         
   
   
@@ -4716,7 +4716,7 @@
 <p><strong>How do we encode this as a hypervector?</strong></p>
 <h3 id="approach-spatial-bundling">Approach: Spatial Bundling<a class="headerlink" href="#approach-spatial-bundling" title="Permanent link">&para;</a></h3>
 <p>Each pixel position gets a <strong>random basis vector</strong>, and we bundle pixel values weighted by intensity:</p>
-<p>$$\text{image} = \sum_{i=1}^{64} \text{intensity}_i \cdot \text{pixel_basis}_i$$</p>
+<div class="arithmatex">\[\text{image} = \sum_{i=1}^{64} \text{intensity}_i \cdot \text{pixel\_basis}_i\]</div>
 <p><strong>Example:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -4798,7 +4798,7 @@
 <hr />
 <h2 id="step-2-creating-class-prototypes">Step 2: Creating Class Prototypes<a class="headerlink" href="#step-2-creating-class-prototypes" title="Permanent link">&para;</a></h2>
 <p>Once we have encoded images, we create <strong>prototypes</strong> for each class by <strong>bundling</strong> all training examples:</p>
-<p>$$\text{Prototype}<em>c = \text{normalize}\left(\sum</em>{i \in \text{class } c} \text{encoded}(x_i)\right)$$</p>
+<div class="arithmatex">\[\text{Prototype}_c = \text{normalize}\left(\sum_{i \in \text{class } c} \text{encoded}(x_i)\right)\]</div>
 <p><strong>Code:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
@@ -5290,6 +5290,12 @@ d) All models work equally well</p>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

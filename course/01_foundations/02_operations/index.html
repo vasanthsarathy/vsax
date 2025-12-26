@@ -298,7 +298,7 @@
           
   
   
-  Course
+  Learn
 
         </a>
       </li>
@@ -585,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Course
+    Learn
   
 
     
@@ -601,7 +601,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Course
+    Learn
   
 
           </label>
@@ -1811,7 +1811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+      <a href="../../04_advanced/01_operators/" class="md-nav__link">
         
   
   
@@ -1839,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+      <a href="../../04_advanced/02_ssp/" class="md-nav__link">
         
   
   
@@ -1867,7 +1867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+      <a href="../../04_advanced/03_hierarchical/" class="md-nav__link">
         
   
   
@@ -1895,7 +1895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+      <a href="../../04_advanced/04_multimodal/" class="md-nav__link">
         
   
   
@@ -2016,7 +2016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+      <a href="../../05_research/01_vfa/" class="md-nav__link">
         
   
   
@@ -2044,7 +2044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+      <a href="../../05_research/02_custom_encoders/" class="md-nav__link">
         
   
   
@@ -2072,7 +2072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+      <a href="../../05_research/03_frontiers/" class="md-nav__link">
         
   
   
@@ -4746,7 +4746,7 @@
 - Like mixing paint: red + blue → purple (different from both)</p>
 <h3 id="mathematical-property">Mathematical Property<a class="headerlink" href="#mathematical-property" title="Permanent link">&para;</a></h3>
 <p>For vectors <strong>a</strong> and <strong>b</strong>, binding creates <strong>c = a ⊗ b</strong> such that:</p>
-<p>$$\text{sim}(c, a) \approx 0 \quad \text{and} \quad \text{sim}(c, b) \approx 0$$</p>
+<div class="arithmatex">\[\text{sim}(c, a) \approx 0 \quad \text{and} \quad \text{sim}(c, b) \approx 0\]</div>
 <p>The binding <strong>destroys similarity</strong> to create compositional structure.</p>
 <h3 id="why-does-this-work">Why Does This Work?<a class="headerlink" href="#why-does-this-work" title="Permanent link">&para;</a></h3>
 <p>Binding operations (circular convolution, element-wise multiply, or XOR) <strong>scramble</strong> the vector components in a structured way:</p>
@@ -4824,10 +4824,10 @@
 <hr />
 <h2 id="unbinding-the-inverse-operation">Unbinding: The Inverse Operation<a class="headerlink" href="#unbinding-the-inverse-operation" title="Permanent link">&para;</a></h2>
 <p>The power of binding is that it's <strong>invertible</strong>. If we bind:</p>
-<p>$$c = \text{cat} \otimes \text{red}$$</p>
+<div class="arithmatex">\[c = \text{cat} \otimes \text{red}\]</div>
 <p>We can <strong>unbind</strong> to retrieve the original:</p>
-<p>$$\text{cat} = c \otimes \text{red}^{-1}$$</p>
-<p>where $\text{red}^{-1}$ is the <strong>inverse</strong> of red.</p>
+<div class="arithmatex">\[\text{cat} = c \otimes \text{red}^{-1}\]</div>
+<p>where <span class="arithmatex">\(\text{red}^{-1}\)</span> is the <strong>inverse</strong> of red.</p>
 <h3 id="inverse-operations-by-model">Inverse Operations by Model<a class="headerlink" href="#inverse-operations-by-model" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>FHRR</strong>: Complex conjugate (exact)</li>
@@ -4862,7 +4862,7 @@
 - Like averaging colors: red + orange + yellow → reddish-orange (similar to all)</p>
 <h3 id="mathematical-property_1">Mathematical Property<a class="headerlink" href="#mathematical-property_1" title="Permanent link">&para;</a></h3>
 <p>For vectors <strong>a</strong>, <strong>b</strong>, <strong>c</strong>, bundling creates <strong>s = a ⊕ b ⊕ c</strong> such that:</p>
-<p>$$\text{sim}(s, a) &gt; 0 \quad \text{and} \quad \text{sim}(s, b) &gt; 0 \quad \text{and} \quad \text{sim}(s, c) &gt; 0$$</p>
+<div class="arithmatex">\[\text{sim}(s, a) &gt; 0 \quad \text{and} \quad \text{sim}(s, b) &gt; 0 \quad \text{and} \quad \text{sim}(s, c) &gt; 0\]</div>
 <p>The bundling <strong>preserves similarity</strong> to create sets and prototypes.</p>
 <hr />
 <h2 id="experiment-2-bundling-preserves-similarity">Experiment 2: Bundling Preserves Similarity<a class="headerlink" href="#experiment-2-bundling-preserves-similarity" title="Permanent link">&para;</a></h2>
@@ -5253,6 +5253,12 @@ d) First bundle, then bind: (red⊕blue) ⊗ (cup⊕plate)</p>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
