@@ -1,0 +1,5606 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JAX-native Vector Symbolic Algebra library">
+      
+      
+        <meta name="author" content="VSAX Contributors">
+      
+      
+        <link rel="canonical" href="https://vsax.readthedocs.io/course/02_operations/04_selection/">
+      
+      
+        <link rel="prev" href="../03_similarity/">
+      
+      
+        <link rel="next" href="../../03_encoders/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>2.4 Model Selection - VSAX Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lesson-24-model-selection-decision-framework" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="VSAX Documentation" class="md-header__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VSAX Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.4 Model Selection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../getting-started/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../modeling-guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Modeling Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guide/models/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../examples/fhrr/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../comparison/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  VSAX vs Other Libraries
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../design-spec/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Design Spec
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="VSAX Documentation" class="md-nav__button md-logo" aria-label="VSAX Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VSAX Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vasanthsarathy/vsax" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vasanthsarathy/vsax
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modeling-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 1 - Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/01_high_dimensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Why High Dimensions?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/02_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Binding and Bundling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/03_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Three VSA Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_foundations/04_first_program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 First Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - Core Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 2 - Core Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 FHRR Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_map_binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 MAP and Binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Model Selection
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Model Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-selection-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Model Selection Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-model-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Model Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Model Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Each Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimension-selection-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dimension Selection Guidelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimension Selection Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capacity-driven-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capacity-Driven Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-driven-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task-Driven Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-vs-accuracy-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance vs Accuracy Trade-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Guidelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarking-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Benchmarking Methodology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarking Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-define-your-test-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Define Your Test Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-benchmark-encoding-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Benchmark Encoding Speed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-benchmark-binding-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Benchmark Binding Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-benchmark-unbinding-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Benchmark Unbinding Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-visualize-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Visualize Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-model-selection-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Model Selection Pitfalls
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Model Selection Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-1-ill-just-use-the-fastest-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 1: "I'll just use the fastest model"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-2-higher-dimension-is-always-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 2: "Higher dimension is always better"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-3-binary-is-always-most-efficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 3: "Binary is always most efficient"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-4-ill-pick-a-model-before-understanding-my-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 4: "I'll pick a model before understanding my task"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-scenario-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-World Scenario Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-World Scenario Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-image-classification-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1: Image Classification (MNIST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-knowledge-graph-reasoning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2: Knowledge Graph Reasoning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-robotics-spatial-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3: Robotics Spatial Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-4-embedded-device-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 4: Embedded Device (Microcontroller)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-5-analogical-reasoning-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 5: Analogical Reasoning Research
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-selection-worksheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Selection Worksheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Assessment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Quiz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-exercise-apply-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hands-On Exercise: Apply the Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-On Exercise: Apply the Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-recipe-recommendation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Recipe Recommendation System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-hierarchical-document-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Hierarchical Document Classifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-iot-sensor-anomaly-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: IoT Sensor Anomaly Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - Encoders & Applications
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 3 - Encoders & Applications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/01_scalar_sequence.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Scalar & Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/02_dict_sets.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Dict & Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/03_images.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 Image Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/04_knowledge_graphs.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Knowledge Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_encoders/05_analogies.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Analogies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - Advanced Techniques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 4 - Advanced Techniques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/01_operators.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/02_ssp.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Spatial Semantic Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/03_hierarchical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Hierarchical & Resonators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_advanced/04_multimodal.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Multi-Modal & Neural-Symbolic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Module 5 - Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/01_vfa.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Vector Function Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/02_custom_encoders.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 Custom Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_research/03_frontiers.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 Research Frontiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/01_mnist_classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MNIST Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/02_knowledge_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Graph Reasoning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/03_kanerva_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kanerva's Dollar of Mexico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/04_word_analogies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Word Analogies & Random Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/05_model_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding VSA Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/06_edge_computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSA for Edge Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/07_hierarchical_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hierarchical Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/08_multimodal_grounding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Modal Concept Grounding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/09_neural_symbolic_fusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neural-Symbolic Fusion (HD-Glue)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/10_clifford_operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clifford Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/11_analogical_reasoning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analogical Reasoning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/fpe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fractional Power Encoding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Semantic Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Function Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/batch_operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/gpu_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/representations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guide/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRR Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAP Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binary Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAModel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAMemory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/core/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Factory Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encoders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Encoders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/scalar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScalarEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/fpe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FractionalPowerEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SequenceEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SetEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/dict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DictEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/encoders/graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphEncoder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Representations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/complex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ComplexHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RealHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/representations/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/fhrr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FHRROperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAPOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/ops/binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/spatial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/vfa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VFA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/resonator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resonator Networks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/similarity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Similarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSAX vs Other Libraries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-selection-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Model Selection Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-model-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Model Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Model Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-each-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Each Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimension-selection-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dimension Selection Guidelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimension Selection Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capacity-driven-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capacity-Driven Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-driven-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task-Driven Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-vs-accuracy-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance vs Accuracy Trade-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Guidelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarking-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Benchmarking Methodology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarking Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-define-your-test-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Define Your Test Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-benchmark-encoding-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Benchmark Encoding Speed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-benchmark-binding-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Benchmark Binding Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-benchmark-unbinding-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Benchmark Unbinding Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-visualize-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Visualize Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-model-selection-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Model Selection Pitfalls
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Model Selection Pitfalls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-1-ill-just-use-the-fastest-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 1: "I'll just use the fastest model"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-2-higher-dimension-is-always-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 2: "Higher dimension is always better"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-3-binary-is-always-most-efficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 3: "Binary is always most efficient"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-4-ill-pick-a-model-before-understanding-my-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pitfall 4: "I'll pick a model before understanding my task"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-scenario-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-World Scenario Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-World Scenario Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-image-classification-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1: Image Classification (MNIST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-knowledge-graph-reasoning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2: Knowledge Graph Reasoning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-robotics-spatial-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3: Robotics Spatial Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-4-embedded-device-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 4: Embedded Device (Microcontroller)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-5-analogical-reasoning-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 5: Analogical Reasoning Research
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-selection-worksheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Selection Worksheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Assessment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Quiz
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-exercise-apply-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hands-On Exercise: Apply the Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-On Exercise: Apply the Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-recipe-recommendation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Recipe Recommendation System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-hierarchical-document-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Hierarchical Document Classifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-iot-sensor-anomaly-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: IoT Sensor Anomaly Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="lesson-24-model-selection-decision-framework">Lesson 2.4: Model Selection Decision Framework<a class="headerlink" href="#lesson-24-model-selection-decision-framework" title="Permanent link">&para;</a></h1>
+<p><strong>Duration:</strong> ~60 minutes</p>
+<p><strong>Learning Objectives:</strong></p>
+<ul>
+<li>Master systematic model selection using decision criteria</li>
+<li>Choose optimal dimensions for your application</li>
+<li>Benchmark models for specific use cases</li>
+<li>Apply the framework to real-world scenarios</li>
+<li>Avoid common model selection pitfalls</li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>You've now learned the mechanics of FHRR, MAP, and Binary models. But <strong>which one should you use?</strong></p>
+<p>This lesson provides a comprehensive decision framework that synthesizes everything from Module 2 into practical guidance for choosing the right VSA model for your specific application.</p>
+<p><strong>Key insight:</strong> There is no "best" model—only the best model <em>for your constraints and requirements</em>.</p>
+<hr />
+<h2 id="the-model-selection-decision-tree">The Model Selection Decision Tree<a class="headerlink" href="#the-model-selection-decision-tree" title="Permanent link">&para;</a></h2>
+<p>Use this decision tree to narrow down your choices:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>START: What are your constraints?
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│ Q1: Do you need EXACT unbinding?       │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│     (similarity &gt; 0.99 after unbind)    │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>         │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>         ├─── YES ──→ Use FHRR
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>         │            (Only FHRR guarantees exact unbinding)
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>         │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>         └─── NO ───→ Continue to Q2
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│ Q2: Is memory extremely limited?       │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│     (embedded, edge devices)            │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>         │
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>         ├─── YES ──→ Use Binary
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>         │            (1 bit per element vs 32/64 bits)
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>         │
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>         └─── NO ───→ Continue to Q3
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│ Q3: Do you need deep binding chains?   │
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│     (depth &gt; 3 bind operations)         │
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>         │
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>         ├─── YES ──→ Use FHRR
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>         │            (MAP error accumulates)
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>         │
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>         └─── NO ───→ Continue to Q4
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>│ Q4: Do you need spatial encoding (FPE)? │
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>│     (continuous spaces, positions)      │
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>         │
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>         ├─── YES ──→ Use FHRR
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>         │            (FPE only works with complex vectors)
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>         │
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>         └─── NO ───→ Continue to Q5
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>│ Q5: Is speed the top priority?         │
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>│     (real-time, high throughput)        │
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>         │
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>         ├─── YES ──→ Use MAP or Binary
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>         │            (Faster than FHRR&#39;s FFT)
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>         │
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>         └─── NO ───→ Use FHRR (most versatile)
+</code></pre></div>
+<p><strong>Rule of thumb:</strong> When in doubt, <strong>start with FHRR</strong>. It's the most versatile and provides exact unbinding.</p>
+<hr />
+<h2 id="detailed-model-comparison">Detailed Model Comparison<a class="headerlink" href="#detailed-model-comparison" title="Permanent link">&para;</a></h2>
+<p>Let's compare the three models across key dimensions:</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>FHRR</th>
+<th>MAP</th>
+<th>Binary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unbinding Accuracy</strong></td>
+<td>⭐⭐⭐⭐⭐ Exact (&gt;0.99)</td>
+<td>⭐⭐⭐ Good (~0.7-0.8)</td>
+<td>⭐⭐⭐⭐ Very Good (~0.9)</td>
+</tr>
+<tr>
+<td><strong>Memory Efficiency</strong></td>
+<td>⭐⭐ 64 bits/element</td>
+<td>⭐⭐⭐ 32 bits/element</td>
+<td>⭐⭐⭐⭐⭐ 1 bit/element</td>
+</tr>
+<tr>
+<td><strong>Computational Speed</strong></td>
+<td>⭐⭐⭐ O(n log n) FFT</td>
+<td>⭐⭐⭐⭐⭐ O(n) elementwise</td>
+<td>⭐⭐⭐⭐⭐ O(n) XOR</td>
+</tr>
+<tr>
+<td><strong>Deep Binding Chains</strong></td>
+<td>⭐⭐⭐⭐⭐ No degradation</td>
+<td>⭐⭐ Error accumulates</td>
+<td>⭐⭐⭐⭐ Self-inverse</td>
+</tr>
+<tr>
+<td><strong>Fractional Power (FPE)</strong></td>
+<td>⭐⭐⭐⭐⭐ Supported</td>
+<td>❌ Not supported</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td><strong>Hardware Friendliness</strong></td>
+<td>⭐⭐ Needs complex ops</td>
+<td>⭐⭐⭐⭐ Simple ops</td>
+<td>⭐⭐⭐⭐⭐ Bit operations</td>
+</tr>
+<tr>
+<td><strong>Spatial Encoding (SSP)</strong></td>
+<td>⭐⭐⭐⭐⭐ Supported</td>
+<td>❌ Not supported</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td><strong>Noise Tolerance</strong></td>
+<td>⭐⭐⭐⭐ Good</td>
+<td>⭐⭐⭐ Moderate</td>
+<td>⭐⭐⭐⭐⭐ Excellent (50% noise OK)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-to-use-each-model">When to Use Each Model<a class="headerlink" href="#when-to-use-each-model" title="Permanent link">&para;</a></h3>
+<p><strong>Use FHRR when:</strong>
+- ✅ You need exact unbinding (retrieval accuracy is critical)
+- ✅ Deep binding chains (depth &gt; 3)
+- ✅ Spatial or continuous encoding (FPE, SSP)
+- ✅ Complex compositional structures (nested bindings)
+- ✅ Research applications requiring mathematical guarantees</p>
+<p><strong>Use MAP when:</strong>
+- ✅ Speed is more important than perfect accuracy
+- ✅ Shallow binding chains (depth ≤ 3)
+- ✅ Classification tasks (approximate similarity is sufficient)
+- ✅ Simple compositional structures
+- ✅ You prefer real-valued vectors</p>
+<p><strong>Use Binary when:</strong>
+- ✅ Memory is extremely constrained (embedded systems, edge devices)
+- ✅ Hardware acceleration with bit operations
+- ✅ Noise-robust applications
+- ✅ Self-inverse property is useful (a ⊗ a = identity)
+- ✅ Fast prototyping (simplest operations)</p>
+<hr />
+<h2 id="dimension-selection-guidelines">Dimension Selection Guidelines<a class="headerlink" href="#dimension-selection-guidelines" title="Permanent link">&para;</a></h2>
+<p>Choosing the right dimensionality <code>d</code> is as important as choosing the model.</p>
+<h3 id="capacity-driven-selection">Capacity-Driven Selection<a class="headerlink" href="#capacity-driven-selection" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Dimension should be at least <strong>10× your capacity requirement</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># If you need to store N distinct concepts:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">required_dim</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="mi">10</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># If you need to bundle M vectors:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">required_dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Example: 100 concepts, bundle 20 vectors</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">d</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4096</span>
+</code></pre></div>
+<h3 id="task-driven-selection">Task-Driven Selection<a class="headerlink" href="#task-driven-selection" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Task Type</th>
+<th>Recommended Dimension</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple classification</td>
+<td>512-1024</td>
+<td>Few prototypes, shallow binding</td>
+</tr>
+<tr>
+<td>Knowledge graphs</td>
+<td>2048-4096</td>
+<td>Many concepts, moderate depth</td>
+</tr>
+<tr>
+<td>Analogical reasoning</td>
+<td>2048-4096</td>
+<td>Mapping vectors need high fidelity</td>
+</tr>
+<tr>
+<td>Spatial encoding (SSP)</td>
+<td>512-2048</td>
+<td>Depends on resolution requirements</td>
+</tr>
+<tr>
+<td>Hierarchical structures</td>
+<td>4096-8192</td>
+<td>Deep nesting, many concepts</td>
+</tr>
+<tr>
+<td>Research / high precision</td>
+<td>8192-16384</td>
+<td>Maximum fidelity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-vs-accuracy-trade-off">Performance vs Accuracy Trade-off<a class="headerlink" href="#performance-vs-accuracy-trade-off" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_dimension</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Test unbinding accuracy at different dimensions.&quot;&quot;&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="c1"># Bind and unbind</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">bound</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">b_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">retrieved</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">b_inv</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="c1"># Measure accuracy</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">similarity</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">retrieved</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">similarity</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c1"># Test different dimensions</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="n">dimensions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">8192</span><span class="p">]</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dimensions</span><span class="p">:</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="n">sim</span> <span class="o">=</span> <span class="n">test_dimension</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimension </span><span class="si">{</span><span class="n">dim</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2">: Unbinding similarity = </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Expected Output:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Dimension   128: Unbinding similarity = 0.956234
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Dimension   256: Unbinding similarity = 0.982145
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Dimension   512: Unbinding similarity = 0.993278
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Dimension  1024: Unbinding similarity = 0.997834
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Dimension  2048: Unbinding similarity = 0.999456
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Dimension  4096: Unbinding similarity = 0.999845
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Dimension  8192: Unbinding similarity = 0.999956
+</code></pre></div></p>
+<p><strong>Insight:</strong> Diminishing returns after d=2048 for most applications.</p>
+<h3 id="practical-guidelines">Practical Guidelines<a class="headerlink" href="#practical-guidelines" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Minimum:</strong> 512 (adequate for simple tasks)</li>
+<li><strong>Standard:</strong> 2048 (sweet spot for most applications)</li>
+<li><strong>High precision:</strong> 4096-8192 (research, critical applications)</li>
+<li><strong>Maximum practical:</strong> 16384 (rarely needed, memory-intensive)</li>
+</ul>
+<p><strong>Memory footprint:</strong>
+- FHRR (complex64): <code>d × 8 bytes</code> (2048 → 16 KB per vector)
+- MAP (float32): <code>d × 4 bytes</code> (2048 → 8 KB per vector)
+- Binary (bool): <code>d × 1 bit</code> (2048 → 256 bytes per vector)</p>
+<hr />
+<h2 id="performance-benchmarking-methodology">Performance Benchmarking Methodology<a class="headerlink" href="#performance-benchmarking-methodology" title="Permanent link">&para;</a></h2>
+<p>Don't just trust the table—benchmark for YOUR specific use case!</p>
+<h3 id="step-1-define-your-test-case">Step 1: Define Your Test Case<a class="headerlink" href="#step-1-define-your-test-case" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">create_map_model</span><span class="p">,</span> <span class="n">create_binary_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Define your test parameters</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">DIM</span> <span class="o">=</span> <span class="mi">2048</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">NUM_CONCEPTS</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">BINDING_DEPTH</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># How many bind operations in a chain</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">NUM_QUERIES</span> <span class="o">=</span> <span class="mi">1000</span>
+</code></pre></div>
+<h3 id="step-2-benchmark-encoding-speed">Step 2: Benchmark Encoding Speed<a class="headerlink" href="#step-2-benchmark-encoding-speed" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_encoding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">create_model_fn</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">num_concepts</span><span class="p">):</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Benchmark how fast we can create basis vectors.&quot;&quot;&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">create_model_fn</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">concepts</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;concept_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_concepts</span><span class="p">)]</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">(</span><span class="n">concepts</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_name</span><span class="si">:</span><span class="s2">10s</span><span class="si">}</span><span class="s2">: Encoded </span><span class="si">{</span><span class="n">num_concepts</span><span class="si">}</span><span class="s2"> concepts in </span><span class="si">{</span><span class="n">elapsed</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s (</span><span class="si">{</span><span class="n">num_concepts</span><span class="o">/</span><span class="n">elapsed</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> concepts/s)&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">return</span> <span class="n">memory</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Test all three models</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encoding Speed Benchmark:&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">fhrr_mem</span> <span class="o">=</span> <span class="n">benchmark_encoding</span><span class="p">(</span><span class="s2">&quot;FHRR&quot;</span><span class="p">,</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">DIM</span><span class="p">,</span> <span class="n">NUM_CONCEPTS</span><span class="p">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="n">map_mem</span> <span class="o">=</span> <span class="n">benchmark_encoding</span><span class="p">(</span><span class="s2">&quot;MAP&quot;</span><span class="p">,</span> <span class="n">create_map_model</span><span class="p">,</span> <span class="n">DIM</span><span class="p">,</span> <span class="n">NUM_CONCEPTS</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="n">binary_mem</span> <span class="o">=</span> <span class="n">benchmark_encoding</span><span class="p">(</span><span class="s2">&quot;Binary&quot;</span><span class="p">,</span> <span class="n">create_binary_model</span><span class="p">,</span> <span class="n">DIM</span><span class="p">,</span> <span class="n">NUM_CONCEPTS</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="step-3-benchmark-binding-operations">Step 3: Benchmark Binding Operations<a class="headerlink" href="#step-3-benchmark-binding-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_binding</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Benchmark binding chain performance.&quot;&quot;&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">a</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;concept_0&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;concept_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="c1"># Warm-up (JIT compilation)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="c1"># Actual benchmark</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">):</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>            <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">ops_per_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_iterations</span> <span class="o">*</span> <span class="n">depth</span><span class="p">)</span> <span class="o">/</span> <span class="n">elapsed</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_name</span><span class="si">:</span><span class="s2">10s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ops_per_sec</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> bind ops/s (depth=</span><span class="si">{</span><span class="n">depth</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Binding Speed Benchmark:&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="n">benchmark_binding</span><span class="p">(</span><span class="s2">&quot;FHRR&quot;</span><span class="p">,</span> <span class="n">fhrr_mem</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">fhrr_mem</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="n">benchmark_binding</span><span class="p">(</span><span class="s2">&quot;MAP&quot;</span><span class="p">,</span> <span class="n">map_mem</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">map_mem</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="n">benchmark_binding</span><span class="p">(</span><span class="s2">&quot;Binary&quot;</span><span class="p">,</span> <span class="n">binary_mem</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">binary_mem</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="step-4-benchmark-unbinding-accuracy">Step 4: Benchmark Unbinding Accuracy<a class="headerlink" href="#step-4-benchmark-unbinding-accuracy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">benchmark_unbinding_accuracy</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measure unbinding accuracy for different binding depths.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">a</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;concept_0&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;concept_1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="c1"># Create binding chain of depth d</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="n">bound</span> <span class="o">=</span> <span class="n">a</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>            <span class="n">bound</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="c1"># Unbind</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="n">retrieved</span> <span class="o">=</span> <span class="n">bound</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>            <span class="n">b_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>            <span class="n">retrieved</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">retrieved</span><span class="p">,</span> <span class="n">b_inv</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="c1"># Measure similarity to original</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>        <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">retrieved</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">d</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">sim</span><span class="p">)))</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> Unbinding Accuracy:&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="k">for</span> <span class="n">depth</span><span class="p">,</span> <span class="n">sim</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Depth </span><span class="si">{</span><span class="n">depth</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>    <span class="k">return</span> <span class="n">results</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Unbinding Accuracy Benchmark:&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="n">fhrr_acc</span> <span class="o">=</span> <span class="n">benchmark_unbinding_accuracy</span><span class="p">(</span><span class="s2">&quot;FHRR&quot;</span><span class="p">,</span> <span class="n">fhrr_mem</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">fhrr_mem</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="n">map_acc</span> <span class="o">=</span> <span class="n">benchmark_unbinding_accuracy</span><span class="p">(</span><span class="s2">&quot;MAP&quot;</span><span class="p">,</span> <span class="n">map_mem</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">map_mem</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="n">binary_acc</span> <span class="o">=</span> <span class="n">benchmark_unbinding_accuracy</span><span class="p">(</span><span class="s2">&quot;Binary&quot;</span><span class="p">,</span> <span class="n">binary_mem</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">binary_mem</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="step-5-visualize-results">Step 5: Visualize Results<a class="headerlink" href="#step-5-visualize-results" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># Plot unbinding accuracy vs depth</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">depths_fhrr</span><span class="p">,</span> <span class="n">sims_fhrr</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">fhrr_acc</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">depths_map</span><span class="p">,</span> <span class="n">sims_map</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">map_acc</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">depths_binary</span><span class="p">,</span> <span class="n">sims_binary</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">binary_acc</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">depths_fhrr</span><span class="p">,</span> <span class="n">sims_fhrr</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;FHRR&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">depths_map</span><span class="p">,</span> <span class="n">sims_map</span><span class="p">,</span> <span class="s1">&#39;s-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">depths_binary</span><span class="p">,</span> <span class="n">sims_binary</span><span class="p">,</span> <span class="s1">&#39;^-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binary&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;90% threshold&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Binding Depth&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Unbinding Similarity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unbinding Accuracy vs Depth (d=</span><span class="si">{</span><span class="n">DIM</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;model_comparison_accuracy.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Saved: model_comparison_accuracy.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="common-model-selection-pitfalls">Common Model Selection Pitfalls<a class="headerlink" href="#common-model-selection-pitfalls" title="Permanent link">&para;</a></h2>
+<h3 id="pitfall-1-ill-just-use-the-fastest-model">Pitfall 1: "I'll just use the fastest model"<a class="headerlink" href="#pitfall-1-ill-just-use-the-fastest-model" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> MAP is fast but degrades with deep binding chains.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Deep hierarchical structure (tree of depth 5)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># MAP error accumulates → poor retrieval</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># BAD: Using MAP for deep structures</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">map_model</span> <span class="o">=</span> <span class="n">create_map_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># After 5 levels of binding, similarity drops to ~0.4</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># GOOD: Use FHRR for deep structures</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">fhrr_model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># After 5 levels, similarity stays &gt;0.99</span>
+</code></pre></div></p>
+<p><strong>Fix:</strong> Use FHRR for depth &gt; 3, MAP for depth ≤ 3.</p>
+<hr />
+<h3 id="pitfall-2-higher-dimension-is-always-better">Pitfall 2: "Higher dimension is always better"<a class="headerlink" href="#pitfall-2-higher-dimension-is-always-better" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Diminishing returns and wasted memory/compute.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Going from 2048 → 16384 gives only 0.0005 improvement</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># But uses 8× more memory and is 8× slower!</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># BAD: Overkill dimension</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">16384</span><span class="p">)</span>  <span class="c1"># 128 KB per vector!</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># GOOD: Use 2048 for most tasks</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>  <span class="c1"># 16 KB per vector</span>
+</code></pre></div></p>
+<p><strong>Fix:</strong> Start with 2048, only increase if empirically necessary.</p>
+<hr />
+<h3 id="pitfall-3-binary-is-always-most-efficient">Pitfall 3: "Binary is always most efficient"<a class="headerlink" href="#pitfall-3-binary-is-always-most-efficient" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Binary doesn't support spatial encoding or FPE.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># BAD: Trying to use FPE with Binary</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">binary_model</span> <span class="o">=</span> <span class="n">create_binary_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># FPE requires complex vectors → won&#39;t work!</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># GOOD: Use FHRR for spatial/continuous encoding</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">fhrr_model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.encoders</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarEncoder</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">ScalarEncoder</span><span class="p">(</span><span class="n">fhrr_model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">min_val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_val</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Works perfectly</span>
+</code></pre></div></p>
+<p><strong>Fix:</strong> Binary is for discrete symbols only. Use FHRR for continuous data.</p>
+<hr />
+<h3 id="pitfall-4-ill-pick-a-model-before-understanding-my-task">Pitfall 4: "I'll pick a model before understanding my task"<a class="headerlink" href="#pitfall-4-ill-pick-a-model-before-understanding-my-task" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Model selection should be driven by requirements, not preference.</p>
+<p><strong>Process:</strong>
+1. ❌ "I like Binary, so I'll use Binary"
+2. ✅ "My task requires exact unbinding, so I must use FHRR"
+3. ✅ "My task has shallow binding and needs speed, so MAP is ideal"</p>
+<p><strong>Fix:</strong> Use the decision tree at the start of this lesson.</p>
+<hr />
+<h2 id="real-world-scenario-examples">Real-World Scenario Examples<a class="headerlink" href="#real-world-scenario-examples" title="Permanent link">&para;</a></h2>
+<h3 id="scenario-1-image-classification-mnist">Scenario 1: Image Classification (MNIST)<a class="headerlink" href="#scenario-1-image-classification-mnist" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- 10 class prototypes
+- Shallow binding (pixel features → image vector)
+- Speed is important (real-time inference)</p>
+<p><strong>Decision:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Q1: Exact unbinding? → NO (classification uses similarity to prototypes)
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Q2: Memory limited? → NO (standard GPU/CPU)
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Q3: Deep binding? → NO (single bundle of features)
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Q4: Spatial encoding? → NO (just pixel features)
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Q5: Speed priority? → YES
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>→ Use MAP or Binary (we&#39;ll choose MAP for simplicity)
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>→ Dimension: 2048 (10 classes × 10 = 100 concepts minimum)
+</code></pre></div></p>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_map_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># Fast, sufficient accuracy for classification</span>
+</code></pre></div></p>
+<hr />
+<h3 id="scenario-2-knowledge-graph-reasoning">Scenario 2: Knowledge Graph Reasoning<a class="headerlink" href="#scenario-2-knowledge-graph-reasoning" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- 1000+ entities
+- Complex queries (multi-hop reasoning, depth 2-4)
+- High retrieval accuracy needed</p>
+<p><strong>Decision:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Q1: Exact unbinding? → YES (need accurate entity retrieval)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Q2: Memory limited? → NO
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>Q3: Deep binding? → YES (multi-hop queries, depth 4)
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>→ Use FHRR
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>→ Dimension: 4096 (1000 entities × 4 = 4000, round up)
+</code></pre></div></p>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># Exact unbinding for accurate multi-hop reasoning</span>
+</code></pre></div></p>
+<hr />
+<h3 id="scenario-3-robotics-spatial-memory">Scenario 3: Robotics Spatial Memory<a class="headerlink" href="#scenario-3-robotics-spatial-memory" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- Encode 2D positions (x, y coordinates)
+- Continuous space representation
+- Real-time updates (10 Hz)</p>
+<p><strong>Decision:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Q1: Exact unbinding? → Preferred for accuracy
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Q4: Spatial encoding? → YES (continuous 2D space)
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>→ Use FHRR (only model supporting SSP/FPE)
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>→ Dimension: 512-1024 (spatial encoding is efficient)
+</code></pre></div></p>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.encoders.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSP2D</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">ssp</span> <span class="o">=</span> <span class="n">SSP2D</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Encode continuous positions</span>
+</code></pre></div></p>
+<hr />
+<h3 id="scenario-4-embedded-device-microcontroller">Scenario 4: Embedded Device (Microcontroller)<a class="headerlink" href="#scenario-4-embedded-device-microcontroller" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- 64 KB RAM total
+- Simple classification (5 classes)
+- No GPU, limited CPU</p>
+<p><strong>Decision:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Q2: Memory limited? → YES (extremely constrained)
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>→ Use Binary
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>→ Dimension: 2048 (2048 bits = 256 bytes per vector, 5 classes = 1.25 KB total)
+</code></pre></div></p>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_binary_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1"># Minimal memory footprint, fast XOR operations</span>
+</code></pre></div></p>
+<hr />
+<h3 id="scenario-5-analogical-reasoning-research">Scenario 5: Analogical Reasoning Research<a class="headerlink" href="#scenario-5-analogical-reasoning-research" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- Word analogies (A:B::C:?)
+- Mapping vectors need high fidelity
+- Research setting (accuracy &gt; speed)</p>
+<p><strong>Decision:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Q1: Exact unbinding? → YES (research requires precision)
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Q3: Deep binding? → Moderate (create and apply mappings)
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>→ Use FHRR
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>→ Dimension: 4096 (high fidelity for mapping vectors)
+</code></pre></div></p>
+<p><strong>Implementation:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># High-precision mapping vectors for analogies</span>
+</code></pre></div></p>
+<hr />
+<h2 id="model-selection-worksheet">Model Selection Worksheet<a class="headerlink" href="#model-selection-worksheet" title="Permanent link">&para;</a></h2>
+<p>Use this worksheet to make your decision systematically:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>PROJECT: ______________________________
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>1. Task description:
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>   [ ] Classification
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>   [ ] Knowledge graphs / reasoning
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>   [ ] Spatial encoding
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>   [ ] Analogies / mappings
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>   [ ] Other: ______________
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>2. Binding depth:
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>   [ ] Shallow (1-2 levels)
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>   [ ] Moderate (3-4 levels)
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>   [ ] Deep (5+ levels)
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>3. Number of distinct concepts: __________
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>4. Memory constraints:
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>   [ ] No constraint (standard hardware)
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>   [ ] Moderate (edge device, &lt;1 GB)
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>   [ ] Severe (embedded, &lt;100 KB)
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>5. Speed requirements:
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>   [ ] Real-time (&lt;10 ms per operation)
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>   [ ] Interactive (&lt;100 ms)
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a>   [ ] Batch processing (no constraint)
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a>
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a>6. Accuracy requirements:
+<a id="__codelineno-22-28" name="__codelineno-22-28" href="#__codelineno-22-28"></a>   [ ] Approximate OK (&gt;70% similarity)
+<a id="__codelineno-22-29" name="__codelineno-22-29" href="#__codelineno-22-29"></a>   [ ] High (&gt;90% similarity)
+<a id="__codelineno-22-30" name="__codelineno-22-30" href="#__codelineno-22-30"></a>   [ ] Exact (&gt;99% similarity)
+<a id="__codelineno-22-31" name="__codelineno-22-31" href="#__codelineno-22-31"></a>
+<a id="__codelineno-22-32" name="__codelineno-22-32" href="#__codelineno-22-32"></a>7. Special features needed:
+<a id="__codelineno-22-33" name="__codelineno-22-33" href="#__codelineno-22-33"></a>   [ ] Fractional Power Encoding (FPE)
+<a id="__codelineno-22-34" name="__codelineno-22-34" href="#__codelineno-22-34"></a>   [ ] Spatial Semantic Pointers (SSP)
+<a id="__codelineno-22-35" name="__codelineno-22-35" href="#__codelineno-22-35"></a>   [ ] None
+<a id="__codelineno-22-36" name="__codelineno-22-36" href="#__codelineno-22-36"></a>
+<a id="__codelineno-22-37" name="__codelineno-22-37" href="#__codelineno-22-37"></a>DECISION TREE:
+<a id="__codelineno-22-38" name="__codelineno-22-38" href="#__codelineno-22-38"></a>
+<a id="__codelineno-22-39" name="__codelineno-22-39" href="#__codelineno-22-39"></a>Q1: Exact unbinding needed? (Question 6 = Exact)
+<a id="__codelineno-22-40" name="__codelineno-22-40" href="#__codelineno-22-40"></a>    → YES: FHRR
+<a id="__codelineno-22-41" name="__codelineno-22-41" href="#__codelineno-22-41"></a>    → NO: Continue
+<a id="__codelineno-22-42" name="__codelineno-22-42" href="#__codelineno-22-42"></a>
+<a id="__codelineno-22-43" name="__codelineno-22-43" href="#__codelineno-22-43"></a>Q2: Memory severely limited? (Question 4 = Severe)
+<a id="__codelineno-22-44" name="__codelineno-22-44" href="#__codelineno-22-44"></a>    → YES: Binary
+<a id="__codelineno-22-45" name="__codelineno-22-45" href="#__codelineno-22-45"></a>    → NO: Continue
+<a id="__codelineno-22-46" name="__codelineno-22-46" href="#__codelineno-22-46"></a>
+<a id="__codelineno-22-47" name="__codelineno-22-47" href="#__codelineno-22-47"></a>Q3: Deep binding chains? (Question 2 = Deep)
+<a id="__codelineno-22-48" name="__codelineno-22-48" href="#__codelineno-22-48"></a>    → YES: FHRR
+<a id="__codelineno-22-49" name="__codelineno-22-49" href="#__codelineno-22-49"></a>    → NO: Continue
+<a id="__codelineno-22-50" name="__codelineno-22-50" href="#__codelineno-22-50"></a>
+<a id="__codelineno-22-51" name="__codelineno-22-51" href="#__codelineno-22-51"></a>Q4: Spatial encoding? (Question 7 = FPE/SSP)
+<a id="__codelineno-22-52" name="__codelineno-22-52" href="#__codelineno-22-52"></a>    → YES: FHRR
+<a id="__codelineno-22-53" name="__codelineno-22-53" href="#__codelineno-22-53"></a>    → NO: Continue
+<a id="__codelineno-22-54" name="__codelineno-22-54" href="#__codelineno-22-54"></a>
+<a id="__codelineno-22-55" name="__codelineno-22-55" href="#__codelineno-22-55"></a>Q5: Speed priority? (Question 5 = Real-time)
+<a id="__codelineno-22-56" name="__codelineno-22-56" href="#__codelineno-22-56"></a>    → YES: MAP or Binary
+<a id="__codelineno-22-57" name="__codelineno-22-57" href="#__codelineno-22-57"></a>    → NO: FHRR (default)
+<a id="__codelineno-22-58" name="__codelineno-22-58" href="#__codelineno-22-58"></a>
+<a id="__codelineno-22-59" name="__codelineno-22-59" href="#__codelineno-22-59"></a>CHOSEN MODEL: ______________
+<a id="__codelineno-22-60" name="__codelineno-22-60" href="#__codelineno-22-60"></a>
+<a id="__codelineno-22-61" name="__codelineno-22-61" href="#__codelineno-22-61"></a>DIMENSION CALCULATION:
+<a id="__codelineno-22-62" name="__codelineno-22-62" href="#__codelineno-22-62"></a>  - Capacity requirement: concepts × 10 = __________
+<a id="__codelineno-22-63" name="__codelineno-22-63" href="#__codelineno-22-63"></a>  - Task recommendation (from table): __________
+<a id="__codelineno-22-64" name="__codelineno-22-64" href="#__codelineno-22-64"></a>  - CHOSEN DIMENSION: __________
+<a id="__codelineno-22-65" name="__codelineno-22-65" href="#__codelineno-22-65"></a>
+<a id="__codelineno-22-66" name="__codelineno-22-66" href="#__codelineno-22-66"></a>MEMORY FOOTPRINT:
+<a id="__codelineno-22-67" name="__codelineno-22-67" href="#__codelineno-22-67"></a>  - FHRR: dim × 8 bytes = __________ KB
+<a id="__codelineno-22-68" name="__codelineno-22-68" href="#__codelineno-22-68"></a>  - MAP: dim × 4 bytes = __________ KB
+<a id="__codelineno-22-69" name="__codelineno-22-69" href="#__codelineno-22-69"></a>  - Binary: dim ÷ 8 bytes = __________ KB
+</code></pre></div>
+<hr />
+<h2 id="self-assessment">Self-Assessment<a class="headerlink" href="#self-assessment" title="Permanent link">&para;</a></h2>
+<p>Before moving to the next lesson, ensure you can:</p>
+<ul>
+<li>[ ] Use the decision tree to choose a VSA model systematically</li>
+<li>[ ] Justify your model choice based on task requirements</li>
+<li>[ ] Select appropriate dimensionality for capacity and accuracy needs</li>
+<li>[ ] Benchmark models for your specific use case</li>
+<li>[ ] Identify and avoid common model selection pitfalls</li>
+<li>[ ] Apply the framework to real-world scenarios</li>
+</ul>
+<hr />
+<h2 id="quick-quiz">Quick Quiz<a class="headerlink" href="#quick-quiz" title="Permanent link">&para;</a></h2>
+<p><strong>Q1:</strong> For a task requiring multi-hop reasoning with 5 binding operations, which model is best?</p>
+<p>a) MAP - fastest operations
+b) Binary - most memory efficient
+c) FHRR - exact unbinding prevents error accumulation
+d) All models are equivalent for deep binding</p>
+<details>
+<summary>Answer</summary>
+**c) FHRR** - Deep binding chains (depth > 3) cause error accumulation in MAP. FHRR maintains >0.99 similarity even after many bind/unbind operations.
+</details>
+
+<p><strong>Q2:</strong> You have 200 distinct concepts and need to bundle 15 vectors. What dimension should you use?</p>
+<p>a) 512 (200 concepts is small)
+b) 2048 (200 × 10 = 2000, round to 2048)
+c) 8192 (always use maximum for best accuracy)
+d) 128 (minimum viable dimension)</p>
+<details>
+<summary>Answer</summary>
+**b) 2048** - Rule: dimension ≥ (num_concepts × 10). 200 × 10 = 2000, round to next power of 2 → 2048. Also check bundle capacity: 15² × 10 = 2250, so 2048 is close (acceptable) or use 4096 for safety.
+</details>
+
+<p><strong>Q3:</strong> For a microcontroller with 32 KB RAM, which model and dimension?</p>
+<p>a) FHRR, d=2048 (16 KB per vector)
+b) MAP, d=4096 (16 KB per vector)
+c) Binary, d=8192 (1 KB per vector)
+d) FHRR, d=512 (4 KB per vector)</p>
+<details>
+<summary>Answer</summary>
+**c) Binary, d=8192** - Binary uses 1 bit per element, so 8192 bits = 1 KB per vector. This fits easily in 32 KB RAM. FHRR/MAP would require 8-16 KB per vector, too large.
+</details>
+
+<p><strong>Q4:</strong> Your benchmark shows MAP unbinding similarity drops to 0.65 at depth 4. What should you do?</p>
+<p>a) Increase dimension to 8192
+b) Switch to FHRR model
+c) Use Binary instead
+d) Reduce binding depth</p>
+<details>
+<summary>Answer</summary>
+**b) Switch to FHRR model** - MAP's approximate unbinding accumulates error at depth > 3. Increasing dimension won't fix this fundamental limitation. FHRR provides exact unbinding regardless of depth.
+</details>
+
+<hr />
+<h2 id="hands-on-exercise-apply-the-framework">Hands-On Exercise: Apply the Framework<a class="headerlink" href="#hands-on-exercise-apply-the-framework" title="Permanent link">&para;</a></h2>
+<p><strong>Task:</strong> Choose the optimal VSA model and dimension for the following scenarios. Use the decision tree and benchmarking code.</p>
+<h3 id="exercise-1-recipe-recommendation-system">Exercise 1: Recipe Recommendation System<a class="headerlink" href="#exercise-1-recipe-recommendation-system" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- 500 recipes, each with 10-15 ingredients
+- Query: "Find recipes similar to [recipe] but with [substitution]"
+- Moderate binding depth (ingredient → recipe, 2 levels)
+- Running on standard web server</p>
+<p><strong>Your analysis:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>1. Task: [ ] Classification [ ] Reasoning [✓] Similarity search [ ] Spatial
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>2. Binding depth: [ ] Shallow [✓] Moderate [ ] Deep
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>3. Number of concepts: 500 recipes + ~200 ingredients = 700
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>4. Memory: [✓] No constraint [ ] Moderate [ ] Severe
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>5. Speed: [ ] Real-time [✓] Interactive [ ] Batch
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>6. Accuracy: [ ] Approximate [✓] High [ ] Exact
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>7. Special features: [ ] FPE [ ] SSP [✓] None
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>Decision:
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>Q1: Exact unbinding? → NO (similarity search, high accuracy OK)
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>Q2: Memory limited? → NO
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>Q3: Deep binding? → NO (depth = 2)
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>Q4: Spatial? → NO
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>Q5: Speed priority? → YES (interactive)
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>ANSWER: ____________ (model), dimension: ____________
+</code></pre></div></p>
+<details>
+<summary>Solution</summary>
+
+**Model: MAP**
+**Dimension: 4096**
+
+**Reasoning:**
+- Not deep binding (depth=2), so MAP's approximate unbinding is fine
+- Speed matters for interactive queries → MAP is faster than FHRR
+- 700 concepts × 10 = 7000 → use 8192 or 4096 (4096 acceptable)
+- No spatial encoding needed
+</details>
+
+<h3 id="exercise-2-hierarchical-document-classifier">Exercise 2: Hierarchical Document Classifier<a class="headerlink" href="#exercise-2-hierarchical-document-classifier" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- Documents organized in 4-level taxonomy (Category → Subcategory → Topic → Subtopic)
+- 10,000 documents total
+- Embedding: word features → sentence → paragraph → document
+- Deployed on GPU server</p>
+<p><strong>Your analysis:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>1. Task: [✓] Classification [ ] Reasoning [ ] Similarity [ ] Spatial
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>2. Binding depth: [ ] Shallow [ ] Moderate [✓] Deep (4 levels)
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>3. Number of concepts: ~10,000 documents + hierarchy labels
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>4. Memory: [✓] No constraint (GPU)
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>5. Speed: [ ] Real-time [ ] Interactive [✓] Batch
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>6. Accuracy: [ ] Approximate [✓] High [ ] Exact
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>7. Special features: [ ] FPE [ ] SSP [✓] None
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>Decision:
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>Q1: Exact unbinding? → Preferred (4 levels)
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>Q3: Deep binding? → YES (depth = 4)
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>ANSWER: ____________ (model), dimension: ____________
+</code></pre></div></p>
+<details>
+<summary>Solution</summary>
+
+**Model: FHRR**
+**Dimension: 4096 or 8192**
+
+**Reasoning:**
+- Deep binding (depth=4) → need FHRR to prevent error accumulation
+- 10,000 concepts → need high dimension (4096 minimum, 8192 safer)
+- GPU available → can handle complex FFT operations
+- Exact unbinding ensures accurate classification through hierarchy
+</details>
+
+<h3 id="exercise-3-iot-sensor-anomaly-detection">Exercise 3: IoT Sensor Anomaly Detection<a class="headerlink" href="#exercise-3-iot-sensor-anomaly-detection" title="Permanent link">&para;</a></h3>
+<p><strong>Requirements:</strong>
+- 50 sensor types, 5 normal patterns per sensor
+- Embed sensor readings as binary patterns
+- Detect anomalies (dissimilar to all normal patterns)
+- Running on ARM Cortex-M4 (256 KB RAM, no FPU)</p>
+<p><strong>Your analysis:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>1. Task: [✓] Classification (anomaly) [ ] Reasoning [ ] Similarity [ ] Spatial
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>2. Binding depth: [✓] Shallow (features → pattern)
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>3. Number of concepts: 50 sensors × 5 patterns = 250
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>4. Memory: [ ] No constraint [ ] Moderate [✓] Severe (256 KB RAM)
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>5. Speed: [✓] Real-time (sensor polling)
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>6. Accuracy: [✓] Approximate OK (anomaly detection threshold)
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>7. Special features: [✓] None
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>Decision:
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>Q2: Memory limited? → YES (embedded device, no FPU)
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>ANSWER: ____________ (model), dimension: ____________
+</code></pre></div></p>
+<details>
+<summary>Solution</summary>
+
+**Model: Binary**
+**Dimension: 4096**
+
+**Reasoning:**
+- Memory severely limited + no FPU → Binary is ideal
+- 250 concepts × 10 = 2500 → use 4096
+- Binary: 4096 bits = 512 bytes per vector, 250 vectors = 125 KB (fits in 256 KB)
+- XOR operations are extremely fast on ARM Cortex-M4
+- Approximate similarity is fine for anomaly detection
+</details>
+
+<hr />
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Use the decision tree</strong> - Systematic model selection based on requirements</li>
+<li><strong>FHRR for precision</strong> - Exact unbinding, deep chains, spatial encoding</li>
+<li><strong>MAP for speed</strong> - Fast operations, shallow binding, approximate OK</li>
+<li><strong>Binary for efficiency</strong> - Minimal memory, hardware-friendly, noise-robust</li>
+<li><strong>Dimension = capacity × 10</strong> - Start with this rule, adjust empirically</li>
+<li><strong>Benchmark your use case</strong> - Don't trust tables, measure for your task</li>
+<li><strong>2048 is the sweet spot</strong> - Good default for most applications</li>
+</ol>
+<hr />
+<p><strong>Next:</strong> <a href="../../03_encoders/">Module 3: Encoders &amp; Applications</a></p>
+<p>Learn how to encode structured data (scalars, sequences, dictionaries, images) and build real-world VSA applications.</p>
+<p><strong>Previous:</strong> <a href="../03_similarity/">Lesson 2.3: Similarity Metrics and Search</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
