@@ -8,6 +8,24 @@
 
 VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Architectures (VSAs). It provides composable symbolic representations using hypervectors, algebraic operations for binding and bundling, and encoding strategies for symbolic and structured data.
 
+## 📚 New to VSA? Start Learning!
+
+**[Complete VSA Learning Path →](https://vasanthsarathy.github.io/vsax/course/)**
+
+New comprehensive course covering VSA from foundations to research frontiers:
+
+- **20 Interactive Lessons** - From "Why High Dimensions?" to research frontiers
+- **12 Hands-On Exercises** - ~5,000 lines of practical code
+- **5 Progressive Modules** - Foundations → Core Operations → Applications → Advanced → Research
+- **~113,000 Words** of content - Self-paced learning for ML practitioners and researchers
+
+**Quick Links:**
+- [Module 1: Foundations](https://vasanthsarathy.github.io/vsax/course/01_foundations/) - Why VSA works
+- [Module 2: Core Operations](https://vasanthsarathy.github.io/vsax/course/02_operations/) - FHRR, MAP, Binary models
+- [Module 3: Encoders & Applications](https://vasanthsarathy.github.io/vsax/course/03_encoders/) - Real-world usage
+- [Module 4: Advanced Techniques](https://vasanthsarathy.github.io/vsax/course/04_advanced/) - State-of-the-art methods
+- [Module 5: Research & Extensions](https://vasanthsarathy.github.io/vsax/course/05_research/) - Contributing to VSA research
+
 ## Features
 
 - 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
