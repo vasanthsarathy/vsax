@@ -18,14 +18,16 @@ class VSAModel:
 ### FHRR Model
 
 ```python
-from vsax import VSAModel, ComplexHypervector, FHRROperations, sample_complex_random
+from vsax import VSAModel, ComplexHypervector, FHRROperations, sample_fhrr_random
 
 fhrr_model = VSAModel(
     dim=512,
     rep_cls=ComplexHypervector,
     opset=FHRROperations(),
-    sampler=sample_complex_random
+    sampler=sample_fhrr_random  # Recommended: ensures >99% unbinding accuracy
 )
+
+# Alternative: Use sample_complex_random for general complex vectors (~70% unbinding)
 ```
 
 ### MAP Model
@@ -70,6 +72,10 @@ b = fhrr_model.rep_cls(vectors[1]).normalize()
 # Perform operations using model's opset
 bound = fhrr_model.opset.bind(a.vec, b.vec)
 bundled = fhrr_model.opset.bundle(a.vec, b.vec)
+
+# Unbind to recover original (NEW: explicit unbind method)
+recovered = fhrr_model.opset.unbind(bound, b.vec)
+# With FHRR + sample_fhrr_random: >99% similarity to a.vec!
 ```
 
 ## Model Properties

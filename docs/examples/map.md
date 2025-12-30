@@ -36,6 +36,14 @@ bound = model.opset.bind(a.vec, b.vec)
 
 # Bundle (element-wise mean)
 bundled = model.opset.bundle(a.vec, b.vec)
+
+# Unbind (approximate recovery with MAP)
+recovered = model.opset.unbind(bound, b.vec)
+recovered_hv = model.rep_cls(recovered).normalize()
+
+# Check similarity - MAP unbinding is approximate
+similarity = jnp.dot(a.vec, recovered_hv.vec)
+print(f"Recovery similarity: {similarity:.4f}")  # ~0.30-0.40 (approximate!)
 ```
 
 ## Feature Binding Example

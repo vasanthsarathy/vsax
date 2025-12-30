@@ -14,6 +14,12 @@ Functions for generating random basis hypervectors.
     options:
       show_source: true
 
+## sample_fhrr_random
+
+::: vsax.sampling.sample_fhrr_random
+    options:
+      show_source: true
+
 ## sample_binary_random
 
 ::: vsax.sampling.sample_binary_random

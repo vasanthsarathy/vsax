@@ -161,7 +161,7 @@ Encoded 19 facts as hypervectors
 
 ## Querying the Knowledge Base
 
-We can query facts by unbinding (using inverse operation):
+We can query facts by unbinding (NEW: using explicit unbind method):
 
 **Query: "What is a dog?"** (dog isA ?)
 ```
@@ -178,9 +178,9 @@ def query_fact(subject: str, relation: str) -> str:
             s_hv = memory[subject]
             r_hv = memory[relation]
 
-            # query = unbind(fact, bind(subject, relation))
+            # query = unbind(fact, bind(subject, relation)) - NEW unbind method!
             sr = model.opset.bind(s_hv.vec, r_hv.vec)
-            query_result = model.opset.bind(fact_hv.vec, model.opset.inverse(sr))
+            query_result = model.opset.unbind(fact_hv.vec, sr)
 
             # Find most similar concept
             similarities = {}
@@ -417,9 +417,9 @@ def query_kg(subject: str, relation: str) -> list[tuple[str, float]]:
     s_hv = memory[subject]
     r_hv = memory[relation]
 
-    # Unbind subject and relation from the knowledge graph
+    # Unbind subject and relation from the knowledge graph (NEW: unbind method)
     sr = model.opset.bind(s_hv.vec, r_hv.vec)
-    query_result = model.opset.bind(knowledge_graph, model.opset.inverse(sr))
+    query_result = model.opset.unbind(knowledge_graph, sr)
 
     # Find similar concepts
     results = []
@@ -479,9 +479,9 @@ def test_model(model_name: str, model, dim: int = 512):
     ro = model.opset.bind(r_hv.vec, o_hv.vec)
     fact_hv = model.opset.bind(s_hv.vec, ro)
 
-    # Unbind and query
+    # Unbind and query (NEW: unbind method)
     sr = model.opset.bind(s_hv.vec, r_hv.vec)
-    query_result = model.opset.bind(fact_hv, model.opset.inverse(sr))
+    query_result = model.opset.unbind(fact_hv, sr)
 
     # Find similarity to correct answer
     similarity = cosine_similarity(query_result, o_hv.vec)

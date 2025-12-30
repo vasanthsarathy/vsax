@@ -23,4 +23,5 @@ Core abstract classes that define the VSA interface.
         - bind
         - bundle
         - inverse
+        - unbind
         - permute

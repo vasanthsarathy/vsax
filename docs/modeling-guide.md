@@ -84,7 +84,7 @@ Memory-constrained or targeting hardware?
 |---------|------|-----|--------|
 | **Representation** | Complex (phase) | Real (continuous) | Discrete (±1 or 0/1) |
 | **Binding** | Circular convolution (FFT) | Element-wise multiply | XOR (or multiply) |
-| **Unbinding** | Exact (inverse) | Approximate | Exact (self-inverse) |
+| **Unbinding** | Exact (>99% with proper vectors) | Approximate (~30%) | Exact (self-inverse) |
 | **Speed** | Fast (FFT) | Fastest (element-wise) | Very fast (bit ops) |
 | **Memory** | Moderate | Moderate | Low (1 bit/dim) |
 | **Best For** | Compositional structures | Simple tasks, speed | Hardware, memory limits |
@@ -351,8 +351,8 @@ Prediction: negative
 # Given a fact, extract components
 # fact = bind(role_subject, Paris) + bind(role_relation, is_capital_of) + ...
 
-# Unbind to get subject
-subject_vec = model.opset.bind(fact, model.opset.inverse(memory["role_subject"].vec))
+# Unbind to get subject (NEW: explicit unbind method)
+subject_vec = model.opset.unbind(fact, memory["role_subject"].vec)
 
 # Find closest match
 similarities = {}
@@ -362,6 +362,7 @@ for city in ["Paris", "London", "Berlin"]:
 
 best_match = max(similarities.items(), key=lambda x: x[1])
 print(f"Subject: {best_match[0]} (similarity: {best_match[1]:.3f})")
+# With FHRR: expect >99% similarity for correct city!
 ```
 
 ### Batch Operations (GPU Acceleration)
@@ -562,13 +563,14 @@ query = model.opset.bundle(
 # Find best matching fact
 best_fact = max(facts, key=lambda f: cosine_similarity(query, f))
 
-# Extract subject
-subject_vec = model.opset.bind(best_fact, model.opset.inverse(memory["role_subject"].vec))
+# Extract subject (NEW: explicit unbind method)
+subject_vec = model.opset.unbind(best_fact, memory["role_subject"].vec)
 
 # Find city
 for city in cities:
     sim = cosine_similarity(subject_vec, memory[city].vec)
     print(f"{city}: {sim:.3f}")
+    # With FHRR: correct city should show >99% similarity!
 ```
 
 ### Pattern 3: Online Learning
@@ -636,9 +638,9 @@ prototype = model.opset.bundle(prototype, new_example)
 
 ### Pitfall 5: Trying to Unbind with MAP
 
-**Symptom**: Unbinding doesn't recover original
-**Cause**: MAP uses approximate unbinding
-**Solution**: Use FHRR for exact unbinding
+**Symptom**: Unbinding doesn't recover original (~30% similarity)
+**Cause**: MAP uses approximate unbinding (element-wise multiply inverse)
+**Solution**: Use FHRR for exact unbinding (>99% with proper sampling)
 
 ---
 

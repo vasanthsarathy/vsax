@@ -164,13 +164,13 @@ def find_best_match(vector, memory, candidates):
 
 def decode_binary_op(model, memory, node_vec):
     """Decode a binary operation node."""
-    # Unbind to extract operator
-    op_vec = model.opset.bind(node_vec, model.opset.inverse(memory["op"].vec))
+    # Unbind to extract operator (NEW: unbind method)
+    op_vec = model.opset.unbind(node_vec, memory["op"].vec)
     operator, op_sim = find_best_match(op_vec, memory, ["+", "-", "*", "/"])
 
     # Unbind to extract left and right children
-    left_vec = model.opset.bind(node_vec, model.opset.inverse(memory["left"].vec))
-    right_vec = model.opset.bind(node_vec, model.opset.inverse(memory["right"].vec))
+    left_vec = model.opset.unbind(node_vec, memory["left"].vec)
+    right_vec = model.opset.unbind(node_vec, memory["right"].vec)
 
     return operator, left_vec, right_vec, op_sim
 
@@ -275,8 +275,8 @@ def decode_list_item(model, memory, list_vec, position):
     if pos_name not in memory:
         return None
 
-    # Unbind position
-    item_vec = model.opset.bind(list_vec, model.opset.inverse(memory[pos_name].vec))
+    # Unbind position (NEW: unbind method)
+    item_vec = model.opset.unbind(list_vec, memory[pos_name].vec)
     return item_vec
 
 
@@ -464,18 +464,18 @@ Entire family tree in a single 1024-dimensional vector!
 ### Querying Family Relationships
 
 ```python
-# Query: Who are Alice's children?
+# Query: Who are Alice's children? (NEW: using unbind method)
 print("Query: Who are Alice's children?\n")
 
 # Extract first child
-child0_vec = model.opset.bind(alice, model.opset.inverse(memory["child0"].vec))
-child0_name = model.opset.bind(child0_vec, model.opset.inverse(memory["name"].vec))
+child0_vec = model.opset.unbind(alice, memory["child0"].vec)
+child0_name = model.opset.unbind(child0_vec, memory["name"].vec)
 name0, sim0 = find_best_match(child0_name, memory, ["Alice", "Bob", "Carol", "David", "Eve"])
 print(f"First child: {name0} (similarity: {sim0:.3f})")
 
 # Extract second child
-child1_vec = model.opset.bind(alice, model.opset.inverse(memory["child1"].vec))
-child1_name = model.opset.bind(child1_vec, model.opset.inverse(memory["name"].vec))
+child1_vec = model.opset.unbind(alice, memory["child1"].vec)
+child1_name = model.opset.unbind(child1_vec, memory["name"].vec)
 name1, sim1 = find_best_match(child1_name, memory, ["Alice", "Bob", "Carol", "David", "Eve"])
 print(f"Second child: {name1} (similarity: {sim1:.3f})")
 

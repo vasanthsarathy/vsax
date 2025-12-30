@@ -543,10 +543,10 @@ def test_unbinding_chain(model_name, dim=2048):
     step2 = model.opset.bind(step1, memory["c"].vec)
     step3 = model.opset.bind(step2, memory["d"].vec)
 
-    # Unbind step-by-step
-    unbind1 = model.opset.bind(step3, model.opset.inverse(memory["d"].vec))
-    unbind2 = model.opset.bind(unbind1, model.opset.inverse(memory["c"].vec))
-    unbind3 = model.opset.bind(unbind2, model.opset.inverse(memory["b"].vec))
+    # Unbind step-by-step (NEW: using unbind method)
+    unbind1 = model.opset.unbind(step3, memory["d"].vec)
+    unbind2 = model.opset.unbind(unbind1, memory["c"].vec)
+    unbind3 = model.opset.unbind(unbind2, memory["b"].vec)
 
     # Measure similarities
     sim1 = cosine_similarity(unbind1, step2)

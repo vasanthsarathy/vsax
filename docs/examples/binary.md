@@ -34,9 +34,12 @@ print(f"Unique values: {jnp.unique(a.vec)}")  # Array([-1, 1])
 # Bind (XOR)
 bound = model.opset.bind(a.vec, b.vec)
 
-# Unbind (exact recovery!)
-recovered = model.opset.bind(bound, b.vec)
+# NEW: Explicit unbind method (exact recovery with Binary VSA!)
+recovered = model.opset.unbind(bound, b.vec)
 print(f"Exact recovery: {jnp.array_equal(recovered, a.vec)}")  # True!
+
+# Note: For Binary VSA, unbind(a,b) = bind(a,b) due to XOR self-inverse property
+# Both work, but unbind() is clearer in intent
 
 # Bundle (majority vote)
 bundled = model.opset.bundle(a.vec, b.vec)
@@ -57,9 +60,9 @@ charlie = model.sampler(dim=model.dim, n=1, key=keys[3], bipolar=True)[0]
 # Encode: "Alice likes Bob"
 fact = model.opset.bind(model.opset.bind(alice, likes), bob)
 
-# Query: Who does Alice like?
-query = model.opset.bind(fact, model.opset.bind(alice, likes))
-# High Hamming similarity to bob
+# Query: Who does Alice like? (NEW: using unbind)
+query = model.opset.unbind(fact, model.opset.bind(alice, likes))
+# Exact match to bob (Binary VSA provides perfect unbinding!)
 ```
 
 **Advantage:** Binary VSA provides exact unbinding and is hardware-friendly!
