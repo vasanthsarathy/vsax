@@ -210,9 +210,8 @@ Let's ask questions by unbinding!
 ```python
 from vsax.similarity import cosine_similarity
 
-# To find the subject, unbind the "subject" role
-subject_inverse = model.opset.inverse(memory["subject"].vec)
-retrieved = model.opset.bind(sentence, subject_inverse)
+# To find the subject, unbind the "subject" role (NEW: unbind method)
+retrieved = model.opset.unbind(sentence, memory["subject"].vec)
 
 # Check similarity to all concepts
 print("Query: What's the subject?\n")
@@ -235,9 +234,8 @@ Query: What's the subject?
 ### Query 2: "What's the object?"
 
 ```python
-# Unbind the "object" role
-object_inverse = model.opset.inverse(memory["object"].vec)
-retrieved = model.opset.bind(sentence, object_inverse)
+# Unbind the "object" role (NEW: unbind method)
+retrieved = model.opset.unbind(sentence, memory["object"].vec)
 
 print("Query: What's the object?\n")
 for concept in ["cat", "mat", "sat"]:
@@ -259,9 +257,8 @@ Query: What's the object?
 ### Query 3: "What action happened?"
 
 ```python
-# Unbind the "verb" role
-verb_inverse = model.opset.inverse(memory["verb"].vec)
-retrieved = model.opset.bind(sentence, verb_inverse)
+# Unbind the "verb" role (NEW: unbind method)
+retrieved = model.opset.unbind(sentence, memory["verb"].vec)
 
 print("Query: What action happened?\n")
 for concept in ["cat", "mat", "sat"]:
@@ -432,8 +429,11 @@ model.opset.bundle(memory["cat"].vec, memory["mat"].vec)
 # WRONG: Using the same vector instead of inverse
 retrieved = model.opset.bind(bound, key.vec)  # Wrong!
 
-# CORRECT: Use inverse
-retrieved = model.opset.bind(bound, model.opset.inverse(key.vec))
+# CORRECT: Use unbind method (recommended)
+retrieved = model.opset.unbind(bound, key.vec)
+
+# Alternative: Use inverse (equivalent)
+# retrieved = model.opset.bind(bound, model.opset.inverse(key.vec))
 ```
 
 ---

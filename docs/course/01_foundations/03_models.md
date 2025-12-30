@@ -64,9 +64,12 @@ memory.add_many(["cat", "red", "mat"])
 # Binding (circular convolution)
 bound = model.opset.bind(memory["cat"].vec, memory["red"].vec)
 
-# Unbinding (exact inverse via complex conjugate)
-inverse_red = model.opset.inverse(memory["red"].vec)
-retrieved = model.opset.bind(bound, inverse_red)
+# NEW: Explicit unbind method (recommended)
+retrieved = model.opset.unbind(bound, memory["red"].vec)
+
+# Alternative (equivalent): Using inverse
+# inverse_red = model.opset.inverse(memory["red"].vec)
+# retrieved = model.opset.bind(bound, inverse_red)
 
 # Check accuracy
 sim = cosine_similarity(retrieved, memory["cat"].vec)
@@ -120,9 +123,12 @@ memory.add_many(["cat", "red", "mat"])
 # Binding (element-wise multiply)
 bound = model.opset.bind(memory["cat"].vec, memory["red"].vec)
 
-# Unbinding (approximate inverse via division)
-inverse_red = model.opset.inverse(memory["red"].vec)
-retrieved = model.opset.bind(bound, inverse_red)
+# NEW: Explicit unbind method (approximate for MAP)
+retrieved = model.opset.unbind(bound, memory["red"].vec)
+
+# Alternative (equivalent): Using inverse
+# inverse_red = model.opset.inverse(memory["red"].vec)
+# retrieved = model.opset.bind(bound, inverse_red)
 
 # Check accuracy
 sim = cosine_similarity(retrieved, memory["cat"].vec)
