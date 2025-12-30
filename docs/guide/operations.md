@@ -60,17 +60,28 @@ assert jnp.allclose(jnp.abs(bundled), 1.0)
 - Approximate: Some information loss occurs
 - Commutative: Order doesn't matter
 
-### Inverse (Complex Conjugate)
+### Inverse (Frequency-Domain Conjugate)
 
-For complex vectors, the inverse is the complex conjugate.
+For FHRR circular convolution, the inverse uses **frequency-domain conjugate**:
+`inverse(b) = ifft(conj(fft(b)))`
+
+This ensures high-accuracy unbinding (>99% with proper FHRR vectors).
 
 ```python
-# Unbind to recover original
+# Method 1: Explicit unbind (RECOMMENDED)
+recovered = ops.unbind(bound, b)
+
+# Method 2: Using inverse (equivalent)
 inv_b = ops.inverse(b)
 recovered = ops.bind(bound, inv_b)
 
-# recovered ≈ a (with high similarity)
+# With proper FHRR vectors (sample_fhrr_random):
+# recovered ≈ a with >99% similarity!
 ```
+
+**Note:** For optimal unbinding accuracy, use `sample_fhrr_random()` which generates
+vectors with conjugate symmetry. General complex phasors achieve ~70% accuracy,
+while proper FHRR vectors achieve >99% accuracy.
 
 ### Example: Role-Filler Binding
 
@@ -146,15 +157,19 @@ assert jnp.allclose(bundled, (a + b + c) / 3)
 MAP uses an approximate inverse based on normalization.
 
 ```python
-# Approximate inverse
-inv_b = ops.inverse(b)
+# Method 1: Explicit unbind (RECOMMENDED)
+recovered = ops.unbind(bound, b)
 
-# Unbinding is approximate
+# Method 2: Using inverse (equivalent)
+inv_b = ops.inverse(b)
 recovered = ops.bind(bound, inv_b)
-# recovered ≈ a (but not exact)
+
+# recovered ≈ a (but not exact, typically ~30% similarity)
 ```
 
-**Note:** MAP unbinding is approximate - use for applications where exact recovery isn't critical.
+**Note:** MAP unbinding is approximate - use for applications where exact recovery
+isn't critical. Typical unbinding similarity is ~30-40%, sufficient for many
+pattern matching and classification tasks.
 
 ### Example: Feature Binding
 
@@ -225,16 +240,28 @@ bundled = ops.bundle(a, b, c)
 
 **Tie Breaking:** For even numbers of vectors, ties default to +1.
 
-### Inverse (Self-Inverse)
+### Inverse (Self-Inverse Property)
 
-XOR is its own inverse, so `inverse(a) = a`.
+XOR is its own inverse, so `inverse(a) = a`. This means unbinding is
+identical to binding for Binary VSA!
 
 ```python
-# Exact unbinding
+# Method 1: Explicit unbind (RECOMMENDED - clearer intent)
+recovered = ops.unbind(bound, b)
+assert jnp.array_equal(recovered, a)  # Exact recovery!
+
+# Method 2: Using inverse (equivalent due to self-inverse)
 inv_b = ops.inverse(b)  # inv_b == b
 recovered = ops.bind(bound, inv_b)
-assert jnp.array_equal(recovered, a)  # Exact recovery!
+assert jnp.array_equal(recovered, a)  # Same result!
+
+# Method 3: Direct binding (works because XOR is self-inverse)
+recovered = ops.bind(bound, b)
+assert jnp.array_equal(recovered, a)  # Also works!
 ```
+
+**Key insight:** For Binary VSA, `unbind(a, b) = bind(a, b) = a XOR b`
+due to XOR's self-inverse property.
 
 ### Example: Symbolic Reasoning
 

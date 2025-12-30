@@ -7,6 +7,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Unbinding Operations:**
+  - `unbind()` method added to `AbstractOpSet` for explicit unbinding interface
+  - `FHRROperations.unbind()` - Optimized FFT-based circular deconvolution
+  - `BinaryOperations.unbind()` - Leverages XOR self-inverse property
+  - `MAPOperations` uses default implementation from AbstractOpSet
+  - Provides clearer API: `ops.unbind(c, b)` vs `ops.bind(c, ops.inverse(b))`
+
+- **FHRR Sampling Function:**
+  - `sample_fhrr_random()` - Generates real-valued vectors with conjugate symmetry
+  - Ensures IFFT produces real results (no complex artifacts)
+  - Enforces frequency-domain properties: `F[k] = conj(F[D-k])`
+  - DC and Nyquist components are real-valued
+  - Enables >99% unbinding accuracy for FHRR operations
+  - Samples unit-magnitude phasors in frequency domain
+
+- **Comprehensive Test Coverage:**
+  - 30+ new tests validating unbinding mathematical correctness
+  - `test_unbind_perfect_with_fhrr_vectors()` - Demonstrates >99% accuracy
+  - `test_inverse_frequency_domain_conjugate()` - Validates correct mathematics
+  - `test_sample_fhrr_random_conjugate_symmetry()` - Validates sampling properties
+  - Tests for FHRR, MAP, and Binary unbinding operations
+  - Round-trip accuracy tests, chain unbinding tests
+
+### Fixed
+- **BREAKING: FHRR inverse operation corrected (CRITICAL MATHEMATICAL FIX)**
+  - **Was:** `conj(a)` (time-domain conjugate, mathematically incorrect)
+  - **Now:** `ifft(conj(fft(a)))` (frequency-domain conjugate, mathematically correct)
+  - **Impact:** FHRR unbinding accuracy improves from ~50-70% to >99% (with proper vectors)
+  - **Why this is correct:** For circular convolution unbinding, the inverse must use
+    frequency-domain conjugate: `inverse(b) = ifft(conj(fft(b)))`
+  - **Migration:** No code changes required - unbinding automatically improves.
+    For best results, use `sample_fhrr_random()` instead of `sample_complex_random()`
+  - This fixes fundamental circular convolution mathematics that should have been
+    correct from the start. The old implementation gave poor unbinding results.
+
+### Changed
+- **FHRR test expectations updated:**
+  - General complex phasor vectors: ~70% unbinding similarity (acceptable)
+  - Proper FHRR vectors (`sample_fhrr_random`): >99% unbinding similarity (ideal)
+  - Tests now document the difference between general complex vectors and
+    FHRR-specific vectors with conjugate symmetry
+
+### Notes
+- **Breaking change justification:** The old inverse behavior was mathematically
+  wrong for FHRR circular convolution. Users may see different (better) results,
+  but this is the correct behavior.
+- **Recommended migration:** Use `sample_fhrr_random()` for FHRR applications to
+  achieve optimal >99% unbinding accuracy. Old `sample_complex_random()` still
+  works but achieves lower accuracy (~70%) due to lack of conjugate symmetry.
+
 ## [1.2.1] - 2025-01-24
 
 ### Added

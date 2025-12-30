@@ -13,9 +13,10 @@ VSAX is a GPU-accelerated, JAX-native Python library for Vector Symbolic Archite
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
 - 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
+- 🔓 **Explicit Unbinding**: Clear `unbind()` API with >99% FHRR accuracy ✅ **NEW**
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 💯 **Type-Safe**: Full type annotations with mypy support
-- ✅ **Well-Tested**: 618 tests with 94% coverage
+- ✅ **Well-Tested**: 650+ tests with 94% coverage
 - 🔍 **Similarity Metrics**: Cosine, dot, and Hamming similarity
 - ⚡ **Batch Operations**: GPU-accelerated vmap operations
 - 💾 **I/O & Persistence**: Save/load basis vectors to JSON
@@ -112,7 +113,8 @@ model = VSAModel(
     sampler=sample_binary_random
 )
 
-# XOR binding (exact unbinding)
+# XOR binding (exact unbinding via self-inverse property)
+# Use ops.unbind(bound, b) for explicit unbinding
 # Majority voting for bundling
 ```
 

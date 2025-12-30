@@ -144,6 +144,10 @@ sentence = encoder.encode({"subject": "dog", "action": "run"})
 # Bind concepts (circular convolution)
 dog_is_animal = model.opset.bind(dog.vec, memory["animal"].vec)
 
+# Unbind to recover original concept (NEW: explicit unbind method)
+recovered = model.opset.unbind(dog_is_animal, memory["animal"].vec)
+# With FHRR: >99% similarity to original dog vector
+
 # Bundle concepts (sum and normalize)
 pets = model.opset.bundle(memory["dog"].vec, memory["cat"].vec)
 
@@ -170,13 +174,13 @@ VSAX supports three VSA models, all with the same simple API:
 ```python
 from vsax import create_fhrr_model, create_map_model, create_binary_model, VSAMemory
 
-# FHRR: Complex hypervectors, exact unbinding
+# FHRR: Complex hypervectors, >99% unbinding accuracy (with proper sampling)
 fhrr = create_fhrr_model(dim=512)
 
 # MAP: Real hypervectors, approximate unbinding
 map_model = create_map_model(dim=512)
 
-# Binary: Discrete hypervectors, exact unbinding
+# Binary: Discrete hypervectors, exact unbinding (XOR self-inverse)
 binary = create_binary_model(dim=10000, bipolar=True)
 
 # Same interface for all models!
@@ -236,6 +240,7 @@ print(f"AGENT is 'dog': {similarity:.3f}")  # High similarity!
 
 **Key features:**
 - ✅ **Exact inversion**: `op.inverse().apply(op.apply(v))` recovers original (similarity > 0.999)
+- ✅ **Explicit unbinding**: Use `ops.unbind(bound, b)` for clearer unbinding operations
 - ✅ **Compositional**: Combine operators algebraically with `compose()`
 - ✅ **Typed**: Semantic metadata (SPATIAL, SEMANTIC, TEMPORAL, etc.)
 - ✅ **Reproducible**: Same dimension always produces same operator
