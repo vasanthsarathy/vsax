@@ -297,9 +297,9 @@ model = create_fhrr_model(dim=4096)  # Instead of 512
 **Symptom:**
 ```python
 bound = model.opset.bind(a, b)
-retrieved = model.opset.bind(bound, model.opset.inverse(b))
+retrieved = model.opset.unbind(bound, b)  # NEW: explicit unbind method
 sim = cosine_similarity(retrieved, a)
-print(sim)  # 0.35 (too low!)
+print(sim)  # 0.35 (too low!) - likely using MAP model or general complex vectors
 ```
 
 **Possible causes:**

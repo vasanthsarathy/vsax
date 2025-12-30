@@ -512,9 +512,9 @@ Retrieve element at specific position:
 sentence = encoder.encode(["the", "cat", "sat"])
 
 # Query: What's at position 1?
-# Unbind position 1 to retrieve element
+# Unbind position 1 to retrieve element (NEW: unbind method)
 pos_1 = encoder._create_position_vector(1)  # Internal method
-retrieved = model.opset.bind(sentence.vec, model.opset.inverse(pos_1))
+retrieved = model.opset.unbind(sentence.vec, pos_1)
 
 # Find most similar word
 words = ["the", "cat", "sat", "dog", "mat"]

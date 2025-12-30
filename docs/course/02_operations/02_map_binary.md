@@ -322,9 +322,9 @@ def test_model(model_name, dim=2048):
     for key in ["b", "c", "d"]:
         result = model.opset.bind(result, memory[key].vec)
 
-    # Unbind chain: d, c, b
+    # Unbind chain: d, c, b (NEW: using unbind method)
     for key in ["d", "c", "b"]:
-        result = model.opset.bind(result, model.opset.inverse(memory[key].vec))
+        result = model.opset.unbind(result, memory[key].vec)
 
     # Check similarity to 'a'
     sim = sim_fn(result, memory["a"].vec)
@@ -613,9 +613,9 @@ def measure_accuracy_vs_depth(model_name, max_depth=10, dim=2048):
         for i in range(1, depth + 1):
             result = model.opset.bind(result, memory[f"sym{i}"].vec)
 
-        # Unbind chain
+        # Unbind chain (NEW: using unbind method)
         for i in range(depth, 0, -1):
-            result = model.opset.bind(result, model.opset.inverse(memory[f"sym{i}"].vec))
+            result = model.opset.unbind(result, memory[f"sym{i}"].vec)
 
         # Measure similarity
         sim = sim_fn(result, memory["sym0"].vec)
