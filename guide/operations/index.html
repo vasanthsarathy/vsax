@@ -2635,10 +2635,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#inverse-complex-conjugate" class="md-nav__link">
+  <a href="#inverse-frequency-domain-conjugate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inverse (Complex Conjugate)
+        Inverse (Frequency-Domain Conjugate)
       
     </span>
   </a>
@@ -2757,10 +2757,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#inverse-self-inverse" class="md-nav__link">
+  <a href="#inverse-self-inverse-property" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inverse (Self-Inverse)
+        Inverse (Self-Inverse Property)
       
     </span>
   </a>
@@ -4179,10 +4179,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#inverse-complex-conjugate" class="md-nav__link">
+  <a href="#inverse-frequency-domain-conjugate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inverse (Complex Conjugate)
+        Inverse (Frequency-Domain Conjugate)
       
     </span>
   </a>
@@ -4301,10 +4301,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#inverse-self-inverse" class="md-nav__link">
+  <a href="#inverse-self-inverse-property" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inverse (Self-Inverse)
+        Inverse (Self-Inverse Property)
       
     </span>
   </a>
@@ -4461,14 +4461,23 @@
 - Similarity preserving: Bundled vector is similar to constituents
 - Approximate: Some information loss occurs
 - Commutative: Order doesn't matter</p>
-<h3 id="inverse-complex-conjugate">Inverse (Complex Conjugate)<a class="headerlink" href="#inverse-complex-conjugate" title="Permanent link">&para;</a></h3>
-<p>For complex vectors, the inverse is the complex conjugate.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Unbind to recover original</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">inv_b</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">inv_b</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># recovered ≈ a (with high similarity)</span>
+<h3 id="inverse-frequency-domain-conjugate">Inverse (Frequency-Domain Conjugate)<a class="headerlink" href="#inverse-frequency-domain-conjugate" title="Permanent link">&para;</a></h3>
+<p>For FHRR circular convolution, the inverse uses <strong>frequency-domain conjugate</strong>:
+<code>inverse(b) = ifft(conj(fft(b)))</code></p>
+<p>This ensures high-accuracy unbinding (&gt;99% with proper FHRR vectors).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Method 1: Explicit unbind (RECOMMENDED)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Method 2: Using inverse (equivalent)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">inv_b</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">inv_b</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># With proper FHRR vectors (sample_fhrr_random):</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># recovered ≈ a with &gt;99% similarity!</span>
 </code></pre></div>
+<p><strong>Note:</strong> For optimal unbinding accuracy, use <code>sample_fhrr_random()</code> which generates
+vectors with conjugate symmetry. General complex phasors achieve ~70% accuracy,
+while proper FHRR vectors achieve &gt;99% accuracy.</p>
 <h3 id="example-role-filler-binding">Example: Role-Filler Binding<a class="headerlink" href="#example-role-filler-binding" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Represent &quot;The dog chased the cat&quot;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">subject</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">key1</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,)))</span>
@@ -4525,14 +4534,18 @@
 - Preserves similarity: Bundled vector similar to constituents</p>
 <h3 id="inverse-approximate">Inverse (Approximate)<a class="headerlink" href="#inverse-approximate" title="Permanent link">&para;</a></h3>
 <p>MAP uses an approximate inverse based on normalization.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Approximate inverse</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">inv_b</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Method 1: Explicit unbind (RECOMMENDED)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Unbinding is approximate</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">inv_b</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># recovered ≈ a (but not exact)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Method 2: Using inverse (equivalent)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">inv_b</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">inv_b</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># recovered ≈ a (but not exact, typically ~30% similarity)</span>
 </code></pre></div>
-<p><strong>Note:</strong> MAP unbinding is approximate - use for applications where exact recovery isn't critical.</p>
+<p><strong>Note:</strong> MAP unbinding is approximate - use for applications where exact recovery
+isn't critical. Typical unbinding similarity is ~30-40%, sufficient for many
+pattern matching and classification tasks.</p>
 <h3 id="example-feature-binding">Example: Feature Binding<a class="headerlink" href="#example-feature-binding" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Represent a data point: {age: 25, income: 50000, city: &quot;SF&quot;}</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">age_role</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key1</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,))</span>
@@ -4587,13 +4600,24 @@
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="c1"># Result: [1, 1, 1, -1]</span>
 </code></pre></div>
 <p><strong>Tie Breaking:</strong> For even numbers of vectors, ties default to +1.</p>
-<h3 id="inverse-self-inverse">Inverse (Self-Inverse)<a class="headerlink" href="#inverse-self-inverse" title="Permanent link">&para;</a></h3>
-<p>XOR is its own inverse, so <code>inverse(a) = a</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Exact unbinding</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">inv_b</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># inv_b == b</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">inv_b</span><span class="p">)</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">assert</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">recovered</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># Exact recovery!</span>
+<h3 id="inverse-self-inverse-property">Inverse (Self-Inverse Property)<a class="headerlink" href="#inverse-self-inverse-property" title="Permanent link">&para;</a></h3>
+<p>XOR is its own inverse, so <code>inverse(a) = a</code>. This means unbinding is
+identical to binding for Binary VSA!</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Method 1: Explicit unbind (RECOMMENDED - clearer intent)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">assert</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">recovered</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># Exact recovery!</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Method 2: Using inverse (equivalent due to self-inverse)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">inv_b</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># inv_b == b</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">inv_b</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">assert</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">recovered</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># Same result!</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Method 3: Direct binding (works because XOR is self-inverse)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="n">recovered</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">bound</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">assert</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">recovered</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># Also works!</span>
 </code></pre></div>
+<p><strong>Key insight:</strong> For Binary VSA, <code>unbind(a, b) = bind(a, b) = a XOR b</code>
+due to XOR's self-inverse property.</p>
 <h3 id="example-symbolic-reasoning">Example: Symbolic Reasoning<a class="headerlink" href="#example-symbolic-reasoning" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Encode facts: &quot;Alice likes Bob&quot;, &quot;Bob likes Charlie&quot;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">alice</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">key1</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="mi">512</span><span class="p">,))</span>

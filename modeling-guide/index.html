@@ -5373,8 +5373,8 @@
 </tr>
 <tr>
 <td><strong>Unbinding</strong></td>
-<td>Exact (inverse)</td>
-<td>Approximate</td>
+<td>Exact (&gt;99% with proper vectors)</td>
+<td>Approximate (~30%)</td>
 <td>Exact (self-inverse)</td>
 </tr>
 <tr>
@@ -5692,8 +5692,8 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Given a fact, extract components</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># fact = bind(role_subject, Paris) + bind(role_relation, is_capital_of) + ...</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Unbind to get subject</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">subject_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">fact</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;role_subject&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">))</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Unbind to get subject (NEW: explicit unbind method)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">subject_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">fact</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;role_subject&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Find closest match</span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">similarities</span> <span class="o">=</span> <span class="p">{}</span>
@@ -5703,6 +5703,7 @@
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">best_match</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">similarities</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Subject: </span><span class="si">{</span><span class="n">best_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> (similarity: </span><span class="si">{</span><span class="n">best_match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="c1"># With FHRR: expect &gt;99% similarity for correct city!</span>
 </code></pre></div>
 <h3 id="batch-operations-gpu-acceleration">Batch Operations (GPU Acceleration)<a class="headerlink" href="#batch-operations-gpu-acceleration" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">vmap_bind</span><span class="p">,</span> <span class="n">vmap_bundle</span>
@@ -5909,13 +5910,14 @@
 <a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="c1"># Find best matching fact</span>
 <a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="n">best_fact</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">facts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
 <a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>
-<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="c1"># Extract subject</span>
-<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="n">subject_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">best_fact</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;role_subject&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">))</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="c1"># Extract subject (NEW: explicit unbind method)</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="n">subject_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">best_fact</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;role_subject&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
 <a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>
 <a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="c1"># Find city</span>
 <a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">:</span>
 <a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a>    <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">subject_vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="n">city</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
 <a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a>    <span class="c1"># With FHRR: correct city should show &gt;99% similarity!</span>
 </code></pre></div>
 <h3 id="pattern-3-online-learning">Pattern 3: Online Learning<a class="headerlink" href="#pattern-3-online-learning" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Initial prototype</span>
@@ -5966,9 +5968,9 @@
 <strong>Cause</strong>: Vectors not unit length
 <strong>Solution</strong>: Most VSAX operations auto-normalize, but check if using raw arrays</p>
 <h3 id="pitfall-5-trying-to-unbind-with-map">Pitfall 5: Trying to Unbind with MAP<a class="headerlink" href="#pitfall-5-trying-to-unbind-with-map" title="Permanent link">&para;</a></h3>
-<p><strong>Symptom</strong>: Unbinding doesn't recover original
-<strong>Cause</strong>: MAP uses approximate unbinding
-<strong>Solution</strong>: Use FHRR for exact unbinding</p>
+<p><strong>Symptom</strong>: Unbinding doesn't recover original (~30% similarity)
+<strong>Cause</strong>: MAP uses approximate unbinding (element-wise multiply inverse)
+<strong>Solution</strong>: Use FHRR for exact unbinding (&gt;99% with proper sampling)</p>
 <hr />
 <h2 id="decision-trees">Decision Trees<a class="headerlink" href="#decision-trees" title="Permanent link">&para;</a></h2>
 <h3 id="model-selection-flowchart">Model Selection Flowchart<a class="headerlink" href="#model-selection-flowchart" title="Permanent link">&para;</a></h3>

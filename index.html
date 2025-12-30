@@ -4267,9 +4267,10 @@
 <li>🧩 <strong>Modular Architecture</strong>: Clean separation between representations and operations</li>
 <li>🧬 <strong>Complete Representations</strong>: Complex, Real, and Binary hypervectors ✅</li>
 <li>⚙️ <strong>Full Operation Sets</strong>: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅</li>
+<li>🔓 <strong>Explicit Unbinding</strong>: Clear <code>unbind()</code> API with &gt;99% FHRR accuracy ✅ <strong>NEW</strong></li>
 <li>🎲 <strong>Random Sampling</strong>: Sampling utilities for all representation types ✅</li>
 <li>💯 <strong>Type-Safe</strong>: Full type annotations with mypy support</li>
-<li>✅ <strong>Well-Tested</strong>: 618 tests with 94% coverage</li>
+<li>✅ <strong>Well-Tested</strong>: 650+ tests with 94% coverage</li>
 <li>🔍 <strong>Similarity Metrics</strong>: Cosine, dot, and Hamming similarity</li>
 <li>⚡ <strong>Batch Operations</strong>: GPU-accelerated vmap operations</li>
 <li>💾 <strong>I/O &amp; Persistence</strong>: Save/load basis vectors to JSON</li>
@@ -4350,8 +4351,9 @@
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">sampler</span><span class="o">=</span><span class="n">sample_binary_random</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">)</span>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># XOR binding (exact unbinding)</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Majority voting for bundling</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># XOR binding (exact unbinding via self-inverse property)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Use ops.unbind(bound, b) for explicit unbinding</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># Majority voting for bundling</span>
 </code></pre></div>
 <h2 id="development-status">Development Status<a class="headerlink" href="#development-status" title="Permanent link">&para;</a></h2>
 <p><strong>Current</strong>: Iteration 9 (v1.2.0) Complete ✅</p>
