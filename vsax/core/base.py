@@ -139,6 +139,36 @@ class AbstractOpSet(ABC):
         """
         pass
 
+    def unbind(self, a: jnp.ndarray, b: jnp.ndarray) -> jnp.ndarray:
+        """Unbind b from a to recover the original vector.
+
+        If c = bind(a, b), then unbind(c, b) ≈ a.
+
+        This provides an explicit, intuitive interface for unbinding operations.
+        The default implementation uses: bind(a, inverse(b))
+
+        Concrete operation sets may override this for efficiency or to provide
+        specialized unbinding behavior.
+
+        Args:
+            a: Bound hypervector (result of bind operation).
+            b: Hypervector to unbind.
+
+        Returns:
+            Recovered hypervector as JAX array.
+
+        Example:
+            >>> import jax.numpy as jnp
+            >>> from vsax.ops import FHRROperations
+            >>> ops = FHRROperations()
+            >>> x = jnp.exp(1j * jnp.array([0.5, 1.0, 1.5]))
+            >>> y = jnp.exp(1j * jnp.array([0.3, 0.7, 1.1]))
+            >>> bound = ops.bind(x, y)
+            >>> recovered = ops.unbind(bound, y)
+            >>> # recovered ≈ x (with high similarity)
+        """
+        return self.bind(a, self.inverse(b))
+
     def permute(self, a: jnp.ndarray, shift: int) -> jnp.ndarray:
         """Permute a hypervector by circular shift.
 

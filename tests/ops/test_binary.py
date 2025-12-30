@@ -240,3 +240,43 @@ class TestBinaryOperations:
         # With 5 vectors, majority is clear (3 or more)
         assert jnp.all(jnp.isin(result, jnp.array([-1, 1])))
         assert result.dtype == jnp.int32
+
+    # ===== Unbinding Tests =====
+
+    def test_unbind_method_exists(self, ops):
+        """Test that unbind method is available in BinaryOperations."""
+        assert hasattr(ops, "unbind"), "BinaryOperations must have unbind method"
+
+    def test_unbind_exact_recovery(self, ops, bipolar_vectors):
+        """Test that unbinding provides exact recovery for Binary VSA."""
+        a, b, _ = bipolar_vectors
+
+        bound = ops.bind(a, b)
+        recovered = ops.unbind(bound, b)
+
+        # Binary should have EXACT recovery
+        assert jnp.array_equal(recovered, a), "Binary VSA must have exact unbinding"
+
+    def test_unbind_equivalence_to_bind(self, ops, bipolar_vectors):
+        """Test that unbind equals bind (self-inverse property)."""
+        a, b, _ = bipolar_vectors
+
+        # For XOR, unbind is same as bind
+        method1 = ops.unbind(a, b)
+        method2 = ops.bind(a, b)
+
+        assert jnp.array_equal(method1, method2), "Binary unbind should equal bind (XOR self-inverse)"
+
+    def test_unbind_three_way(self, ops, bipolar_vectors):
+        """Test unbinding chain: bind(a,b,c) -> unbind c -> unbind b -> a."""
+        a, b, c = bipolar_vectors
+
+        # Bind all three
+        bound = ops.bind(ops.bind(a, b), c)
+
+        # Unbind step by step
+        step1 = ops.unbind(bound, c)
+        step2 = ops.unbind(step1, b)
+
+        # Should recover exactly
+        assert jnp.array_equal(step2, a), "Multi-step unbinding must recover original exactly"

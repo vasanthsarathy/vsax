@@ -202,3 +202,34 @@ class TestMAPOperations:
 
         # Should be approximately equal
         assert jnp.allclose(left, right, atol=1e-5)
+
+    # ===== Unbinding Tests =====
+
+    def test_unbind_method_exists(self, ops):
+        """Test that unbind method is available in MAPOperations."""
+        assert hasattr(ops, "unbind"), "MAPOperations must have unbind method"
+
+    def test_unbind_approximate_recovery(self, ops, real_vectors):
+        """Test that unbinding provides approximate recovery for MAP."""
+        from vsax.similarity import cosine_similarity
+
+        a, b, _ = real_vectors
+        bound = ops.bind(a, b)
+        recovered = ops.unbind(bound, b)
+
+        # Normalize for comparison
+        a_norm = a / (jnp.linalg.norm(a) + 1e-8)
+        recovered_norm = recovered / (jnp.linalg.norm(recovered) + 1e-8)
+
+        # MAP is approximate, so lower threshold than FHRR
+        similarity = cosine_similarity(a_norm, recovered_norm)
+        assert similarity > 0.3, f"MAP unbinding similarity {similarity:.4f} < 0.3"
+
+    def test_unbind_equivalence(self, ops, real_vectors):
+        """Test unbind(a, b) equals bind(a, inverse(b))."""
+        a, b, _ = real_vectors
+
+        method1 = ops.unbind(a, b)
+        method2 = ops.bind(a, ops.inverse(b))
+
+        assert jnp.allclose(method1, method2)

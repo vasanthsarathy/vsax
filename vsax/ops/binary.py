@@ -133,6 +133,37 @@ class BinaryOperations(AbstractOpSet):
         # XOR is self-inverse
         return a
 
+    def unbind(self, a: jnp.ndarray, b: jnp.ndarray) -> jnp.ndarray:
+        """Unbind b from a using XOR (self-inverse property).
+
+        Since XOR is self-inverse in binary VSA, unbinding is identical to binding:
+            unbind(a, b) = bind(a, b) = a XOR b
+
+        This provides exact unbinding: if c = bind(x, y), then unbind(c, y) = x.
+
+        Args:
+            a: Bound hypervector as JAX array (bipolar values).
+            b: Hypervector to unbind as JAX array (bipolar values).
+
+        Returns:
+            Recovered hypervector as JAX array (exact recovery for Binary VSA).
+
+        Example:
+            >>> import jax.numpy as jnp
+            >>> ops = BinaryOperations()
+            >>> x = jnp.array([1, -1, 1, -1])
+            >>> y = jnp.array([1, 1, -1, -1])
+            >>>
+            >>> # Bind and unbind
+            >>> bound = ops.bind(x, y)
+            >>> recovered = ops.unbind(bound, y)
+            >>>
+            >>> # Exact recovery
+            >>> assert jnp.array_equal(recovered, x)
+        """
+        # XOR is self-inverse, so unbind = bind
+        return self.bind(a, b)
+
     def permute(self, a: jnp.ndarray, shift: int) -> jnp.ndarray:
         """Permute a hypervector by circular rotation.
 
