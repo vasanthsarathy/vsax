@@ -260,7 +260,7 @@ class TestSampleFHRRRandom:
         for k in range(1, dim // 2):
             assert jnp.allclose(freq_vec[k], jnp.conj(freq_vec[dim - k]), atol=1e-5), (
                 f"Conjugate symmetry violated at k={k}: "
-                f"F[{k}]={freq_vec[k]:.6f}, conj(F[{dim-k}])={jnp.conj(freq_vec[dim-k]):.6f}"
+                f"F[{k}]={freq_vec[k]:.6f}, conj(F[{dim - k}])={jnp.conj(freq_vec[dim - k]):.6f}"
             )
 
         # DC component should be real
@@ -268,7 +268,9 @@ class TestSampleFHRRRandom:
 
         # Nyquist (for even dim) should be real
         if dim % 2 == 0:
-            assert jnp.allclose(freq_vec[dim // 2].imag, 0, atol=1e-5), "Nyquist component must be real"
+            assert jnp.allclose(freq_vec[dim // 2].imag, 0, atol=1e-5), (
+                "Nyquist component must be real"
+            )
 
     def test_sample_fhrr_random_unbind_accuracy(self):
         """Test that FHRR sampling enables accurate unbinding.
@@ -276,8 +278,8 @@ class TestSampleFHRRRandom:
         CRITICAL: This validates that the conjugate-symmetric sampling
         produces vectors suitable for high-accuracy FHRR unbinding.
         """
-        from vsax.sampling import sample_fhrr_random
         from vsax.ops import FHRROperations
+        from vsax.sampling import sample_fhrr_random
         from vsax.similarity import cosine_similarity
 
         key = jax.random.PRNGKey(42)
@@ -326,8 +328,9 @@ class TestSampleFHRRRandom:
 
     def test_sample_fhrr_random_minimum_dimension(self):
         """Test that dim < 2 raises error."""
-        from vsax.sampling import sample_fhrr_random
         import pytest
+
+        from vsax.sampling import sample_fhrr_random
 
         key = jax.random.PRNGKey(42)
         with pytest.raises(ValueError, match="at least 2"):

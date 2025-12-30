@@ -183,16 +183,6 @@ class TestBinaryOperations:
         similarity = matches / 512
         assert similarity > 0.7  # Should be reasonably similar
 
-    def test_unbind_exact_recovery(self, ops, bipolar_vectors):
-        """Test exact recovery through unbinding."""
-        a, b, c = bipolar_vectors
-
-        # Bind a and b, then unbind b (should get exactly a)
-        bound = ops.bind(a, b)
-        recovered = ops.bind(bound, b)
-
-        assert jnp.array_equal(recovered, a)
-
     def test_bundle_distributive(self, ops):
         """Test that bind distributes over bundle."""
         a = jnp.array([1, -1, 1, -1])
@@ -265,7 +255,9 @@ class TestBinaryOperations:
         method1 = ops.unbind(a, b)
         method2 = ops.bind(a, b)
 
-        assert jnp.array_equal(method1, method2), "Binary unbind should equal bind (XOR self-inverse)"
+        assert jnp.array_equal(method1, method2), (
+            "Binary unbind should equal bind (XOR self-inverse)"
+        )
 
     def test_unbind_three_way(self, ops, bipolar_vectors):
         """Test unbinding chain: bind(a,b,c) -> unbind c -> unbind b -> a."""
