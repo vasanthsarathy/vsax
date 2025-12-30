@@ -193,7 +193,7 @@ def find_best_match(vector, memory, candidates):
 
 
 # What operator is at the root?
-operator_vec = model.opset.bind(expression, model.opset.inverse(memory["op"].vec))
+operator_vec = model.opset.unbind(expression, memory["op"].vec)
 root_op, sim = find_best_match(operator_vec, memory, ["+", "*", "-", "/"])
 
 print(f"Root operator: {root_op} (similarity: {sim:.3f})")
@@ -204,7 +204,7 @@ print(f"Root operator: {root_op} (similarity: {sim:.3f})")
 
 ```python
 # Get left child
-left_child = model.opset.bind(expression, model.opset.inverse(memory["left"].vec))
+left_child = model.opset.unbind(expression, memory["left"].vec)
 
 # Is left child an operator or a leaf?
 left_op, sim_op = find_best_match(left_child, memory, ["+", "*", "-", "/"])
@@ -219,7 +219,7 @@ else:
 
 
 # Get right child
-right_child = model.opset.bind(expression, model.opset.inverse(memory["right"].vec))
+right_child = model.opset.unbind(expression, memory["right"].vec)
 right_val, sim = find_best_match(right_child, memory, ["2", "3", "4"])
 
 print(f"Right child is leaf: {right_val} (similarity: {sim:.3f})")
@@ -456,7 +456,7 @@ sentence = model.opset.bundle(
 )
 
 # Decode structure
-op_vec = model.opset.bind(sentence, model.opset.inverse(memory["op"].vec))
+op_vec = model.opset.unbind(sentence, memory["op"].vec)
 sentence_type, sim = find_best_match(op_vec, memory, ["S", "NP", "VP"])
 print(f"Sentence type: {sentence_type}")  # S
 ```
@@ -481,8 +481,8 @@ nested_json = model.opset.bundle(
 )
 
 # Query: what's the person's name?
-person_vec = model.opset.bind(nested_json, model.opset.inverse(memory["person"].vec))
-name_vec = model.opset.bind(person_vec, model.opset.inverse(memory["name"].vec))
+person_vec = model.opset.unbind(nested_json, memory["person"].vec)
+name_vec = model.opset.unbind(person_vec, memory["name"].vec)
 
 name, sim = find_best_match(name_vec, memory, ["Alice", "Bob", "Charlie"])
 print(f"Person's name: {name} (similarity: {sim:.3f})")
@@ -639,7 +639,7 @@ Resonator iterations scale with number of factors:
 
 ```python
 # ❌ Unbinding can produce unnormalized vectors
-unboundvec = model.opset.bind(composite, model.opset.inverse(memory["role"].vec))
+unboundvec = model.opset.unbind(composite, memory["role"].vec)
 # Don't use directly for similarity!
 
 # ✅ Normalize before similarity check

@@ -43,7 +43,7 @@ sim = cosine_similarity(vec1.vec, vec2.vec)
 model = create_fhrr_model(dim=2048)  # FHRR has exact inverse
 
 # Solution 2: Use inverse operation correctly
-retrieved = model.opset.bind(bound, model.opset.inverse(key.vec))
+retrieved = model.opset.unbind(bound, key.vec)
 
 # Solution 3: Increase dimension
 model = create_fhrr_model(dim=4096)  # More capacity

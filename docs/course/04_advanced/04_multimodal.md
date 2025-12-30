@@ -187,12 +187,12 @@ print(f"1 + 2 matches concept '3': {sim:.3f}")  # High similarity!
 
 # Query 2: "Show me the visual prototype for 1 + 2"
 # Unbind arithmetic to get visual component
-result = model.opset.bind(concept_3, model.opset.inverse(arithmetic_3))
+result = model.opset.unbind(concept_3, arithmetic_3)
 # result is similar to visual_prototype_3
 
 # Query 3: "What arithmetic facts involve 'three'?"
 # Unbind symbolic to get arithmetic component
-arithmetic_facts = model.opset.bind(concept_3, model.opset.inverse(symbolic_3))
+arithmetic_facts = model.opset.unbind(concept_3, symbolic_3)
 # arithmetic_facts contains bundled arithmetic relationships
 ```
 
