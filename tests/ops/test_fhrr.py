@@ -105,12 +105,14 @@ class TestFHRROperations:
             ops.bundle()
 
     def test_inverse_frequency_domain_conjugate(self, ops):
-        """Test that inverse uses frequency-domain conjugate (CORRECT for FHRR)."""
+        """Test that inverse uses proper deconvolution formula (CORRECT for FHRR)."""
         vec = jnp.array([1 + 2j, 3 + 4j, 5 + 6j])
         inv = ops.inverse(vec)
 
-        # For FHRR circular convolution, inverse = ifft(conj(fft(vec)))
-        expected = jnp.fft.ifft(jnp.conj(jnp.fft.fft(vec)))
+        # For FHRR circular convolution, inverse = ifft(conj(fft(vec)) / (|fft(vec)|^2 + epsilon))
+        fft_vec = jnp.fft.fft(vec)
+        epsilon = 1e-10
+        expected = jnp.fft.ifft(jnp.conj(fft_vec) / (jnp.abs(fft_vec) ** 2 + epsilon))
         assert jnp.allclose(inv, expected, atol=1e-6)
 
     def test_inverse_real_vector(self, ops):

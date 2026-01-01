@@ -99,16 +99,16 @@ class FHRROperations(AbstractOpSet):
     def inverse(self, a: jnp.ndarray) -> jnp.ndarray:
         """Compute the inverse for unbinding.
 
-        For circular convolution (FHRR), the inverse requires conjugation
-        in the frequency domain, not the time domain:
-        - Complex vectors: inv(a) = ifft(conj(fft(a)))
+        For circular convolution (FHRR), the inverse requires:
+        - Complex vectors: inv(a) = ifft(conj(fft(a)) / (|fft(a)|² + ε))
         - Real vectors: inv(a) = reversed vector (time-domain equivalent)
 
         This ensures that bind(bind(x, a), inverse(a)) ≈ x with high accuracy.
 
-        Mathematical note: Time-domain conjugate (conj(a)) is incorrect for
-        circular convolution unbinding. The frequency-domain conjugate ensures
-        that ifft(fft(x) * fft(a) * conj(fft(a))) = x.
+        The division by |fft(a)|² is essential for proper deconvolution.
+        For unit-magnitude vectors in frequency domain (proper FHRR vectors),
+        this reduces to approximately conj(fft(a)), but for general complex
+        vectors, the normalization is necessary.
 
         Args:
             a: Hypervector as JAX array.
@@ -128,9 +128,11 @@ class FHRROperations(AbstractOpSet):
             >>> # recovered should be very similar to x (>99% similarity)
         """
         if jnp.iscomplexobj(a):
-            # Inverse for circular convolution: conjugate in frequency domain
-            # This is mathematically correct for FHRR unbinding
-            return jnp.fft.ifft(jnp.conj(jnp.fft.fft(a)))
+            # Inverse for circular convolution with proper deconvolution
+            fft_a = jnp.fft.fft(a)
+            epsilon = 1e-10
+            inv_fft = jnp.conj(fft_a) / (jnp.abs(fft_a) ** 2 + epsilon)
+            return jnp.fft.ifft(inv_fft)
         else:
             # Reverse for real vectors (circular convolution inverse)
             # Note: index 0 stays in place, rest are reversed
@@ -140,13 +142,17 @@ class FHRROperations(AbstractOpSet):
         """Unbind b from a using circular deconvolution.
 
         Implements unbinding via FFT-based circular deconvolution:
-            unbind(a, b) = ifft(fft(a) * conj(fft(b)))
+            unbind(a, b) = ifft(fft(a) * conj(fft(b)) / (|fft(b)|² + ε))
 
         This is equivalent to bind(a, inverse(b)) but more efficient as it
         performs only one FFT round-trip instead of two.
 
-        For circular convolution: if c = a ⊛ b, then c ⊛ b^(-1) = a
-        where ⊛ denotes circular convolution and b^(-1) is the inverse.
+        For circular convolution: if c = a ⊛ b, then to recover a we need:
+            a = ifft(fft(c) * conj(fft(b)) / |fft(b)|²)
+        where ⊛ denotes circular convolution.
+
+        The division by |fft(b)|² is essential for proper deconvolution.
+        A small epsilon (1e-10) is added for numerical stability.
 
         Args:
             a: Bound hypervector as JAX array.
@@ -173,8 +179,9 @@ class FHRROperations(AbstractOpSet):
         # Circular deconvolution via FFT
         fft_a = jnp.fft.fft(a)
         fft_b = jnp.fft.fft(b)
-        # Multiplication by conjugate in frequency domain = deconvolution
-        return jnp.fft.ifft(fft_a * jnp.conj(fft_b))
+        # Proper deconvolution: divide by magnitude squared with epsilon for stability
+        epsilon = 1e-10
+        return jnp.fft.ifft(fft_a * jnp.conj(fft_b) / (jnp.abs(fft_b) ** 2 + epsilon))
 
     def fractional_power(self, a: jnp.ndarray, exponent: Union[float, jnp.ndarray]) -> jnp.ndarray:
         """Raise complex hypervector to fractional power.
