@@ -2588,6 +2588,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sandwich-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sandwich Product
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4496,6 +4507,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sandwich-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sandwich Product
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4790,26 +4812,65 @@
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Property: bind(x, inverse(x)) = identity</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">identity</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_inv</span><span class="p">)</span>  <span class="c1"># (1, 0, 0, 0) for all coordinates</span>
 </code></pre></div>
+<h3 id="sandwich-product">Sandwich Product<a class="headerlink" href="#sandwich-product" title="Permanent link">&para;</a></h3>
+<p>The sandwich product applies a rotor transformation: <code>rotor * v * rotor⁻¹</code>. This is the core operation for learning state transformations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.ops</span><span class="w"> </span><span class="kn">import</span> <span class="n">sandwich</span><span class="p">,</span> <span class="n">sandwich_unit</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># Apply rotor transformation</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">transformed</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">sandwich</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>  <span class="c1"># rotor * v * rotor⁻¹</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># More efficient for unit quaternions (inverse = conjugate)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">transformed</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">sandwich_unit</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>  <span class="c1"># rotor * v * rotor*</span>
+</code></pre></div>
+<p><strong>Use case: Learning state transformations</strong></p>
+<p>Given state-action traces <code>(s, action, s')</code>, you can learn a rotor <code>U</code> such that <code>s' = sandwich(U, s)</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_quaternion_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.ops</span><span class="w"> </span><span class="kn">import</span> <span class="n">sandwich</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Create model and sample states</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_quaternion_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;state_a&quot;</span><span class="p">,</span> <span class="s2">&quot;state_b&quot;</span><span class="p">,</span> <span class="s2">&quot;rotor&quot;</span><span class="p">])</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">state</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;state_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="n">rotor</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;rotor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># Transform state with rotor</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">new_state</span> <span class="o">=</span> <span class="n">sandwich</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="c1"># Properties:</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="c1"># - sandwich(identity, v) = v</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="c1"># - sandwich(q, sandwich(q⁻¹, v)) = v  (round-trip)</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="c1"># - sandwich(q2, sandwich(q1, v)) = sandwich(q2*q1, v)  (composition)</span>
+</code></pre></div>
+<p><strong>Key properties:</strong></p>
+<ul>
+<li>Identity: <code>sandwich(identity, v) = v</code></li>
+<li>Round-trip: <code>sandwich(q, sandwich(q⁻¹, v)) = v</code></li>
+<li>Composition: <code>sandwich(q2, sandwich(q1, v)) = sandwich(q2*q1, v)</code></li>
+<li>Preserves unit length for unit quaternions</li>
+</ul>
 <h2 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h2>
 <p>Use <code>quaternion_similarity</code> for comparing quaternion hypervectors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">quaternion_similarity</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Returns average dot product across quaternion coordinates</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Range: [-1, 1]</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># 1.0 = identical</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># 0.0 = orthogonal</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># -1.0 = opposite</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">quaternion_similarity</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Returns average dot product across quaternion coordinates</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Range: [-1, 1]</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># 1.0 = identical</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># 0.0 = orthogonal</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># -1.0 = opposite</span>
 </code></pre></div>
 <h2 id="sampling">Sampling<a class="headerlink" href="#sampling" title="Permanent link">&para;</a></h2>
 <p>Generate random quaternion hypervectors:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_quaternion_random</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">vectors</span> <span class="o">=</span> <span class="n">sample_quaternion_random</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Shape: (10, 512, 4)</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># All quaternions are unit length (S³ manifold)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_quaternion_random</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">vectors</span> <span class="o">=</span> <span class="n">sample_quaternion_random</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># Shape: (10, 512, 4)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># All quaternions are unit length (S³ manifold)</span>
 </code></pre></div>
 <h2 id="when-to-use-quaternion-vsa">When to Use Quaternion VSA<a class="headerlink" href="#when-to-use-quaternion-vsa" title="Permanent link">&para;</a></h2>
 <p><strong>Use Quaternion when:</strong>
@@ -4865,9 +4926,9 @@
 </table>
 <h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h2>
 <h3 id="factory-function">Factory Function<a class="headerlink" href="#factory-function" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_quaternion_model</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_quaternion_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_quaternion_model</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_quaternion_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h3>
 <ul>
@@ -4878,6 +4939,8 @@
 <ul>
 <li><code>sample_quaternion_random(dim, n, key)</code>: Sample random quaternion hypervectors</li>
 <li><code>quaternion_similarity(a, b)</code>: Compute similarity between quaternion vectors</li>
+<li><code>sandwich(rotor, v)</code>: Apply sandwich product <code>rotor * v * rotor⁻¹</code></li>
+<li><code>sandwich_unit(rotor, v)</code>: Efficient sandwich product for unit quaternions</li>
 </ul>
 
 
