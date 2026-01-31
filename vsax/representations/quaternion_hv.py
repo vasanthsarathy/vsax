@@ -76,7 +76,7 @@ class QuaternionHypervector(AbstractHypervector):
         Returns:
             Number of quaternion coordinates (D).
         """
-        return self._vec.shape[-2]
+        return int(self._vec.shape[-2])
 
     @property
     def quaternion_norms(self) -> jnp.ndarray:
