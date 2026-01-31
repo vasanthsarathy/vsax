@@ -125,6 +125,39 @@ Learn to perform analogical reasoning using Fractional Power Encoding (FPE) to r
 
 ---
 
+### Tutorial 12: DNA Sequence Analysis with VSA
+**Level**: Beginner-Intermediate
+**Topics**: DNA encoding, sequence similarity, mutation detection, k-mer encoding, classification
+**NEW in v1.4.0** ✨
+
+Learn how to use VSA for bioinformatics applications. Encode DNA sequences (A, T, G, C) as hypervectors, compute sequence similarity, detect point mutations, use k-mer encoding for sequence fingerprinting, classify sequences by gene family, and compare different VSA models including Quaternion for order-sensitive analysis.
+
+[📖 Read Tutorial](12_dna_sequences.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_12_dna_sequences.ipynb)
+
+---
+
+### Tutorial 13: Protein Sequence Classification with VSA
+**Level**: Intermediate
+**Topics**: Protein encoding, amino acid properties, family classification, conserved regions
+**NEW in v1.4.0** ✨
+
+Encode the 20 standard amino acids with their biochemical properties (hydrophobicity, charge, size). Use SequenceEncoder for protein sequences, classify proteins by family using prototype matching, detect conserved regions with sliding window analysis, and analyze amino acid composition with SetEncoder.
+
+[📖 Read Tutorial](13_protein_classification.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_13_protein_classification.ipynb)
+
+---
+
+### Tutorial 14: Motif Discovery and Sequence Alignment
+**Level**: Advanced
+**Topics**: Motif detection, sequence alignment, k-mer fingerprints, multi-sequence comparison
+**NEW in v1.4.0** ✨
+
+Advanced bioinformatics techniques with VSA: k-mer fingerprinting for sequence signatures, approximate sequence alignment using similarity, sliding window motif detection with permutation, multi-sequence comparison matrices, conserved motif discovery across families, and GPU-accelerated batch processing for large datasets.
+
+[📖 Read Tutorial](14_motif_discovery.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_14_motif_discovery.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:

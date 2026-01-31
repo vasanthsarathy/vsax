@@ -93,6 +93,9 @@ nav:
     - Neural-Symbolic Fusion (HD-Glue): tutorials/09_neural_symbolic_fusion.md
     - Clifford Operators: tutorials/10_clifford_operators.md
     - Analogical Reasoning: tutorials/11_analogical_reasoning.md
+    - DNA Sequence Analysis: tutorials/12_dna_sequences.md
+    - Protein Classification: tutorials/13_protein_classification.md
+    - Motif Discovery: tutorials/14_motif_discovery.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

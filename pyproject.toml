@@ -104,3 +104,11 @@ module = [
     "vsax.spatial.utils",
 ]
 ignore_errors = true
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "nbconvert>=7.17.0",
+    "pandas>=2.3.3",
+    "seaborn>=0.13.2",
+]
