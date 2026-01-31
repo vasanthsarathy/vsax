@@ -12,13 +12,13 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/guide/resonator/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/guide/quaternion/">
       
       
-        <link rel="prev" href="../batch_operations/">
+        <link rel="prev" href="../fpe/">
       
       
-        <link rel="next" href="../persistence/">
+        <link rel="next" href="../operators/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Resonator Networks - VSAX Documentation</title>
+        <title>Quaternion Hypervectors - VSAX Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resonator-networks" class="md-skip">
+        <a href="#quaternion-hypervectors" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resonator Networks
+              Quaternion Hypervectors
             
           </span>
         </div>
@@ -2275,10 +2275,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../quaternion/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quaternion Hypervectors
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2294,6 +2321,292 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#non-commutative-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Commutative Binding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-and-right-unbinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Left and Right Unbinding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quaternion-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quaternion Representation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quaternion Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit-quaternions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit Quaternions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quaternionhypervector-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuaternionHypervector Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binding-hamilton-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binding (Hamilton Product)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unbinding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bundling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inverse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Similarity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-quaternion-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Quaternion VSA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-with-other-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison with Other Representations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#factory-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factory Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2443,37 +2756,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resonator Networks
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../resonator/" class="md-nav__link">
         
   
   
@@ -2489,454 +2775,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-factorization-problem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Factorization Problem
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Factorization Problem">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problem-statement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Problem Statement
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-its-hard" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why It's Hard
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-solution-resonator-networks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Solution: Resonator Networks
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Start
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Start">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-two-factor-factorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Basic Two-Factor Factorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#three-factor-factorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Three-Factor Factorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Components
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cleanupmemory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CleanupMemory
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CleanupMemory">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-a-cleanup-memory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a Cleanup Memory
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#querying" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Querying
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How It Works
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resonator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resonator
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resonator">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-a-resonator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a Resonator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#factorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Factorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Algorithm
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Algorithm">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resonance-equations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resonance Equations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#initialization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initialization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#convergence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Convergence
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Best Practices
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Best Practices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#model-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Model Selection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#codebook-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Codebook Design
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#performance-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Performance Tips
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Use Cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Use Cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#structured-data-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Structured Data Decoding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sequence-indexing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sequence Indexing
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tree-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tree Decoding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graph-structure-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Graph Structure Recovery
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced Topics
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced Topics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#custom-convergence-criteria" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Convergence Criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hierarchical-factorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hierarchical Factorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Error Analysis
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4408,22 +4246,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-factorization-problem" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Factorization Problem
+        Overview
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The Factorization Problem">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement" class="md-nav__link">
+  <a href="#non-commutative-binding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem Statement
+        Non-Commutative Binding
       
     </span>
   </a>
@@ -4431,10 +4280,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-its-hard" class="md-nav__link">
+  <a href="#left-and-right-unbinding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why It's Hard
+        Left and Right Unbinding
       
     </span>
   </a>
@@ -4442,10 +4291,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-solution-resonator-networks" class="md-nav__link">
+  <a href="#complete-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Solution: Resonator Networks
+        Complete Example
       
     </span>
   </a>
@@ -4458,22 +4307,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
+  <a href="#quaternion-representation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start
+        Quaternion Representation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Quick Start">
+    <nav class="md-nav" aria-label="Quaternion Representation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-two-factor-factorization" class="md-nav__link">
+  <a href="#storage-format" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic Two-Factor Factorization
+        Storage Format
       
     </span>
   </a>
@@ -4481,10 +4330,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#three-factor-factorization" class="md-nav__link">
+  <a href="#unit-quaternions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Three-Factor Factorization
+        Unit Quaternions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quaternionhypervector-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuaternionHypervector Properties
       
     </span>
   </a>
@@ -4497,34 +4357,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core Components
+        Operations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Core Components">
+    <nav class="md-nav" aria-label="Operations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cleanupmemory" class="md-nav__link">
+  <a href="#binding-hamilton-product" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CleanupMemory
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CleanupMemory">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-a-cleanup-memory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a Cleanup Memory
+        Binding (Hamilton Product)
       
     </span>
   </a>
@@ -4532,10 +4380,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#querying" class="md-nav__link">
+  <a href="#unbinding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Querying
+        Unbinding
       
     </span>
   </a>
@@ -4543,38 +4391,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#bundling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How It Works
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resonator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resonator
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resonator">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-a-resonator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a Resonator
+        Bundling
       
     </span>
   </a>
@@ -4582,65 +4402,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#factorization" class="md-nav__link">
+  <a href="#inverse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Factorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Algorithm
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Algorithm">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resonance-equations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resonance Equations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#initialization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Initialization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#convergence" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Convergence
+        Inverse
       
     </span>
   </a>
@@ -4653,22 +4418,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#similarity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Best Practices
+        Similarity
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Best Practices">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-quaternion-vsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Quaternion VSA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-with-other-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison with Other Representations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model-selection" class="md-nav__link">
+  <a href="#factory-function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Model Selection
+        Factory Function
       
     </span>
   </a>
@@ -4676,10 +4485,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#codebook-design" class="md-nav__link">
+  <a href="#classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Codebook Design
+        Classes
       
     </span>
   </a>
@@ -4687,10 +4496,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#performance-tips" class="md-nav__link">
+  <a href="#functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Performance Tips
+        Functions
       
     </span>
   </a>
@@ -4699,139 +4508,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Use Cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Use Cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#structured-data-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Structured Data Decoding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sequence-indexing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sequence Indexing
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tree-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tree Decoding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#graph-structure-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Graph Structure Recovery
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-topics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advanced Topics
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advanced Topics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#custom-convergence-criteria" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Convergence Criteria
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hierarchical-factorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hierarchical Factorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Error Analysis
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
   
 </li>
       
@@ -4855,285 +4531,269 @@
   
 
 
-<h1 id="resonator-networks">Resonator Networks<a class="headerlink" href="#resonator-networks" title="Permanent link">&para;</a></h1>
-<p>Resonator networks solve the <strong>factorization problem</strong> in Vector Symbolic Architectures: given a composite vector formed by binding multiple factors, recover the original factors.</p>
-<p>This implementation is based on:</p>
-<blockquote>
-<p>Frady, E. P., Kleyko, D., &amp; Sommer, F. T. (2020). A Theory of Sequence Indexing and Working Memory in Recurrent Neural Networks. Neural Computation.</p>
-</blockquote>
-<h2 id="the-factorization-problem">The Factorization Problem<a class="headerlink" href="#the-factorization-problem" title="Permanent link">&para;</a></h2>
-<h3 id="problem-statement">Problem Statement<a class="headerlink" href="#problem-statement" title="Permanent link">&para;</a></h3>
-<p>Given a composite vector:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>s = a ⊙ b ⊙ c
-</code></pre></div></p>
-<p>Where <code>a</code>, <code>b</code>, <code>c</code> are vectors from known codebooks <code>A</code>, <code>B</code>, <code>C</code>, find the specific vectors that were bound together.</p>
-<h3 id="why-its-hard">Why It's Hard<a class="headerlink" href="#why-its-hard" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Superposition</strong>: After binding, the composite is a new vector that doesn't obviously contain the factors</li>
-<li><strong>Search space</strong>: With codebooks of size N, there are N³ possible combinations for 3 factors</li>
-<li><strong>Noise</strong>: Binding isn't always perfectly reversible (especially for MAP model)</li>
-</ul>
-<h3 id="the-solution-resonator-networks">The Solution: Resonator Networks<a class="headerlink" href="#the-solution-resonator-networks" title="Permanent link">&para;</a></h3>
-<p>Resonator networks use an iterative algorithm that alternates between:
-1. <strong>Unbinding</strong>: Remove current estimates of other factors
-2. <strong>Cleanup</strong>: Project result onto codebook (find nearest clean vector)</p>
-<p>The algorithm converges to the correct factors through <strong>resonance</strong> - mutual reinforcement of consistent estimates.</p>
-<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<h3 id="basic-two-factor-factorization">Basic Two-Factor Factorization<a class="headerlink" href="#basic-two-factor-factorization" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_binary_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.resonator</span><span class="w"> </span><span class="kn">import</span> <span class="n">CleanupMemory</span><span class="p">,</span> <span class="n">Resonator</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Create model and memory</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_binary_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">])</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Create composite: red ⊙ circle</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">composite</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;circle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1"># Create codebooks for each factor position</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">colors</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">shapes</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1"># Factorize!</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">resonator</span> <span class="o">=</span> <span class="n">Resonator</span><span class="p">([</span><span class="n">colors</span><span class="p">,</span> <span class="n">shapes</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="p">)</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">factors</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">)</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="nb">print</span><span class="p">(</span><span class="n">factors</span><span class="p">)</span>  <span class="c1"># [&quot;red&quot;, &quot;circle&quot;]</span>
+<h1 id="quaternion-hypervectors">Quaternion Hypervectors<a class="headerlink" href="#quaternion-hypervectors" title="Permanent link">&para;</a></h1>
+<p>Quaternion Hypervectors (QHV) use quaternion algebra for vector symbolic architectures, providing <strong>non-commutative binding</strong> via the Hamilton product. This makes them ideal for order-sensitive role/filler bindings where the order of arguments matters.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Representation</strong></td>
+<td>Unit quaternions (S³ manifold)</td>
+</tr>
+<tr>
+<td><strong>Binding</strong></td>
+<td>Hamilton product (non-commutative)</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td><code>(D, 4)</code> where D is dimensionality</td>
+</tr>
+<tr>
+<td><strong>Unbinding</strong></td>
+<td>Exact (left and right unbind)</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Order-sensitive bindings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="non-commutative-binding">Non-Commutative Binding<a class="headerlink" href="#non-commutative-binding" title="Permanent link">&para;</a></h3>
+<p>Unlike FHRR and MAP where <code>bind(x, y) = bind(y, x)</code>, quaternion binding is <strong>order-sensitive</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_quaternion_model</span><span class="p">,</span> <span class="n">VSAMemory</span><span class="p">,</span> <span class="n">quaternion_similarity</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Create model and memory</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_quaternion_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;role&quot;</span><span class="p">,</span> <span class="s2">&quot;filler&quot;</span><span class="p">])</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">role</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">filler</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;filler&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># Non-commutative binding</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">role_filler</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">role</span><span class="p">,</span> <span class="n">filler</span><span class="p">)</span>  <span class="c1"># role * filler</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">filler_role</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">filler</span><span class="p">,</span> <span class="n">role</span><span class="p">)</span>  <span class="c1"># filler * role</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># These are DIFFERENT!</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">similarity</span> <span class="o">=</span> <span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">role_filler</span><span class="p">,</span> <span class="n">filler_role</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Similarity: </span><span class="si">{</span><span class="n">similarity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Low similarity (~0.0)</span>
 </code></pre></div>
-<h3 id="three-factor-factorization">Three-Factor Factorization<a class="headerlink" href="#three-factor-factorization" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Add size attribute</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">])</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Create composite: red ⊙ circle ⊙ large</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">composite</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;circle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">),</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;large&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Create codebooks</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">colors</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">shapes</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">sizes</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># Factorize with three factors</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">resonator</span> <span class="o">=</span> <span class="n">Resonator</span><span class="p">([</span><span class="n">colors</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">sizes</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="p">)</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">factors</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">)</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nb">print</span><span class="p">(</span><span class="n">factors</span><span class="p">)</span>  <span class="c1"># [&quot;red&quot;, &quot;circle&quot;, &quot;large&quot;]</span>
+<h3 id="left-and-right-unbinding">Left and Right Unbinding<a class="headerlink" href="#left-and-right-unbinding" title="Permanent link">&para;</a></h3>
+<p>Because binding is non-commutative, you need two types of unbinding:</p>
+<p><strong>Right-unbind</strong>: Recover <code>x</code> from <code>z = bind(x, y)</code> given <code>y</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># z = x * y, recover x: z * y⁻¹ = x</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">recovered_x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
-<h3 id="cleanupmemory">CleanupMemory<a class="headerlink" href="#cleanupmemory" title="Permanent link">&para;</a></h3>
-<p><code>CleanupMemory</code> implements codebook projection - finding the nearest vector from a set of known vectors.</p>
-<h4 id="creating-a-cleanup-memory">Creating a Cleanup Memory<a class="headerlink" href="#creating-a-cleanup-memory" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.resonator</span><span class="w"> </span><span class="kn">import</span> <span class="n">CleanupMemory</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Define codebook symbols</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">colors</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># With similarity threshold</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">colors</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">(</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">],</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">memory</span><span class="p">,</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span>  <span class="c1"># Return None if similarity &lt; 0.5</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">)</span>
+<p><strong>Left-unbind</strong>: Recover <code>y</code> from <code>z = bind(x, y)</code> given <code>x</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># z = x * y, recover y: x⁻¹ * z = y</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">recovered_y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">unbind_left</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="querying">Querying<a class="headerlink" href="#querying" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Simple query</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">noisy_vector</span><span class="p">)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># &quot;red&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># With similarity score</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">result</span><span class="p">,</span> <span class="n">similarity</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">noisy_vector</span><span class="p">,</span> <span class="n">return_similarity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">similarity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Top-k matches</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">top_3</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">query_top_k</span><span class="p">(</span><span class="n">noisy_vector</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">sim</span> <span class="ow">in</span> <span class="n">top_3</span><span class="p">:</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<h3 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_quaternion_model</span><span class="p">,</span> <span class="n">VSAMemory</span><span class="p">,</span> <span class="n">quaternion_similarity</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Create quaternion model</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_quaternion_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">))</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Add symbols</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">([</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="s2">&quot;verb&quot;</span><span class="p">,</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="s2">&quot;eats&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">])</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Get vectors</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">subject</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">verb</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;verb&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">john</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;john&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">eats</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;eats&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">apple</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1"># Encode &quot;John eats apple&quot; with role-filler bindings</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1"># Order matters: role * filler</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="n">subj_bind</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">john</span><span class="p">)</span>   <span class="c1"># subject → john</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="n">verb_bind</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">verb</span><span class="p">,</span> <span class="n">eats</span><span class="p">)</span>      <span class="c1"># verb → eats</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="n">obj_bind</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">apple</span><span class="p">)</span>       <span class="c1"># object → apple</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c1"># Bundle into single representation</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">sentence</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="n">subj_bind</span><span class="p">,</span> <span class="n">verb_bind</span><span class="p">,</span> <span class="n">obj_bind</span><span class="p">)</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="c1"># Query: &quot;Who is the subject?&quot;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="c1"># Use left-unbind with subject role to get filler</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="n">query</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">unbind_left</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="c1"># Find best match</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;john similarity: </span><span class="si">{</span><span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">john</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;eats similarity: </span><span class="si">{</span><span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">eats</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;apple similarity: </span><span class="si">{</span><span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">apple</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="c1"># john should have highest similarity</span>
 </code></pre></div>
-<h4 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h4>
-<p>For binary/bipolar vectors, cleanup uses dot product similarity:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">similarities</span> <span class="o">=</span> <span class="n">codebook_matrix</span> <span class="o">@</span> <span class="n">query_vector</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">best_idx</span> <span class="o">=</span> <span class="n">argmax</span><span class="p">(</span><span class="n">similarities</span><span class="p">)</span>
-</code></pre></div></p>
-<p>This is equivalent to the projection operation from the paper: <code>g(XX^T v)</code></p>
-<h3 id="resonator">Resonator<a class="headerlink" href="#resonator" title="Permanent link">&para;</a></h3>
-<p><code>Resonator</code> implements the iterative factorization algorithm.</p>
-<h4 id="creating-a-resonator">Creating a Resonator<a class="headerlink" href="#creating-a-resonator" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.resonator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resonator</span>
+<h2 id="quaternion-representation">Quaternion Representation<a class="headerlink" href="#quaternion-representation" title="Permanent link">&para;</a></h2>
+<h3 id="storage-format">Storage Format<a class="headerlink" href="#storage-format" title="Permanent link">&para;</a></h3>
+<p>Quaternion hypervectors are stored as shape <code>(D, 4)</code> arrays where:
+- <code>D</code> is the number of quaternion coordinates (VSA dimensionality)
+- <code>4</code> is the quaternion components <code>(a, b, c, d)</code> for <code>q = a + bi + cj + dk</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.representations</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuaternionHypervector</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># 512-dimensional quaternion hypervector</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Actual storage: 512 × 4 = 2048 floats</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">hv</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;symbol&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">hv</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (512, 4)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensionality: </span><span class="si">{</span><span class="n">hv</span><span class="o">.</span><span class="n">dim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 512</span>
+</code></pre></div>
+<h3 id="unit-quaternions">Unit Quaternions<a class="headerlink" href="#unit-quaternions" title="Permanent link">&para;</a></h3>
+<p>All quaternions are normalized to unit length, living on the 3-sphere S³:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Check unit length</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">norms</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;All unit: </span><span class="si">{</span><span class="n">jnp</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">norms</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># True</span>
+</code></pre></div>
+<h3 id="quaternionhypervector-properties">QuaternionHypervector Properties<a class="headerlink" href="#quaternionhypervector-properties" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">hv</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;symbol&quot;</span><span class="p">]</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">resonator</span> <span class="o">=</span> <span class="n">Resonator</span><span class="p">(</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">codebooks</span><span class="o">=</span><span class="p">[</span><span class="n">colors</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">sizes</span><span class="p">],</span>  <span class="c1"># One per factor</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">opset</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="p">,</span>                  <span class="c1"># Defines bind/unbind</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>                 <span class="c1"># Stop after N iterations</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">convergence_threshold</span><span class="o">=</span><span class="mi">3</span>             <span class="c1"># Stop if stable for N iterations</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># Quaternion components</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">scalar</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">scalar_part</span>     <span class="c1"># Shape (D,) - the &#39;a&#39; component</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">vector</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">vector_part</span>     <span class="c1"># Shape (D, 3) - the &#39;b, c, d&#39; components</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Check if normalized</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is unit: </span><span class="si">{</span><span class="n">hv</span><span class="o">.</span><span class="n">is_unit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Normalize if needed</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">normalized</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
 </code></pre></div>
-<h4 id="factorization">Factorization<a class="headerlink" href="#factorization" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Basic factorization</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">factors</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># With initial estimates (optional)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">factors</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">composite</span><span class="p">,</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">initial_estimates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;large&quot;</span><span class="p">]</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">)</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Get convergence history</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">factors</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">,</span> <span class="n">return_history</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged in </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">history</span><span class="p">):</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1"># Batch factorization</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">composites</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">comp1</span><span class="p">,</span> <span class="n">comp2</span><span class="p">,</span> <span class="n">comp3</span><span class="p">])</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="n">all_factors</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize_batch</span><span class="p">(</span><span class="n">composites</span><span class="p">)</span>
+<h2 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h2>
+<h3 id="binding-hamilton-product">Binding (Hamilton Product)<a class="headerlink" href="#binding-hamilton-product" title="Permanent link">&para;</a></h3>
+<p>The Hamilton product is the core binding operation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">ops</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Bind two vectors</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">z</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># z = x * y</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Properties:</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># - NON-COMMUTATIVE: bind(x, y) ≠ bind(y, x)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># - Associative: bind(bind(x, y), z) = bind(x, bind(y, z))</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># - Preserves unit length</span>
 </code></pre></div>
-<h2 id="the-algorithm">The Algorithm<a class="headerlink" href="#the-algorithm" title="Permanent link">&para;</a></h2>
-<h3 id="resonance-equations">Resonance Equations<a class="headerlink" href="#resonance-equations" title="Permanent link">&para;</a></h3>
-<p>For a 3-factor composite <code>s = a ⊙ b ⊙ c</code>, the resonator updates are:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>â(t+1) = cleanup_A(s ⊙ inv(b̂(t)) ⊙ inv(ĉ(t)))
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>b̂(t+1) = cleanup_B(s ⊙ inv(â(t)) ⊙ inv(ĉ(t)))
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>ĉ(t+1) = cleanup_C(s ⊙ inv(â(t)) ⊙ inv(b̂(t)))
+<h3 id="unbinding">Unbinding<a class="headerlink" href="#unbinding" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Right-unbind: z * y⁻¹</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">recovered_x</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Left-unbind: x⁻¹ * z</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">recovered_y</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">unbind_left</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Both achieve &gt;99% similarity recovery</span>
 </code></pre></div>
-<p>Where:
-- <code>â, b̂, ĉ</code> are current estimates
-- <code>cleanup_X</code> projects onto codebook X
-- <code>inv(·)</code> is the unbinding operation</p>
-<h3 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">&para;</a></h3>
-<p>On the first iteration (when estimates are None), the algorithm uses <strong>superposition initialization</strong>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">superposition</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">all_vectors_in_codebook</span><span class="p">)</span>
-</code></pre></div></p>
-<p>This gives the algorithm information about all possible factors simultaneously.</p>
-<h3 id="convergence">Convergence<a class="headerlink" href="#convergence" title="Permanent link">&para;</a></h3>
-<p>The algorithm stops when:
-1. Estimates don't change for <code>convergence_threshold</code> iterations (default: 3), OR
-2. <code>max_iterations</code> is reached (default: 100)</p>
-<p>For binary VSA with exact unbinding, convergence is typically very fast (&lt; 10 iterations).</p>
-<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
-<h3 id="model-selection">Model Selection<a class="headerlink" href="#model-selection" title="Permanent link">&para;</a></h3>
-<p><strong>Binary VSA (Recommended for Resonator)</strong>
-- ✅ Exact unbinding (self-inverse property)
-- ✅ Fast convergence
-- ✅ High accuracy
-- ⚠️ Requires high dimensionality (≥10,000)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_binary_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<h3 id="bundling">Bundling<a class="headerlink" href="#bundling" title="Permanent link">&para;</a></h3>
+<p>Bundling creates a superposition of vectors:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">bundled</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Properties:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># - Similar to all constituents</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># - Normalized to unit quaternions</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># - Similarity decreases with more items</span>
 </code></pre></div>
-<p><strong>FHRR (Complex)</strong>
-- ✅ Exact unbinding (complex conjugate)
-- ✅ Lower dimensionality needed (≥512)
-- ⚠️ More complex operations</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<h3 id="inverse">Inverse<a class="headerlink" href="#inverse" title="Permanent link">&para;</a></h3>
+<p>The quaternion inverse is used for unbinding:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">x_inv</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Property: bind(x, inverse(x)) = identity</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">identity</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_inv</span><span class="p">)</span>  <span class="c1"># (1, 0, 0, 0) for all coordinates</span>
 </code></pre></div>
-<p><strong>MAP (Real)</strong>
-- ⚠️ Approximate unbinding
-- ⚠️ May require more iterations
-- ✅ Simple operations</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_map_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<h2 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h2>
+<p>Use <code>quaternion_similarity</code> for comparing quaternion hypervectors:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">quaternion_similarity</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">sim</span> <span class="o">=</span> <span class="n">quaternion_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Returns average dot product across quaternion coordinates</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Range: [-1, 1]</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># 1.0 = identical</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># 0.0 = orthogonal</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># -1.0 = opposite</span>
 </code></pre></div>
-<h3 id="codebook-design">Codebook Design<a class="headerlink" href="#codebook-design" title="Permanent link">&para;</a></h3>
-<p><strong>Separate Semantic Spaces</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Good: Codebooks represent different semantic categories</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">colors</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">shapes</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">sizes</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>Avoid Overlap</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Bad: Same symbols in multiple codebooks creates ambiguity</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">codebook1</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">codebook2</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>  <span class="c1"># &quot;red&quot; appears twice!</span>
-</code></pre></div></p>
-<p><strong>Balanced Sizes</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Codebooks don&#39;t need to be the same size</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">colors</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>  <span class="c1"># 4 items</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">shapes</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">([</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">],</span> <span class="n">memory</span><span class="p">)</span>                <span class="c1"># 2 items</span>
-</code></pre></div></p>
-<h3 id="performance-tips">Performance Tips<a class="headerlink" href="#performance-tips" title="Permanent link">&para;</a></h3>
-<p><strong>Use Binary Model for Best Performance</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Binary VSA is fastest and most accurate for resonator</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_binary_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>Batch Processing</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Process multiple composites efficiently</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">composites</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">])</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize_batch</span><span class="p">(</span><span class="n">composites</span><span class="p">)</span>
-</code></pre></div></p>
-<p><strong>Monitor Convergence</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Check if convergence is too slow</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">factors</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">,</span> <span class="n">return_history</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Slow convergence, may need higher dimensionality&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<h2 id="common-use-cases">Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permanent link">&para;</a></h2>
-<h3 id="structured-data-decoding">Structured Data Decoding<a class="headerlink" href="#structured-data-decoding" title="Permanent link">&para;</a></h3>
-<p>Decode attribute-value structures:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Encode: object ⊙ color ⊙ shape ⊙ size</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">objects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;obj1&quot;</span><span class="p">,</span> <span class="s2">&quot;obj2&quot;</span><span class="p">,</span> <span class="s2">&quot;obj3&quot;</span><span class="p">]</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="s2">&quot;triangle&quot;</span><span class="p">]</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;large&quot;</span><span class="p">,</span> <span class="s2">&quot;small&quot;</span><span class="p">]</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># ... factorize to recover attributes</span>
-</code></pre></div></p>
-<h3 id="sequence-indexing">Sequence Indexing<a class="headerlink" href="#sequence-indexing" title="Permanent link">&para;</a></h3>
-<p>Recover elements from indexed sequences:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Encode: item ⊙ position</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># Example: &quot;apple&quot; ⊙ position_1 ⊙ &quot;banana&quot; ⊙ position_2</span>
-</code></pre></div></p>
-<h3 id="tree-decoding">Tree Decoding<a class="headerlink" href="#tree-decoding" title="Permanent link">&para;</a></h3>
-<p>Decode hierarchical tree structures:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Encode: parent ⊙ left_child ⊙ right_child</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># See examples/resonator_tree_search.py for details</span>
-</code></pre></div></p>
-<h3 id="graph-structure-recovery">Graph Structure Recovery<a class="headerlink" href="#graph-structure-recovery" title="Permanent link">&para;</a></h3>
-<p>Decode graph edges:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Encode: edge ⊙ source_node ⊙ target_node</span>
-</code></pre></div></p>
-<h2 id="advanced-topics">Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permanent link">&para;</a></h2>
-<h3 id="custom-convergence-criteria">Custom Convergence Criteria<a class="headerlink" href="#custom-convergence-criteria" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomResonator</span><span class="p">(</span><span class="n">Resonator</span><span class="p">):</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">factorize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">composite</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>        <span class="c1"># Custom convergence logic</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>        <span class="c1"># Check similarity scores, add early stopping, etc.</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>        <span class="o">...</span>
+<h2 id="sampling">Sampling<a class="headerlink" href="#sampling" title="Permanent link">&para;</a></h2>
+<p>Generate random quaternion hypervectors:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample_quaternion_random</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">vectors</span> <span class="o">=</span> <span class="n">sample_quaternion_random</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Shape: (10, 512, 4)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># All quaternions are unit length (S³ manifold)</span>
 </code></pre></div>
-<h3 id="hierarchical-factorization">Hierarchical Factorization<a class="headerlink" href="#hierarchical-factorization" title="Permanent link">&para;</a></h3>
-<p>For nested structures, factorize recursively:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># First level: Get high-level factors</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">factors_L1</span> <span class="o">=</span> <span class="n">resonator_L1</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">)</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Second level: Factorize one of the factors</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">factors_L2</span> <span class="o">=</span> <span class="n">resonator_L2</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">factors_L1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</code></pre></div></p>
-<h3 id="error-analysis">Error Analysis<a class="headerlink" href="#error-analysis" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Check which factors are uncertain</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">factors</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">resonator</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">composite</span><span class="p">,</span> <span class="n">return_history</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Look for oscillation (indicates ambiguity)</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">-</span> <span class="mi">5</span><span class="p">):</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    <span class="k">if</span> <span class="n">history</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">history</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">4</span><span class="p">]:</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Factor </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> may be ambiguous&quot;</span><span class="p">)</span>
+<h2 id="when-to-use-quaternion-vsa">When to Use Quaternion VSA<a class="headerlink" href="#when-to-use-quaternion-vsa" title="Permanent link">&para;</a></h2>
+<p><strong>Use Quaternion when:</strong>
+- Order matters in bindings (role/filler, subject/object)
+- You need asymmetric relationships
+- Exact unbinding from both directions is required
+- Working with structured knowledge where position matters</p>
+<p><strong>Consider alternatives when:</strong>
+- Order doesn't matter (use FHRR or MAP)
+- Memory is constrained (quaternions use 4× more storage)
+- You don't need left/right unbind distinction</p>
+<h2 id="comparison-with-other-representations">Comparison with Other Representations<a class="headerlink" href="#comparison-with-other-representations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>FHRR</th>
+<th>MAP</th>
+<th>Binary</th>
+<th>Quaternion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binding</td>
+<td>Commutative</td>
+<td>Commutative</td>
+<td>Commutative</td>
+<td><strong>Non-commutative</strong></td>
+</tr>
+<tr>
+<td>Unbinding</td>
+<td>Exact</td>
+<td>Approximate</td>
+<td>Exact</td>
+<td><strong>Exact (left/right)</strong></td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>2×D</td>
+<td>1×D</td>
+<td>1×D</td>
+<td><strong>4×D</strong></td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>General</td>
+<td>Embeddings</td>
+<td>Hardware</td>
+<td><strong>Order-sensitive</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h2>
+<h3 id="factory-function">Factory Function<a class="headerlink" href="#factory-function" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_quaternion_model</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_quaternion_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<p>See <code>examples/resonator_tree_search.py</code> for complete working examples:</p>
-<ol>
-<li><strong>Simple tree decoding</strong> - Basic two-factor case</li>
-<li><strong>Multiple trees</strong> - Decoding different structures</li>
-<li><strong>Convergence history</strong> - Monitoring the iterative process</li>
-<li><strong>Nested trees</strong> - Hierarchical structures</li>
-<li><strong>Batch processing</strong> - Multiple composites at once</li>
-<li><strong>Error correction</strong> - Robustness to noise</li>
-</ol>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Frady, E. P., Kleyko, D., &amp; Sommer, F. T. (2020). A Theory of Sequence Indexing and Working Memory in Recurrent Neural Networks. <em>Neural Computation</em>.</li>
-<li>Plate, T. A. (1995). Holographic reduced representations. <em>IEEE Transactions on Neural Networks</em>.</li>
-<li>Kanerva, P. (2009). Hyperdimensional computing: An introduction to computing in distributed representation with high-dimensional random vectors. <em>Cognitive Computation</em>.</li>
+<li><code>QuaternionHypervector</code>: Representation class</li>
+<li><code>QuaternionOperations</code>: Operation set with <code>bind</code>, <code>unbind</code>, <code>unbind_left</code>, <code>bundle</code>, <code>inverse</code></li>
+</ul>
+<h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>sample_quaternion_random(dim, n, key)</code>: Sample random quaternion hypervectors</li>
+<li><code>quaternion_similarity(a, b)</code>: Compute similarity between quaternion vectors</li>
 </ul>
 
 

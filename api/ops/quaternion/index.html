@@ -12,13 +12,13 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/api/ops/map/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/api/ops/quaternion/">
       
       
-        <link rel="prev" href="../fhrr/">
+        <link rel="prev" href="../binary/">
       
       
-        <link rel="next" href="../binary/">
+        <link rel="next" href="../../operators/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>MAPOperations - VSAX Documentation</title>
+        <title>QuaternionOperations - VSAX Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mapoperations" class="md-skip">
+        <a href="#quaternionoperations" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MAPOperations
+              QuaternionOperations
             
           </span>
         </div>
@@ -3545,37 +3545,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MAPOperations
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../map/" class="md-nav__link">
         
   
   
@@ -3591,121 +3564,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MAPOperations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="MAPOperations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Functions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.bind" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bind
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.bundle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bundle
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.inverse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        inverse
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="inverse">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.inverse--the-inverse-should-be-normalized" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The inverse should be normalized
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.permute" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        permute
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3743,10 +3601,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../quaternion/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QuaternionOperations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3762,6 +3647,170 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuaternionOperations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QuaternionOperations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--non-commutative-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-commutative binding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--xy-yx-different-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xy != yx (different results)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--right-unbind-recover-x-from-xy-using-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Right-unbind: recover x from xy using y
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--left-unbind-recover-y-from-xy-using-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Left-unbind: recover y from xy using x
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.bind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bind
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bundle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.inverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        inverse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.unbind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unbind
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.unbind_left" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unbind_left
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.permute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        permute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4087,19 +4136,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MAPOperations
+        QuaternionOperations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MAPOperations">
+    <nav class="md-nav" aria-label="QuaternionOperations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations-functions" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations--non-commutative-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-commutative binding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--xy-yx-different-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xy != yx (different results)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--right-unbind-recover-x-from-xy-using-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Right-unbind: recover x from xy using y
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations--left-unbind-recover-y-from-xy-using-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Left-unbind: recover y from xy using x
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Functions
@@ -4111,7 +4204,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.bind" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations.bind" class="md-nav__link">
     <span class="md-ellipsis">
       
         bind
@@ -4122,7 +4215,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.bundle" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations.bundle" class="md-nav__link">
     <span class="md-ellipsis">
       
         bundle
@@ -4133,7 +4226,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.inverse" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations.inverse" class="md-nav__link">
     <span class="md-ellipsis">
       
         inverse
@@ -4141,27 +4234,32 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="inverse">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.inverse--the-inverse-should-be-normalized" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations.unbind" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The inverse should be normalized
+        unbind
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#vsax.ops.QuaternionOperations.unbind_left" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unbind_left
+      
+    </span>
+  </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.ops.MAPOperations.permute" class="md-nav__link">
+  <a href="#vsax.ops.QuaternionOperations.permute" class="md-nav__link">
     <span class="md-ellipsis">
       
         permute
@@ -4201,19 +4299,19 @@
   
 
 
-<h1 id="mapoperations">MAPOperations<a class="headerlink" href="#mapoperations" title="Permanent link">&para;</a></h1>
-<p>Element-wise operations for real hypervectors.</p>
+<h1 id="quaternionoperations">QuaternionOperations<a class="headerlink" href="#quaternionoperations" title="Permanent link">&para;</a></h1>
+<p>Hamilton product-based operations for quaternion hypervectors. Provides non-commutative binding.</p>
 
 
 <div class="doc doc-object doc-class">
 
 
 
-<h2 id="vsax.ops.MAPOperations" class="doc doc-heading">
-            <code>vsax.ops.MAPOperations</code>
+<h2 id="vsax.ops.QuaternionOperations" class="doc doc-heading">
+            <code>vsax.ops.QuaternionOperations</code>
 
 
-<a href="#vsax.ops.MAPOperations" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#vsax.ops.QuaternionOperations" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents first">
@@ -4222,13 +4320,17 @@
 
 
 
-        <p>MAP operations using element-wise multiplication and mean.</p>
-<p>Multiply-Add-Permute (MAP) is a simple VSA algebra that uses:
-- Binding: element-wise multiplication
-- Bundling: element-wise mean (averaging)
-- Inverse: approximate inverse via normalization</p>
-<p>MAP works best with real-valued hypervectors and is computationally
-efficient, making it suitable for machine learning applications.</p>
+        <p>Quaternion VSA operations using Hamilton product for binding.</p>
+<p>Quaternion Hypervectors (QHV) use the Hamilton product for binding,
+which is NON-COMMUTATIVE. This makes them suitable for order-sensitive
+role/filler bindings where bind(role, filler) != bind(filler, role).</p>
+<p>Key properties:
+- Binding: Hamilton product (non-commutative, associative)
+- Bundling: Sum + normalize to unit quaternions
+- Inverse: Quaternion inverse (conjugate / norm²)
+- Unbind: Right-unbind recovers x from bind(x, y) given y
+- Unbind-left: Left-unbind recovers y from bind(x, y) given x</p>
+<p>Vector shape: (D, 4) where D is the number of quaternion coordinates.</p>
 
 
 <details class="example" open>
@@ -4237,13 +4339,21 @@ efficient, making it suitable for machine learning applications.</p>
 <blockquote>
 <blockquote>
 <p>import jax
-import jax.numpy as jnp</p>
-<p>ops = MAPOperations()
+import jax.numpy as jnp
+from vsax.ops import QuaternionOperations
+from vsax.sampling import sample_quaternion_random</p>
+<p>ops = QuaternionOperations()
 key = jax.random.PRNGKey(0)
-a = jax.random.normal(key, (1024,))
-b = jax.random.normal(key, (1024,))</p>
-<p>bound = ops.bind(a, b)
-assert bound.shape == a.shape</p>
+vecs = sample_quaternion_random(dim=512, n=2, key=key)
+x, y = vecs[0], vecs[1]</p>
+<h3 id="vsax.ops.QuaternionOperations--non-commutative-binding">Non-commutative binding<a class="headerlink" href="#vsax.ops.QuaternionOperations--non-commutative-binding" title="Permanent link">&para;</a></h3>
+<p>xy = ops.bind(x, y)
+yx = ops.bind(y, x)</p>
+<h3 id="vsax.ops.QuaternionOperations--xy-yx-different-results">xy != yx (different results)<a class="headerlink" href="#vsax.ops.QuaternionOperations--xy-yx-different-results" title="Permanent link">&para;</a></h3>
+<h3 id="vsax.ops.QuaternionOperations--right-unbind-recover-x-from-xy-using-y">Right-unbind: recover x from xy using y<a class="headerlink" href="#vsax.ops.QuaternionOperations--right-unbind-recover-x-from-xy-using-y" title="Permanent link">&para;</a></h3>
+<p>recovered_x = ops.unbind(xy, y)</p>
+<h3 id="vsax.ops.QuaternionOperations--left-unbind-recover-y-from-xy-using-x">Left-unbind: recover y from xy using x<a class="headerlink" href="#vsax.ops.QuaternionOperations--left-unbind-recover-y-from-xy-using-x" title="Permanent link">&para;</a></h3>
+<p>recovered_y = ops.unbind_left(x, xy)</p>
 </blockquote>
 </blockquote>
 </blockquote>
@@ -4256,258 +4366,282 @@ assert bound.shape == a.shape</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>vsax/ops/map.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-8">  8</a></span>
-<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
-<span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
-<span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
-<span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
-<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
-<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
-<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
-<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
-<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
-<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
-<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
-<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
-<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
-<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
-<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
-<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
-<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
-<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
-<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
-<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
-<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
-<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
-<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
-<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
-<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
-<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
-<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
-<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
-<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
-<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
-<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
-<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
-<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
-<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
-<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
-<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
-<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
-<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
-<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
-<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
-<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
-<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
-<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
-<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
-<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
-<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
-<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
-<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
-<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
-<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
-<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
-<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
-<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
-<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
-<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
-<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
-<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
-<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
-<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
-<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
-<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
-<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
-<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
-<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
-<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
-<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
-<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
-<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
-<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
-<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
-<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
-<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
-<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
-<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
-<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
-<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
-<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
-<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
-<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-0-100">100</a></span>
-<span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span>
-<span class="normal"><a href="#__codelineno-0-103">103</a></span>
-<span class="normal"><a href="#__codelineno-0-104">104</a></span>
-<span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span>
-<span class="normal"><a href="#__codelineno-0-107">107</a></span>
-<span class="normal"><a href="#__codelineno-0-108">108</a></span>
-<span class="normal"><a href="#__codelineno-0-109">109</a></span>
-<span class="normal"><a href="#__codelineno-0-110">110</a></span>
-<span class="normal"><a href="#__codelineno-0-111">111</a></span>
-<span class="normal"><a href="#__codelineno-0-112">112</a></span>
-<span class="normal"><a href="#__codelineno-0-113">113</a></span>
-<span class="normal"><a href="#__codelineno-0-114">114</a></span>
-<span class="normal"><a href="#__codelineno-0-115">115</a></span>
-<span class="normal"><a href="#__codelineno-0-116">116</a></span>
-<span class="normal"><a href="#__codelineno-0-117">117</a></span>
-<span class="normal"><a href="#__codelineno-0-118">118</a></span>
-<span class="normal"><a href="#__codelineno-0-119">119</a></span>
-<span class="normal"><a href="#__codelineno-0-120">120</a></span>
-<span class="normal"><a href="#__codelineno-0-121">121</a></span>
-<span class="normal"><a href="#__codelineno-0-122">122</a></span>
-<span class="normal"><a href="#__codelineno-0-123">123</a></span>
-<span class="normal"><a href="#__codelineno-0-124">124</a></span>
-<span class="normal"><a href="#__codelineno-0-125">125</a></span>
-<span class="normal"><a href="#__codelineno-0-126">126</a></span>
-<span class="normal"><a href="#__codelineno-0-127">127</a></span>
-<span class="normal"><a href="#__codelineno-0-128">128</a></span>
-<span class="normal"><a href="#__codelineno-0-129">129</a></span>
-<span class="normal"><a href="#__codelineno-0-130">130</a></span>
-<span class="normal"><a href="#__codelineno-0-131">131</a></span>
-<span class="normal"><a href="#__codelineno-0-132">132</a></span>
-<span class="normal"><a href="#__codelineno-0-133">133</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">MAPOperations</span><span class="p">(</span><span class="n">AbstractOpSet</span><span class="p">):</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;MAP operations using element-wise multiplication and mean.</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="sd">    Multiply-Add-Permute (MAP) is a simple VSA algebra that uses:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="sd">    - Binding: element-wise multiplication</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="sd">    - Bundling: element-wise mean (averaging)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">    - Inverse: approximate inverse via normalization</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    MAP works best with real-valued hypervectors and is computationally</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    efficient, making it suitable for machine learning applications.</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">        &gt;&gt;&gt; import jax</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">        &gt;&gt;&gt;</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">        &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        &gt;&gt;&gt; key = jax.random.PRNGKey(0)</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        &gt;&gt;&gt; a = jax.random.normal(key, (1024,))</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        &gt;&gt;&gt; b = jax.random.normal(key, (1024,))</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        &gt;&gt;&gt;</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        &gt;&gt;&gt; bound = ops.bind(a, b)</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; assert bound.shape == a.shape</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Bind two hypervectors using element-wise multiplication.</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        This operation is:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        - Commutative: bind(a, b) = bind(b, a)</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        - Associative: bind(a, bind(b, c)) = bind(bind(a, b), c)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">        - Approximately invertible with the inverse() operation</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">            a: First hypervector as JAX array.</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">            b: Second hypervector as JAX array.</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">            Bound hypervector as JAX array (element-wise product).</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">            &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">            &gt;&gt;&gt; a = jnp.array([1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">            &gt;&gt;&gt; b = jnp.array([2.0, 3.0, 4.0])</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">            &gt;&gt;&gt; result = ops.bind(a, b)</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">            &gt;&gt;&gt; assert jnp.array_equal(result, jnp.array([2.0, 6.0, 12.0]))</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">vecs</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Bundle multiple hypervectors using element-wise mean.</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        The bundled vector is the average of all input vectors, providing</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        a representation that is similar to all inputs.</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">            *vecs: Variable number of hypervectors as JAX arrays.</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">            Bundled hypervector as JAX array (element-wise mean).</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">            ValueError: If no vectors are provided.</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">            &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">            &gt;&gt;&gt; a = jnp.array([1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">            &gt;&gt;&gt; b = jnp.array([3.0, 4.0, 5.0])</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">            &gt;&gt;&gt; c = jnp.array([5.0, 6.0, 7.0])</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">            &gt;&gt;&gt; result = ops.bundle(a, b, c)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">            &gt;&gt;&gt; expected = jnp.array([3.0, 4.0, 5.0])</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">            &gt;&gt;&gt; assert jnp.allclose(result, expected)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;bundle() requires at least one vector&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">vecs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute approximate inverse for unbinding.</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="sd">        For MAP, the inverse is approximated by the normalized vector itself.</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="sd">        This works because binding with a normalized vector approximately</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">        projects onto the orthogonal complement.</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">        Note: This is an approximation. Perfect unbinding is not guaranteed.</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">            a: Hypervector as JAX array.</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">            Approximate inverse hypervector as JAX array.</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">            &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">            &gt;&gt;&gt; a = jnp.array([3.0, 4.0])</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="sd">            &gt;&gt;&gt; inv_a = ops.inverse(a)</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="sd">            &gt;&gt;&gt; # The inverse should be normalized</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="sd">            &gt;&gt;&gt; assert jnp.allclose(jnp.linalg.norm(inv_a), 1.0, atol=1e-6)</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="c1"># Normalize the vector as an approximate inverse</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a>        <span class="c1"># This works because: a * (a / ||a||²) ≈ a²/||a||²</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="n">norm_squared</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm_squared</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
-<a id="__codelineno-0-114" name="__codelineno-0-114"></a>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">permute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Permute a hypervector by circular rotation.</span>
-<a id="__codelineno-0-117" name="__codelineno-0-117"></a>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="sd">            a: Hypervector as JAX array.</span>
-<a id="__codelineno-0-120" name="__codelineno-0-120"></a><span class="sd">            shift: Number of positions to rotate (positive = right, negative = left).</span>
-<a id="__codelineno-0-121" name="__codelineno-0-121"></a>
-<a id="__codelineno-0-122" name="__codelineno-0-122"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="sd">            Permuted hypervector as JAX array.</span>
-<a id="__codelineno-0-124" name="__codelineno-0-124"></a>
-<a id="__codelineno-0-125" name="__codelineno-0-125"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-126" name="__codelineno-0-126"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-127" name="__codelineno-0-127"></a><span class="sd">            &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-128" name="__codelineno-0-128"></a><span class="sd">            &gt;&gt;&gt; a = jnp.array([1.0, 2.0, 3.0, 4.0])</span>
-<a id="__codelineno-0-129" name="__codelineno-0-129"></a><span class="sd">            &gt;&gt;&gt; rotated = ops.permute(a, 1)</span>
-<a id="__codelineno-0-130" name="__codelineno-0-130"></a><span class="sd">            &gt;&gt;&gt; expected = jnp.array([4.0, 1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-131" name="__codelineno-0-131"></a><span class="sd">            &gt;&gt;&gt; assert jnp.array_equal(rotated, expected)</span>
-<a id="__codelineno-0-132" name="__codelineno-0-132"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-133" name="__codelineno-0-133"></a>        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span>
+                <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-186">186</a></span>
+<span class="normal"><a href="#__codelineno-0-187">187</a></span>
+<span class="normal"><a href="#__codelineno-0-188">188</a></span>
+<span class="normal"><a href="#__codelineno-0-189">189</a></span>
+<span class="normal"><a href="#__codelineno-0-190">190</a></span>
+<span class="normal"><a href="#__codelineno-0-191">191</a></span>
+<span class="normal"><a href="#__codelineno-0-192">192</a></span>
+<span class="normal"><a href="#__codelineno-0-193">193</a></span>
+<span class="normal"><a href="#__codelineno-0-194">194</a></span>
+<span class="normal"><a href="#__codelineno-0-195">195</a></span>
+<span class="normal"><a href="#__codelineno-0-196">196</a></span>
+<span class="normal"><a href="#__codelineno-0-197">197</a></span>
+<span class="normal"><a href="#__codelineno-0-198">198</a></span>
+<span class="normal"><a href="#__codelineno-0-199">199</a></span>
+<span class="normal"><a href="#__codelineno-0-200">200</a></span>
+<span class="normal"><a href="#__codelineno-0-201">201</a></span>
+<span class="normal"><a href="#__codelineno-0-202">202</a></span>
+<span class="normal"><a href="#__codelineno-0-203">203</a></span>
+<span class="normal"><a href="#__codelineno-0-204">204</a></span>
+<span class="normal"><a href="#__codelineno-0-205">205</a></span>
+<span class="normal"><a href="#__codelineno-0-206">206</a></span>
+<span class="normal"><a href="#__codelineno-0-207">207</a></span>
+<span class="normal"><a href="#__codelineno-0-208">208</a></span>
+<span class="normal"><a href="#__codelineno-0-209">209</a></span>
+<span class="normal"><a href="#__codelineno-0-210">210</a></span>
+<span class="normal"><a href="#__codelineno-0-211">211</a></span>
+<span class="normal"><a href="#__codelineno-0-212">212</a></span>
+<span class="normal"><a href="#__codelineno-0-213">213</a></span>
+<span class="normal"><a href="#__codelineno-0-214">214</a></span>
+<span class="normal"><a href="#__codelineno-0-215">215</a></span>
+<span class="normal"><a href="#__codelineno-0-216">216</a></span>
+<span class="normal"><a href="#__codelineno-0-217">217</a></span>
+<span class="normal"><a href="#__codelineno-0-218">218</a></span>
+<span class="normal"><a href="#__codelineno-0-219">219</a></span>
+<span class="normal"><a href="#__codelineno-0-220">220</a></span>
+<span class="normal"><a href="#__codelineno-0-221">221</a></span>
+<span class="normal"><a href="#__codelineno-0-222">222</a></span>
+<span class="normal"><a href="#__codelineno-0-223">223</a></span>
+<span class="normal"><a href="#__codelineno-0-224">224</a></span>
+<span class="normal"><a href="#__codelineno-0-225">225</a></span>
+<span class="normal"><a href="#__codelineno-0-226">226</a></span>
+<span class="normal"><a href="#__codelineno-0-227">227</a></span>
+<span class="normal"><a href="#__codelineno-0-228">228</a></span>
+<span class="normal"><a href="#__codelineno-0-229">229</a></span>
+<span class="normal"><a href="#__codelineno-0-230">230</a></span>
+<span class="normal"><a href="#__codelineno-0-231">231</a></span>
+<span class="normal"><a href="#__codelineno-0-232">232</a></span>
+<span class="normal"><a href="#__codelineno-0-233">233</a></span>
+<span class="normal"><a href="#__codelineno-0-234">234</a></span>
+<span class="normal"><a href="#__codelineno-0-235">235</a></span>
+<span class="normal"><a href="#__codelineno-0-236">236</a></span>
+<span class="normal"><a href="#__codelineno-0-237">237</a></span>
+<span class="normal"><a href="#__codelineno-0-238">238</a></span>
+<span class="normal"><a href="#__codelineno-0-239">239</a></span>
+<span class="normal"><a href="#__codelineno-0-240">240</a></span>
+<span class="normal"><a href="#__codelineno-0-241">241</a></span>
+<span class="normal"><a href="#__codelineno-0-242">242</a></span>
+<span class="normal"><a href="#__codelineno-0-243">243</a></span>
+<span class="normal"><a href="#__codelineno-0-244">244</a></span>
+<span class="normal"><a href="#__codelineno-0-245">245</a></span>
+<span class="normal"><a href="#__codelineno-0-246">246</a></span>
+<span class="normal"><a href="#__codelineno-0-247">247</a></span>
+<span class="normal"><a href="#__codelineno-0-248">248</a></span>
+<span class="normal"><a href="#__codelineno-0-249">249</a></span>
+<span class="normal"><a href="#__codelineno-0-250">250</a></span>
+<span class="normal"><a href="#__codelineno-0-251">251</a></span>
+<span class="normal"><a href="#__codelineno-0-252">252</a></span>
+<span class="normal"><a href="#__codelineno-0-253">253</a></span>
+<span class="normal"><a href="#__codelineno-0-254">254</a></span>
+<span class="normal"><a href="#__codelineno-0-255">255</a></span>
+<span class="normal"><a href="#__codelineno-0-256">256</a></span>
+<span class="normal"><a href="#__codelineno-0-257">257</a></span>
+<span class="normal"><a href="#__codelineno-0-258">258</a></span>
+<span class="normal"><a href="#__codelineno-0-259">259</a></span>
+<span class="normal"><a href="#__codelineno-0-260">260</a></span>
+<span class="normal"><a href="#__codelineno-0-261">261</a></span>
+<span class="normal"><a href="#__codelineno-0-262">262</a></span>
+<span class="normal"><a href="#__codelineno-0-263">263</a></span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span>
+<span class="normal"><a href="#__codelineno-0-265">265</a></span>
+<span class="normal"><a href="#__codelineno-0-266">266</a></span>
+<span class="normal"><a href="#__codelineno-0-267">267</a></span>
+<span class="normal"><a href="#__codelineno-0-268">268</a></span>
+<span class="normal"><a href="#__codelineno-0-269">269</a></span>
+<span class="normal"><a href="#__codelineno-0-270">270</a></span>
+<span class="normal"><a href="#__codelineno-0-271">271</a></span>
+<span class="normal"><a href="#__codelineno-0-272">272</a></span>
+<span class="normal"><a href="#__codelineno-0-273">273</a></span>
+<span class="normal"><a href="#__codelineno-0-274">274</a></span>
+<span class="normal"><a href="#__codelineno-0-275">275</a></span>
+<span class="normal"><a href="#__codelineno-0-276">276</a></span>
+<span class="normal"><a href="#__codelineno-0-277">277</a></span>
+<span class="normal"><a href="#__codelineno-0-278">278</a></span>
+<span class="normal"><a href="#__codelineno-0-279">279</a></span>
+<span class="normal"><a href="#__codelineno-0-280">280</a></span>
+<span class="normal"><a href="#__codelineno-0-281">281</a></span>
+<span class="normal"><a href="#__codelineno-0-282">282</a></span>
+<span class="normal"><a href="#__codelineno-0-283">283</a></span>
+<span class="normal"><a href="#__codelineno-0-284">284</a></span>
+<span class="normal"><a href="#__codelineno-0-285">285</a></span>
+<span class="normal"><a href="#__codelineno-0-286">286</a></span>
+<span class="normal"><a href="#__codelineno-0-287">287</a></span>
+<span class="normal"><a href="#__codelineno-0-288">288</a></span>
+<span class="normal"><a href="#__codelineno-0-289">289</a></span>
+<span class="normal"><a href="#__codelineno-0-290">290</a></span>
+<span class="normal"><a href="#__codelineno-0-291">291</a></span>
+<span class="normal"><a href="#__codelineno-0-292">292</a></span>
+<span class="normal"><a href="#__codelineno-0-293">293</a></span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span>
+<span class="normal"><a href="#__codelineno-0-304">304</a></span>
+<span class="normal"><a href="#__codelineno-0-305">305</a></span>
+<span class="normal"><a href="#__codelineno-0-306">306</a></span>
+<span class="normal"><a href="#__codelineno-0-307">307</a></span>
+<span class="normal"><a href="#__codelineno-0-308">308</a></span>
+<span class="normal"><a href="#__codelineno-0-309">309</a></span>
+<span class="normal"><a href="#__codelineno-0-310">310</a></span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span>
+<span class="normal"><a href="#__codelineno-0-313">313</a></span>
+<span class="normal"><a href="#__codelineno-0-314">314</a></span>
+<span class="normal"><a href="#__codelineno-0-315">315</a></span>
+<span class="normal"><a href="#__codelineno-0-316">316</a></span>
+<span class="normal"><a href="#__codelineno-0-317">317</a></span>
+<span class="normal"><a href="#__codelineno-0-318">318</a></span>
+<span class="normal"><a href="#__codelineno-0-319">319</a></span>
+<span class="normal"><a href="#__codelineno-0-320">320</a></span>
+<span class="normal"><a href="#__codelineno-0-321">321</a></span>
+<span class="normal"><a href="#__codelineno-0-322">322</a></span>
+<span class="normal"><a href="#__codelineno-0-323">323</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-186" name="__codelineno-0-186"></a><span class="k">class</span><span class="w"> </span><span class="nc">QuaternionOperations</span><span class="p">(</span><span class="n">AbstractOpSet</span><span class="p">):</span>
+<a id="__codelineno-0-187" name="__codelineno-0-187"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Quaternion VSA operations using Hamilton product for binding.</span>
+<a id="__codelineno-0-188" name="__codelineno-0-188"></a>
+<a id="__codelineno-0-189" name="__codelineno-0-189"></a><span class="sd">    Quaternion Hypervectors (QHV) use the Hamilton product for binding,</span>
+<a id="__codelineno-0-190" name="__codelineno-0-190"></a><span class="sd">    which is NON-COMMUTATIVE. This makes them suitable for order-sensitive</span>
+<a id="__codelineno-0-191" name="__codelineno-0-191"></a><span class="sd">    role/filler bindings where bind(role, filler) != bind(filler, role).</span>
+<a id="__codelineno-0-192" name="__codelineno-0-192"></a>
+<a id="__codelineno-0-193" name="__codelineno-0-193"></a><span class="sd">    Key properties:</span>
+<a id="__codelineno-0-194" name="__codelineno-0-194"></a><span class="sd">    - Binding: Hamilton product (non-commutative, associative)</span>
+<a id="__codelineno-0-195" name="__codelineno-0-195"></a><span class="sd">    - Bundling: Sum + normalize to unit quaternions</span>
+<a id="__codelineno-0-196" name="__codelineno-0-196"></a><span class="sd">    - Inverse: Quaternion inverse (conjugate / norm²)</span>
+<a id="__codelineno-0-197" name="__codelineno-0-197"></a><span class="sd">    - Unbind: Right-unbind recovers x from bind(x, y) given y</span>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a><span class="sd">    - Unbind-left: Left-unbind recovers y from bind(x, y) given x</span>
+<a id="__codelineno-0-199" name="__codelineno-0-199"></a>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a><span class="sd">    Vector shape: (D, 4) where D is the number of quaternion coordinates.</span>
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a>
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="sd">        &gt;&gt;&gt; import jax</span>
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="sd">        &gt;&gt;&gt; from vsax.ops import QuaternionOperations</span>
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">        &gt;&gt;&gt; from vsax.sampling import sample_quaternion_random</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">        &gt;&gt;&gt;</span>
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">        &gt;&gt;&gt; ops = QuaternionOperations()</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">        &gt;&gt;&gt; key = jax.random.PRNGKey(0)</span>
+<a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">        &gt;&gt;&gt; vecs = sample_quaternion_random(dim=512, n=2, key=key)</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">        &gt;&gt;&gt; x, y = vecs[0], vecs[1]</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">        &gt;&gt;&gt;</span>
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a><span class="sd">        &gt;&gt;&gt; # Non-commutative binding</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a><span class="sd">        &gt;&gt;&gt; xy = ops.bind(x, y)</span>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a><span class="sd">        &gt;&gt;&gt; yx = ops.bind(y, x)</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a><span class="sd">        &gt;&gt;&gt; # xy != yx (different results)</span>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a><span class="sd">        &gt;&gt;&gt;</span>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a><span class="sd">        &gt;&gt;&gt; # Right-unbind: recover x from xy using y</span>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a><span class="sd">        &gt;&gt;&gt; recovered_x = ops.unbind(xy, y)</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a><span class="sd">        &gt;&gt;&gt;</span>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a><span class="sd">        &gt;&gt;&gt; # Left-unbind: recover y from xy using x</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a><span class="sd">        &gt;&gt;&gt; recovered_y = ops.unbind_left(x, xy)</span>
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Bind two quaternion hypervectors using Hamilton product.</span>
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">        This operation is NON-COMMUTATIVE: bind(a, b) != bind(b, a).</span>
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">            a: First quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">            b: Second quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">            Bound quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a>        <span class="k">return</span> <span class="n">qmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-0-238" name="__codelineno-0-238"></a>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">vecs</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Bundle multiple quaternion hypervectors.</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">        Sums the vectors and normalizes to unit quaternions.</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a><span class="sd">            *vecs: Variable number of quaternion hypervectors.</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a><span class="sd">            Bundled quaternion hypervector, normalized to unit length.</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a><span class="sd">            ValueError: If no vectors are provided.</span>
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;bundle() requires at least one vector&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>        <span class="c1"># Sum all vectors</span>
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">vecs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>        <span class="c1"># Normalize to unit quaternions</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>        <span class="k">return</span> <span class="n">qnormalize</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>
+<a id="__codelineno-0-262" name="__codelineno-0-262"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the quaternion inverse.</span>
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a>
+<a id="__codelineno-0-265" name="__codelineno-0-265"></a><span class="sd">        For unit quaternions, this equals the conjugate.</span>
+<a id="__codelineno-0-266" name="__codelineno-0-266"></a>
+<a id="__codelineno-0-267" name="__codelineno-0-267"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-268" name="__codelineno-0-268"></a><span class="sd">            a: Quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-269" name="__codelineno-0-269"></a>
+<a id="__codelineno-0-270" name="__codelineno-0-270"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-271" name="__codelineno-0-271"></a><span class="sd">            Inverse quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-272" name="__codelineno-0-272"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-273" name="__codelineno-0-273"></a>        <span class="k">return</span> <span class="n">qinverse</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-0-274" name="__codelineno-0-274"></a>
+<a id="__codelineno-0-275" name="__codelineno-0-275"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">unbind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-276" name="__codelineno-0-276"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Right-unbind: recover x from z = bind(x, y) given y.</span>
+<a id="__codelineno-0-277" name="__codelineno-0-277"></a>
+<a id="__codelineno-0-278" name="__codelineno-0-278"></a><span class="sd">        Computes: z * y⁻¹ = x</span>
+<a id="__codelineno-0-279" name="__codelineno-0-279"></a>
+<a id="__codelineno-0-280" name="__codelineno-0-280"></a><span class="sd">        For quaternion binding z = x * y, right multiplication by y⁻¹</span>
+<a id="__codelineno-0-281" name="__codelineno-0-281"></a><span class="sd">        recovers x: z * y⁻¹ = x * y * y⁻¹ = x</span>
+<a id="__codelineno-0-282" name="__codelineno-0-282"></a>
+<a id="__codelineno-0-283" name="__codelineno-0-283"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-284" name="__codelineno-0-284"></a><span class="sd">            a: Bound quaternion hypervector (z = bind(x, y)).</span>
+<a id="__codelineno-0-285" name="__codelineno-0-285"></a><span class="sd">            b: Quaternion hypervector to unbind (y).</span>
+<a id="__codelineno-0-286" name="__codelineno-0-286"></a>
+<a id="__codelineno-0-287" name="__codelineno-0-287"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a><span class="sd">            Recovered quaternion hypervector (x).</span>
+<a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a>        <span class="k">return</span> <span class="n">qmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">qinverse</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<a id="__codelineno-0-291" name="__codelineno-0-291"></a>
+<a id="__codelineno-0-292" name="__codelineno-0-292"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">unbind_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-293" name="__codelineno-0-293"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Left-unbind: recover y from z = bind(x, y) given x.</span>
+<a id="__codelineno-0-294" name="__codelineno-0-294"></a>
+<a id="__codelineno-0-295" name="__codelineno-0-295"></a><span class="sd">        Computes: x⁻¹ * z = y</span>
+<a id="__codelineno-0-296" name="__codelineno-0-296"></a>
+<a id="__codelineno-0-297" name="__codelineno-0-297"></a><span class="sd">        For quaternion binding z = x * y, left multiplication by x⁻¹</span>
+<a id="__codelineno-0-298" name="__codelineno-0-298"></a><span class="sd">        recovers y: x⁻¹ * z = x⁻¹ * x * y = y</span>
+<a id="__codelineno-0-299" name="__codelineno-0-299"></a>
+<a id="__codelineno-0-300" name="__codelineno-0-300"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-301" name="__codelineno-0-301"></a><span class="sd">            a: Quaternion hypervector used in binding (x).</span>
+<a id="__codelineno-0-302" name="__codelineno-0-302"></a><span class="sd">            b: Bound quaternion hypervector (z = bind(x, y)).</span>
+<a id="__codelineno-0-303" name="__codelineno-0-303"></a>
+<a id="__codelineno-0-304" name="__codelineno-0-304"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-305" name="__codelineno-0-305"></a><span class="sd">            Recovered quaternion hypervector (y).</span>
+<a id="__codelineno-0-306" name="__codelineno-0-306"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-307" name="__codelineno-0-307"></a>        <span class="k">return</span> <span class="n">qmul</span><span class="p">(</span><span class="n">qinverse</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-0-308" name="__codelineno-0-308"></a>
+<a id="__codelineno-0-309" name="__codelineno-0-309"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">permute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Permute a quaternion hypervector by circular shift.</span>
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>
+<a id="__codelineno-0-312" name="__codelineno-0-312"></a><span class="sd">        Shifts along the first axis (quaternion coordinate dimension),</span>
+<a id="__codelineno-0-313" name="__codelineno-0-313"></a><span class="sd">        not the last axis (quaternion components).</span>
+<a id="__codelineno-0-314" name="__codelineno-0-314"></a>
+<a id="__codelineno-0-315" name="__codelineno-0-315"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-316" name="__codelineno-0-316"></a><span class="sd">            a: Quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-317" name="__codelineno-0-317"></a><span class="sd">            shift: Number of positions to shift.</span>
+<a id="__codelineno-0-318" name="__codelineno-0-318"></a>
+<a id="__codelineno-0-319" name="__codelineno-0-319"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-320" name="__codelineno-0-320"></a><span class="sd">            Permuted quaternion hypervector.</span>
+<a id="__codelineno-0-321" name="__codelineno-0-321"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-322" name="__codelineno-0-322"></a>        <span class="c1"># Roll along the second-to-last axis (D dimension)</span>
+<a id="__codelineno-0-323" name="__codelineno-0-323"></a>        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -4522,24 +4656,21 @@ assert bound.shape == a.shape</p>
 
 
 
-<h3 id="vsax.ops.MAPOperations-functions">Functions<a href="#vsax.ops.MAPOperations-functions" class="headerlink" title="Permanent link">&para;</a></h3>
+<h3 id="vsax.ops.QuaternionOperations-functions">Functions<a href="#vsax.ops.QuaternionOperations-functions" class="headerlink" title="Permanent link">&para;</a></h3>
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.ops.MAPOperations.bind" class="doc doc-heading">
+<h4 id="vsax.ops.QuaternionOperations.bind" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">bind</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>
 
-<a href="#vsax.ops.MAPOperations.bind" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.ops.QuaternionOperations.bind" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Bind two hypervectors using element-wise multiplication.</p>
-<p>This operation is:
-- Commutative: bind(a, b) = bind(b, a)
-- Associative: bind(a, bind(b, c)) = bind(bind(a, b), c)
-- Approximately invertible with the inverse() operation</p>
+        <p>Bind two quaternion hypervectors using Hamilton product.</p>
+<p>This operation is NON-COMMUTATIVE: bind(a, b) != bind(b, a).</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4562,7 +4693,7 @@ assert bound.shape == a.shape</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>First hypervector as JAX array.</p>
+                <p>First quaternion hypervector of shape (..., D, 4).</p>
               </div>
             </td>
             <td>
@@ -4578,7 +4709,7 @@ assert bound.shape == a.shape</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Second hypervector as JAX array.</p>
+                <p>Second quaternion hypervector of shape (..., D, 4).</p>
               </div>
             </td>
             <td>
@@ -4604,7 +4735,7 @@ assert bound.shape == a.shape</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Bound hypervector as JAX array (element-wise product).</p>
+                <p>Bound quaternion hypervector of shape (..., D, 4).</p>
               </div>
             </td>
           </tr>
@@ -4612,71 +4743,33 @@ assert bound.shape == a.shape</p>
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-ops = MAPOperations()
-a = jnp.array([1.0, 2.0, 3.0])
-b = jnp.array([2.0, 3.0, 4.0])
-result = ops.bind(a, b)
-assert jnp.array_equal(result, jnp.array([2.0, 6.0, 12.0]))</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/ops/map.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bind two hypervectors using element-wise multiplication.</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">    This operation is:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">    - Commutative: bind(a, b) = bind(b, a)</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">    - Associative: bind(a, bind(b, c)) = bind(bind(a, b), c)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">    - Approximately invertible with the inverse() operation</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">        a: First hypervector as JAX array.</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">        b: Second hypervector as JAX array.</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">        Bound hypervector as JAX array (element-wise product).</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        &gt;&gt;&gt; a = jnp.array([1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        &gt;&gt;&gt; b = jnp.array([2.0, 3.0, 4.0])</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        &gt;&gt;&gt; result = ops.bind(a, b)</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        &gt;&gt;&gt; assert jnp.array_equal(result, jnp.array([2.0, 6.0, 12.0]))</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+              <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-225">225</a></span>
+<span class="normal"><a href="#__codelineno-0-226">226</a></span>
+<span class="normal"><a href="#__codelineno-0-227">227</a></span>
+<span class="normal"><a href="#__codelineno-0-228">228</a></span>
+<span class="normal"><a href="#__codelineno-0-229">229</a></span>
+<span class="normal"><a href="#__codelineno-0-230">230</a></span>
+<span class="normal"><a href="#__codelineno-0-231">231</a></span>
+<span class="normal"><a href="#__codelineno-0-232">232</a></span>
+<span class="normal"><a href="#__codelineno-0-233">233</a></span>
+<span class="normal"><a href="#__codelineno-0-234">234</a></span>
+<span class="normal"><a href="#__codelineno-0-235">235</a></span>
+<span class="normal"><a href="#__codelineno-0-236">236</a></span>
+<span class="normal"><a href="#__codelineno-0-237">237</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-225" name="__codelineno-0-225"></a><span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-226" name="__codelineno-0-226"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bind two quaternion hypervectors using Hamilton product.</span>
+<a id="__codelineno-0-227" name="__codelineno-0-227"></a>
+<a id="__codelineno-0-228" name="__codelineno-0-228"></a><span class="sd">    This operation is NON-COMMUTATIVE: bind(a, b) != bind(b, a).</span>
+<a id="__codelineno-0-229" name="__codelineno-0-229"></a>
+<a id="__codelineno-0-230" name="__codelineno-0-230"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-231" name="__codelineno-0-231"></a><span class="sd">        a: First quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-232" name="__codelineno-0-232"></a><span class="sd">        b: Second quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-233" name="__codelineno-0-233"></a>
+<a id="__codelineno-0-234" name="__codelineno-0-234"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">        Bound quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-237" name="__codelineno-0-237"></a>    <span class="k">return</span> <span class="n">qmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -4686,17 +4779,16 @@ assert jnp.array_equal(result, jnp.array([2.0, 6.0, 12.0]))</p>
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.ops.MAPOperations.bundle" class="doc doc-heading">
+<h4 id="vsax.ops.QuaternionOperations.bundle" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">bundle</span><span class="p">(</span><span class="o">*</span><span class="n">vecs</span><span class="p">)</span></code>
 
-<a href="#vsax.ops.MAPOperations.bundle" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.ops.QuaternionOperations.bundle" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Bundle multiple hypervectors using element-wise mean.</p>
-<p>The bundled vector is the average of all input vectors, providing
-a representation that is similar to all inputs.</p>
+        <p>Bundle multiple quaternion hypervectors.</p>
+<p>Sums the vectors and normalizes to unit quaternions.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4719,7 +4811,7 @@ a representation that is similar to all inputs.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Variable number of hypervectors as JAX arrays.</p>
+                <p>Variable number of quaternion hypervectors.</p>
               </div>
             </td>
             <td>
@@ -4745,7 +4837,7 @@ a representation that is similar to all inputs.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Bundled hypervector as JAX array (element-wise mean).</p>
+                <p>Bundled quaternion hypervector, normalized to unit length.</p>
               </div>
             </td>
           </tr>
@@ -4776,83 +4868,51 @@ a representation that is similar to all inputs.</p>
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-ops = MAPOperations()
-a = jnp.array([1.0, 2.0, 3.0])
-b = jnp.array([3.0, 4.0, 5.0])
-c = jnp.array([5.0, 6.0, 7.0])
-result = ops.bundle(a, b, c)
-expected = jnp.array([3.0, 4.0, 5.0])
-assert jnp.allclose(result, expected)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/ops/map.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span>
-<span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span>
-<span class="normal"><a href="#__codelineno-0-61">61</a></span>
-<span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span>
-<span class="normal"><a href="#__codelineno-0-66">66</a></span>
-<span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span>
-<span class="normal"><a href="#__codelineno-0-72">72</a></span>
-<span class="normal"><a href="#__codelineno-0-73">73</a></span>
-<span class="normal"><a href="#__codelineno-0-74">74</a></span>
-<span class="normal"><a href="#__codelineno-0-75">75</a></span>
-<span class="normal"><a href="#__codelineno-0-76">76</a></span>
-<span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span>
-<span class="normal"><a href="#__codelineno-0-80">80</a></span>
-<span class="normal"><a href="#__codelineno-0-81">81</a></span>
-<span class="normal"><a href="#__codelineno-0-82">82</a></span>
-<span class="normal"><a href="#__codelineno-0-83">83</a></span>
-<span class="normal"><a href="#__codelineno-0-84">84</a></span>
-<span class="normal"><a href="#__codelineno-0-85">85</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="k">def</span><span class="w"> </span><span class="nf">bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">vecs</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bundle multiple hypervectors using element-wise mean.</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    The bundled vector is the average of all input vectors, providing</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">    a representation that is similar to all inputs.</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        *vecs: Variable number of hypervectors as JAX arrays.</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="sd">        Bundled hypervector as JAX array (element-wise mean).</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        ValueError: If no vectors are provided.</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">        &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        &gt;&gt;&gt; a = jnp.array([1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        &gt;&gt;&gt; b = jnp.array([3.0, 4.0, 5.0])</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">        &gt;&gt;&gt; c = jnp.array([5.0, 6.0, 7.0])</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">        &gt;&gt;&gt; result = ops.bundle(a, b, c)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">        &gt;&gt;&gt; expected = jnp.array([3.0, 4.0, 5.0])</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">        &gt;&gt;&gt; assert jnp.allclose(result, expected)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;bundle() requires at least one vector&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">vecs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+              <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-239">239</a></span>
+<span class="normal"><a href="#__codelineno-0-240">240</a></span>
+<span class="normal"><a href="#__codelineno-0-241">241</a></span>
+<span class="normal"><a href="#__codelineno-0-242">242</a></span>
+<span class="normal"><a href="#__codelineno-0-243">243</a></span>
+<span class="normal"><a href="#__codelineno-0-244">244</a></span>
+<span class="normal"><a href="#__codelineno-0-245">245</a></span>
+<span class="normal"><a href="#__codelineno-0-246">246</a></span>
+<span class="normal"><a href="#__codelineno-0-247">247</a></span>
+<span class="normal"><a href="#__codelineno-0-248">248</a></span>
+<span class="normal"><a href="#__codelineno-0-249">249</a></span>
+<span class="normal"><a href="#__codelineno-0-250">250</a></span>
+<span class="normal"><a href="#__codelineno-0-251">251</a></span>
+<span class="normal"><a href="#__codelineno-0-252">252</a></span>
+<span class="normal"><a href="#__codelineno-0-253">253</a></span>
+<span class="normal"><a href="#__codelineno-0-254">254</a></span>
+<span class="normal"><a href="#__codelineno-0-255">255</a></span>
+<span class="normal"><a href="#__codelineno-0-256">256</a></span>
+<span class="normal"><a href="#__codelineno-0-257">257</a></span>
+<span class="normal"><a href="#__codelineno-0-258">258</a></span>
+<span class="normal"><a href="#__codelineno-0-259">259</a></span>
+<span class="normal"><a href="#__codelineno-0-260">260</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="k">def</span><span class="w"> </span><span class="nf">bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">vecs</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bundle multiple quaternion hypervectors.</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">    Sums the vectors and normalizes to unit quaternions.</span>
+<a id="__codelineno-0-243" name="__codelineno-0-243"></a>
+<a id="__codelineno-0-244" name="__codelineno-0-244"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-245" name="__codelineno-0-245"></a><span class="sd">        *vecs: Variable number of quaternion hypervectors.</span>
+<a id="__codelineno-0-246" name="__codelineno-0-246"></a>
+<a id="__codelineno-0-247" name="__codelineno-0-247"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-248" name="__codelineno-0-248"></a><span class="sd">        Bundled quaternion hypervector, normalized to unit length.</span>
+<a id="__codelineno-0-249" name="__codelineno-0-249"></a>
+<a id="__codelineno-0-250" name="__codelineno-0-250"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-251" name="__codelineno-0-251"></a><span class="sd">        ValueError: If no vectors are provided.</span>
+<a id="__codelineno-0-252" name="__codelineno-0-252"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-253" name="__codelineno-0-253"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-254" name="__codelineno-0-254"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;bundle() requires at least one vector&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-255" name="__codelineno-0-255"></a>
+<a id="__codelineno-0-256" name="__codelineno-0-256"></a>    <span class="c1"># Sum all vectors</span>
+<a id="__codelineno-0-257" name="__codelineno-0-257"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">vecs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-258" name="__codelineno-0-258"></a>
+<a id="__codelineno-0-259" name="__codelineno-0-259"></a>    <span class="c1"># Normalize to unit quaternions</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a>    <span class="k">return</span> <span class="n">qnormalize</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -4862,19 +4922,16 @@ assert jnp.allclose(result, expected)</p>
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.ops.MAPOperations.inverse" class="doc doc-heading">
+<h4 id="vsax.ops.QuaternionOperations.inverse" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">inverse</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code>
 
-<a href="#vsax.ops.MAPOperations.inverse" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.ops.QuaternionOperations.inverse" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Compute approximate inverse for unbinding.</p>
-<p>For MAP, the inverse is approximated by the normalized vector itself.
-This works because binding with a normalized vector approximately
-projects onto the orthogonal complement.</p>
-<p>Note: This is an approximation. Perfect unbinding is not guaranteed.</p>
+        <p>Compute the quaternion inverse.</p>
+<p>For unit quaternions, this equals the conjugate.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4897,7 +4954,7 @@ projects onto the orthogonal complement.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Hypervector as JAX array.</p>
+                <p>Quaternion hypervector of shape (..., D, 4).</p>
               </div>
             </td>
             <td>
@@ -4923,7 +4980,7 @@ projects onto the orthogonal complement.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Approximate inverse hypervector as JAX array.</p>
+                <p>Inverse quaternion hypervector of shape (..., D, 4).</p>
               </div>
             </td>
           </tr>
@@ -4931,77 +4988,31 @@ projects onto the orthogonal complement.</p>
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-ops = MAPOperations()
-a = jnp.array([3.0, 4.0])
-inv_a = ops.inverse(a)</p>
-<h5 id="vsax.ops.MAPOperations.inverse--the-inverse-should-be-normalized">The inverse should be normalized<a class="headerlink" href="#vsax.ops.MAPOperations.inverse--the-inverse-should-be-normalized" title="Permanent link">&para;</a></h5>
-<p>assert jnp.allclose(jnp.linalg.norm(inv_a), 1.0, atol=1e-6)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/ops/map.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
-<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
-<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
-<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
-<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
-<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-0-100">100</a></span>
-<span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span>
-<span class="normal"><a href="#__codelineno-0-103">103</a></span>
-<span class="normal"><a href="#__codelineno-0-104">104</a></span>
-<span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span>
-<span class="normal"><a href="#__codelineno-0-107">107</a></span>
-<span class="normal"><a href="#__codelineno-0-108">108</a></span>
-<span class="normal"><a href="#__codelineno-0-109">109</a></span>
-<span class="normal"><a href="#__codelineno-0-110">110</a></span>
-<span class="normal"><a href="#__codelineno-0-111">111</a></span>
-<span class="normal"><a href="#__codelineno-0-112">112</a></span>
-<span class="normal"><a href="#__codelineno-0-113">113</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="k">def</span><span class="w"> </span><span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute approximate inverse for unbinding.</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="sd">    For MAP, the inverse is approximated by the normalized vector itself.</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="sd">    This works because binding with a normalized vector approximately</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">    projects onto the orthogonal complement.</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">    Note: This is an approximation. Perfect unbinding is not guaranteed.</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        a: Hypervector as JAX array.</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">        Approximate inverse hypervector as JAX array.</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">        &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">        &gt;&gt;&gt; a = jnp.array([3.0, 4.0])</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="sd">        &gt;&gt;&gt; inv_a = ops.inverse(a)</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="sd">        &gt;&gt;&gt; # The inverse should be normalized</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="sd">        &gt;&gt;&gt; assert jnp.allclose(jnp.linalg.norm(inv_a), 1.0, atol=1e-6)</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>    <span class="c1"># Normalize the vector as an approximate inverse</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a>    <span class="c1"># This works because: a * (a / ||a||²) ≈ a²/||a||²</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a>    <span class="n">norm_squared</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a>    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm_squared</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+              <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-262">262</a></span>
+<span class="normal"><a href="#__codelineno-0-263">263</a></span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span>
+<span class="normal"><a href="#__codelineno-0-265">265</a></span>
+<span class="normal"><a href="#__codelineno-0-266">266</a></span>
+<span class="normal"><a href="#__codelineno-0-267">267</a></span>
+<span class="normal"><a href="#__codelineno-0-268">268</a></span>
+<span class="normal"><a href="#__codelineno-0-269">269</a></span>
+<span class="normal"><a href="#__codelineno-0-270">270</a></span>
+<span class="normal"><a href="#__codelineno-0-271">271</a></span>
+<span class="normal"><a href="#__codelineno-0-272">272</a></span>
+<span class="normal"><a href="#__codelineno-0-273">273</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-262" name="__codelineno-0-262"></a><span class="k">def</span><span class="w"> </span><span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the quaternion inverse.</span>
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a>
+<a id="__codelineno-0-265" name="__codelineno-0-265"></a><span class="sd">    For unit quaternions, this equals the conjugate.</span>
+<a id="__codelineno-0-266" name="__codelineno-0-266"></a>
+<a id="__codelineno-0-267" name="__codelineno-0-267"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-268" name="__codelineno-0-268"></a><span class="sd">        a: Quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-269" name="__codelineno-0-269"></a>
+<a id="__codelineno-0-270" name="__codelineno-0-270"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-271" name="__codelineno-0-271"></a><span class="sd">        Inverse quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-272" name="__codelineno-0-272"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-273" name="__codelineno-0-273"></a>    <span class="k">return</span> <span class="n">qinverse</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5011,15 +5022,18 @@ inv_a = ops.inverse(a)</p>
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.ops.MAPOperations.permute" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">permute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span></code>
+<h4 id="vsax.ops.QuaternionOperations.unbind" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">unbind</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>
 
-<a href="#vsax.ops.MAPOperations.permute" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.ops.QuaternionOperations.unbind" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Permute a hypervector by circular rotation.</p>
+        <p>Right-unbind: recover x from z = bind(x, y) given y.</p>
+<p>Computes: z * y⁻¹ = x</p>
+<p>For quaternion binding z = x * y, right multiplication by y⁻¹
+recovers x: z * y⁻¹ = x * y * y⁻¹ = x</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5042,7 +5056,258 @@ inv_a = ops.inverse(a)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Hypervector as JAX array.</p>
+                <p>Bound quaternion hypervector (z = bind(x, y)).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>b</code>
+            </td>
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Quaternion hypervector to unbind (y).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Recovered quaternion hypervector (x).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-275">275</a></span>
+<span class="normal"><a href="#__codelineno-0-276">276</a></span>
+<span class="normal"><a href="#__codelineno-0-277">277</a></span>
+<span class="normal"><a href="#__codelineno-0-278">278</a></span>
+<span class="normal"><a href="#__codelineno-0-279">279</a></span>
+<span class="normal"><a href="#__codelineno-0-280">280</a></span>
+<span class="normal"><a href="#__codelineno-0-281">281</a></span>
+<span class="normal"><a href="#__codelineno-0-282">282</a></span>
+<span class="normal"><a href="#__codelineno-0-283">283</a></span>
+<span class="normal"><a href="#__codelineno-0-284">284</a></span>
+<span class="normal"><a href="#__codelineno-0-285">285</a></span>
+<span class="normal"><a href="#__codelineno-0-286">286</a></span>
+<span class="normal"><a href="#__codelineno-0-287">287</a></span>
+<span class="normal"><a href="#__codelineno-0-288">288</a></span>
+<span class="normal"><a href="#__codelineno-0-289">289</a></span>
+<span class="normal"><a href="#__codelineno-0-290">290</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-275" name="__codelineno-0-275"></a><span class="k">def</span><span class="w"> </span><span class="nf">unbind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-276" name="__codelineno-0-276"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Right-unbind: recover x from z = bind(x, y) given y.</span>
+<a id="__codelineno-0-277" name="__codelineno-0-277"></a>
+<a id="__codelineno-0-278" name="__codelineno-0-278"></a><span class="sd">    Computes: z * y⁻¹ = x</span>
+<a id="__codelineno-0-279" name="__codelineno-0-279"></a>
+<a id="__codelineno-0-280" name="__codelineno-0-280"></a><span class="sd">    For quaternion binding z = x * y, right multiplication by y⁻¹</span>
+<a id="__codelineno-0-281" name="__codelineno-0-281"></a><span class="sd">    recovers x: z * y⁻¹ = x * y * y⁻¹ = x</span>
+<a id="__codelineno-0-282" name="__codelineno-0-282"></a>
+<a id="__codelineno-0-283" name="__codelineno-0-283"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-284" name="__codelineno-0-284"></a><span class="sd">        a: Bound quaternion hypervector (z = bind(x, y)).</span>
+<a id="__codelineno-0-285" name="__codelineno-0-285"></a><span class="sd">        b: Quaternion hypervector to unbind (y).</span>
+<a id="__codelineno-0-286" name="__codelineno-0-286"></a>
+<a id="__codelineno-0-287" name="__codelineno-0-287"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a><span class="sd">        Recovered quaternion hypervector (x).</span>
+<a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a>    <span class="k">return</span> <span class="n">qmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">qinverse</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="vsax.ops.QuaternionOperations.unbind_left" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">unbind_left</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code>
+
+<a href="#vsax.ops.QuaternionOperations.unbind_left" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Left-unbind: recover y from z = bind(x, y) given x.</p>
+<p>Computes: x⁻¹ * z = y</p>
+<p>For quaternion binding z = x * y, left multiplication by x⁻¹
+recovers y: x⁻¹ * z = x⁻¹ * x * y = y</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a</code>
+            </td>
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Quaternion hypervector used in binding (x).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>b</code>
+            </td>
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Bound quaternion hypervector (z = bind(x, y)).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Recovered quaternion hypervector (y).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-292">292</a></span>
+<span class="normal"><a href="#__codelineno-0-293">293</a></span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span>
+<span class="normal"><a href="#__codelineno-0-304">304</a></span>
+<span class="normal"><a href="#__codelineno-0-305">305</a></span>
+<span class="normal"><a href="#__codelineno-0-306">306</a></span>
+<span class="normal"><a href="#__codelineno-0-307">307</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-292" name="__codelineno-0-292"></a><span class="k">def</span><span class="w"> </span><span class="nf">unbind_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-293" name="__codelineno-0-293"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Left-unbind: recover y from z = bind(x, y) given x.</span>
+<a id="__codelineno-0-294" name="__codelineno-0-294"></a>
+<a id="__codelineno-0-295" name="__codelineno-0-295"></a><span class="sd">    Computes: x⁻¹ * z = y</span>
+<a id="__codelineno-0-296" name="__codelineno-0-296"></a>
+<a id="__codelineno-0-297" name="__codelineno-0-297"></a><span class="sd">    For quaternion binding z = x * y, left multiplication by x⁻¹</span>
+<a id="__codelineno-0-298" name="__codelineno-0-298"></a><span class="sd">    recovers y: x⁻¹ * z = x⁻¹ * x * y = y</span>
+<a id="__codelineno-0-299" name="__codelineno-0-299"></a>
+<a id="__codelineno-0-300" name="__codelineno-0-300"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-301" name="__codelineno-0-301"></a><span class="sd">        a: Quaternion hypervector used in binding (x).</span>
+<a id="__codelineno-0-302" name="__codelineno-0-302"></a><span class="sd">        b: Bound quaternion hypervector (z = bind(x, y)).</span>
+<a id="__codelineno-0-303" name="__codelineno-0-303"></a>
+<a id="__codelineno-0-304" name="__codelineno-0-304"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-305" name="__codelineno-0-305"></a><span class="sd">        Recovered quaternion hypervector (y).</span>
+<a id="__codelineno-0-306" name="__codelineno-0-306"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-307" name="__codelineno-0-307"></a>    <span class="k">return</span> <span class="n">qmul</span><span class="p">(</span><span class="n">qinverse</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="vsax.ops.QuaternionOperations.permute" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">permute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span></code>
+
+<a href="#vsax.ops.QuaternionOperations.permute" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Permute a quaternion hypervector by circular shift.</p>
+<p>Shifts along the first axis (quaternion coordinate dimension),
+not the last axis (quaternion components).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a</code>
+            </td>
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Quaternion hypervector of shape (..., D, 4).</p>
               </div>
             </td>
             <td>
@@ -5058,7 +5323,7 @@ inv_a = ops.inverse(a)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Number of positions to rotate (positive = right, negative = left).</p>
+                <p>Number of positions to shift.</p>
               </div>
             </td>
             <td>
@@ -5084,7 +5349,7 @@ inv_a = ops.inverse(a)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Permuted hypervector as JAX array.</p>
+                <p>Permuted quaternion hypervector.</p>
               </div>
             </td>
           </tr>
@@ -5092,61 +5357,37 @@ inv_a = ops.inverse(a)</p>
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-ops = MAPOperations()
-a = jnp.array([1.0, 2.0, 3.0, 4.0])
-rotated = ops.permute(a, 1)
-expected = jnp.array([4.0, 1.0, 2.0, 3.0])
-assert jnp.array_equal(rotated, expected)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/ops/map.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-115">115</a></span>
-<span class="normal"><a href="#__codelineno-0-116">116</a></span>
-<span class="normal"><a href="#__codelineno-0-117">117</a></span>
-<span class="normal"><a href="#__codelineno-0-118">118</a></span>
-<span class="normal"><a href="#__codelineno-0-119">119</a></span>
-<span class="normal"><a href="#__codelineno-0-120">120</a></span>
-<span class="normal"><a href="#__codelineno-0-121">121</a></span>
-<span class="normal"><a href="#__codelineno-0-122">122</a></span>
-<span class="normal"><a href="#__codelineno-0-123">123</a></span>
-<span class="normal"><a href="#__codelineno-0-124">124</a></span>
-<span class="normal"><a href="#__codelineno-0-125">125</a></span>
-<span class="normal"><a href="#__codelineno-0-126">126</a></span>
-<span class="normal"><a href="#__codelineno-0-127">127</a></span>
-<span class="normal"><a href="#__codelineno-0-128">128</a></span>
-<span class="normal"><a href="#__codelineno-0-129">129</a></span>
-<span class="normal"><a href="#__codelineno-0-130">130</a></span>
-<span class="normal"><a href="#__codelineno-0-131">131</a></span>
-<span class="normal"><a href="#__codelineno-0-132">132</a></span>
-<span class="normal"><a href="#__codelineno-0-133">133</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="k">def</span><span class="w"> </span><span class="nf">permute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Permute a hypervector by circular rotation.</span>
-<a id="__codelineno-0-117" name="__codelineno-0-117"></a>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="sd">        a: Hypervector as JAX array.</span>
-<a id="__codelineno-0-120" name="__codelineno-0-120"></a><span class="sd">        shift: Number of positions to rotate (positive = right, negative = left).</span>
-<a id="__codelineno-0-121" name="__codelineno-0-121"></a>
-<a id="__codelineno-0-122" name="__codelineno-0-122"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="sd">        Permuted hypervector as JAX array.</span>
-<a id="__codelineno-0-124" name="__codelineno-0-124"></a>
-<a id="__codelineno-0-125" name="__codelineno-0-125"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-126" name="__codelineno-0-126"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-127" name="__codelineno-0-127"></a><span class="sd">        &gt;&gt;&gt; ops = MAPOperations()</span>
-<a id="__codelineno-0-128" name="__codelineno-0-128"></a><span class="sd">        &gt;&gt;&gt; a = jnp.array([1.0, 2.0, 3.0, 4.0])</span>
-<a id="__codelineno-0-129" name="__codelineno-0-129"></a><span class="sd">        &gt;&gt;&gt; rotated = ops.permute(a, 1)</span>
-<a id="__codelineno-0-130" name="__codelineno-0-130"></a><span class="sd">        &gt;&gt;&gt; expected = jnp.array([4.0, 1.0, 2.0, 3.0])</span>
-<a id="__codelineno-0-131" name="__codelineno-0-131"></a><span class="sd">        &gt;&gt;&gt; assert jnp.array_equal(rotated, expected)</span>
-<a id="__codelineno-0-132" name="__codelineno-0-132"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-133" name="__codelineno-0-133"></a>    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span>
+              <summary>Source code in <code>vsax/ops/quaternion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-309">309</a></span>
+<span class="normal"><a href="#__codelineno-0-310">310</a></span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span>
+<span class="normal"><a href="#__codelineno-0-313">313</a></span>
+<span class="normal"><a href="#__codelineno-0-314">314</a></span>
+<span class="normal"><a href="#__codelineno-0-315">315</a></span>
+<span class="normal"><a href="#__codelineno-0-316">316</a></span>
+<span class="normal"><a href="#__codelineno-0-317">317</a></span>
+<span class="normal"><a href="#__codelineno-0-318">318</a></span>
+<span class="normal"><a href="#__codelineno-0-319">319</a></span>
+<span class="normal"><a href="#__codelineno-0-320">320</a></span>
+<span class="normal"><a href="#__codelineno-0-321">321</a></span>
+<span class="normal"><a href="#__codelineno-0-322">322</a></span>
+<span class="normal"><a href="#__codelineno-0-323">323</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-309" name="__codelineno-0-309"></a><span class="k">def</span><span class="w"> </span><span class="nf">permute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Permute a quaternion hypervector by circular shift.</span>
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>
+<a id="__codelineno-0-312" name="__codelineno-0-312"></a><span class="sd">    Shifts along the first axis (quaternion coordinate dimension),</span>
+<a id="__codelineno-0-313" name="__codelineno-0-313"></a><span class="sd">    not the last axis (quaternion components).</span>
+<a id="__codelineno-0-314" name="__codelineno-0-314"></a>
+<a id="__codelineno-0-315" name="__codelineno-0-315"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-316" name="__codelineno-0-316"></a><span class="sd">        a: Quaternion hypervector of shape (..., D, 4).</span>
+<a id="__codelineno-0-317" name="__codelineno-0-317"></a><span class="sd">        shift: Number of positions to shift.</span>
+<a id="__codelineno-0-318" name="__codelineno-0-318"></a>
+<a id="__codelineno-0-319" name="__codelineno-0-319"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-320" name="__codelineno-0-320"></a><span class="sd">        Permuted quaternion hypervector.</span>
+<a id="__codelineno-0-321" name="__codelineno-0-321"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-322" name="__codelineno-0-322"></a>    <span class="c1"># Roll along the second-to-last axis (D dimension)</span>
+<a id="__codelineno-0-323" name="__codelineno-0-323"></a>    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>

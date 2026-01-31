@@ -2,362 +2,374 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vsax.readthedocs.io/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/comparison/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/design-spec/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/getting-started/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/modeling-guide/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/sampling/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/core/base/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/core/factory/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/core/memory/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/core/model/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/dict/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/fpe/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/graph/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/scalar/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/sequence/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/encoders/set/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/io/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/operators/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/ops/binary/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/ops/fhrr/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/ops/map/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/api/ops/quaternion/</loc>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/representations/binary/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/representations/complex/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/api/representations/quaternion/</loc>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/representations/real/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/resonator/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/similarity/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/spatial/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/utils/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/api/vfa/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/troubleshooting/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/01_foundations/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/01_foundations/01_high_dimensions/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/01_foundations/02_operations/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/01_foundations/03_models/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/01_foundations/04_first_program/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/02_operations/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/02_operations/01_fhrr/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/02_operations/02_map_binary/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/02_operations/03_similarity/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/02_operations/04_selection/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/03_encoders/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/03_encoders/01_scalar_sequence/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/03_encoders/02_dict_sets/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/03_encoders/03_images/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/03_encoders/04_knowledge_graphs/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/03_encoders/05_analogies/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/04_advanced/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/04_advanced/01_operators/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/04_advanced/02_ssp/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/04_advanced/03_hierarchical/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/04_advanced/04_multimodal/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/05_research/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/05_research/01_vfa/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/05_research/02_custom_encoders/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/course/05_research/03_frontiers/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/examples/binary/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/examples/fhrr/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/examples/map/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/batch_operations/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/encoders/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/factory/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/fpe/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/gpu_usage/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/memory/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/models/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/operations/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/operators/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/persistence/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
+    </url>
+    <url>
+         <loc>https://vsax.readthedocs.io/guide/quaternion/</loc>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/representations/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/resonator/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/sampling/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/similarity/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/spatial/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/guide/vfa/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/01_mnist_classification/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/02_knowledge_graph/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/03_kanerva_analogies/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/04_word_analogies/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/05_model_comparison/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/06_edge_computing/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/07_hierarchical_structures/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/08_multimodal_grounding/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/09_neural_symbolic_fusion/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/10_clifford_operators/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/11_analogical_reasoning/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
     <url>
          <loc>https://vsax.readthedocs.io/tutorials/roadmap/</loc>
-         <lastmod>2026-01-01</lastmod>
+         <lastmod>2026-01-31</lastmod>
     </url>
 </urlset>

@@ -12,13 +12,13 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/api/representations/binary/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/api/representations/quaternion/">
       
       
-        <link rel="prev" href="../real/">
+        <link rel="prev" href="../binary/">
       
       
-        <link rel="next" href="../quaternion/">
+        <link rel="next" href="../../ops/fhrr/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>BinaryHypervector - VSAX Documentation</title>
+        <title>QuaternionHypervector - VSAX Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#binaryhypervector" class="md-skip">
+        <a href="#quaternionhypervector" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BinaryHypervector
+              QuaternionHypervector
             
           </span>
         </div>
@@ -3396,6 +3396,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../binary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BinaryHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -3415,7 +3443,7 @@
   <span class="md-ellipsis">
     
   
-    BinaryHypervector
+    QuaternionHypervector
   
 
     
@@ -3433,7 +3461,7 @@
   <span class="md-ellipsis">
     
   
-    BinaryHypervector
+    QuaternionHypervector
   
 
     
@@ -3459,19 +3487,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector" class="md-nav__link">
     <span class="md-ellipsis">
       
-        BinaryHypervector
+        QuaternionHypervector
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="BinaryHypervector">
+    <nav class="md-nav" aria-label="QuaternionHypervector">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector-attributes" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector--create-a-hypervector-with-512-quaternion-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a hypervector with 512 quaternion coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
         Attributes
@@ -3483,10 +3522,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.bipolar" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.dim" class="md-nav__link">
     <span class="md-ellipsis">
       
-        bipolar
+        dim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector.quaternion_norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        quaternion_norms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector.scalar_part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scalar_part
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector.vector_part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vector_part
       
     </span>
   </a>
@@ -3499,7 +3571,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector-functions" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Functions
@@ -3511,7 +3583,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.__init__" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.__init__" class="md-nav__link">
     <span class="md-ellipsis">
       
         __init__
@@ -3522,7 +3594,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.normalize" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.normalize" class="md-nav__link">
     <span class="md-ellipsis">
       
         normalize
@@ -3530,24 +3602,30 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="normalize">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.to_bipolar" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.normalize--all-quaternions-now-have-unit-norm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        to_bipolar
+        All quaternions now have unit norm
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.to_binary" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.is_unit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        to_binary
+        is_unit
       
     </span>
   </a>
@@ -3568,34 +3646,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../quaternion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    QuaternionHypervector
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -4098,19 +4148,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector" class="md-nav__link">
     <span class="md-ellipsis">
       
-        BinaryHypervector
+        QuaternionHypervector
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="BinaryHypervector">
+    <nav class="md-nav" aria-label="QuaternionHypervector">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector-attributes" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector--create-a-hypervector-with-512-quaternion-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a hypervector with 512 quaternion coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
         Attributes
@@ -4122,10 +4183,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.bipolar" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.dim" class="md-nav__link">
     <span class="md-ellipsis">
       
-        bipolar
+        dim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector.quaternion_norms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        quaternion_norms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector.scalar_part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scalar_part
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vsax.representations.QuaternionHypervector.vector_part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vector_part
       
     </span>
   </a>
@@ -4138,7 +4232,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector-functions" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Functions
@@ -4150,7 +4244,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.__init__" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.__init__" class="md-nav__link">
     <span class="md-ellipsis">
       
         __init__
@@ -4161,7 +4255,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.normalize" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.normalize" class="md-nav__link">
     <span class="md-ellipsis">
       
         normalize
@@ -4169,24 +4263,30 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="normalize">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.to_bipolar" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.normalize--all-quaternions-now-have-unit-norm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        to_bipolar
+        All quaternions now have unit norm
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#vsax.representations.BinaryHypervector.to_binary" class="md-nav__link">
+  <a href="#vsax.representations.QuaternionHypervector.is_unit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        to_binary
+        is_unit
       
     </span>
   </a>
@@ -4223,19 +4323,19 @@
   
 
 
-<h1 id="binaryhypervector">BinaryHypervector<a class="headerlink" href="#binaryhypervector" title="Permanent link">&para;</a></h1>
-<p>Binary hypervector with bipolar or binary encoding.</p>
+<h1 id="quaternionhypervector">QuaternionHypervector<a class="headerlink" href="#quaternionhypervector" title="Permanent link">&para;</a></h1>
+<p>Quaternion-valued hypervector representation for non-commutative VSA.</p>
 
 
 <div class="doc doc-object doc-class">
 
 
 
-<h2 id="vsax.representations.BinaryHypervector" class="doc doc-heading">
-            <code>vsax.representations.BinaryHypervector</code>
+<h2 id="vsax.representations.QuaternionHypervector" class="doc doc-heading">
+            <code>vsax.representations.QuaternionHypervector</code>
 
 
-<a href="#vsax.representations.BinaryHypervector" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#vsax.representations.QuaternionHypervector" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents first">
@@ -4244,13 +4344,15 @@
 
 
 
-        <p>Binary hypervector with bipolar {-1, +1} or binary {0, 1} values.</p>
-<p>BinaryHypervector represents hypervectors using discrete binary values.
-It supports two modes:
-- Bipolar: values in {-1, +1} (default, recommended)
-- Binary: values in {0, 1}</p>
-<p>Binary hypervectors are efficient for hardware implementation and provide
-good performance with XOR binding and majority bundling operations.</p>
+        <p>Quaternion-valued hypervector for non-commutative VSA.</p>
+<p>QuaternionHypervector uses quaternions to represent hypervectors, where
+each quaternion coordinate is a 4-tuple (a, b, c, d) representing
+q = a + bi + cj + dk. This enables non-commutative binding via the
+Hamilton product.</p>
+<p>The storage format is (D, 4) where:
+- D is the number of quaternion coordinates (the VSA dimensionality)
+- 4 is the quaternion components (a, b, c, d)</p>
+<p>The normalization operation projects all quaternions to unit length on S³.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4273,27 +4375,11 @@ good performance with XOR binding and majority bundling operations.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX array containing binary values.</p>
+                <p>Quaternion-valued JAX array of shape (..., D, 4).</p>
               </div>
             </td>
             <td>
                 <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>bipolar</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If True, expects {-1, +1} values. If False, expects {0, 1} values.</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -4315,7 +4401,7 @@ good performance with XOR binding and majority bundling operations.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If vec contains values outside the expected binary set.</p>
+                <p>If the last dimension is not 4.</p>
               </div>
             </td>
           </tr>
@@ -4328,11 +4414,11 @@ good performance with XOR binding and majority bundling operations.</p>
   <blockquote>
 <blockquote>
 <blockquote>
-<p>import jax.numpy as jnp
-vec = jnp.array([1, -1, 1, -1])
-hv = BinaryHypervector(vec, bipolar=True)
-normalized = hv.normalize()  # No-op for binary
-assert jnp.array_equal(normalized.vec, vec)</p>
+<p>import jax.numpy as jnp</p>
+<h3 id="vsax.representations.QuaternionHypervector--create-a-hypervector-with-512-quaternion-coordinates">Create a hypervector with 512 quaternion coordinates<a class="headerlink" href="#vsax.representations.QuaternionHypervector--create-a-hypervector-with-512-quaternion-coordinates" title="Permanent link">&para;</a></h3>
+<p>vec = jnp.ones((512, 4)) / 2  # All unit quaternions (0.5, 0.5, 0.5, 0.5)
+hv = QuaternionHypervector(vec)
+normalized = hv.normalize()</p>
 </blockquote>
 </blockquote>
 </blockquote>
@@ -4345,9 +4431,8 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>vsax/representations/binary_hv.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-8">  8</a></span>
-<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
+                <summary>Source code in <code>vsax/representations/quaternion_hv.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-9">  9</a></span>
 <span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
 <span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
 <span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
@@ -4460,135 +4545,120 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 <span class="normal"><a href="#__codelineno-0-119">119</a></span>
 <span class="normal"><a href="#__codelineno-0-120">120</a></span>
 <span class="normal"><a href="#__codelineno-0-121">121</a></span>
-<span class="normal"><a href="#__codelineno-0-122">122</a></span>
-<span class="normal"><a href="#__codelineno-0-123">123</a></span>
-<span class="normal"><a href="#__codelineno-0-124">124</a></span>
-<span class="normal"><a href="#__codelineno-0-125">125</a></span>
-<span class="normal"><a href="#__codelineno-0-126">126</a></span>
-<span class="normal"><a href="#__codelineno-0-127">127</a></span>
-<span class="normal"><a href="#__codelineno-0-128">128</a></span>
-<span class="normal"><a href="#__codelineno-0-129">129</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">BinaryHypervector</span><span class="p">(</span><span class="n">AbstractHypervector</span><span class="p">):</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Binary hypervector with bipolar {-1, +1} or binary {0, 1} values.</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="sd">    BinaryHypervector represents hypervectors using discrete binary values.</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="sd">    It supports two modes:</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="sd">    - Bipolar: values in {-1, +1} (default, recommended)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">    - Binary: values in {0, 1}</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    Binary hypervectors are efficient for hardware implementation and provide</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    good performance with XOR binding and majority bundling operations.</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">        vec: JAX array containing binary values.</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">        bipolar: If True, expects {-1, +1} values. If False, expects {0, 1} values.</span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">QuaternionHypervector</span><span class="p">(</span><span class="n">AbstractHypervector</span><span class="p">):</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Quaternion-valued hypervector for non-commutative VSA.</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="sd">    QuaternionHypervector uses quaternions to represent hypervectors, where</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="sd">    each quaternion coordinate is a 4-tuple (a, b, c, d) representing</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">    q = a + bi + cj + dk. This enables non-commutative binding via the</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">    Hamilton product.</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    The storage format is (D, 4) where:</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">    - D is the number of quaternion coordinates (the VSA dimensionality)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    - 4 is the quaternion components (a, b, c, d)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">    The normalization operation projects all quaternions to unit length on S³.</span>
 <a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        ValueError: If vec contains values outside the expected binary set.</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        vec: Quaternion-valued JAX array of shape (..., D, 4).</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([1, -1, 1, -1])</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        &gt;&gt;&gt; hv = BinaryHypervector(vec, bipolar=True)</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        &gt;&gt;&gt; normalized = hv.normalize()  # No-op for binary</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">        &gt;&gt;&gt; assert jnp.array_equal(normalized.vec, vec)</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">bipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize binary hypervector.</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        ValueError: If the last dimension is not 4.</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">        &gt;&gt;&gt; # Create a hypervector with 512 quaternion coordinates</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.ones((512, 4)) / 2  # All unit quaternions (0.5, 0.5, 0.5, 0.5)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">        &gt;&gt;&gt; hv = QuaternionHypervector(vec)</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">        &gt;&gt;&gt; normalized = hv.normalize()</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">    &quot;&quot;&quot;</span>
 <a id="__codelineno-0-36" name="__codelineno-0-36"></a>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        Args:</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">            vec: JAX array with binary values.</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">            bipolar: If True, values should be {-1, +1}.</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">                    If False, values should be {0, 1}.</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">        Raises:</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">            ValueError: If vec contains invalid values for the chosen mode.</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span> <span class="o">=</span> <span class="n">bipolar</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>        <span class="c1"># Validate binary values</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>        <span class="n">unique_vals</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>        <span class="k">if</span> <span class="n">bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>            <span class="n">valid_set</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">jnp</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unique_vals</span><span class="p">,</span> <span class="n">valid_set</span><span class="p">)):</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>                    <span class="sa">f</span><span class="s2">&quot;Bipolar binary vector must contain only -1 or +1, &quot;</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>                    <span class="sa">f</span><span class="s2">&quot;got unique values: </span><span class="si">{</span><span class="n">unique_vals</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>                <span class="p">)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>            <span class="n">valid_set</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">jnp</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unique_vals</span><span class="p">,</span> <span class="n">valid_set</span><span class="p">)):</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                    <span class="sa">f</span><span class="s2">&quot;Non-bipolar binary vector must contain only 0 or 1, &quot;</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                    <span class="sa">f</span><span class="s2">&quot;got unique values: </span><span class="si">{</span><span class="n">unique_vals</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                <span class="p">)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BinaryHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;No-op normalization for binary hypervectors.</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize quaternion hypervector.</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">            vec: Quaternion-valued JAX array of shape (..., D, 4).</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">            ValueError: If the last dimension is not 4.</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>        <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                <span class="sa">f</span><span class="s2">&quot;QuaternionHypervector requires last dimension to be 4, got </span><span class="si">{</span><span class="n">vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>            <span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuaternionHypervector&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize all quaternions to unit length.</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        Projects each quaternion onto the unit 3-sphere S³.</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">            New QuaternionHypervector with all quaternions having magnitude 1.0.</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        Example:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">            &gt;&gt;&gt; vec = jnp.array([[1, 2, 3, 4], [5, 6, 7, 8]])  # Not unit</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">            &gt;&gt;&gt; hv = QuaternionHypervector(vec.astype(float))</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">            &gt;&gt;&gt; normalized = hv.normalize()</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">            &gt;&gt;&gt; # All quaternions now have unit norm</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="n">normalized</span> <span class="o">=</span> <span class="n">qnormalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="k">return</span> <span class="n">QuaternionHypervector</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
 <a id="__codelineno-0-69" name="__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">        Binary hypervectors are already in their normalized form.</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">            A new BinaryHypervector with the same values.</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">            &gt;&gt;&gt; vec = jnp.array([1, -1, 1])</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">            &gt;&gt;&gt; hv = BinaryHypervector(vec)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">            &gt;&gt;&gt; normalized = hv.normalize()</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">            &gt;&gt;&gt; assert jnp.array_equal(normalized.vec, vec)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="k">return</span> <span class="n">BinaryHypervector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span><span class="p">)</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="nd">@property</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bipolar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if hypervector uses bipolar {-1, +1} encoding.</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="sd">            True if bipolar, False if binary {0, 1}.</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_bipolar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BinaryHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to bipolar {-1, +1} representation.</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of quaternion coordinates.</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="sd">        This is the VSA dimensionality D, not the total number of floats.</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">            Number of quaternion coordinates (D).</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">quaternion_norms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the norm of each quaternion coordinate.</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">            Array of shape (..., D) containing quaternion magnitudes.</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>        <span class="k">return</span> <span class="n">qnorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">)</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">scalar_part</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract scalar (real) component of each quaternion.</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">        The scalar part is the &#39;a&#39; in q = a + bi + cj + dk.</span>
 <a id="__codelineno-0-95" name="__codelineno-0-95"></a>
 <a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">            New BinaryHypervector in bipolar form.</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="sd">            &gt;&gt;&gt; vec = jnp.array([0, 1, 0, 1])</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">            &gt;&gt;&gt; hv = BinaryHypervector(vec, bipolar=False)</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">            &gt;&gt;&gt; bipolar_hv = hv.to_bipolar()</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">            &gt;&gt;&gt; assert jnp.array_equal(bipolar_hv.vec, jnp.array([-1, 1, -1, 1]))</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a>            <span class="k">return</span> <span class="bp">self</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a>        <span class="c1"># Convert {0, 1} to {-1, +1}: 2*x - 1</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        <span class="n">bipolar_vec</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span> <span class="o">-</span> <span class="mi">1</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="k">return</span> <span class="n">BinaryHypervector</span><span class="p">(</span><span class="n">bipolar_vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">            Array of shape (..., D) containing scalar parts.</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">vector_part</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract vector (imaginary) components of each quaternion.</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">        The vector part is (b, c, d) in q = a + bi + cj + dk.</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="sd">            Array of shape (..., D, 3) containing vector parts.</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
 <a id="__codelineno-0-111" name="__codelineno-0-111"></a>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">to_binary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BinaryHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to binary {0, 1} representation.</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">is_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if all quaternions are unit quaternions.</span>
 <a id="__codelineno-0-114" name="__codelineno-0-114"></a>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="sd">            New BinaryHypervector in binary form.</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="sd">        Args:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="sd">            atol: Absolute tolerance for norm comparison.</span>
 <a id="__codelineno-0-117" name="__codelineno-0-117"></a>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="sd">            &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-120" name="__codelineno-0-120"></a><span class="sd">            &gt;&gt;&gt; vec = jnp.array([-1, 1, -1, 1])</span>
-<a id="__codelineno-0-121" name="__codelineno-0-121"></a><span class="sd">            &gt;&gt;&gt; hv = BinaryHypervector(vec, bipolar=True)</span>
-<a id="__codelineno-0-122" name="__codelineno-0-122"></a><span class="sd">            &gt;&gt;&gt; binary_hv = hv.to_binary()</span>
-<a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="sd">            &gt;&gt;&gt; assert jnp.array_equal(binary_hv.vec, jnp.array([0, 1, 0, 1]))</span>
-<a id="__codelineno-0-124" name="__codelineno-0-124"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-125" name="__codelineno-0-125"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-126" name="__codelineno-0-126"></a>            <span class="k">return</span> <span class="bp">self</span>
-<a id="__codelineno-0-127" name="__codelineno-0-127"></a>        <span class="c1"># Convert {-1, +1} to {0, 1}: (x + 1) / 2</span>
-<a id="__codelineno-0-128" name="__codelineno-0-128"></a>        <span class="n">binary_vec</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-<a id="__codelineno-0-129" name="__codelineno-0-129"></a>        <span class="k">return</span> <span class="n">BinaryHypervector</span><span class="p">(</span><span class="n">binary_vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="sd">            True if all quaternions have magnitude approximately 1.0.</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>        <span class="n">norms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quaternion_norms</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">norms</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -4600,25 +4670,26 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 
 
 
-<h3 id="vsax.representations.BinaryHypervector-attributes">Attributes<a href="#vsax.representations.BinaryHypervector-attributes" class="headerlink" title="Permanent link">&para;</a></h3>
+<h3 id="vsax.representations.QuaternionHypervector-attributes">Attributes<a href="#vsax.representations.QuaternionHypervector-attributes" class="headerlink" title="Permanent link">&para;</a></h3>
 
 <div class="doc doc-object doc-attribute">
 
 
 
-<h4 id="vsax.representations.BinaryHypervector.bipolar" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">bipolar</span></code>
+<h4 id="vsax.representations.QuaternionHypervector.dim" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">dim</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#vsax.representations.BinaryHypervector.bipolar" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.representations.QuaternionHypervector.dim" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Check if hypervector uses bipolar {-1, +1} encoding.</p>
+        <p>Return the number of quaternion coordinates.</p>
+<p>This is the VSA dimensionality D, not the total number of floats.</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -4632,11 +4703,148 @@ assert jnp.array_equal(normalized.vec, vec)</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="bool">bool</span></code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>True if bipolar, False if binary {0, 1}.</p>
+                <p>Number of quaternion coordinates (D).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="vsax.representations.QuaternionHypervector.quaternion_norms" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">quaternion_norms</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#vsax.representations.QuaternionHypervector.quaternion_norms" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the norm of each quaternion coordinate.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Array of shape (..., D) containing quaternion magnitudes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="vsax.representations.QuaternionHypervector.scalar_part" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">scalar_part</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#vsax.representations.QuaternionHypervector.scalar_part" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Extract scalar (real) component of each quaternion.</p>
+<p>The scalar part is the 'a' in q = a + bi + cj + dk.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Array of shape (..., D) containing scalar parts.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="vsax.representations.QuaternionHypervector.vector_part" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">vector_part</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#vsax.representations.QuaternionHypervector.vector_part" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Extract vector (imaginary) components of each quaternion.</p>
+<p>The vector part is (b, c, d) in q = a + bi + cj + dk.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="jax.numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Array of shape (..., D, 3) containing vector parts.</p>
               </div>
             </td>
           </tr>
@@ -4648,20 +4856,20 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 </div>
 
 
-<h3 id="vsax.representations.BinaryHypervector-functions">Functions<a href="#vsax.representations.BinaryHypervector-functions" class="headerlink" title="Permanent link">&para;</a></h3>
+<h3 id="vsax.representations.QuaternionHypervector-functions">Functions<a href="#vsax.representations.QuaternionHypervector-functions" class="headerlink" title="Permanent link">&para;</a></h3>
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.representations.BinaryHypervector.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+<h4 id="vsax.representations.QuaternionHypervector.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></code>
 
-<a href="#vsax.representations.BinaryHypervector.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.representations.QuaternionHypervector.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>Initialize binary hypervector.</p>
+        <p>Initialize quaternion hypervector.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4684,28 +4892,11 @@ assert jnp.array_equal(normalized.vec, vec)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>JAX array with binary values.</p>
+                <p>Quaternion-valued JAX array of shape (..., D, 4).</p>
               </div>
             </td>
             <td>
                 <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>bipolar</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If True, values should be {-1, +1}.
-    If False, values should be {0, 1}.</p>
-              </div>
-            </td>
-            <td>
-                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -4727,7 +4918,7 @@ assert jnp.array_equal(normalized.vec, vec)</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If vec contains invalid values for the chosen mode.</p>
+                <p>If the last dimension is not 4.</p>
               </div>
             </td>
           </tr>
@@ -4736,11 +4927,8 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/representations/binary_hv.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+              <summary>Source code in <code>vsax/representations/quaternion_hv.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-37">37</a></span>
 <span class="normal"><a href="#__codelineno-0-38">38</a></span>
 <span class="normal"><a href="#__codelineno-0-39">39</a></span>
 <span class="normal"><a href="#__codelineno-0-40">40</a></span>
@@ -4753,9 +4941,82 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 <span class="normal"><a href="#__codelineno-0-47">47</a></span>
 <span class="normal"><a href="#__codelineno-0-48">48</a></span>
 <span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize quaternion hypervector.</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">        vec: Quaternion-valued JAX array of shape (..., D, 4).</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">        ValueError: If the last dimension is not 4.</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>            <span class="sa">f</span><span class="s2">&quot;QuaternionHypervector requires last dimension to be 4, got </span><span class="si">{</span><span class="n">vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>        <span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="vsax.representations.QuaternionHypervector.normalize" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">normalize</span><span class="p">()</span></code>
+
+<a href="#vsax.representations.QuaternionHypervector.normalize" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Normalize all quaternions to unit length.</p>
+<p>Projects each quaternion onto the unit 3-sphere S³.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="vsax.representations.QuaternionHypervector (vsax.representations.quaternion_hv.QuaternionHypervector)" href="#vsax.representations.QuaternionHypervector">QuaternionHypervector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>New QuaternionHypervector with all quaternions having magnitude 1.0.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>import jax.numpy as jnp
+vec = jnp.array([[1, 2, 3, 4], [5, 6, 7, 8]])  # Not unit
+hv = QuaternionHypervector(vec.astype(float))
+normalized = hv.normalize()</p>
+<h5 id="vsax.representations.QuaternionHypervector.normalize--all-quaternions-now-have-unit-norm">All quaternions now have unit norm<a class="headerlink" href="#vsax.representations.QuaternionHypervector.normalize--all-quaternions-now-have-unit-norm" title="Permanent link">&para;</a></h5>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>vsax/representations/quaternion_hv.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-52">52</a></span>
 <span class="normal"><a href="#__codelineno-0-53">53</a></span>
 <span class="normal"><a href="#__codelineno-0-54">54</a></span>
 <span class="normal"><a href="#__codelineno-0-55">55</a></span>
@@ -4768,38 +5029,26 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 <span class="normal"><a href="#__codelineno-0-62">62</a></span>
 <span class="normal"><a href="#__codelineno-0-63">63</a></span>
 <span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">bipolar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize binary hypervector.</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">    Args:</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">        vec: JAX array with binary values.</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">        bipolar: If True, values should be {-1, +1}.</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">                If False, values should be {0, 1}.</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">    Raises:</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">        ValueError: If vec contains invalid values for the chosen mode.</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span> <span class="o">=</span> <span class="n">bipolar</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="c1"># Validate binary values</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="n">unique_vals</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="k">if</span> <span class="n">bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>        <span class="n">valid_set</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">jnp</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unique_vals</span><span class="p">,</span> <span class="n">valid_set</span><span class="p">)):</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a>                <span class="sa">f</span><span class="s2">&quot;Bipolar binary vector must contain only -1 or +1, &quot;</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>                <span class="sa">f</span><span class="s2">&quot;got unique values: </span><span class="si">{</span><span class="n">unique_vals</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a>            <span class="p">)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="n">valid_set</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">jnp</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unique_vals</span><span class="p">,</span> <span class="n">valid_set</span><span class="p">)):</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                <span class="sa">f</span><span class="s2">&quot;Non-bipolar binary vector must contain only 0 or 1, &quot;</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                <span class="sa">f</span><span class="s2">&quot;got unique values: </span><span class="si">{</span><span class="n">unique_vals</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>            <span class="p">)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuaternionHypervector&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize all quaternions to unit length.</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">    Projects each quaternion onto the unit 3-sphere S³.</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        New QuaternionHypervector with all quaternions having magnitude 1.0.</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([[1, 2, 3, 4], [5, 6, 7, 8]])  # Not unit</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="sd">        &gt;&gt;&gt; hv = QuaternionHypervector(vec.astype(float))</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="sd">        &gt;&gt;&gt; normalized = hv.normalize()</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="sd">        &gt;&gt;&gt; # All quaternions now have unit norm</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="n">normalized</span> <span class="o">=</span> <span class="n">qnormalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="k">return</span> <span class="n">QuaternionHypervector</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -4809,16 +5058,46 @@ assert jnp.array_equal(normalized.vec, vec)</p>
 <div class="doc doc-object doc-function">
 
 
-<h4 id="vsax.representations.BinaryHypervector.normalize" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">normalize</span><span class="p">()</span></code>
+<h4 id="vsax.representations.QuaternionHypervector.is_unit" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">is_unit</span><span class="p">(</span><span class="n">atol</span><span class="o">=</span><span class="mf">1e-06</span><span class="p">)</span></code>
 
-<a href="#vsax.representations.BinaryHypervector.normalize" class="headerlink" title="Permanent link">&para;</a></h4>
+<a href="#vsax.representations.QuaternionHypervector.is_unit" class="headerlink" title="Permanent link">&para;</a></h4>
 
 
     <div class="doc doc-contents ">
 
-        <p>No-op normalization for binary hypervectors.</p>
-<p>Binary hypervectors are already in their normalized form.</p>
+        <p>Check if all quaternions are unit quaternions.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>atol</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Absolute tolerance for norm comparison.</p>
+              </div>
+            </td>
+            <td>
+                  <code>1e-06</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -4832,11 +5111,11 @@ assert jnp.array_equal(normalized.vec, vec)</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="vsax.representations.BinaryHypervector (vsax.representations.binary_hv.BinaryHypervector)" href="#vsax.representations.BinaryHypervector">BinaryHypervector</a></code>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A new BinaryHypervector with the same values.</p>
+                <p>True if all quaternions have magnitude approximately 1.0.</p>
               </div>
             </td>
           </tr>
@@ -4844,209 +5123,8 @@ assert jnp.array_equal(normalized.vec, vec)</p>
     </table>
 
 
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-vec = jnp.array([1, -1, 1])
-hv = BinaryHypervector(vec)
-normalized = hv.normalize()
-assert jnp.array_equal(normalized.vec, vec)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/representations/binary_hv.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-67">67</a></span>
-<span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span>
-<span class="normal"><a href="#__codelineno-0-71">71</a></span>
-<span class="normal"><a href="#__codelineno-0-72">72</a></span>
-<span class="normal"><a href="#__codelineno-0-73">73</a></span>
-<span class="normal"><a href="#__codelineno-0-74">74</a></span>
-<span class="normal"><a href="#__codelineno-0-75">75</a></span>
-<span class="normal"><a href="#__codelineno-0-76">76</a></span>
-<span class="normal"><a href="#__codelineno-0-77">77</a></span>
-<span class="normal"><a href="#__codelineno-0-78">78</a></span>
-<span class="normal"><a href="#__codelineno-0-79">79</a></span>
-<span class="normal"><a href="#__codelineno-0-80">80</a></span>
-<span class="normal"><a href="#__codelineno-0-81">81</a></span>
-<span class="normal"><a href="#__codelineno-0-82">82</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BinaryHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;No-op normalization for binary hypervectors.</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="sd">    Binary hypervectors are already in their normalized form.</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="sd">        A new BinaryHypervector with the same values.</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([1, -1, 1])</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">        &gt;&gt;&gt; hv = BinaryHypervector(vec)</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="sd">        &gt;&gt;&gt; normalized = hv.normalize()</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">        &gt;&gt;&gt; assert jnp.array_equal(normalized.vec, vec)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a>    <span class="k">return</span> <span class="n">BinaryHypervector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="vsax.representations.BinaryHypervector.to_bipolar" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">to_bipolar</span><span class="p">()</span></code>
-
-<a href="#vsax.representations.BinaryHypervector.to_bipolar" class="headerlink" title="Permanent link">&para;</a></h4>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Convert to bipolar {-1, +1} representation.</p>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="vsax.representations.BinaryHypervector (vsax.representations.binary_hv.BinaryHypervector)" href="#vsax.representations.BinaryHypervector">BinaryHypervector</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>New BinaryHypervector in bipolar form.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-vec = jnp.array([0, 1, 0, 1])
-hv = BinaryHypervector(vec, bipolar=False)
-bipolar_hv = hv.to_bipolar()
-assert jnp.array_equal(bipolar_hv.vec, jnp.array([-1, 1, -1, 1]))</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
-            <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/representations/binary_hv.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-0-100">100</a></span>
-<span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span>
-<span class="normal"><a href="#__codelineno-0-103">103</a></span>
-<span class="normal"><a href="#__codelineno-0-104">104</a></span>
-<span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span>
-<span class="normal"><a href="#__codelineno-0-107">107</a></span>
-<span class="normal"><a href="#__codelineno-0-108">108</a></span>
-<span class="normal"><a href="#__codelineno-0-109">109</a></span>
-<span class="normal"><a href="#__codelineno-0-110">110</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="k">def</span><span class="w"> </span><span class="nf">to_bipolar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BinaryHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert to bipolar {-1, +1} representation.</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        New BinaryHypervector in bipolar form.</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([0, 1, 0, 1])</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">        &gt;&gt;&gt; hv = BinaryHypervector(vec, bipolar=False)</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">        &gt;&gt;&gt; bipolar_hv = hv.to_bipolar()</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">        &gt;&gt;&gt; assert jnp.array_equal(bipolar_hv.vec, jnp.array([-1, 1, -1, 1]))</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a>        <span class="k">return</span> <span class="bp">self</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a>    <span class="c1"># Convert {0, 1} to {-1, +1}: 2*x - 1</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a>    <span class="n">bipolar_vec</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span> <span class="o">-</span> <span class="mi">1</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a>    <span class="k">return</span> <span class="n">BinaryHypervector</span><span class="p">(</span><span class="n">bipolar_vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="vsax.representations.BinaryHypervector.to_binary" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">to_binary</span><span class="p">()</span></code>
-
-<a href="#vsax.representations.BinaryHypervector.to_binary" class="headerlink" title="Permanent link">&para;</a></h4>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Convert to binary {0, 1} representation.</p>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-internal" title="vsax.representations.BinaryHypervector (vsax.representations.binary_hv.BinaryHypervector)" href="#vsax.representations.BinaryHypervector">BinaryHypervector</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>New BinaryHypervector in binary form.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<details class="example" open>
-  <summary>Example</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>import jax.numpy as jnp
-vec = jnp.array([-1, 1, -1, 1])
-hv = BinaryHypervector(vec, bipolar=True)
-binary_hv = hv.to_binary()
-assert jnp.array_equal(binary_hv.vec, jnp.array([0, 1, 0, 1]))</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</details>
-
-            <details class="mkdocstrings-source">
-              <summary>Source code in <code>vsax/representations/binary_hv.py</code></summary>
+              <summary>Source code in <code>vsax/representations/quaternion_hv.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-112">112</a></span>
 <span class="normal"><a href="#__codelineno-0-113">113</a></span>
 <span class="normal"><a href="#__codelineno-0-114">114</a></span>
@@ -5057,31 +5135,17 @@ assert jnp.array_equal(binary_hv.vec, jnp.array([0, 1, 0, 1]))</p>
 <span class="normal"><a href="#__codelineno-0-119">119</a></span>
 <span class="normal"><a href="#__codelineno-0-120">120</a></span>
 <span class="normal"><a href="#__codelineno-0-121">121</a></span>
-<span class="normal"><a href="#__codelineno-0-122">122</a></span>
-<span class="normal"><a href="#__codelineno-0-123">123</a></span>
-<span class="normal"><a href="#__codelineno-0-124">124</a></span>
-<span class="normal"><a href="#__codelineno-0-125">125</a></span>
-<span class="normal"><a href="#__codelineno-0-126">126</a></span>
-<span class="normal"><a href="#__codelineno-0-127">127</a></span>
-<span class="normal"><a href="#__codelineno-0-128">128</a></span>
-<span class="normal"><a href="#__codelineno-0-129">129</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="k">def</span><span class="w"> </span><span class="nf">to_binary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BinaryHypervector&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert to binary {0, 1} representation.</span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="k">def</span><span class="w"> </span><span class="nf">is_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if all quaternions are unit quaternions.</span>
 <a id="__codelineno-0-114" name="__codelineno-0-114"></a>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="sd">        New BinaryHypervector in binary form.</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="sd">        atol: Absolute tolerance for norm comparison.</span>
 <a id="__codelineno-0-117" name="__codelineno-0-117"></a>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="sd">        &gt;&gt;&gt; import jax.numpy as jnp</span>
-<a id="__codelineno-0-120" name="__codelineno-0-120"></a><span class="sd">        &gt;&gt;&gt; vec = jnp.array([-1, 1, -1, 1])</span>
-<a id="__codelineno-0-121" name="__codelineno-0-121"></a><span class="sd">        &gt;&gt;&gt; hv = BinaryHypervector(vec, bipolar=True)</span>
-<a id="__codelineno-0-122" name="__codelineno-0-122"></a><span class="sd">        &gt;&gt;&gt; binary_hv = hv.to_binary()</span>
-<a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="sd">        &gt;&gt;&gt; assert jnp.array_equal(binary_hv.vec, jnp.array([0, 1, 0, 1]))</span>
-<a id="__codelineno-0-124" name="__codelineno-0-124"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-125" name="__codelineno-0-125"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bipolar</span><span class="p">:</span>
-<a id="__codelineno-0-126" name="__codelineno-0-126"></a>        <span class="k">return</span> <span class="bp">self</span>
-<a id="__codelineno-0-127" name="__codelineno-0-127"></a>    <span class="c1"># Convert {-1, +1} to {0, 1}: (x + 1) / 2</span>
-<a id="__codelineno-0-128" name="__codelineno-0-128"></a>    <span class="n">binary_vec</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-<a id="__codelineno-0-129" name="__codelineno-0-129"></a>    <span class="k">return</span> <span class="n">BinaryHypervector</span><span class="p">(</span><span class="n">binary_vec</span><span class="p">,</span> <span class="n">bipolar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="sd">        True if all quaternions have magnitude approximately 1.0.</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>    <span class="n">norms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quaternion_norms</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">norms</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>

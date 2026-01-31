@@ -2278,6 +2278,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../quaternion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quaternion Hypervectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../operators/" class="md-nav__link">
         
   
@@ -3668,6 +3696,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/representations/quaternion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QuaternionHypervector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3801,6 +3857,34 @@
     
   
     BinaryOperations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/ops/quaternion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QuaternionOperations
   
 
     
@@ -4392,7 +4476,7 @@
 
 
 <h1 id="hypervector-representations">Hypervector Representations<a class="headerlink" href="#hypervector-representations" title="Permanent link">&para;</a></h1>
-<p>VSAX provides three hypervector representations, each designed for a specific VSA algebra. All representations inherit from <code>AbstractHypervector</code> and provide a consistent interface.</p>
+<p>VSAX provides four hypervector representations, each designed for a specific VSA algebra. All representations inherit from <code>AbstractHypervector</code> and provide a consistent interface.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4421,6 +4505,12 @@
 <td>Bipolar {-1,+1} or Binary {0,1}</td>
 <td>Binary VSA</td>
 <td>XOR, majority vote</td>
+</tr>
+<tr>
+<td><code>QuaternionHypervector</code></td>
+<td>Unit quaternions</td>
+<td>Quaternion VSA</td>
+<td>Hamilton product (non-commutative)</td>
 </tr>
 </tbody>
 </table>
@@ -4586,6 +4676,11 @@
 - Memory constraints are tight
 - You need exact unbinding
 - Working with symbolic/discrete data</p>
+<p><strong>Use QuaternionHypervector when:</strong>
+- Order matters in bindings (role/filler, subject/object)
+- You need non-commutative binding: <code>bind(x, y) ≠ bind(y, x)</code>
+- Exact unbinding from both directions (left and right) is needed
+- Working with asymmetric relationships</p>
 <h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4614,6 +4709,12 @@
 <td>1/32x (int vs float)</td>
 <td>Fastest</td>
 <td>Exact</td>
+</tr>
+<tr>
+<td>Quaternion</td>
+<td>4x (4 components)</td>
+<td>Hamilton product</td>
+<td>Exact (left/right)</td>
 </tr>
 </tbody>
 </table>
