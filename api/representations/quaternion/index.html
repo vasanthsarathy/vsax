@@ -4615,7 +4615,7 @@ normalized = hv.normalize()</p>
 <a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        Returns:</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="sd">            Number of quaternion coordinates (D).</span>
 <a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 <a id="__codelineno-0-80" name="__codelineno-0-80"></a>
 <a id="__codelineno-0-81" name="__codelineno-0-81"></a>    <span class="nd">@property</span>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">quaternion_norms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
