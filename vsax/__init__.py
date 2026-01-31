@@ -19,7 +19,7 @@ Example:
     >>> dog_is_animal = model.opset.bind(dog.vec, animal.vec)
 """
 
-__version__ = "1.3.1"
+__version__ = "1.4.0"
 
 from vsax.core.base import AbstractHypervector, AbstractOpSet
 from vsax.core.factory import (
