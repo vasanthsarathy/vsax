@@ -4,7 +4,15 @@ import jax
 import jax.numpy as jnp
 import pytest
 
-from vsax.ops.quaternion import QuaternionOperations, qidentity
+from vsax.ops.quaternion import (
+    QuaternionOperations,
+    qidentity,
+    qinverse,
+    qmul,
+    qnormalize,
+    sandwich,
+    sandwich_unit,
+)
 
 
 class TestQuaternionOperations:
@@ -320,3 +328,132 @@ class TestQuaternionOperations:
 
         assert jnp.allclose(recovered_role, role, atol=1e-5)
         assert jnp.allclose(recovered_filler, filler, atol=1e-5)
+
+
+# =============================================================================
+# Sandwich Product Tests
+# =============================================================================
+
+
+class TestSandwichProduct:
+    """Test suite for sandwich product operations."""
+
+    @pytest.fixture
+    def quaternion_vectors(self):
+        """Create sample quaternion hypervectors for testing."""
+        key = jax.random.PRNGKey(42)
+        dim = 256
+        n = 3
+
+        # Sample random quaternions and normalize
+        raw = jax.random.normal(key, shape=(n, dim, 4))
+        norms = jnp.linalg.norm(raw, axis=-1, keepdims=True)
+        return raw / (norms + 1e-10)
+
+    @pytest.fixture
+    def ops(self):
+        """Create QuaternionOperations instance."""
+        return QuaternionOperations()
+
+    def test_sandwich_identity(self, quaternion_vectors):
+        """Test that sandwich(identity, v) == v."""
+        v, _, _ = quaternion_vectors
+        dim = v.shape[0]
+        identity = qidentity((dim,))
+
+        result = sandwich(identity, v)
+
+        assert jnp.allclose(result, v, atol=1e-5)
+
+    def test_sandwich_unit_identity(self, quaternion_vectors):
+        """Test that sandwich_unit(identity, v) == v."""
+        v, _, _ = quaternion_vectors
+        dim = v.shape[0]
+        identity = qidentity((dim,))
+
+        result = sandwich_unit(identity, v)
+
+        assert jnp.allclose(result, v, atol=1e-5)
+
+    def test_sandwich_inverse_roundtrip(self, quaternion_vectors):
+        """Test that sandwich(q, sandwich(q^-1, v)) recovers v."""
+        rotor, v, _ = quaternion_vectors
+        rotor_inv = qinverse(rotor)
+
+        # Transform v with rotor inverse, then with rotor
+        transformed = sandwich(rotor_inv, v)
+        recovered = sandwich(rotor, transformed)
+
+        assert jnp.allclose(recovered, v, atol=1e-4)
+
+    def test_sandwich_unit_equivalent(self, quaternion_vectors):
+        """Test that sandwich_unit equals sandwich for unit quaternions."""
+        rotor, v, _ = quaternion_vectors
+
+        # Both should give same result for unit quaternions
+        result1 = sandwich(rotor, v)
+        result2 = sandwich_unit(rotor, v)
+
+        assert jnp.allclose(result1, result2, atol=1e-5)
+
+    def test_sandwich_composition(self, quaternion_vectors):
+        """Test that sandwich(q2, sandwich(q1, v)) == sandwich(q2*q1, v)."""
+        q1, q2, v = quaternion_vectors
+
+        # Sequential application
+        step1 = sandwich(q1, v)
+        sequential = sandwich(q2, step1)
+
+        # Composed rotor
+        composed_rotor = qmul(q2, q1)
+        direct = sandwich(composed_rotor, v)
+
+        assert jnp.allclose(sequential, direct, atol=1e-4)
+
+    def test_sandwich_preserves_unit_length(self, quaternion_vectors):
+        """Test that sandwich preserves unit quaternion length."""
+        rotor, v, _ = quaternion_vectors
+
+        result = sandwich(rotor, v)
+        norms = jnp.linalg.norm(result, axis=-1)
+
+        assert jnp.allclose(norms, 1.0, atol=1e-5)
+
+    def test_sandwich_ops_method(self, ops, quaternion_vectors):
+        """Test that ops.sandwich matches standalone sandwich function."""
+        rotor, v, _ = quaternion_vectors
+
+        result1 = sandwich(rotor, v)
+        result2 = ops.sandwich(rotor, v)
+
+        assert jnp.allclose(result1, result2)
+
+    def test_sandwich_unit_ops_method(self, ops, quaternion_vectors):
+        """Test that ops.sandwich_unit matches standalone function."""
+        rotor, v, _ = quaternion_vectors
+
+        result1 = sandwich_unit(rotor, v)
+        result2 = ops.sandwich_unit(rotor, v)
+
+        assert jnp.allclose(result1, result2)
+
+    def test_sandwich_different_from_bind(self, quaternion_vectors):
+        """Test that sandwich gives different result than simple binding."""
+        rotor, v, _ = quaternion_vectors
+
+        sandwich_result = sandwich(rotor, v)
+        bind_result = qmul(rotor, v)
+
+        # These should NOT be equal
+        assert not jnp.allclose(sandwich_result, bind_result)
+
+    def test_sandwich_single_quaternion(self):
+        """Test sandwich product on single quaternions (not hypervectors)."""
+        # 90-degree rotation around x-axis: cos(45) + sin(45)i
+        rotor = qnormalize(jnp.array([1.0, 1.0, 0.0, 0.0]))
+        v = jnp.array([0.0, 0.0, 1.0, 0.0])  # Pure j quaternion
+
+        result = sandwich_unit(rotor, v)
+
+        # Result should be a pure quaternion (real part near 0)
+        assert jnp.abs(result[0]) < 0.1

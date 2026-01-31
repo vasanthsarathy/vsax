@@ -178,6 +178,57 @@ def qidentity(shape: tuple[int, ...] = ()) -> jnp.ndarray:
     return result.at[..., 0].set(1.0)
 
 
+def sandwich(rotor: jnp.ndarray, v: jnp.ndarray) -> jnp.ndarray:
+    """Apply rotor transformation via sandwich product: rotor * v * rotor^-1.
+
+    This is the core operation for quaternion-based rotations/transformations.
+    For unit quaternions representing rotations, this performs the rotation
+    of v by the rotation encoded in rotor.
+
+    The sandwich product is useful for learning transformations between states.
+    Given state traces (s, action, s'), you can learn a rotor U such that
+    s' = sandwich(U, s).
+
+    Args:
+        rotor: Quaternion rotor, shape (..., 4) or (..., D, 4).
+        v: Quaternion to transform, shape (..., 4) or (..., D, 4).
+
+    Returns:
+        Transformed quaternion rotor * v * rotor^-1.
+
+    Example:
+        >>> import jax.numpy as jnp
+        >>> # Apply rotor transformation
+        >>> rotor = jnp.array([0.707, 0.707, 0, 0])  # 90-degree rotation
+        >>> v = jnp.array([0, 1, 0, 0])  # Pure quaternion
+        >>> transformed = sandwich(rotor, v)
+    """
+    return qmul(qmul(rotor, v), qinverse(rotor))
+
+
+def sandwich_unit(rotor: jnp.ndarray, v: jnp.ndarray) -> jnp.ndarray:
+    """Apply unit rotor transformation: rotor * v * rotor*.
+
+    More efficient version for unit quaternions where inverse = conjugate.
+    Use this when you know the rotor is already normalized to unit length.
+
+    Args:
+        rotor: Unit quaternion rotor, shape (..., 4) or (..., D, 4).
+        v: Quaternion to transform, shape (..., 4) or (..., D, 4).
+
+    Returns:
+        Transformed quaternion rotor * v * conj(rotor).
+
+    Example:
+        >>> import jax.numpy as jnp
+        >>> # Apply unit rotor transformation (more efficient)
+        >>> rotor = jnp.array([0.707, 0.707, 0, 0])  # Already unit length
+        >>> v = jnp.array([0, 1, 0, 0])
+        >>> transformed = sandwich_unit(rotor, v)
+    """
+    return qmul(qmul(rotor, v), qconj(rotor))
+
+
 # =============================================================================
 # Quaternion Operation Set
 # =============================================================================
@@ -321,3 +372,32 @@ class QuaternionOperations(AbstractOpSet):
         """
         # Roll along the second-to-last axis (D dimension)
         return jnp.roll(a, shift, axis=-2)
+
+    def sandwich(self, rotor: jnp.ndarray, v: jnp.ndarray) -> jnp.ndarray:
+        """Apply sandwich product: rotor * v * rotor^-1.
+
+        This is the core operation for quaternion-based rotations/transformations.
+        Useful for learning state transformations where s' = sandwich(U, s).
+
+        Args:
+            rotor: Quaternion rotor of shape (..., D, 4).
+            v: Quaternion hypervector to transform of shape (..., D, 4).
+
+        Returns:
+            Transformed quaternion hypervector.
+        """
+        return sandwich(rotor, v)
+
+    def sandwich_unit(self, rotor: jnp.ndarray, v: jnp.ndarray) -> jnp.ndarray:
+        """Apply unit rotor sandwich product: rotor * v * rotor*.
+
+        More efficient version for unit quaternions where inverse = conjugate.
+
+        Args:
+            rotor: Unit quaternion rotor of shape (..., D, 4).
+            v: Quaternion hypervector to transform of shape (..., D, 4).
+
+        Returns:
+            Transformed quaternion hypervector.
+        """
+        return sandwich_unit(rotor, v)

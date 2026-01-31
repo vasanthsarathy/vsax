@@ -229,6 +229,7 @@ print(f"Filler similarity: {quaternion_similarity(john, recovered_filler):.3f}")
 **Key features:**
 - ✅ **Non-commutative binding**: `bind(x, y) ≠ bind(y, x)` - order matters
 - ✅ **Exact left/right unbinding**: Recover either argument with >99% accuracy
+- ✅ **Sandwich product**: `sandwich(rotor, v)` for rotor transformations `rotor * v * rotor⁻¹`
 - ✅ **Unit quaternions**: Stable on S³ manifold
 - ✅ **Order-sensitive encoding**: Natural for role/filler, subject/object relationships
 

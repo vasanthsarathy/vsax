@@ -198,6 +198,53 @@ x_inv = ops.inverse(x)
 identity = ops.bind(x, x_inv)  # (1, 0, 0, 0) for all coordinates
 ```
 
+### Sandwich Product
+
+The sandwich product applies a rotor transformation: `rotor * v * rotor⁻¹`. This is the core operation for learning state transformations.
+
+```python
+from vsax.ops import sandwich, sandwich_unit
+
+# Apply rotor transformation
+transformed = ops.sandwich(rotor, v)  # rotor * v * rotor⁻¹
+
+# More efficient for unit quaternions (inverse = conjugate)
+transformed = ops.sandwich_unit(rotor, v)  # rotor * v * rotor*
+```
+
+**Use case: Learning state transformations**
+
+Given state-action traces `(s, action, s')`, you can learn a rotor `U` such that `s' = sandwich(U, s)`:
+
+```python
+from vsax import create_quaternion_model, VSAMemory
+from vsax.ops import sandwich
+import jax
+
+# Create model and sample states
+model = create_quaternion_model(dim=256)
+memory = VSAMemory(model, key=jax.random.PRNGKey(42))
+memory.add_many(["state_a", "state_b", "rotor"])
+
+state = memory["state_a"].vec
+rotor = memory["rotor"].vec
+
+# Transform state with rotor
+new_state = sandwich(rotor, state)
+
+# Properties:
+# - sandwich(identity, v) = v
+# - sandwich(q, sandwich(q⁻¹, v)) = v  (round-trip)
+# - sandwich(q2, sandwich(q1, v)) = sandwich(q2*q1, v)  (composition)
+```
+
+**Key properties:**
+
+- Identity: `sandwich(identity, v) = v`
+- Round-trip: `sandwich(q, sandwich(q⁻¹, v)) = v`
+- Composition: `sandwich(q2, sandwich(q1, v)) = sandwich(q2*q1, v)`
+- Preserves unit length for unit quaternions
+
 ## Similarity
 
 Use `quaternion_similarity` for comparing quaternion hypervectors:
@@ -268,3 +315,5 @@ model = create_quaternion_model(dim=512)
 
 - `sample_quaternion_random(dim, n, key)`: Sample random quaternion hypervectors
 - `quaternion_similarity(a, b)`: Compute similarity between quaternion vectors
+- `sandwich(rotor, v)`: Apply sandwich product `rotor * v * rotor⁻¹`
+- `sandwich_unit(rotor, v)`: Efficient sandwich product for unit quaternions

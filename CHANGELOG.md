@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Sandwich Product for Quaternion Hypervectors:**
+  - `sandwich(rotor, v)` - Apply rotor transformation: `rotor * v * rotor⁻¹`
+  - `sandwich_unit(rotor, v)` - Efficient version for unit quaternions using conjugate
+  - Convenience methods added to `QuaternionOperations` class
+  - Useful for learning state transformations from (s, action, s') traces
+  - Properties: identity preservation, round-trip, composition
+  - 10 new tests for sandwich product operations
+  - Exported from `vsax.ops`
+
 ## [1.4.0] - 2026-01-30
 
 ### Added
