@@ -99,6 +99,7 @@ nav:
     - VSAMemory: guide/memory.md
     - Encoders: guide/encoders.md
     - Fractional Power Encoding: guide/fpe.md
+    - Quaternion Hypervectors: guide/quaternion.md
     - Operators: guide/operators.md
     - Spatial Semantic Pointers: guide/spatial.md
     - Vector Function Architecture: guide/vfa.md
@@ -133,10 +134,12 @@ nav:
       - ComplexHypervector: api/representations/complex.md
       - RealHypervector: api/representations/real.md
       - BinaryHypervector: api/representations/binary.md
+      - QuaternionHypervector: api/representations/quaternion.md
     - Operations:
       - FHRROperations: api/ops/fhrr.md
       - MAPOperations: api/ops/map.md
       - BinaryOperations: api/ops/binary.md
+      - QuaternionOperations: api/ops/quaternion.md
     - Operators: api/operators/index.md
     - Spatial: api/spatial/index.md
     - VFA: api/vfa/index.md

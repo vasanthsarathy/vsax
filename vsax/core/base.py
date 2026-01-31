@@ -169,6 +169,36 @@ class AbstractOpSet(ABC):
         """
         return self.bind(a, self.inverse(b))
 
+    def unbind_left(self, a: jnp.ndarray, b: jnp.ndarray) -> jnp.ndarray:
+        """Left-unbind: recover y from z = bind(x, y) given x.
+
+        For non-commutative algebras (e.g., quaternions), this computes:
+            inverse(a) * b
+
+        which recovers y from z = bind(x, y) when given x.
+
+        For commutative algebras, this is equivalent to unbind(b, a).
+
+        The default implementation uses: bind(inverse(a), b)
+
+        Args:
+            a: Hypervector used as first argument in binding (x).
+            b: Bound hypervector (z = bind(x, y)).
+
+        Returns:
+            Recovered hypervector (y) as JAX array.
+
+        Example:
+            >>> # For quaternions (non-commutative):
+            >>> z = ops.bind(x, y)  # z = x * y
+            >>> recovered_y = ops.unbind_left(x, z)  # x⁻¹ * z = y
+            >>>
+            >>> # For FHRR/MAP (commutative), equivalent to unbind:
+            >>> z = ops.bind(x, y)
+            >>> recovered_y = ops.unbind_left(x, z)  # same as unbind(z, x)
+        """
+        return self.bind(self.inverse(a), b)
+
     def permute(self, a: jnp.ndarray, shift: int) -> jnp.ndarray:
         """Permute a hypervector by circular shift.
 

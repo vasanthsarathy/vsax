@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-01-30
+
+### Added
+- **Quaternion Hypervectors (QHV) - Non-Commutative VSA:**
+  - `QuaternionHypervector` - Unit quaternion representation on S³ manifold
+  - `QuaternionOperations` - Hamilton product-based operations (non-commutative binding)
+  - `sample_quaternion_random()` - Sample random unit quaternion hypervectors
+  - `quaternion_similarity()` - Similarity metric for quaternion vectors
+  - `create_quaternion_model()` - Factory function for quaternion VSA model
+
+- **Non-Commutative Binding:**
+  - `bind(x, y) ≠ bind(y, x)` - Order matters in quaternion binding
+  - Enables natural encoding of role/filler, subject/object relationships
+  - Hamilton product: `q = a + bi + cj + dk` with `i² = j² = k² = ijk = -1`
+
+- **Left and Right Unbinding:**
+  - `unbind(z, y)` - Right-unbind: recover x from z = bind(x, y) given y
+  - `unbind_left(x, z)` - Left-unbind: recover y from z = bind(x, y) given x
+  - Both achieve >99% similarity recovery for exact unbinding
+  - `unbind_left()` added to `AbstractOpSet` base class (backward compatible)
+
+- **Documentation:**
+  - User guide: `docs/guide/quaternion.md` - Complete tutorial with examples
+  - API reference: `docs/api/ops/quaternion.md`, `docs/api/representations/quaternion.md`
+  - Updated `docs/guide/representations.md` with quaternion section
+
+- **Tests:**
+  - 105 new tests for quaternion algebra, operations, representation, sampling, similarity
+  - Integration tests for quaternion model with VSAMemory
+  - Tests for non-commutative binding, left/right unbinding, bundling
+  - Total: 747 tests with 94.65% coverage
+
+### Technical Details
+- Storage format: `(D, 4)` where D is dimensionality, 4 is quaternion components (a, b, c, d)
+- Unit quaternion constraint ensures stability on S³
+- Hamilton product is associative but non-commutative
+- Binding preserves unit length for unit quaternions
+
+### Notes
+- No breaking changes from v1.3.1
+- Quaternion VSA complements existing FHRR, MAP, and Binary models
+- Use when binding order matters (role/filler, subject/object relationships)
+
 ## [1.3.1] - 2026-01-01
 
 ### Fixed

@@ -1,6 +1,6 @@
 # Hypervector Representations
 
-VSAX provides three hypervector representations, each designed for a specific VSA algebra. All representations inherit from `AbstractHypervector` and provide a consistent interface.
+VSAX provides four hypervector representations, each designed for a specific VSA algebra. All representations inherit from `AbstractHypervector` and provide a consistent interface.
 
 ## Overview
 
@@ -9,6 +9,7 @@ VSAX provides three hypervector representations, each designed for a specific VS
 | `ComplexHypervector` | Complex unit-magnitude | FHRR (Fourier) | Circular convolution |
 | `RealHypervector` | Real continuous | MAP | Element-wise multiply |
 | `BinaryHypervector` | Bipolar {-1,+1} or Binary {0,1} | Binary VSA | XOR, majority vote |
+| `QuaternionHypervector` | Unit quaternions | Quaternion VSA | Hamilton product (non-commutative) |
 
 ## ComplexHypervector
 
@@ -198,6 +199,12 @@ class AbstractHypervector:
 - You need exact unbinding
 - Working with symbolic/discrete data
 
+**Use QuaternionHypervector when:**
+- Order matters in bindings (role/filler, subject/object)
+- You need non-commutative binding: `bind(x, y) ≠ bind(y, x)`
+- Exact unbinding from both directions (left and right) is needed
+- Working with asymmetric relationships
+
 ## Performance Considerations
 
 | Representation | Memory | Computation | Unbinding |
@@ -205,6 +212,7 @@ class AbstractHypervector:
 | Complex | 2x (real+imag) | FFT overhead | Exact |
 | Real | 1x | Fast multiply/add | Approximate |
 | Binary | 1/32x (int vs float) | Fastest | Exact |
+| Quaternion | 4x (4 components) | Hamilton product | Exact (left/right) |
 
 ## Next Steps
 

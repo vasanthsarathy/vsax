@@ -70,9 +70,7 @@ def sample_complex_random(
     return jnp.exp(1j * phases)
 
 
-def sample_fhrr_random(
-    dim: int, n: int, key: Optional[jax.random.PRNGKey] = None
-) -> jnp.ndarray:
+def sample_fhrr_random(dim: int, n: int, key: Optional[jax.random.PRNGKey] = None) -> jnp.ndarray:
     """Sample n random real-valued vectors suitable for FHRR operations.
 
     Generates random vectors by sampling in the frequency domain with
@@ -199,6 +197,47 @@ def sample_fhrr_random(
     vectors = jax.vmap(sample_one_vector)(keys)
 
     return vectors
+
+
+def sample_quaternion_random(
+    dim: int, n: int, key: Optional[jax.random.PRNGKey] = None
+) -> jnp.ndarray:
+    """Sample n random unit quaternion hypervectors.
+
+    Generates random hypervectors where each coordinate is a unit quaternion
+    uniformly distributed on the 3-sphere S³. This is achieved by sampling
+    from N(0, I₄) and normalizing.
+
+    The output shape is (n, dim, 4) where:
+    - n is the number of hypervectors
+    - dim is the number of quaternion coordinates
+    - 4 is the quaternion components (a, b, c, d)
+
+    Args:
+        dim: Number of quaternion coordinates per hypervector.
+        n: Number of hypervectors to sample.
+        key: JAX random key. If None, uses PRNGKey(0).
+
+    Returns:
+        JAX array of shape (n, dim, 4) containing unit quaternion hypervectors.
+
+    Example:
+        >>> import jax
+        >>> key = jax.random.PRNGKey(42)
+        >>> vectors = sample_quaternion_random(512, 10, key)
+        >>> assert vectors.shape == (10, 512, 4)
+        >>> # All quaternions should be unit length
+        >>> norms = jnp.linalg.norm(vectors, axis=-1)
+        >>> assert jnp.allclose(norms, 1.0, atol=1e-6)
+    """
+    if key is None:
+        key = jax.random.PRNGKey(0)
+
+    # Sample from N(0, I₄) and normalize to unit quaternions
+    raw = jax.random.normal(key, shape=(n, dim, 4))
+    norms = jnp.linalg.norm(raw, axis=-1, keepdims=True)
+    epsilon = 1e-10
+    return raw / (norms + epsilon)
 
 
 def sample_binary_random(

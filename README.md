@@ -28,7 +28,7 @@ New comprehensive course covering VSA from foundations to research frontiers:
 
 ## Features
 
-- 🚀 **Three VSA Models**: FHRR, MAP, and Binary implementations ✅
+- 🚀 **Four VSA Models**: FHRR, MAP, Binary, and **Quaternion** (non-commutative) implementations ✅
 - 🏭 **Factory Functions**: One-line model creation with sensible defaults ✅
 - 💾 **VSAMemory**: Dictionary-style symbol management ✅
 - 📊 **5 Core Encoders**: Scalar, Sequence, Set, Dict, and Graph encoders ✅
@@ -43,7 +43,7 @@ New comprehensive course covering VSA from foundations to research frontiers:
 - 🎯 **Vector Function Architecture (VFA)**: Function approximation in RKHS for density estimation, regression, image processing ✅ **NEW in v1.2.0**
 - 🚀 **GPU-Accelerated**: Built on JAX for automatic GPU acceleration (5-30x speedup)
 - 🧩 **Modular Architecture**: Clean separation between representations and operations
-- 🧬 **Complete Representations**: Complex, Real, and Binary hypervectors ✅
+- 🧬 **Complete Representations**: Complex, Real, Binary, and **Quaternion** hypervectors ✅
 - ⚙️ **Full Operation Sets**: FFT-based FHRR, MAP, and XOR/majority Binary ops ✅
 - 🎲 **Random Sampling**: Sampling utilities for all representation types ✅
 - 📚 **Comprehensive Documentation**: Full API docs and examples ✅
@@ -167,12 +167,12 @@ memory_new = VSAMemory(model)
 load_basis(memory_new, "my_basis.json")  # Load from JSON
 ```
 
-### All Three Models
+### All Four Models
 
-VSAX supports three VSA models, all with the same simple API:
+VSAX supports four VSA models, all with the same simple API:
 
 ```python
-from vsax import create_fhrr_model, create_map_model, create_binary_model, VSAMemory
+from vsax import create_fhrr_model, create_map_model, create_binary_model, create_quaternion_model, VSAMemory
 
 # FHRR: Complex hypervectors, >99% unbinding accuracy (with proper sampling)
 fhrr = create_fhrr_model(dim=512)
@@ -183,12 +183,54 @@ map_model = create_map_model(dim=512)
 # Binary: Discrete hypervectors, exact unbinding (XOR self-inverse)
 binary = create_binary_model(dim=10000, bipolar=True)
 
+# Quaternion: Non-commutative binding, exact left/right unbinding (NEW in v1.4.0)
+quaternion = create_quaternion_model(dim=512)
+
 # Same interface for all models!
-for model in [fhrr, map_model, binary]:
+for model in [fhrr, map_model, binary, quaternion]:
     memory = VSAMemory(model)
     memory.add("concept")
     vec = memory["concept"]
 ```
+
+### NEW: Quaternion Hypervectors (v1.4.0)
+
+**Non-commutative binding for order-sensitive role/filler relationships:**
+
+```python
+from vsax import create_quaternion_model, VSAMemory, quaternion_similarity
+import jax
+
+# Create quaternion model
+model = create_quaternion_model(dim=512)
+memory = VSAMemory(model, key=jax.random.PRNGKey(42))
+memory.add_many(["subject", "verb", "john", "eats"])
+
+# Get vectors
+subject = memory["subject"].vec
+john = memory["john"].vec
+
+# Non-commutative binding: bind(x, y) ≠ bind(y, x)
+# Order matters! Use role * filler convention
+subj_bind = model.opset.bind(subject, john)
+
+# Two types of unbinding:
+# Right-unbind: recover role from bind(role, filler) given filler
+recovered_role = model.opset.unbind(subj_bind, john)
+
+# Left-unbind: recover filler from bind(role, filler) given role
+recovered_filler = model.opset.unbind_left(subject, subj_bind)
+
+# Both achieve >99% similarity recovery
+print(f"Role similarity: {quaternion_similarity(subject, recovered_role):.3f}")
+print(f"Filler similarity: {quaternion_similarity(john, recovered_filler):.3f}")
+```
+
+**Key features:**
+- ✅ **Non-commutative binding**: `bind(x, y) ≠ bind(y, x)` - order matters
+- ✅ **Exact left/right unbinding**: Recover either argument with >99% accuracy
+- ✅ **Unit quaternions**: Stable on S³ manifold
+- ✅ **Order-sensitive encoding**: Natural for role/filler, subject/object relationships
 
 ### NEW: Clifford Operators (v1.1.0)
 

@@ -22,7 +22,12 @@ Example:
 __version__ = "1.3.1"
 
 from vsax.core.base import AbstractHypervector, AbstractOpSet
-from vsax.core.factory import create_binary_model, create_fhrr_model, create_map_model
+from vsax.core.factory import (
+    create_binary_model,
+    create_fhrr_model,
+    create_map_model,
+    create_quaternion_model,
+)
 from vsax.core.memory import VSAMemory
 from vsax.core.model import VSAModel
 from vsax.encoders import (
@@ -34,11 +39,26 @@ from vsax.encoders import (
     SetEncoder,
 )
 from vsax.io import load_basis, save_basis
-from vsax.ops import BinaryOperations, FHRROperations, MAPOperations
-from vsax.representations import BinaryHypervector, ComplexHypervector, RealHypervector
+from vsax.ops import BinaryOperations, FHRROperations, MAPOperations, QuaternionOperations
+from vsax.representations import (
+    BinaryHypervector,
+    ComplexHypervector,
+    QuaternionHypervector,
+    RealHypervector,
+)
 from vsax.resonator import CleanupMemory, Resonator
-from vsax.sampling import sample_binary_random, sample_complex_random, sample_random
-from vsax.similarity import cosine_similarity, dot_similarity, hamming_similarity
+from vsax.sampling import (
+    sample_binary_random,
+    sample_complex_random,
+    sample_quaternion_random,
+    sample_random,
+)
+from vsax.similarity import (
+    cosine_similarity,
+    dot_similarity,
+    hamming_similarity,
+    quaternion_similarity,
+)
 from vsax.utils import (
     format_similarity_results,
     pretty_repr,
@@ -57,6 +77,7 @@ __all__ = [
     "create_binary_model",
     "create_fhrr_model",
     "create_map_model",
+    "create_quaternion_model",
     # Encoders
     "AbstractEncoder",
     "DictEncoder",
@@ -67,19 +88,23 @@ __all__ = [
     # Representations
     "BinaryHypervector",
     "ComplexHypervector",
+    "QuaternionHypervector",
     "RealHypervector",
     # Operations
     "BinaryOperations",
     "FHRROperations",
     "MAPOperations",
+    "QuaternionOperations",
     # Sampling
     "sample_binary_random",
     "sample_complex_random",
+    "sample_quaternion_random",
     "sample_random",
     # Similarity
     "cosine_similarity",
     "dot_similarity",
     "hamming_similarity",
+    "quaternion_similarity",
     # Resonator
     "CleanupMemory",
     "Resonator",

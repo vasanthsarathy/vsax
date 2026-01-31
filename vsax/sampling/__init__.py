@@ -4,6 +4,7 @@ from vsax.sampling.random import (
     sample_binary_random,
     sample_complex_random,
     sample_fhrr_random,
+    sample_quaternion_random,
     sample_random,
 )
 
@@ -12,4 +13,5 @@ __all__ = [
     "sample_complex_random",
     "sample_fhrr_random",
     "sample_binary_random",
+    "sample_quaternion_random",
 ]
