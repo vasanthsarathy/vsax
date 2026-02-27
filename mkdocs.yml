@@ -96,6 +96,7 @@ nav:
     - DNA Sequence Analysis: tutorials/12_dna_sequences.md
     - Protein Classification: tutorials/13_protein_classification.md
     - Motif Discovery: tutorials/14_motif_discovery.md
+    - Program Synthesis: tutorials/15_program_synthesis.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

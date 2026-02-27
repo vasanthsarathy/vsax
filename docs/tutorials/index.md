@@ -158,6 +158,16 @@ Advanced bioinformatics techniques with VSA: k-mer fingerprinting for sequence s
 
 ---
 
+### Tutorial 15: Program Synthesis with VSA
+**Level**: Intermediate
+**Topics**: Program representation, role-filler binding, library search, composition, decomposition
+
+Represent programs as structured hypervectors using role-filler binding. Build a searchable program library, query by partial specification (e.g., "which program uses addition?"), compose programs into multi-step pipelines, and decompose pipelines back into steps via unbinding. Demonstrates VSA's natural fit for symbolic program representation.
+
+[📖 Read Tutorial](15_program_synthesis.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_15_program_synthesis.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:
