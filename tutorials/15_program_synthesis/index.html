@@ -12,13 +12,13 @@
         <meta name="author" content="VSAX Contributors">
       
       
-        <link rel="canonical" href="https://vsax.readthedocs.io/tutorials/11_analogical_reasoning/">
+        <link rel="canonical" href="https://vsax.readthedocs.io/tutorials/15_program_synthesis/">
       
       
-        <link rel="prev" href="../10_clifford_operators/">
+        <link rel="prev" href="../14_motif_discovery/">
       
       
-        <link rel="next" href="../12_dna_sequences/">
+        <link rel="next" href="../../guide/models/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Analogical Reasoning - VSAX Documentation</title>
+        <title>Program Synthesis - VSAX Documentation</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-11-analogical-reasoning-with-conceptual-spaces" class="md-skip">
+        <a href="#tutorial-15-program-synthesis-with-vsa" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Analogical Reasoning
+              Program Synthesis
             
           </span>
         </div>
@@ -2046,37 +2046,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Analogical Reasoning
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../11_analogical_reasoning/" class="md-nav__link">
         
   
   
@@ -2092,241 +2065,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conceptual-spaces-theory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conceptual Spaces Theory
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-color-domain-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The Color Domain Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-fpe-works-for-conceptual-spaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How FPE Works for Conceptual Spaces
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#category-based-analogies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Category-Based Analogies
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Category-Based Analogies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-purple-blue-orange-x" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: PURPLE : BLUE :: ORANGE : X
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#property-based-analogies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Property-Based Analogies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decoding-with-code-books" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Decoding with Code Books
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-cleanup-memory-for-decoding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using Cleanup Memory for Decoding
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#improving-accuracy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Improving Accuracy
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#complete-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Complete Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-full-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running the Full Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-insights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Insights
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparison-with-other-approaches" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comparison with Other Approaches
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mathematical-foundation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mathematical Foundation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extensions-and-applications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Extensions and Applications
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next Steps
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Further Reading
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2420,10 +2158,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../15_program_synthesis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Program Synthesis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2439,6 +2204,158 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You'll Learn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-vsa-for-program-synthesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why VSA for Program Synthesis?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-encoding-programs-as-hypervectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Encoding Programs as Hypervectors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-building-a-program-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Building a Program Library
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-querying-programs-extracting-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Querying Programs — Extracting Attributes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-searching-by-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Searching by Specification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-composing-programs-into-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Composing Programs into Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-decomposing-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Decomposing Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-this-tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running This Tutorial
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4307,10 +4224,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#what-youll-learn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        What You'll Learn
       
     </span>
   </a>
@@ -4318,10 +4235,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conceptual-spaces-theory" class="md-nav__link">
+  <a href="#why-vsa-for-program-synthesis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conceptual Spaces Theory
+        Why VSA for Program Synthesis?
       
     </span>
   </a>
@@ -4329,10 +4246,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-color-domain-example" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Color Domain Example
+        Setup
       
     </span>
   </a>
@@ -4340,10 +4257,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-fpe-works-for-conceptual-spaces" class="md-nav__link">
+  <a href="#step-1-encoding-programs-as-hypervectors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How FPE Works for Conceptual Spaces
+        Step 1: Encoding Programs as Hypervectors
       
     </span>
   </a>
@@ -4351,38 +4268,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#category-based-analogies" class="md-nav__link">
+  <a href="#step-2-building-a-program-library" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Category-Based Analogies
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Category-Based Analogies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-purple-blue-orange-x" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: PURPLE : BLUE :: ORANGE : X
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#property-based-analogies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Property-Based Analogies
+        Step 2: Building a Program Library
       
     </span>
   </a>
@@ -4390,10 +4279,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decoding-with-code-books" class="md-nav__link">
+  <a href="#step-3-querying-programs-extracting-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Decoding with Code Books
+        Step 3: Querying Programs — Extracting Attributes
       
     </span>
   </a>
@@ -4401,10 +4290,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-cleanup-memory-for-decoding" class="md-nav__link">
+  <a href="#step-4-searching-by-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Using Cleanup Memory for Decoding
+        Step 4: Searching by Specification
       
     </span>
   </a>
@@ -4412,10 +4301,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#improving-accuracy" class="md-nav__link">
+  <a href="#step-5-composing-programs-into-pipelines" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Improving Accuracy
+        Step 5: Composing Programs into Pipelines
       
     </span>
   </a>
@@ -4423,10 +4312,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complete-example" class="md-nav__link">
+  <a href="#step-6-decomposing-pipelines" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complete Example
+        Step 6: Decomposing Pipelines
       
     </span>
   </a>
@@ -4434,65 +4323,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-the-full-example" class="md-nav__link">
+  <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Running the Full Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-insights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Insights
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparison-with-other-approaches" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comparison with Other Approaches
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mathematical-foundation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mathematical Foundation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extensions-and-applications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Extensions and Applications
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        Key Takeaways
       
     </span>
   </a>
@@ -4511,10 +4345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
+  <a href="#running-this-tutorial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Further Reading
+        Running This Tutorial
       
     </span>
   </a>
@@ -4541,351 +4375,280 @@
   
 
 
-<h1 id="tutorial-11-analogical-reasoning-with-conceptual-spaces">Tutorial 11: Analogical Reasoning with Conceptual Spaces<a class="headerlink" href="#tutorial-11-analogical-reasoning-with-conceptual-spaces" title="Permanent link">&para;</a></h1>
-<p>This tutorial demonstrates how to use VSAX for analogical reasoning within continuous conceptual spaces, based on the research by Goldowsky &amp; Sarathy (2024).</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Analogical reasoning is the ability to recognize and apply relationships between concepts. For example:</p>
+<h1 id="tutorial-15-program-synthesis-with-vsa">Tutorial 15: Program Synthesis with VSA<a class="headerlink" href="#tutorial-15-program-synthesis-with-vsa" title="Permanent link">&para;</a></h1>
+<p>This tutorial demonstrates how to use Vector Symbolic Architectures for program synthesis — representing, searching, composing, and decomposing programs as hypervectors.</p>
+<p><a href="../../examples/notebooks/tutorial_15_program_synthesis.ipynb">📓 <strong>Open in Jupyter Notebook</strong></a></p>
+<h2 id="what-youll-learn">What You'll Learn<a class="headerlink" href="#what-youll-learn" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Category-based</strong>: "PURPLE is to BLUE as ORANGE is to ___?" (Answer: YELLOW)</li>
-<li><strong>Property-based</strong>: "If an APPLE is RED, what color is a BANANA?" (Answer: YELLOW)</li>
+<li>How to encode programs as structured role-filler hypervectors</li>
+<li>How to build a searchable program library</li>
+<li>How to query programs by partial specification (e.g., "which program uses addition?")</li>
+<li>How to compose programs into multi-step pipelines</li>
+<li>How to decompose pipelines back into individual steps via unbinding</li>
 </ul>
-<p>VSAX enables analogical reasoning by:
-1. <strong>Encoding</strong> concepts as points in continuous conceptual spaces using Fractional Power Encoding (FPE)
-2. <strong>Finding</strong> analogies using the parallelogram model with binding operations
-3. <strong>Decoding</strong> results using resonator networks and code books</p>
-<h2 id="conceptual-spaces-theory">Conceptual Spaces Theory<a class="headerlink" href="#conceptual-spaces-theory" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/Conceptual_spaces">Conceptual Spaces Theory (CST)</a> represents concepts geometrically in multi-dimensional spaces where:</p>
-<ul>
-<li>Each dimension represents a quality (e.g., hue, saturation, brightness for colors)</li>
-<li>Similar concepts are close together in the space</li>
-<li>Concepts can be combined and transformed using geometric operations</li>
-</ul>
-<h2 id="the-color-domain-example">The Color Domain Example<a class="headerlink" href="#the-color-domain-example" title="Permanent link">&para;</a></h2>
-<p>We'll use a 3D color space with dimensions:
-- <strong>Hue</strong>: Color wavelength (-10 to +10)
-- <strong>Saturation</strong>: Color intensity (-10 to +10)
-- <strong>Brightness</strong>: Lightness level (-10 to +10)</p>
-<p>Colors are represented as points in this 3D space:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">VSAMemory</span><span class="p">,</span> <span class="n">create_fhrr_model</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.encoders.fpe</span><span class="w"> </span><span class="kn">import</span> <span class="n">FractionalPowerEncoder</span>
+<h2 id="why-vsa-for-program-synthesis">Why VSA for Program Synthesis?<a class="headerlink" href="#why-vsa-for-program-synthesis" title="Permanent link">&para;</a></h2>
+<p>Program synthesis — automatically constructing programs from specifications — is a core challenge in AI. VSAs offer a natural fit:</p>
+<ol>
+<li><strong>Structured Representation</strong>: Programs have structure (operation, arguments, constants) that maps directly to role-filler binding</li>
+<li><strong>Compositional</strong>: Programs can be composed into pipelines using bundling and binding</li>
+<li><strong>Searchable</strong>: A library of programs can be searched by partial specification using similarity</li>
+<li><strong>Decomposable</strong>: Composed programs can be taken apart via unbinding to recover sub-programs</li>
+<li><strong>Fixed-Size</strong>: Every program, regardless of complexity, is a single fixed-dimensional vector</li>
+</ol>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fhrr_model</span><span class="p">,</span> <span class="n">VSAMemory</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Initialize model and encoder</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">FractionalPowerEncoder</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Create basis vectors for color dimensions</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">for</span> <span class="n">dim_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;bright&quot;</span><span class="p">]:</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dim_name</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># FHRR gives exact unbinding — critical for decomposition</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Define vocabulary</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">operations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;sub&quot;</span><span class="p">,</span> <span class="s2">&quot;mul&quot;</span><span class="p">,</span> <span class="s2">&quot;inc&quot;</span><span class="p">,</span> <span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="s2">&quot;negate&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">roles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;op&quot;</span><span class="p">,</span> <span class="s2">&quot;arg&quot;</span><span class="p">,</span> <span class="s2">&quot;const&quot;</span><span class="p">,</span> <span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="s2">&quot;step2&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">constants</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">]</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Define colors as points in 3D space</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="s2">&quot;purple&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">],</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="s2">&quot;blue&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="s2">&quot;orange&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">8.7</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="s2">&quot;yellow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">],</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">}</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># Encode colors using FPE</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">color_hvs</span> <span class="o">=</span> <span class="p">{}</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">for</span> <span class="n">color_name</span><span class="p">,</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">colors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">hv</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">encode_multi</span><span class="p">([</span><span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;bright&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">color_hvs</span><span class="p">[</span><span class="n">color_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hv</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">memory</span><span class="o">.</span><span class="n">add_many</span><span class="p">(</span><span class="n">operations</span> <span class="o">+</span> <span class="n">roles</span> <span class="o">+</span> <span class="n">variables</span> <span class="o">+</span> <span class="n">constants</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">rep_cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">, dim=</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">dim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vocabulary: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">memory</span><span class="p">)</span><span class="si">}</span><span class="s2"> symbols&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="how-fpe-works-for-conceptual-spaces">How FPE Works for Conceptual Spaces<a class="headerlink" href="#how-fpe-works-for-conceptual-spaces" title="Permanent link">&para;</a></h2>
-<p>Fractional Power Encoding creates a hypervector for a point in n-dimensional space by:</p>
-<ol>
-<li>Creating a basis hypervector for each dimension (e.g., <code>hue</code>, <code>sat</code>, <code>bright</code>)</li>
-<li>Raising each basis to the power of the coordinate value</li>
-<li>Binding (⊛) all powered bases together</li>
-</ol>
-<p>For a color at (h, s, b):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Color(h, s, b) = hue^h ⊛ sat^s ⊛ bright^b
+<p>Output:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Model: ComplexHypervector, dim=1024
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Vocabulary: 16 symbols
+</code></pre></div></p>
+<h2 id="step-1-encoding-programs-as-hypervectors">Step 1: Encoding Programs as Hypervectors<a class="headerlink" href="#step-1-encoding-programs-as-hypervectors" title="Permanent link">&para;</a></h2>
+<p>Each program in our DSL has three components:
+- <strong>Operation</strong>: what to do (<code>add</code>, <code>sub</code>, <code>mul</code>, etc.)
+- <strong>Argument</strong>: the input variable (<code>x</code>)
+- <strong>Constant</strong>: an optional numeric operand (<code>one</code>, <code>two</code>, etc.)</p>
+<p>We encode a program as a role-filler structure:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>program = bundle(bind(op_role, operation), bind(arg_role, variable), bind(const_role, constant))
+</code></pre></div></p>
+<p>Bundling creates a superposition of the three role-filler pairs. Each pair is recoverable via unbinding, though the other pairs contribute some noise. Higher dimensions reduce this noise.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">opset</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">encode_program</span><span class="p">(</span><span class="n">op_name</span><span class="p">,</span> <span class="n">arg_name</span><span class="p">,</span> <span class="n">const_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encode a program as a role-filler hypervector.&quot;&quot;&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;op&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="n">op_name</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">),</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;arg&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">),</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">]</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="k">if</span> <span class="n">const_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;const&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="n">const_name</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">))</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="k">return</span> <span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="o">*</span><span class="n">parts</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># Encode six programs</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">programs</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="s2">&quot;add(x,3)&quot;</span><span class="p">:</span>    <span class="n">encode_program</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="s2">&quot;sub(x,2)&quot;</span><span class="p">:</span>    <span class="n">encode_program</span><span class="p">(</span><span class="s2">&quot;sub&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="s2">&quot;mul(x,5)&quot;</span><span class="p">:</span>    <span class="n">encode_program</span><span class="p">(</span><span class="s2">&quot;mul&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="s2">&quot;inc(x)&quot;</span><span class="p">:</span>      <span class="n">encode_program</span><span class="p">(</span><span class="s2">&quot;inc&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="s2">&quot;double(x)&quot;</span><span class="p">:</span>   <span class="n">encode_program</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="s2">&quot;negate(x)&quot;</span><span class="p">:</span>   <span class="n">encode_program</span><span class="p">(</span><span class="s2">&quot;negate&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">),</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encoded programs:&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">programs</span><span class="p">:</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>This encoding has important properties:
-- <strong>Continuous</strong>: Small changes in coordinates → small changes in hypervector
-- <strong>Compositional</strong>: Can combine dimensions independently
-- <strong>Invertible</strong>: Can extract individual dimensions via unbinding</p>
-<h2 id="category-based-analogies">Category-Based Analogies<a class="headerlink" href="#category-based-analogies" title="Permanent link">&para;</a></h2>
-<p>Category-based analogies ask: "A is to B as C is to ___?"</p>
-<p>The <strong>parallelogram model</strong> solves this using vector arithmetic:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>X = (C ⊛ A^-1) ⊛ B
+<p>Output:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Encoded programs:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  add(x,3)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  sub(x,2)
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  mul(x,5)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  inc(x)
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  double(x)
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  negate(x)
+</code></pre></div></p>
+<h2 id="step-2-building-a-program-library">Step 2: Building a Program Library<a class="headerlink" href="#step-2-building-a-program-library" title="Permanent link">&para;</a></h2>
+<p>The program library is simply a dictionary mapping names to hypervectors. In a real system, this could be a large collection of reusable program fragments.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">library</span> <span class="o">=</span> <span class="n">programs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Program library: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">library</span><span class="p">)</span><span class="si">}</span><span class="s2"> programs&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">library</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>This works because:
-- <code>C ⊛ A^-1</code> captures the transformation from A to C
-- Applying this transformation to B yields X</p>
-<h3 id="example-purple-blue-orange-x">Example: PURPLE : BLUE :: ORANGE : X<a class="headerlink" href="#example-purple-blue-orange-x" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.representations</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComplexHypervector</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Solve: PURPLE : BLUE :: ORANGE : X</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">purple_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;purple&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">x_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;orange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">purple_inv</span><span class="p">)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">x_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">x_hv</span> <span class="o">=</span> <span class="n">ComplexHypervector</span><span class="p">(</span><span class="n">x_vec</span><span class="p">)</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Find closest match</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">for</span> <span class="n">color_name</span><span class="p">,</span> <span class="n">color_hv</span> <span class="ow">in</span> <span class="n">color_hvs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">x_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">color_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">color_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># Output:</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1"># purple: 0.5234</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># blue: 0.7891</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1"># orange: 0.6543</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1"># yellow: 0.9432  &lt;- Best match!</span>
+<p>Output:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Program library: 6 programs
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  - add(x,3)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  - sub(x,2)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  - mul(x,5)
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  - inc(x)
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  - double(x)
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>  - negate(x)
+</code></pre></div></p>
+<h2 id="step-3-querying-programs-extracting-attributes">Step 3: Querying Programs — Extracting Attributes<a class="headerlink" href="#step-3-querying-programs-extracting-attributes" title="Permanent link">&para;</a></h2>
+<p>Given a program hypervector, we can extract any attribute by unbinding the corresponding role. For example, to find what operation a program uses:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>recovered_op = unbind(program, op_role)
 </code></pre></div>
-<p>The result is <strong>YELLOW</strong>, which makes intuitive sense:
-- Purple → Blue: reduce saturation, slightly reduce hue
-- Orange → Yellow: similar transformation</p>
-<h2 id="property-based-analogies">Property-Based Analogies<a class="headerlink" href="#property-based-analogies" title="Permanent link">&para;</a></h2>
-<p>Property-based analogies identify salient properties and transfer them between objects.</p>
-<p>Example: "If an APPLE is RED, what color is a BANANA?"</p>
-<p>This uses the same parallelogram approach:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Use color hypervectors as stand-ins for objects</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">apple_hv</span> <span class="o">=</span> <span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">]</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">banana_hv</span> <span class="o">=</span> <span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;yellow&quot;</span><span class="p">]</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Solve: APPLE : RED :: BANANA : X</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># X = (banana ⊛ apple^-1) ⊛ red</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">apple_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">apple_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">x_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">banana_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">apple_inv</span><span class="p">)</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">x_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Result will be closest to YELLOW</span>
-</code></pre></div>
-<h2 id="decoding-with-code-books">Decoding with Code Books<a class="headerlink" href="#decoding-with-code-books" title="Permanent link">&para;</a></h2>
-<p>For fine-grained decoding, we create a <strong>code book</strong>: a dictionary mapping coordinate values to their hypervectors.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_color_codebook</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">41</span><span class="p">):</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create code book for color space (-10 to +10 per dimension).&quot;&quot;&quot;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">values</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">codebook</span> <span class="o">=</span> <span class="p">{}</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>                <span class="n">hv</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">encode_multi</span><span class="p">(</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>                    <span class="p">[</span><span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;bright&quot;</span><span class="p">],</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>                    <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>                <span class="p">)</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>                <span class="n">codebook</span><span class="p">[(</span><span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))]</span> <span class="o">=</span> <span class="n">hv</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="k">return</span> <span class="n">codebook</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c1"># Create code book</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">codebook</span> <span class="o">=</span> <span class="n">create_color_codebook</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>  <span class="c1"># 21^3 = 9261 entries</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1"># Decode by finding nearest neighbor</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">decode_hypervector</span><span class="p">(</span><span class="n">query_hv</span><span class="p">,</span> <span class="n">codebook</span><span class="p">):</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="n">best_coords</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="n">best_sim</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="k">for</span> <span class="n">coords</span><span class="p">,</span> <span class="n">hv</span> <span class="ow">in</span> <span class="n">codebook</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>        <span class="n">sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">query_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">hv</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>        <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;</span> <span class="n">best_sim</span><span class="p">:</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>            <span class="n">best_sim</span> <span class="o">=</span> <span class="n">sim</span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>            <span class="n">best_coords</span> <span class="o">=</span> <span class="n">coords</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>    <span class="k">return</span> <span class="n">best_coords</span><span class="p">,</span> <span class="n">best_sim</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="c1"># Decode the analogy result</span>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="n">coords</span><span class="p">,</span> <span class="n">sim</span> <span class="o">=</span> <span class="n">decode_hypervector</span><span class="p">(</span><span class="n">x_hv</span><span class="p">,</span> <span class="n">codebook</span><span class="p">)</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decoded: hue=</span><span class="si">{</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, sat=</span><span class="si">{</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, bright=</span><span class="si">{</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Similarity: </span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="using-cleanup-memory-for-decoding">Using Cleanup Memory for Decoding<a class="headerlink" href="#using-cleanup-memory-for-decoding" title="Permanent link">&para;</a></h2>
-<p>VSAX includes <code>CleanupMemory</code> for projecting noisy vectors onto known codebooks:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.resonator</span><span class="w"> </span><span class="kn">import</span> <span class="n">CleanupMemory</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># Add all code book entries to memory</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">for</span> <span class="n">coords</span><span class="p">,</span> <span class="n">hv</span> <span class="ow">in</span> <span class="n">codebook</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;code_</span><span class="si">{</span><span class="n">coords</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">memory</span><span class="o">.</span><span class="n">_basis</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hv</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Create cleanup memory</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">codebook_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">_basis</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">cleanup</span> <span class="o">=</span> <span class="n">CleanupMemory</span><span class="p">(</span><span class="n">codebook_names</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># Query for nearest neighbor</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">best_name</span><span class="p">,</span> <span class="n">similarity</span> <span class="o">=</span> <span class="n">cleanup</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x_hv</span><span class="p">,</span> <span class="n">return_similarity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-<p><code>CleanupMemory</code> finds the best match by computing similarity to all code book entries and returning the nearest neighbor. This is efficient for moderate-sized code books and provides exact nearest-neighbor lookup.</p>
-<h2 id="improving-accuracy">Improving Accuracy<a class="headerlink" href="#improving-accuracy" title="Permanent link">&para;</a></h2>
-<p>The accuracy of analogical reasoning with FPE depends on several factors:</p>
-<ol>
-<li><strong>Dimensionality</strong>: Higher dimensions (4096+) provide better approximation but require more memory</li>
-<li><strong>Scale parameter</strong>: The FractionalPowerEncoder <code>scale</code> parameter controls the sensitivity to coordinate changes</li>
-<li><strong>Code book resolution</strong>: Finer-grained code books improve decoding accuracy</li>
-<li><strong>Normalization</strong>: Normalizing hypervectors after binding operations can improve similarity matching</li>
-</ol>
-<p>Example with higher dimensionality and scale adjustment:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Use higher dimensionality for better accuracy</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">FractionalPowerEncoder</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># Normalize after binding operations</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">x_hv</span> <span class="o">=</span> <span class="n">ComplexHypervector</span><span class="p">(</span><span class="n">x_vec</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
-</code></pre></div>
-<p><strong>Note</strong>: The example code demonstrates the approach even though numerical results may vary. The parallelogram model works best when the conceptual space geometry closely matches the hypervector algebra properties.</p>
-<h2 id="complete-example">Complete Example<a class="headerlink" href="#complete-example" title="Permanent link">&para;</a></h2>
-<p>Here's a complete working example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax</span><span class="w"> </span><span class="kn">import</span> <span class="n">VSAMemory</span><span class="p">,</span> <span class="n">create_fhrr_model</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.encoders.fpe</span><span class="w"> </span><span class="kn">import</span> <span class="n">FractionalPowerEncoder</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.representations</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComplexHypervector</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">vsax.similarity</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># Setup</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">model</span> <span class="o">=</span> <span class="n">create_fhrr_model</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">VSAMemory</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">FractionalPowerEncoder</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
+<p>Then compare the result against all known operations to identify the best match. Since each program is a bundle of multiple role-filler pairs, unbinding one role recovers the correct filler plus noise from the other pairs. The correct answer always has the highest similarity.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">extract_attribute</span><span class="p">(</span><span class="n">program_vec</span><span class="p">,</span> <span class="n">role_name</span><span class="p">,</span> <span class="n">candidates</span><span class="p">):</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract an attribute from a program by unbinding the role.&quot;&quot;&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">role_vec</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="n">role_name</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">recovered</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">program_vec</span><span class="p">,</span> <span class="n">role_vec</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">best_name</span><span class="p">,</span> <span class="n">best_sim</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="n">sim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">recovered</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">))</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;</span> <span class="n">best_sim</span><span class="p">:</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>            <span class="n">best_sim</span> <span class="o">=</span> <span class="n">sim</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>            <span class="n">best_name</span> <span class="o">=</span> <span class="n">name</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="k">return</span> <span class="n">best_name</span><span class="p">,</span> <span class="n">best_sim</span>
 <a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Create basis vectors</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;bright&quot;</span><span class="p">]:</span>
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>    <span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="c1"># Encode colors</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    <span class="s2">&quot;purple&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">],</span>
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>    <span class="s2">&quot;blue&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span>
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>    <span class="s2">&quot;orange&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">8.7</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
-<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="s2">&quot;yellow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">],</span>
-<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="p">}</span>
-<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
-<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="n">color_hvs</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>    <span class="n">name</span><span class="p">:</span> <span class="n">encoder</span><span class="o">.</span><span class="n">encode_multi</span><span class="p">([</span><span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;bright&quot;</span><span class="p">],</span> <span class="n">coords</span><span class="p">)</span>
-<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">colors</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="p">}</span>
-<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
-<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="c1"># Solve analogy: PURPLE : BLUE :: ORANGE : X</span>
-<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="n">purple_inv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;purple&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="n">x_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;orange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">purple_inv</span><span class="p">)</span>
-<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="n">x_vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">color_hvs</span><span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="n">x_hv</span> <span class="o">=</span> <span class="n">ComplexHypervector</span><span class="p">(</span><span class="n">x_vec</span><span class="p">)</span>
-<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>
-<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="c1"># Find best match</span>
-<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="n">best_match</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
-<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>    <span class="n">color_hvs</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
-<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a>    <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">x_hv</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="p">)</span>
-<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a>
-<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PURPLE : BLUE :: ORANGE : </span><span class="si">{</span><span class="n">best_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="c1"># Output: PURPLE : BLUE :: ORANGE : YELLOW</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Extract the operation from each program</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting operations from programs:&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="k">for</span> <span class="n">prog_name</span><span class="p">,</span> <span class="n">prog_vec</span> <span class="ow">in</span> <span class="n">library</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">op</span><span class="p">,</span> <span class="n">sim</span> <span class="o">=</span> <span class="n">extract_attribute</span><span class="p">(</span><span class="n">prog_vec</span><span class="p">,</span> <span class="s2">&quot;op&quot;</span><span class="p">,</span> <span class="n">operations</span><span class="p">)</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">prog_name</span><span class="si">:</span><span class="s2">15s</span><span class="si">}</span><span class="s2"> -&gt; op=</span><span class="si">{</span><span class="n">op</span><span class="si">:</span><span class="s2">8s</span><span class="si">}</span><span class="s2"> (similarity=</span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="running-the-full-example">Running the Full Example<a class="headerlink" href="#running-the-full-example" title="Permanent link">&para;</a></h2>
-<p>VSAX includes a complete example demonstrating all concepts:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/analogical_reasoning.py
+<p>Output (exact values vary due to random sampling):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Extracting operations from programs:
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  add(x,3)        -&gt; op=add      (similarity=0.134)
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  sub(x,2)        -&gt; op=sub      (similarity=0.152)
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  mul(x,5)        -&gt; op=mul      (similarity=0.119)
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>  inc(x)           -&gt; op=inc      (similarity=0.147)
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>  double(x)        -&gt; op=double   (similarity=0.163)
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>  negate(x)        -&gt; op=negate   (similarity=0.218)
+</code></pre></div></p>
+<p>The similarities are modest because each program is a bundle of 2-3 role-filler pairs, and unbinding recovers the target filler plus noise from the others. However, the correct operation always has the <strong>highest</strong> similarity among all candidates — that's what matters.</p>
+<h2 id="step-4-searching-by-specification">Step 4: Searching by Specification<a class="headerlink" href="#step-4-searching-by-specification" title="Permanent link">&para;</a></h2>
+<p>We can search the library for programs matching a partial specification. For example, "find all programs that use addition":</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>query = bind(op_role, add)
 </code></pre></div>
-<p>This example shows:
-- Encoding colors in 3D conceptual space
-- Category-based analogy (PURPLE:BLUE::ORANGE:YELLOW)
-- Property-based analogy (APPLE:RED::BANANA:YELLOW)
-- Code book creation and decoding
-- Similarity matrices
-- Visualizations of the conceptual space</p>
-<h2 id="key-insights">Key Insights<a class="headerlink" href="#key-insights" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>FPE enables geometric reasoning</strong>: By encoding concepts as points in continuous spaces, we can use geometric transformations (like the parallelogram model) for reasoning.</p>
-</li>
-<li>
-<p><strong>Binding = geometric transformation</strong>: The binding operation <code>⊛</code> captures relationships and transformations between concepts.</p>
-</li>
-<li>
-<p><strong>Inverse unbinds</strong>: <code>A^-1</code> reverses the binding, allowing us to extract or remove relationships.</p>
-</li>
-<li>
-<p><strong>Similarity = proximity</strong>: Cosine similarity in hypervector space corresponds to proximity in conceptual space.</p>
-</li>
-<li>
-<p><strong>Code books enable precise decoding</strong>: Dense sampling of the space allows mapping hypervectors back to coordinates.</p>
-</li>
-</ol>
-<h2 id="comparison-with-other-approaches">Comparison with Other Approaches<a class="headerlink" href="#comparison-with-other-approaches" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Approach</th>
-<th>Strengths</th>
-<th>Limitations</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>FPE (this tutorial)</strong></td>
-<td>Continuous, compositional, efficient</td>
-<td>Requires defining conceptual spaces</td>
-</tr>
-<tr>
-<td><strong>Word embeddings</strong></td>
-<td>Learned from data</td>
-<td>Fixed dimensionality, not compositional</td>
-</tr>
-<tr>
-<td><strong>Knowledge graphs</strong></td>
-<td>Explicit relations</td>
-<td>Discrete, no continuous properties</td>
-</tr>
-<tr>
-<td><strong>Neural networks</strong></td>
-<td>Flexible, powerful</td>
-<td>Black box, computationally expensive</td>
-</tr>
-</tbody>
-</table>
-<p>FPE combines the best of multiple worlds:
-- Continuous like embeddings
-- Compositional like symbolic systems
-- Geometric like conceptual spaces
-- Efficient like hyperdimensional computing</p>
-<h2 id="mathematical-foundation">Mathematical Foundation<a class="headerlink" href="#mathematical-foundation" title="Permanent link">&para;</a></h2>
-<p>The parallelogram model for analogies has a solid mathematical foundation:</p>
-<p>Given: <strong>A : B :: C : X</strong></p>
-<p>In conceptual space:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>X = C - A + B  (vector arithmetic)
+<p>This query is compared against every library entry using cosine similarity. Because the query is one of the role-filler pairs that was bundled into the program, the matching program will have the highest similarity.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">search_library</span><span class="p">(</span><span class="n">query_vec</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Search library for programs similar to a query.&quot;&quot;&quot;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">prog_vec</span> <span class="ow">in</span> <span class="n">library</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        <span class="n">sim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">query_vec</span><span class="p">,</span> <span class="n">prog_vec</span><span class="p">))</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">sim</span><span class="p">))</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">results</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="k">return</span> <span class="n">results</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1"># Query: &quot;which programs use addition?&quot;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">query_add</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;op&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Query: programs that use &#39;add&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sim</span> <span class="ow">in</span> <span class="n">search_library</span><span class="p">(</span><span class="n">query_add</span><span class="p">,</span> <span class="n">library</span><span class="p">):</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">15s</span><span class="si">}</span><span class="s2">  similarity=</span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="nb">print</span><span class="p">()</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="c1"># Query: &quot;which programs use constant &#39;two&#39;?&quot;</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="n">query_two</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;const&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">memory</span><span class="p">[</span><span class="s2">&quot;two&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Query: programs that use constant &#39;two&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">sim</span> <span class="ow">in</span> <span class="n">search_library</span><span class="p">(</span><span class="n">query_two</span><span class="p">,</span> <span class="n">library</span><span class="p">):</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">15s</span><span class="si">}</span><span class="s2">  similarity=</span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Output (exact values vary):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Query: programs that use &#39;add&#39;
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  add(x,3)         similarity=0.522
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  inc(x)            similarity=0.037
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  negate(x)         similarity=0.029
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>Query: programs that use constant &#39;two&#39;
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  sub(x,2)          similarity=0.522
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>  double(x)         similarity=0.522
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>  mul(x,5)          similarity=0.022
 </code></pre></div></p>
-<p>In hypervector space with FPE:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>X = C ⊛ A^-1 ⊛ B  (binding operations)
+<p>The correct programs clearly dominate. Both <code>sub(x,2)</code> and <code>double(x)</code> use constant <code>two</code>, so they score equally high.</p>
+<h2 id="step-5-composing-programs-into-pipelines">Step 5: Composing Programs into Pipelines<a class="headerlink" href="#step-5-composing-programs-into-pipelines" title="Permanent link">&para;</a></h2>
+<p>We can compose multiple programs into a pipeline by binding each program to a step role:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>pipeline = bundle(bind(step1, program_A), bind(step2, program_B))
+</code></pre></div>
+<p>This represents: "first apply program A, then apply program B."</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Pipeline: first double(x), then add(x, 3)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Semantically: add(double(x), 3) = 2x + 3</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">prog_double</span> <span class="o">=</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;double(x)&quot;</span><span class="p">]</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">prog_add3</span> <span class="o">=</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;add(x,3)&quot;</span><span class="p">]</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;step1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">prog_double</span><span class="p">),</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;step2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">prog_add3</span><span class="p">),</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="p">)</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pipeline: step1=double(x), step2=add(x,3)&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pipeline vector shape: </span><span class="si">{</span><span class="n">pipeline</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Output:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Pipeline: step1=double(x), step2=add(x,3)
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>Pipeline vector shape: (1024,)
 </code></pre></div></p>
-<p>Why this works:
-- FPE preserves geometric relationships
-- Binding in hypervector space ≈ vector addition in conceptual space
-- Inverse in hypervector space ≈ vector subtraction in conceptual space</p>
-<p>The key insight: <strong>FPE is an approximate homomorphism</strong> between conceptual space geometry and hypervector algebra.</p>
-<h2 id="extensions-and-applications">Extensions and Applications<a class="headerlink" href="#extensions-and-applications" title="Permanent link">&para;</a></h2>
-<p>This approach can be extended to:</p>
+<h2 id="step-6-decomposing-pipelines">Step 6: Decomposing Pipelines<a class="headerlink" href="#step-6-decomposing-pipelines" title="Permanent link">&para;</a></h2>
+<p>Given a pipeline, we can recover each step by unbinding the step role, then searching the library:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>recovered_step1 = unbind(pipeline, step1_role)
+</code></pre></div>
+<p>The recovered vector is compared against all library programs to identify the best match.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">decompose_pipeline</span><span class="p">(</span><span class="n">pipeline_vec</span><span class="p">,</span> <span class="n">library</span><span class="p">):</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Decompose a pipeline into its constituent steps.&quot;&quot;&quot;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">steps</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="k">for</span> <span class="n">step_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="s2">&quot;step2&quot;</span><span class="p">]:</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="n">step_role</span> <span class="o">=</span> <span class="n">memory</span><span class="p">[</span><span class="n">step_name</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="n">recovered</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="n">pipeline_vec</span><span class="p">,</span> <span class="n">step_role</span><span class="p">)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="c1"># Search library for the best match</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="n">best_name</span><span class="p">,</span> <span class="n">best_sim</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="k">for</span> <span class="n">prog_name</span><span class="p">,</span> <span class="n">prog_vec</span> <span class="ow">in</span> <span class="n">library</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>            <span class="n">sim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">recovered</span><span class="p">,</span> <span class="n">prog_vec</span><span class="p">))</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>            <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;</span> <span class="n">best_sim</span><span class="p">:</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>                <span class="n">best_sim</span> <span class="o">=</span> <span class="n">sim</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>                <span class="n">best_name</span> <span class="o">=</span> <span class="n">prog_name</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>        <span class="n">steps</span><span class="p">[</span><span class="n">step_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">best_name</span><span class="p">,</span> <span class="n">best_sim</span><span class="p">)</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="k">return</span> <span class="n">steps</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="n">steps</span> <span class="o">=</span> <span class="n">decompose_pipeline</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">library</span><span class="p">)</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decomposed pipeline:&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sim</span><span class="p">)</span> <span class="ow">in</span> <span class="n">steps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (similarity=</span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Output (exact values vary):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Decomposed pipeline:
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  step1: double(x) (similarity=0.322)
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  step2: add(x,3) (similarity=0.298)
+</code></pre></div></p>
+<p>The correct programs are recovered as the best match for each step.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Try another pipeline: first negate(x), then mul(x, 5)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># Semantically: mul(negate(x), 5) = -5x</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">pipeline2</span> <span class="o">=</span> <span class="n">opset</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;step1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;negate(x)&quot;</span><span class="p">]),</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="n">opset</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">memory</span><span class="p">[</span><span class="s2">&quot;step2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">library</span><span class="p">[</span><span class="s2">&quot;mul(x,5)&quot;</span><span class="p">]),</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="p">)</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">steps2</span> <span class="o">=</span> <span class="n">decompose_pipeline</span><span class="p">(</span><span class="n">pipeline2</span><span class="p">,</span> <span class="n">library</span><span class="p">)</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pipeline 2 decomposed:&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sim</span><span class="p">)</span> <span class="ow">in</span> <span class="n">steps2</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (similarity=</span><span class="si">{</span><span class="n">sim</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Output (exact values vary):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Pipeline 2 decomposed:
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  step1: negate(x) (similarity=0.341)
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  step2: mul(x,5) (similarity=0.310)
+</code></pre></div></p>
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Multi-domain reasoning</strong>: Combine multiple conceptual spaces (color + size + shape)</li>
-<li><strong>Abstract analogies</strong>: Apply to non-perceptual domains (e.g., social relationships)</li>
-<li><strong>Concept learning</strong>: Learn new concepts from analogies</li>
-<li><strong>Creative reasoning</strong>: Generate novel concepts via transformations</li>
-<li><strong>Metaphor understanding</strong>: Map between distant conceptual domains</li>
+<li><strong>Role-Filler Encoding</strong>: Programs are naturally represented as <code>bundle(bind(role, filler), ...)</code> structures</li>
+<li><strong>Attribute Extraction</strong>: Unbinding a role from a program recovers the filler — the correct answer always has the highest similarity</li>
+<li><strong>Library Search</strong>: Partial specifications (e.g., "uses addition") find matching programs via similarity</li>
+<li><strong>Composition</strong>: Multi-step pipelines are built by binding programs to step roles and bundling</li>
+<li><strong>Decomposition</strong>: Unbinding step roles from a pipeline recovers the original sub-programs as best matches</li>
+<li><strong>Fixed-Size Vectors</strong>: Every program — simple or composed — is a single 1024-dimensional vector</li>
+<li><strong>Noise vs. Signal</strong>: Bundling introduces noise, but the correct answer always dominates — higher dimensions improve signal-to-noise ratio</li>
 </ol>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Goldowsky, H., &amp; Sarathy, V. (2024). Analogical Reasoning Within a Conceptual Hyperspace. <em>arXiv:2411.08684</em>.</li>
-<li>Gärdenfors, P. (2004). <em>Conceptual Spaces: The Geometry of Thought</em>. MIT Press.</li>
-<li>Plate, T. A. (2003). <em>Holographic Reduced Representation</em>. CSLI Publications.</li>
-<li>Komer, B., et al. (2019). A Neural Representation of Continuous Space Using Fractional Binding. <em>CogSci</em>.</li>
-<li>Frady, E. P., et al. (2021). Computing on Functions Using Randomized Vector Representations. <em>arXiv:2109.03429</em>.</li>
-</ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Tutorial 10</strong>: <a href="10_spatial_semantic_pointers.md">Spatial Semantic Pointers</a> - Continuous spatial representations</li>
-<li><strong>Tutorial 12</strong>: <a href="12_vector_function_architecture.md">Vector Function Architecture</a> - Function encoding and manipulation</li>
-<li><strong>Example</strong>: Run <code>examples/analogical_reasoning.py</code> for hands-on practice</li>
-<li><strong>API Reference</strong>: <a href="../../api/encoders/fpe/">FractionalPowerEncoder</a></li>
+<li>Scale the DSL with more operations, control flow, and data types</li>
+<li>Explore program search over larger libraries (100+ programs)</li>
+<li>Use resonator networks for factorizing programs with unknown structure</li>
+<li>Combine with neural models for learning program representations from examples</li>
+<li>See <a href="../07_hierarchical_structures/">Tutorial 7: Hierarchical Structures</a> for recursive composition patterns</li>
+<li>See <a href="../02_knowledge_graph/">Tutorial 2: Knowledge Graph Reasoning</a> for more role-filler binding examples</li>
 </ul>
-<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Conceptual_spaces">Conceptual Spaces Theory on Wikipedia</a></li>
-<li><a href="https://arxiv.org/abs/2001.11797">Vector Symbolic Architectures Overview</a></li>
-<li><a href="https://redwood.berkeley.edu/wp-content/uploads/2020/08/KanervaHDC.pdf">Hyperdimensional Computing</a></li>
-</ul>
+<h2 id="running-this-tutorial">Running This Tutorial<a class="headerlink" href="#running-this-tutorial" title="Permanent link">&para;</a></h2>
+<p>This tutorial is available as a Jupyter notebook at <code>examples/notebooks/tutorial_15_program_synthesis.ipynb</code>.</p>
+<p>To run it:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>jupyter<span class="w"> </span>notebook<span class="w"> </span>examples/notebooks/tutorial_15_program_synthesis.ipynb
+</code></pre></div></p>
 
 
 
