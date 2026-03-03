@@ -97,6 +97,7 @@ nav:
     - Protein Classification: tutorials/13_protein_classification.md
     - Motif Discovery: tutorials/14_motif_discovery.md
     - Program Synthesis: tutorials/15_program_synthesis.md
+    - Hyperdimensional Q-Learning: tutorials/16_reinforcement_learning.md
   - User Guide:
     - Models: guide/models.md
     - Factory Functions: guide/factory.md

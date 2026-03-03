@@ -168,6 +168,17 @@ Represent programs as structured hypervectors using role-filler binding. Build a
 
 ---
 
+### Tutorial 16: Hyperdimensional Q-Learning (QHD) with Gridworlds
+**Level**: Advanced
+**Topics**: Reinforcement learning, Fractional Power Encoding, Hebbian learning, Q-function, experience replay
+**NEW in v1.5.0** ✨
+
+Implement QHD — a brain-inspired off-policy RL algorithm that replaces DQN's neural network with a single hypervector per action. Use Fractional Power Encoding to map continuous states to complex hypervectors, learn Q-values via Hebbian updates (no backpropagation!), and train on two gridworld environments. Verify that QHD works with batch size as small as 2. Based on "Efficient Off-Policy Reinforcement Learning via Brain-Inspired Computing" (Ni et al., GLSVLSI 2023).
+
+[📖 Read Tutorial](16_reinforcement_learning.md) | [📓 Open Notebook](../../examples/notebooks/tutorial_16_reinforcement_learning.ipynb)
+
+---
+
 ## Tutorial Format
 
 Each tutorial is available in two formats:
